@@ -1,0 +1,116 @@
+/* BODY */
+*{
+    box-sizing: border-box;
+  }*
+  
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    background-color:#0C0228; 
+}
+
+/* FONTS */
+
+h1 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    /* Text color */
+    color: #FFFFFF;
+}
+
+h2 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    /* Text color */
+    color: #FFFFFF;
+}
+
+h3 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 2.5rem;    
+    /* Text color */    
+    color: #FFFFFF;
+}
+
+a {
+    font-family: 'Arial';    
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    /* Text color */
+    color: #FFFFFF;
+}
+
+.bold {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    /* Text color */
+    color: #FFFFFF;
+}
+
+.italic-bold {
+    font-family: 'Arial';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
+
+.pay-card {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    /* Text color */
+    color: #FFFFFF;
+}
+
+.text-hero-title {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4rem;
+    line-height: 5rem;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    /* Text color */
+    color: #FFFFFF;
+}
+
+.text-hero-section{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
