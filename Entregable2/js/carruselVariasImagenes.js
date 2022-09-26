@@ -23,19 +23,18 @@ btnDepIzq.addEventListener('click', (e)=>{carrusel("deportes", "izq")}, paginaci
 let btnDepDer = document.getElementById('flecha-der-deportes');
 btnDepDer.addEventListener('click', (e)=>{carrusel("deportes", "der")});
 
-
+/**Funcion de movimiento de carrusel */
 function carrusel(variable, lado){
-    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);
-    
-    /**event listenener flecha derecha */
+    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
+
     if (lado === "der") {
         fila.scrollLeft += fila.offsetWidth;
         if(indicadorActivo != null){
             indicadorActivo.nextSibling.classList.add('activo');
             indicadorActivo.classList.remove('activo');
         }
-    } else if (lado === "izq")   /**event listenener flecha izquierda */
+    } else if (lado === "izq")   
         {
             fila.scrollLeft -= fila.offsetWidth;
             if(indicadorActivo != null){
@@ -44,7 +43,8 @@ function carrusel(variable, lado){
             }
         }
 }
-    /**Paginacion */
+
+/**Paginacion */
 function paginacion(variable){
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);
     const juegos = document.querySelectorAll(`.juego-${variable}`);
