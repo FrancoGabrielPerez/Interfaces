@@ -8,56 +8,17 @@
   
 }
 
-h1, h2, h3, p, a{
-  color:#FFFFFF;
-}
-
 body {font-family: Verdana, sans-serif; 
   margin:0;
   background: #0C0228;
 }
 
-/*GRID*/
-.contenedor{
-  width: 90%;
-  max-width: 1064px;
-  margin: 20px 20px 0px 20px;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 100px 1000px 100px;
-
-  grid-template-rows: repeat(6, auto);
-  grid-template-areas:  ". recomendado ."
-                        ". accion ."
-                        ". multijugador ."
-                        ". deportes .";
-}
-
-.carruseles-categorias-recomendado{
-  
-  grid-area: recomendado;
-}
-.carruseles-categorias-accion{
- 
-  grid-area: accion;
-}
-.carruseles-categorias-multijugador{
-  
-  grid-area: multijugador;
-}
-.carruseles-categorias-deportes{
- 
-  grid-area: deportes;
-}
-
-/*HEADER*/
 header {
   width: 100%;
   height: 100%;
   background-color: orange;
   background-position: center;
   background-size: cover;
-  
 }
 
 .container-nav-bar{
@@ -167,10 +128,10 @@ a.nav-menu-deployed{
 }
 
 /*FONTS*/
-/*.contenedor{
-    width: 70%;
+.contenedor{
+    width: 90%;
     margin: auto;
-}*/
+}
 
 
 
@@ -186,10 +147,7 @@ a.nav-menu-deployed{
   font-size: 30px;
 }
 
-.contenedor-titulo-controles .indicadores-recomendado button,
-.contenedor-titulo-controles .indicadores-accion button,
-.contenedor-titulo-controles .indicadores-multijugador button,
-.contenedor-titulo-controles .indicadores-deportes button{
+.contenedor-titulo-controles .indicadores button{
   background: #FFFFFF;
   height: 3px;
   width: 10px;
@@ -198,15 +156,8 @@ a.nav-menu-deployed{
   margin-right: 2px;
 }
 
-.contenedor-titulo-controles .indicadores-recomendado button:hover,
-.contenedor-titulo-controles .indicadores-recomendado button.activo,
-.contenedor-titulo-controles .indicadores-accion button:hover,
-.contenedor-titulo-controles .indicadores-accion button.activo,
-.contenedor-titulo-controles .indicadores-multijugador button:hover,
-.contenedor-titulo-controles .indicadores-multijugador button.activo,
-.contenedor-titulo-controles .indicadores-deportes button:hover,
-.contenedor-titulo-controles .indicadores-deportes button.activo
-{
+.contenedor-titulo-controles .indicadores button:hover,
+.contenedor-titulo-controles .indicadores button.activo{
   background: red;
 }
 
@@ -252,75 +203,54 @@ a.nav-menu-deployed{
 
  /*Carrusel*/
 
- .carrusel-categorias .contenedor-carrusel-recomendado,
- .carrusel-categorias .contenedor-carrusel-accion,
- .carrusel-categorias .contenedor-carrusel-multijugador,
- .carrusel-categorias .contenedor-carrusel-deportes{
+ .carrusel-categorias .contenedor-carrusel{
   width: 100%;
   padding: 20px 0px;
   overflow: hidden;
   scroll-behavior: smooth;  
  }
 
- .carrusel-categorias .contenedor-carrusel-recomendado .carrusel,
- .carrusel-categorias .contenedor-carrusel-accion .carrusel,
- .carrusel-categorias .contenedor-carrusel-multijugador .carrusel,
- .carrusel-categorias .contenedor-carrusel-deportes .carrusel{
+ .carrusel-categorias .contenedor-carrusel .carrusel{
   display:flex;
   flex-wrap: nowrap;  
  }
 
- .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado,
- .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
- .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
- .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
+ .carrusel-categorias .contenedor-carrusel .carrusel .juego{
   min-width: 33.33%;
   transition: .3s ease all;
   box-shadow: 5px 5px 10px rgba(0,0,0,.3);
  }
 
- .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover,
- .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
- .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
- .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
+ .carrusel-categorias .contenedor-carrusel .carrusel .juego.hover{
   transform: scale(1.2);
   transform-origin: center; 
 }
 
 
- /*.carrusel-categorias .contenedor-carrusel .carrusel .juego img{
-  width: 50%;
+ .carrusel-categorias .contenedor-carrusel .carrusel .juego img{
+  width: 100%;
   vertical-align: top;
- }*/
+ }
 
  
 
-/*@media screen and (max-width: 800px) {
-  .carrusel-categorias .contenedor-carrusel-recomendado,
-  .carrusel-categorias .contenedor-carrusel-accion,
-  .carrusel-categorias .contenedor-carrusel-multijugador,
-  .carrusel-categorias .contenedor-carrusel-deportes{
+@media screen and (max-width: 800px) {
+  .carrusel-categorias .contenedor-carrusel{
     overflow: visible;
   }
 
-  /*.carrusel-categorias .contenedor-carrusel-recomendado .carrusel,
-  .carrusel-categorias .contenedor-carrusel-accion .carrusel,
-  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel,
-  .carrusel-categorias .contenedor-carrusel-deportes .carrusel{
+  .carrusel-categorias .contenedor-carrusel .carrusel{
     display:grid;
     grid-template-columns: repeat (3, 1fr);
     gap:20px;
   }
 
-  .carrusel-categorias .indicadores-recomendado,
-  .carrusel-categorias .indicadores-accion,
-  .carrusel-categorias .indicadores-deportes,
-  .carrusel-categorias .indicadores-multijugador,
+  .carrusel-categorias .indicadores,
   .carrusel-categorias .flecha-der,
   .carrusel-categorias .flecha-izq{
     display: none;
   }
-}*/
+}
 
 
 

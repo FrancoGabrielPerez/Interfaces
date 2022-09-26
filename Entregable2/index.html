@@ -4,24 +4,761 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>WASD Games</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media=screen>
+    <link rel="stylesheet" href="./css/styleCardSmall.css" type="text/css">
+    <title>Document</title>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>PRUEBA H1</h1>
-            <h2>PRUEBA H2</h2>
-            <h3>PRUEBA H3</h3>
-            <a>PRUEBA a</a>
-            <a class="bold">PRUEBA a bold</a>
-            <a class="italic-bold">PRUEBA a italic bold</a>
-            <a class="pay-card">PRUEBA h3 pay card</a>
-            <a class="text-hero-title">PRUEBA TITULO HERO</a>
-            <a class="text-hero-section">PRUEBA TEXTO HERO Section</a>
-        </div>
+    
+    <header class="header">
+      <section class="container-nav-bar">
+        <nav class="bar-nav">     
+            <div>
+              <img src="./img/logo.png" alt="logo WASD games" class="logo">
+            </div>          
+            <input type="checkbox" id="check">
+            <label for="check" class="bar-btn"> ☰ </label>
+            <ul class="nav-menu">
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ">Show</label>
+                  <ul class="nav-menu-deployed">
+                    <li><a href="#" class="nav-menu-deployed">Link 5</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 6</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 7</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 8</a></li>
+                  </ul>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" >Show1</label>
+                  <ul class="nav-menu-deployed">
+                    <li><a href="#" class="nav-menu-deployed">Link 5</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 6</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 7</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 8</a></li>
+                  </ul></li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" >Show2</label>
+                  <ul class="nav-menu-deployed">
+                    <li><a href="#" class="nav-menu-deployed">Link 5</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 6</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 7</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 8</a></li>
+                  </ul></li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" >Show3</label>
+                  <ul class="nav-menu-deployed">
+                    <li><a href="#" class="nav-menu-deployed">Link 5</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 6</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 7</a></li>
+                    <li><a href="#" class="nav-menu-deployed">Link 8</a></li>
+                  </ul></li>
+            </ul>
+        </nav>  
+        <nav class="usr-nav">
+              <input type="checkbox" id="checkUsr">
+              <label for="checkUsr" class="usr-btn"> ☰ </label>
+                <ul class="nav-menu-usr">
+                  <li><a href="#">Link 1</href></a></li>
+                  <li><a href="#">Link 2</href></a></li>
+                  <li><a href="#">Link 3</href></a></li>
+                  <li><a href="#">Link 4</href></a></li>
+                </ul>
+          </nav>
+      </section> 
     </header>
-    <footer></footer>
+    <div class="contenedor">
+      <section class="carruseles-categorias-recomendado">
+        <div class="carrusel-categorias ">
+          <div class="contenedor-titulo-controles">
+            <h3>Recomendados</h3>
+            <div class="indicadores-recomendado"></div>
+          </div>
+          <div class="contenedor-principal">
+            <button role="button" id="flecha-izq-recomendado" class="flecha-izq" >❮</button>
+            <div class="contenedor-carrusel-recomendado">
+              <ul class="carrusel">
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-recomendado">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+              </ul>
+            </div>           
+            <button role="button" id="flecha-der-recomendado" class="flecha-der">❯</i></button>
+          </div>
+        </div>
+      </section>
+      <section class="carruseles-categorias-accion">
+          <div class="carrusel-categorias ">
+            <div class="contenedor-titulo-controles">
+              <h3>Accion</h3>
+              <div class="indicadores-accion"></div>
+            </div>
+            <div class="contenedor-principal">
+              <button role="button" id="flecha-izq-accion" class="flecha-izq">❮</button>
+              <div class="contenedor-carrusel-accion">
+                <ul class="carrusel">
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-accion">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                          <div class="datos-juego-small">
+                              <h3>Dan Man</h3>
+                              <p>Salta y da patadas por doquier.</p>
+                              <h2>$ 2300</h2>
+                              <button class="button comprar" role="button">Comprar</button>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+              </div>           
+              <button role="button" id="flecha-der-accion" class="flecha-der">❯</i></button>
+            </div>
+          </div>
+      </section>
+      <section class="carruseles-categorias-multijugador">
+        <div class="carrusel-categorias ">
+          <div class="contenedor-titulo-controles">
+            <h3>Multijugador</h3>
+            <div class="indicadores-multijugador"></div>
+          </div>
+          <div class="contenedor-principal">
+            <button role="button" id="flecha-izq-multijugador" class="flecha-izq">❮</button>
+            <div class="contenedor-carrusel-multijugador">
+              <ul class="carrusel">
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-multijugador">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+              </ul>
+            </div>           
+            <button role="button" id="flecha-der-multijugador" class="flecha-der">❯</i></button>
+          </div>
+        </div>
+      </section>
+      <section class="carruseles-categorias-deportes">
+        <div class="carrusel-categorias">
+          <div class="contenedor-titulo-controles">
+            <h3>Deportes y carreras</h3>
+            <div class="indicadores-deportes"></div>
+          </div>
+          <div class="contenedor-principal">
+            <button role="button" id="flecha-izq-deportes" class="flecha-izq">❮</button>
+            <div class="contenedor-carrusel-deportes">
+              <ul class="carrusel">
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="juego-deportes">
+                  <div class="contenedor-card-small">
+                    <div class="card-small">
+                        <div class="img-juego-small"><img src="./img/DanMan.png" alt="Dan Man, juego de accion."></div>
+                        <div class="datos-juego-small">
+                            <h3>Dan Man</h3>
+                            <p>Salta y da patadas por doquier.</p>
+                            <h2>$ 2300</h2>
+                            <button class="button comprar" role="button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                </li>
+              </ul>
+            </div>           
+            <button role="button" id="flecha-der-deportes" class="flecha-der">❯</i></button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <h1>FOOTER</h1>
+    </footer>
+    <script src="./js/carruselVariasImagenes.js"></script>    
 </body>
 </html>
