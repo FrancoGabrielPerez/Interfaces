@@ -21,10 +21,10 @@ body {font-family: Verdana, sans-serif;
 .contenedor{
   width: 90%;
   max-width: 1064px;
-  margin: 20px 20px 0px 20px;
+  margin: 20px 50px;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 100px 1000px 100px;
+  grid-template-columns: 70px 1000px 70px;
 
   grid-template-rows: repeat(6, auto);
   grid-template-areas:  ". recomendado ."
@@ -223,14 +223,14 @@ a.nav-menu-deployed{
 
  .carrusel-categorias .contenedor-principal .flecha-izq,
  .carrusel-categorias .contenedor-principal .flecha-der{
-    position: absolute;
+    /*position: absolute;*/
     border: none;
     background: rgba(0,0,0,.3);
     font-size: 40px;
     height: 50%;
     top: calc(50%-25%);
     line-height: 40px;
-    width: 50px;
+    /*width: 50px;*/
     color: #FFFFFF;
     cursor: pointer;
     z-index: 500;
@@ -276,7 +276,7 @@ a.nav-menu-deployed{
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
   min-width: 33.33%;
   transition: .3s ease all;
-  box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+  /*box-shadow: 5px 5px 10px rgba(0,0,0,.3);*/
  }
 
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover,

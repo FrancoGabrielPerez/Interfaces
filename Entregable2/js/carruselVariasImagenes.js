@@ -1,54 +1,40 @@
+document.addEventListener("DOMContentLoaded", carrusel);
 
-let btnRecIzq = document.getElementById('flecha-izq-recomendado');
-btnRecIzq.addEventListener('click', (e)=>{carrusel("recomendado","izq")}, paginacion("recomendado"));
-
-let btnRecDer = document.getElementById('flecha-der-recomendado');
-btnRecDer.addEventListener('click', (e)=>{carrusel("recomendado", "der")});
-
-let btnAccIzq = document.getElementById('flecha-izq-accion');
-btnAccIzq.addEventListener('click', (e)=>{carrusel("accion", "izq")}, paginacion("accion"));
-
-let btnAccDer = document.getElementById('flecha-der-accion');
-btnAccDer.addEventListener('click', (e)=>{carrusel("accion", "der")});
-
-let btnMulIzq = document.getElementById('flecha-izq-multijugador');
-btnMulIzq.addEventListener('click', (e)=>{carrusel("multijugador", "izq")}, paginacion("multijugador"));
-
-let btnMulDer = document.getElementById('flecha-der-multijugador');
-btnMulDer.addEventListener('click', (e)=>{carrusel("multijugador", "der")});
-
-let btnDepIzq = document.getElementById('flecha-izq-deportes');
-btnDepIzq.addEventListener('click', (e)=>{carrusel("deportes", "izq")}, paginacion("deportes"));
-
-let btnDepDer = document.getElementById('flecha-der-deportes');
-btnDepDer.addEventListener('click', (e)=>{carrusel("deportes", "der")});
-
-/**Funcion de movimiento de carrusel */
-function carrusel(variable, lado){
+/**FUNCION DE MOVIMIENTO DEL CARRUSEL*/
+const movimientoCarrusel = function (e){
+    const lado = e.currentTarget.classList[0];
+    const variable = e.currentTarget.parentNode.id;
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
 
-    if (lado === "der") {
+    if (lado === "flecha-der") {
         fila.scrollLeft += fila.offsetWidth;
         if(indicadorActivo != null){
             indicadorActivo.nextSibling.classList.add('activo');
             indicadorActivo.classList.remove('activo');
         }
-    } else if (lado === "izq")   
+    } else if (lado === "flecha-izq")   
         {
             fila.scrollLeft -= fila.offsetWidth;
             if(indicadorActivo != null){
                 indicadorActivo.previousSibling.classList.add('activo');
                 indicadorActivo.classList.remove('activo');
             }
-        }
+        }        
 }
 
-/**Paginacion */
-function paginacion(variable){
+/**PAGINACION */
+const variables = ["recomendado", "accion", "multijugador", "deporte"]; /**SE CREA */
+variables.forEach(variable => paginacion(variable));
+function paginacion(variable){    
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);
     const juegos = document.querySelectorAll(`.juego-${variable}`);
-    const nroPaginas = Math.ceil(juegos.length / 3);
+    let cantCards = 0;
+    if (variable === "recomendado")
+        cantCards = 1;
+    else
+        cantCards = 3;
+    const nroPaginas = Math.ceil(juegos.length / cantCards);
     for(let i = 0; i < nroPaginas; i++){
         const indicador = document.createElement('button');
         if(i === 0){
@@ -61,19 +47,27 @@ function paginacion(variable){
             e.target.classList.add('activo');
         });
     }
-}
-
-    /**HOVER 
+    /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL */
     juegos.forEach((juego)=>{
         juego.addEventListener('mouseenter', (e)=>{
             const elemento = e.currentTarget;
-            setTimeout(() => {
+            setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER */
                 juegos.forEach(juego => juego.classList.remove('hover'));
                 elemento.classList.add('hover');
             }, 300);
         });
     });
-
-    fila.addEventListener('mouseleave', () => {
+    fila.addEventListener('mouseleave', () => { /**CUANDO EL MOSUE SALE, SE QUITA LA CLASE HOVER */
         juegos.forEach(juego => juego.classList.remove('hover'));
-    })*/
+    });
+
+}
+
+/** FUNCION PARA CONSEGUIR LOS LISTENER DE LAS FLECHAS DE ACCION DE LOS CARRUSELES */
+function carrusel(){
+    const flechas = document.querySelectorAll('#flecha-carrusel');
+    flechas.forEach(flecha => {
+        //Agregar listener
+        flecha.addEventListener("click", movimientoCarrusel);
+    });
+ }
