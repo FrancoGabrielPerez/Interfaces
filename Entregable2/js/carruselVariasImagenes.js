@@ -24,14 +24,14 @@ const movimientoCarrusel = function (e){
 }
 
 /**PAGINACION */
-const variables = ["recomendado", "accion", "multijugador", "deporte"]; /**SE CREA */
-variables.forEach(variable => paginacion(variable));
+const variables = document.querySelectorAll('#contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
+variables.forEach(variable => paginacion(variable.attributes.name.nodeValue));
 function paginacion(variable){    
-    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);
+    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    
     const juegos = document.querySelectorAll(`.juego-${variable}`);
     let cantCards = 0;
-    if (variable === "recomendado")
-        cantCards = 1;
+    if (variable === "recomendado") //SI LA FLECHA CLICKEADA ESTA EN EL CARRUSEL DE RECOMENDADOS, LA DIVISION SE HACE POR UNO, YA QUE SE VA
+        cantCards = 1;              //A MOSTRAR UNA SOLA IMAGEN.
     else
         cantCards = 3;
     const nroPaginas = Math.ceil(juegos.length / cantCards);
@@ -57,10 +57,11 @@ function paginacion(variable){
             }, 300);
         });
     });
-    fila.addEventListener('mouseleave', () => { /**CUANDO EL MOSUE SALE, SE QUITA LA CLASE HOVER */
+    console.log(fila);
+    //fila = "carruseles-categorias-recomendado";
+    fila.addEventListener('mouseleave', () => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER */
         juegos.forEach(juego => juego.classList.remove('hover'));
     });
-
 }
 
 /** FUNCION PARA CONSEGUIR LOS LISTENER DE LAS FLECHAS DE ACCION DE LOS CARRUSELES */
