@@ -19,12 +19,12 @@ body {font-family: Verdana, sans-serif;
 
 /*GRID*/
 .contenedor{
-  width: 90%;
+  /*width: 90%;
   max-width: 1064px;
-  margin: 20px 50px;
+  margin: 20px 50px;*/
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 70px 1000px 70px;
+  grid-template-columns: 70px 1140px 70px;
 
   grid-template-rows: repeat(6, auto);
   grid-template-areas:  ". recomendado ."
@@ -191,7 +191,7 @@ a.nav-menu-deployed{
 .contenedor-titulo-controles .indicadores-multijugador button,
 .contenedor-titulo-controles .indicadores-deportes button{
   background: #FFFFFF;
-  height: 3px;
+  height: 5px;
   width: 10px;
   cursor: pointer;
   border: none;
@@ -252,6 +252,10 @@ a.nav-menu-deployed{
 
  /*Carrusel*/
 
+ .oculto {
+  display:none;
+ }
+
  .carrusel-categorias .contenedor-carrusel-recomendado,
  .carrusel-categorias .contenedor-carrusel-accion,
  .carrusel-categorias .contenedor-carrusel-multijugador,
@@ -270,7 +274,7 @@ a.nav-menu-deployed{
   flex-wrap: nowrap;  
  }
 
- .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado,
+ .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
@@ -278,6 +282,11 @@ a.nav-menu-deployed{
   transition: .3s ease all;
   /*box-shadow: 5px 5px 10px rgba(0,0,0,.3);*/
  }
+
+ .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
+  min-width: 100%;
+  text-align: -webkit-center;
+ } 
 
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover,
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,

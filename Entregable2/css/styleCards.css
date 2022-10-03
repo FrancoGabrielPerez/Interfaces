@@ -8,6 +8,11 @@
     
 }
 
+body {
+    font-family: Verdana, sans-serif; 
+    margin:0;
+}
+
 h1, h2, h3, p, a{
     color:#FFFFFF;
 }
@@ -26,13 +31,18 @@ h1, h2, h3, p, a{
 .juego-recomendado .contenedor-card-small .datos-juego-small p,
 .juego-accion .contenedor-card-small .datos-juego-small p,
 .juego-multijugador .contenedor-card-small .datos-juego-small p,
-.juego-deportes .contenedor-card-small .datos-juego-small p{
+.juego-deportes .contenedor-card-small .datos-juego-small p,
+.contenedor-card-big .card-big p{
     font-weight: lighter;
     font-size: 24px;
     line-height: 29px;
     letter-spacing: 0.05em;
     padding-bottom: 15px;
     font-style: normal;
+}
+
+.card-big{
+    display: flex;
 }
 
 .juego-recomendado .contenedor-card-small .datos-juego-small h2,
@@ -46,10 +56,7 @@ h1, h2, h3, p, a{
     margin-right: 40px;
 }
 
-body {
-    font-family: Verdana, sans-serif; 
-    margin:0;
-}
+
 
 .juego-recomendado .contenedor-card-small,
 .juego-accion .contenedor-card-small,
@@ -64,11 +71,12 @@ body {
 .juego-recomendado .card-small,
 .juego-accion .card-small,
 .juego-multijugador .card-small,
-.juego-deportes .card-small {
+.juego-deportes .card-small,
+.contenedor-card-big {
     /*position: absolute;*/
     display: block;
-    width: 300px;
-    height: 450px;
+    width: 285px;
+    height: 427px;
     border:#FFFFFF;
     border-radius: 23px;
     border-width: 3px;
@@ -77,30 +85,77 @@ body {
     background: #0C0228;
 }
 
+.contenedor-card-big{
+    width: 975px;
+    height: 458px;
+    font-weight: 500;
+}
+
+.datos-juego-big{    
+    font-size: 30px;
+    text-align: left;
+    margin-right: 40px;
+}
+
+.titulo-big-card{
+    padding: 10px 20px;
+}
+
+.contenido-big-card{
+    padding: 90px 20px;
+}
+
+.precio-big-card{
+    padding: 20px 20px 0px;
+    text-align: right;
+}
+
+.btn-comprar-big-card,
+.btn-comprar-small-card{
+    text-align: right;
+    padding: 0px 20px;
+}
+
+.btn-comprar-small-card{
+    padding: 0px 40px;
+}
+
 .juego-recomendado .card-small .img-juego-small img,
 .juego-accion .card-small .img-juego-small img,
 .juego-multijugador .card-small .img-juego-small img,
 .juego-deportes .card-small .img-juego-small img{
     border-radius: 20px 20px 0px 0px;
-    height: 100%;
     height: 234px;
-    width: 296px;
+    width: 280px;
     position: initial;
     object-fit:cover;
     background: #0C0228;
 }
 
+.contenedor-card-big .card-big .img-juego-big,
+.contenedor-card-big .card-big .img-juego-big img {
+    border-radius: 20px 0px 0px 20px;
+    height: 452px;
+    width: 566px;
+    position: initial;
+    object-fit:cover;
+    
+}
+
 .juego-recomendado .contenedor-card-small button,
 .juego-accion .contenedor-card-small button,
 .juego-multijugador .contenedor-card-small button,
-.juego-deportes .contenedor-card-small button{
+.juego-deportes .contenedor-card-small button,
+.card-big .datos-juego-big .button{
     /*position: absolute;*/
-    left: 44.33%;
-    right: 5.67%;
-    top: 86%;
-    bottom: 2.89%;
+    text-align: right;
     background: #7B5BCD;
     border-radius: 10px;
     font-size:x-large;
     font-weight: 700;
+}
+
+
+.card-big .datos-juego-big .button{
+    padding: 10px;
 }

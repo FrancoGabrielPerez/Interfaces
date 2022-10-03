@@ -47,11 +47,11 @@ function paginacion(variable){
             e.target.classList.add('activo');
         });
     }
-    /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL */
+    /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL 
     juegos.forEach((juego)=>{
         juego.addEventListener('mouseenter', (e)=>{
             const elemento = e.currentTarget;
-            setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER */
+            setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER 
                 juegos.forEach(juego => juego.classList.remove('hover'));
                 elemento.classList.add('hover');
             }, 300);
@@ -59,9 +59,9 @@ function paginacion(variable){
     });
     console.log(fila);
     //fila = "carruseles-categorias-recomendado";
-    fila.addEventListener('mouseleave', () => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER */
+    fila.addEventListener('mouseleave', () => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER 
         juegos.forEach(juego => juego.classList.remove('hover'));
-    });
+    });*/
 }
 
 /** FUNCION PARA CONSEGUIR LOS LISTENER DE LAS FLECHAS DE ACCION DE LOS CARRUSELES */
