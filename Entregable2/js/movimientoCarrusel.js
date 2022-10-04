@@ -66,7 +66,7 @@ function paginacion(variable){
 
 /** FUNCION PARA CONSEGUIR LOS LISTENER DE LAS FLECHAS DE ACCION DE LOS CARRUSELES */
 function carrusel(){
-    const flechas = document.querySelectorAll('#flecha-carrusel');
+    const flechas = document.querySelectorAll('.flecha-carrusel');
     flechas.forEach(flecha => {
         //Agregar listener
         flecha.addEventListener("click", movimientoCarrusel);

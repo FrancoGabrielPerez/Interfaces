@@ -304,7 +304,7 @@ a.nav-menu-deployed{
 .contenedor-ppal-footer{
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 40px 80px 40px 80px;
   background: #270977;
   width: 1366px;
   height: 298px;
