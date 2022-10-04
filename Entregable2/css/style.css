@@ -1,6 +1,34 @@
 /*CSS RESET*/
 :root {
   --backcolor: #c9b5b5;
+  --Color-Primary:#EA7400;
+  --Color-PrimaryS1:#AE5600;
+  --Color-PrimaryS2:#6B3500;
+  --Color-PrimaryS3:#2D1600;
+  --Color-PrimaryL1:#FF8F20;
+  --Color-PrimaryL2:#FFAF60;
+  --Color-PrimaryL3:#FFDFBF;
+  --Color-Secondary:#360EA1;
+  --Color-SecondaryS1:#270977;
+  --Color-SecondaryS2:#17034A;
+  --Color-SecondaryS3:#0C0228;
+  --Color-SecondaryL1:#542AC0;
+  --Color-SecondaryL2:#7B5BCD;
+  --Color-SecondaryL3:#C4B2F0;
+  --Color-Accent:#7CD600;
+  --Color-AccentS1:#5C9F00;
+  --Color-AccentS2:#396200;
+  --Color-AccentS3:#172800;
+  --Color-AccentL1:#96EE1E;
+  --Color-AccentL2:#B2F25B;
+  --Color-AccentL3:#E4FFBF;
+  --Color-Grey:#555555;
+  --Color-GreyS1:#333333;
+  --Color-GreyS2:#111111;
+  --Color-GreyS3:#060606;
+  --Color-GreyL1:#777777;
+  --Color-GreyL2:#999999;
+  --Color-GreyL3:#F1F1F1;
 }
 
 
@@ -311,7 +339,7 @@ a.nav-menu-deployed{
   justify-content: space-between;
   padding: 40px 80px 40px 80px;
   background: #270977;
-  width: 1366px;
+  width: 100%;
   height: 298px;
 }
 
