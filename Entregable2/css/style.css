@@ -71,8 +71,9 @@ body {
   grid-gap: 20px;
   grid-template-columns: 70px 1140px 70px;
 
-  grid-template-rows: repeat(6, auto);
-  grid-template-areas:  ". novedades ."
+  grid-template-rows: repeat(7, auto);
+  grid-template-areas:  "header header header"
+                        ". novedades ."
                         ". recomendado ."
                         ". accion ."
                         ". multijugador ."
@@ -107,7 +108,7 @@ header {
   background-color: var(--Color-Primary);
   background-position: center;
   background-size: cover;
-  
+  grid-area: header;
 }
 
 .container-nav-bar{
@@ -157,7 +158,7 @@ header {
   z-index: 5000;
 }
 .nav-menu{
-  width: 10%;
+  width: auto;
 }
 
 ul.nav-menu-deployed{
@@ -208,12 +209,22 @@ a.nav-menu-deployed{
 
 #check:checked ~ .nav-menu, #checkUsr:checked ~ .nav-menu-usr,
 #check-menu-deployed:checked ~ ul.nav-menu-deployed{
-  height: 80vh;
+  height: 100vh;
 }
 
 #checkUsr:checked ~ .nav-menu-usr li, #check:checked ~ .nav-menu li,
 #check-menu-deployed:checked ~ ul.nav-menu-deployed li a{
   display: block;
+}
+
+div.categoria{
+  display: flex;
+}
+
+div.categoria .icon{
+  flex-shrink: 0;
+  width: 60px;
+  padding: 20px;
 }
 
 /*-----------------------PREVIEW NOVEDADES-----------------------------------*/
