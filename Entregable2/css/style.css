@@ -88,9 +88,6 @@ body{
   grid-area: footer;
 }
 
-.header{
-  grid-area: header;
-}
 
 
 
@@ -102,6 +99,9 @@ header {
   background-position: center;
   background-size: cover;
   grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 4000;
 }
 
 .container-nav-bar{
@@ -218,12 +218,13 @@ div.categoria .icon{
   flex-shrink: 0;
   width: 60px;
   margin: 20px;
+  text-align: center;
 }
 
 div.categoria h3{
   width: 280px;
   flex-shrink: 0;
-  text-align: center;
+  align-self: center;
 }
 
 /*-----------------------PREVIEW NOVEDADES-----------------------------------*/
