@@ -1,18 +1,20 @@
 document.addEventListener("DOMContentLoaded", carrusel);
 
 /**FUNCION DE MOVIMIENTO DEL CARRUSEL*/
-const movimientoCarrusel = function (e){
+function movimientoCarrusel(e){
     const lado = e.currentTarget.classList[0];
     const variable = e.currentTarget.parentNode.id;
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
+    
 
     if (lado === "flecha-der") {
-        fila.scrollLeft += fila.offsetWidth;
+        fila.scrollLeft += fila.offsetWidth; 
         if(indicadorActivo != null){
             indicadorActivo.nextSibling.classList.add('activo');
             indicadorActivo.classList.remove('activo');
         }
+       
     } else if (lado === "flecha-izq")   
         {
             fila.scrollLeft -= fila.offsetWidth;
@@ -29,6 +31,7 @@ variables.forEach(variable => paginacion(variable.attributes.name.nodeValue));
 function paginacion(variable){    
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    
     const juegos = document.querySelectorAll(`.juego-${variable}`);
+    
     let cantCards = 0;
     if (variable === "recomendado") //SI LA FLECHA CLICKEADA ESTA EN EL CARRUSEL DE RECOMENDADOS, LA DIVISION SE HACE POR UNO, YA QUE SE VA
         cantCards = 1;              //A MOSTRAR UNA SOLA IMAGEN.
@@ -67,7 +70,7 @@ function paginacion(variable){
 /** FUNCION PARA CONSEGUIR LOS LISTENER DE LAS FLECHAS DE ACCION DE LOS CARRUSELES */
 function carrusel(){
     const flechas = document.querySelectorAll('.flecha-carrusel');
-    flechas.forEach(flecha => {
+    flechas.forEach(flecha => {        
         //Agregar listener
         flecha.addEventListener("click", movimientoCarrusel);
     });
