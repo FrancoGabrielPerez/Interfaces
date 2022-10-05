@@ -101,7 +101,7 @@ header {
   background-color: var(--Color-Primary);
   background-position: center;
   background-size: cover;
-  
+  grid-area: header;
 }
 
 .container-nav-bar{
@@ -151,7 +151,7 @@ header {
   z-index: 5000;
 }
 .nav-menu{
-  width: 10%;
+  width: auto;
 }
 
 ul.nav-menu-deployed{
@@ -202,7 +202,7 @@ a.nav-menu-deployed{
 
 #check:checked ~ .nav-menu, #checkUsr:checked ~ .nav-menu-usr,
 #check-menu-deployed:checked ~ ul.nav-menu-deployed{
-  height: 80vh;
+  height: 100vh;
 }
 
 #checkUsr:checked ~ .nav-menu-usr li, #check:checked ~ .nav-menu li,
@@ -210,8 +210,18 @@ a.nav-menu-deployed{
   display: block;
 }
 
-/*-------------------------PREVIEW NOVEDADES-----------------------------------*/
-.contenedor-novedades{
+div.categoria{
+  display: flex;
+}
+
+div.categoria .icon{
+  flex-shrink: 0;
+  width: 60px;
+  padding: 20px;
+}
+
+/*-----------------------PREVIEW NOVEDADES-----------------------------------*/
+.novedades{
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
@@ -379,6 +389,11 @@ a.nav-menu-deployed{
 }
 
 /*----------------------FOOTER-------------------------------------*/
+
+footer{
+  grid-area: footer;
+}
+
 .contenedor-ppal-footer{
   display: flex;
   justify-content: space-between;
