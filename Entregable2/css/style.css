@@ -1,6 +1,10 @@
 /*CSS RESET*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=swap');
+
+
 :root {
-  --backcolor: #c9b5b5;
+  --Font-Type: 'Inter';
   --Color-Primary:#EA7400;
   --Color-PrimaryS1:#AE5600;
   --Color-PrimaryS2:#6B3500;
@@ -49,7 +53,11 @@ li {
   font-size: small;
 }
 
-body {font-family: Verdana, sans-serif; 
+body, input, textarea, button{
+  font-family: var(--Font-Type, sans-serif);/* esto esta asi porque sino el boton no heredaba el font */
+}
+
+body {
   margin:0;
   background: #0C0228;
 }
