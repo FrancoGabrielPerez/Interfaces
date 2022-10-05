@@ -5,6 +5,10 @@
 
 :root {
   --Font-Type: 'Inter';
+  --Font-Weight-Light: 300;
+  --Font-Weight-Bold: 700;
+  --Font-Weight-SemiBold: 600;
+  --Font-Weight-Medium: 500;
   --Color-Primary:#EA7400;
   --Color-PrimaryS1:#AE5600;
   --Color-PrimaryS2:#6B3500;
@@ -49,6 +53,31 @@ h1, h2, h3, p, a, li{
   color:var(--Color-GreyL3);
 }
 
+h1{
+  font-size:64px;
+  font-weight: 600;
+}
+
+h2{
+  font-size: 40px;
+  font-weight: 500;
+}
+
+h3{
+  font-size: 24px;
+  font-weight: 500;
+}
+
+p{
+  font-size: 16px;
+  font-weight: 300;
+}
+
+p.bold{
+  font-size: 16px;
+  font-weight: 700;
+}
+
 li {
   font-size: small;
 }
@@ -64,11 +93,7 @@ body {
 
 /*GRID*/
 body{
-  /*width: 90%;
-  max-width: 1064px;
-  margin: 20px 50px;*/
   display: grid;
-  grid-gap: 20px;
   grid-template-columns: 70px 1140px 70px;
   justify-content: center;
   grid-template-rows: repeat(6, auto);
@@ -228,16 +253,20 @@ div.categoria h3{
 }
 
 /*-----------------------PREVIEW NOVEDADES-----------------------------------*/
-.novedades{
+.contenedor-novedades{
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
   align-content: center;
   flex-direction: column;
   width: 100%;
-  height: 611px;
-  background-image: url(/img/img-games/FondoTecno.png);
+  height: 580px;
   align-items: center;
+}
+
+.contenedor-novedades{
+  background-image: url(/img/img-games/FondoTecno.png);
+  
 }
 
 .contenedor-novedades .titulo-novedades{
@@ -253,6 +282,14 @@ div.categoria h3{
   width: 80%;
 }
 
+/*.contenedor-novedades .contenedor-card-preview h2{
+  font-size: 40px;
+}
+
+.contenedor-novedades .contenedor-card-preview p{
+  font
+}
+*/
 .contenedor-novedades .contenedor-card-preview img{
   border-radius: 22px 0px 0px 22px;
   height: 100%;
