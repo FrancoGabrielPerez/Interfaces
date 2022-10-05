@@ -223,7 +223,7 @@ div.categoria .icon{
 div.categoria h3{
   width: 280px;
   flex-shrink: 0;
-  align-self: center;
+  text-align: center;
 }
 
 /*-----------------------PREVIEW NOVEDADES-----------------------------------*/
