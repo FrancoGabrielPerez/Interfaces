@@ -217,7 +217,13 @@ div.categoria{
 div.categoria .icon{
   flex-shrink: 0;
   width: 60px;
-  padding: 20px;
+  margin: 20px;
+}
+
+div.categoria h3{
+  width: 280px;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 /*-----------------------PREVIEW NOVEDADES-----------------------------------*/
