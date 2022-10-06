@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/reset.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./css/styleCards.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
 </head>
 <body>
@@ -18,7 +19,13 @@
               <img src="./img/icons/Img-Logo.svg" alt="logo WASD games" class="logo">
             </div>          
             <input type="checkbox" id="check">
-            <label for="check" class="bar-btn"> ☰ </label>
+            <label for="check" class="bar-btn">
+              <div id="nav-icon-left" class="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </label>
             <ul class="nav-menu">
               <li><input id="check-menu-deployed" type="checkbox">
                 <label for="check-menu-deployed"><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Home.svg" alt="home button"></div><h3>Home</h3></div></label>
@@ -58,7 +65,12 @@
         </nav>  
         <nav class="usr-nav">
               <input type="checkbox" id="checkUsr">
-              <label for="checkUsr" class="usr-btn"> ☰ </label>
+              <label for="checkUsr" class="usr-btn">
+                <div id="nav-icon-right" class="nav-icon">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div></label>
                 <ul class="nav-menu-usr">
                   <li><a href="#">Link 1</href></a></li>
                   <li><a href="#">Link 2</href></a></li>
