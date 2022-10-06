@@ -78,10 +78,6 @@ p.bold{
   font-weight: 700;
 }
 
-li {
-  font-size: small;
-}
-
 body, input, textarea, button{
   font-family: var(--Font-Type, sans-serif);/* esto esta asi porque sino el boton no heredaba el font */
 }
@@ -280,20 +276,66 @@ div.categoria h3{
   border-color: var(--Color-GreyL3);
   border-radius: 25px;
   width: 80%;
+  background-color: var(--Color-SecondaryS1);
 }
 
-/*.contenedor-novedades .contenedor-card-preview h2{
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-left: 10px;
+}
+
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .button-preview{
+  align-self: center;  
+  margin-bottom: 15px;
+  margin-left: 40px;
+}
+
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn{
+  width:210px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: var(--Color-PrimaryL1);
   font-size: 40px;
+  font-weight: 500;  
+  cursor: pointer;
 }
 
-.contenedor-novedades .contenedor-card-preview p{
-  font
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover, 
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:focus {
+  color: #fff;
+  outline: 0;
 }
-*/
+
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn {
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+ /*transition: all 150ms ease-in-out;*/
+  transition: all 150ms ease-in-out;
+}
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .contenedor-novedades .contenedor-card-preview img{
   border-radius: 22px 0px 0px 22px;
   height: 100%;
-
 }
 
 .contenedor-novedades .contenedor-card-preview{
