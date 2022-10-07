@@ -53,8 +53,7 @@
 .juego-accion .contenedor-card-small,
 .juego-multijugador .contenedor-card-small,
 .juego-deportes .contenedor-card-small{
-    padding: 40px;
-    overflow: hidden;    
+    padding: 40px;   
     justify-content: center;
     display: flex;
 }
@@ -130,7 +129,7 @@
     width: 566px;
     position: initial;
     object-fit:cover;
-    
+    display: none;
 }
 
 .juego-recomendado .contenedor-card-small button,
