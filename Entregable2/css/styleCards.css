@@ -8,15 +8,6 @@
     
 }
 
-body {
-    /* font-family: Verdana, sans-serif; */ /* boludo lo que estube hasta que encontre esta regla, no sabia porque no me respetaba la font family que yo decidia y era porque esta la pisaba */
-    margin:0;
-}
-
-h1, h2, h3, p, a{
-    color:#FFFFFF;
-}
-
 .juego-recomendado .contenedor-card-small .datos-juego-small h3,
 .juego-accion .contenedor-card-small .datos-juego-small h3,
 .juego-multijugador .contenedor-card-small .datos-juego-small h3,

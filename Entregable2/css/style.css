@@ -116,7 +116,14 @@ body{
   grid-area: footer;
 }
 
-
+.button-small-primary{
+  width: 150px;
+  height: 50px;
+  left: 0px;
+  top: 0px;
+  border-radius: 10px;
+  background-color: var(--Color-SecondaryL2);
+}
 
 
 /*------------------------------HEADER--------------------------------------------*/
@@ -310,7 +317,7 @@ a.nav-menu-deployed{
   color:aqua;
 }
 
-#check, #checkUsr, #check-menu-deployed{
+#check, #checkUsr, #check-menu-deployed, .nav-menu-usr{
   display: none;
 }
 
