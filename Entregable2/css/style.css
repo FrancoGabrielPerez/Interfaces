@@ -92,12 +92,15 @@ body, input, textarea, button{
 body {
   margin:0;
   background: #0C0228;
+ 
 }
+
+::-webkit-scrollbar {display: none;}
 
 /*GRID*/
 body{
   display: grid;
-  grid-template-columns: 70px 1140px 70px;
+  grid-template-columns: 10% 80% 10%;
   justify-content: center;
   grid-template-rows: repeat(6, auto);
   grid-template-areas:  "header header header"
@@ -157,9 +160,14 @@ header {
 }
 
 .bar-btn, .usr-btn{
-  margin-left: 20px;
+  margin-left: 30px;
   cursor: pointer;
   position: absolute;
+}
+
+.usr-btn{
+  margin-right: 40px;
+  margin-left: 0px;
 }
 
 /* Hamburger Menu */
@@ -251,9 +259,7 @@ header {
   color: var(--Color-GreyS3);
 } */
 
-.usr-btn{
-  margin-right: 20px;
-}
+
 
 .nav-menu, .nav-menu-usr {
   position: absolute;
@@ -561,11 +567,7 @@ div.categoria h3{
 .juego-accion .contenedor-card-small .datos-juego-small h3,
 .juego-multijugador .contenedor-card-small .datos-juego-small h3,
 .juego-deportes .contenedor-card-small .datos-juego-small h3{
-    font-weight: 500;
-    font-size: 30px;
     line-height: 36px;
-    display: flex;
-    align-items: center; 
 }
 
 .juego-recomendado .contenedor-card-small .datos-juego-small p,
@@ -573,12 +575,10 @@ div.categoria h3{
 .juego-multijugador .contenedor-card-small .datos-juego-small p,
 .juego-deportes .contenedor-card-small .datos-juego-small p,
 .contenedor-card-big .card-big p{
-    font-weight: lighter;
-    font-size: 24px;
-    line-height: 29px;
+    
+    line-height: 20px;
     letter-spacing: 0.05em;
-    padding-bottom: 15px;
-    font-style: normal;
+    
 }
 
 .card-big{
@@ -589,11 +589,9 @@ div.categoria h3{
 .juego-accion .contenedor-card-small .datos-juego-small h2,
 .juego-multijugador .contenedor-card-small .datos-juego-small h2,
 .juego-deportes .contenedor-card-small .datos-juego-small h2{
-    font-weight: 500;
-    font-size: 30px;
+    
     line-height: 36px;
-    text-align: right;
-    margin-right: 40px;
+    
 }
 
 
@@ -780,26 +778,31 @@ justify-content: center;
   transform: translateY(-50%);
 }
 
-
-@media screen and (max-width: 800px) {
+/*-------------------MEDIA QUERY-------------------------------------------------*/
+@media screen and (max-width: 768px) {
+ 
   body{
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 10% 80% 10%;
     justify-content: center;
     grid-template-rows: repeat(6, auto);
-    grid-template-areas:  "header"
-                          "novedades"
-                          "contenedor"
-                          "footer";
+    grid-template-areas:  "header header header"
+                          "novedades novedades novedades"
+                          ". contenedor ."
+                          "footer footer footer";
   }
+ 
+   
 
-  
-.carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado,
- .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
- .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
- .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
+.carrusel-categorias{
+  margin-bottom: 40px;
+}
+/*.carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado,*/
+.carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
+.carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
+.carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
   min-width: 100%;
-  /*transform: scale(0.8,0.8);*/
+  transform: scale(0.8,0.8);
   transition: .3s ease all;
   overflow: visible;
  }
@@ -823,10 +826,83 @@ justify-content: center;
   text-align: center;
  }
 
+
+ .carrusel-categorias .contenedor-carrusel-accion, 
+ .carrusel-categorias .contenedor-carrusel-multijugador, 
+ .carrusel-categorias .contenedor-carrusel-deportes {
+   width: 84%;
+   padding: 0px 0px;
+ }
+
  .contenedor-titulo-controles {
    justify-content: center;
 }
   
+.carrusel-categorias .contenedor-carrusel-recomendado{
+    padding: 40px 0px;
+}
+
+.juego-recomendado .contenedor-card-small, 
+.juego-accion .contenedor-card-small, 
+.juego-multijugador .contenedor-card-small, 
+.juego-deportes .contenedor-card-small {
+  padding: 0px;
+}
+
+.contenedor-card-big{
+  width:100%;
+  height: 500px;
+  flex-direction: column;
+}
+
+.btn-comprar-big-card, .btn-comprar-small-card {
+  text-align: right;
+  padding: 0px;
+}
+
+.contenedor-card-big .card-big{
+  width: 100%;
+  height: 500px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor-card-big .card-big .img-juego-big{
+border-radius: 20px 0px 0px 20px;
+height: 50%;
+width: 100%;
+}
+
+
+.contenedor-card-big .card-big .img-juego-big img {
+border-radius: 20px 20px 0px 0px;
+height: 100%;
+width: 100%;
+position: initial;
+object-fit: cover;
+/* display: none; */
+}
+
+.datos-juego-big {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contenedor-card-big .card-big .datos-juego-big .titulo-big-card{
+padding: 10px 10px;
+}
+.contenedor-card-big .card-big .datos-juego-big .contenido-big-card{
+padding: 10px 10px;
+}
+.contenedor-card-big .card-big .datos-juego-big .precio-big-card{
+padding: 10px 10px;
+}
+
+
+
   .contenedor-novedades .contenedor-card-preview{
     width:90%;
     flex-direction: column;
@@ -855,44 +931,6 @@ justify-content: center;
     width: -webkit-fill-available;
     border-radius: 23px 23px 0px 0px;
   }
-
-  .juego-recomendado .contenedor-card-small, 
-  .juego-accion .contenedor-card-small, 
-  .juego-multijugador .contenedor-card-small, 
-  .juego-deportes .contenedor-card-small {
-    padding: 0px;
-  }
-
-  .contenedor-card-big{
-    width: 90%;
-    height: 600px;
-    font-weight: 500;
-    display: flex;
-}
-
-/*.contenedor-card-big .card-big .img-juego-big, */
-.contenedor-card-big .card-big .img-juego-big img {
-  border-radius: 20px 0px 0px 20px;
-  height: 50%;
-  width: 100%;
-  position: initial;
-  object-fit: cover;
-  /* display: none; */
-}
-
-.contenedor-card-big .card-big .datos-juego-big .titulo-big-card,
-.contenedor-card-big .card-big .datos-juego-big .contenido-big-card,
-.contenedor-card-big .card-big .datos-juego-big .precio-big-card{
-  padding: 0px;
-}
-
-  .carrusel-categorias .contenedor-carrusel-accion, 
-  .carrusel-categorias .contenedor-carrusel-multijugador, 
-  .carrusel-categorias .contenedor-carrusel-deportes {
-    width: 84%;
-    padding: 0px 0px;
-  }
-
   .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .titulo-preview {
     padding: 10px;
 }

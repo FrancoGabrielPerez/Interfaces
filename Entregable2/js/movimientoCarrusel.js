@@ -1,11 +1,3 @@
-document.addEventListener("DOMContentLoaded", carrusel);
-document.querySelector('#nav-icon-left').addEventListener('click', hamButton);
-document.querySelector('#nav-icon-right').addEventListener('click', hamButton);
-
-/**ANIMACION BOTON HAMBURGESA*/
-function hamButton(e){
-	e.currentTarget.classList.toggle('open');
-}
 
 /**FUNCION DE MOVIMIENTO DEL CARRUSEL*/
 function movimientoCarrusel(e){
@@ -57,28 +49,34 @@ function paginacion(variable){
             e.target.classList.add('activo');
         });
     }
-    /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL 
+}
+
+
+/**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL */
+variables.forEach(variable => hover(variable.attributes.name.nodeValue));
+function hover(variable){
+    console.log(variable);
+    const juegos = document.querySelectorAll(`.juego-${variable}`);
+    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);      
     juegos.forEach((juego)=>{
         juego.addEventListener('mouseenter', (e)=>{
             const elemento = e.currentTarget;
-            setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER 
+            setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER */
                 juegos.forEach(juego => juego.classList.remove('hover'));
                 elemento.classList.add('hover');
             }, 300);
         });
-    });
-    console.log(fila);
-    //fila = "carruseles-categorias-recomendado";
-    fila.addEventListener('mouseleave', () => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER 
-        juegos.forEach(juego => juego.classList.remove('hover'));
-    });*/
+        fila.addEventListener('mouseleave', () => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER */
+            juegos.forEach(juego => juego.classList.remove('hover'));
+        });
+    });            
 }
+   
 
 /** FUNCION PARA CONSEGUIR LOS LISTENER DE LAS FLECHAS DE ACCION DE LOS CARRUSELES */
-function carrusel(){
-    const flechas = document.querySelectorAll('.flecha-carrusel');
-    flechas.forEach(flecha => {        
-        //Agregar listener
-        flecha.addEventListener("click", movimientoCarrusel);
-    });
- }
+const flechas = document.querySelectorAll('.flecha-carrusel');
+flechas.forEach(flecha => {        
+    //Agregar listener
+    flecha.addEventListener("click", movimientoCarrusel);
+});
+
