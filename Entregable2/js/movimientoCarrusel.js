@@ -55,7 +55,6 @@ function paginacion(variable){
 /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL */
 variables.forEach(variable => hover(variable.attributes.name.nodeValue));
 function hover(variable){
-    console.log(variable);
     const juegos = document.querySelectorAll(`.juego-${variable}`);
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);      
     juegos.forEach((juego)=>{
