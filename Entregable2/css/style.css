@@ -510,7 +510,7 @@ div.categoria h3{
 .contenedor-titulo-controles .indicadores-deportes button:hover,
 .contenedor-titulo-controles .indicadores-deportes button.activo
 {
-  background: red;
+  background: var(--Color-PrimaryL1);
 }
 
  /*contenedor principal y flechas*/
@@ -649,15 +649,16 @@ div.categoria h3{
 .juego-deportes .card-small,
 .contenedor-card-big {
     /*position: absolute;*/
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 285px;
     height: 427px;
-    border:#FFFFFF;
+    border: var(--Color-GreyL3);
     border-radius: 23px;
     border-width: 3px;
     border-style: solid;
-    
-    background: #0C0228;
+    background: var(--Color-SecondaryS3);
+    cursor: pointer;
 }
 
 .contenedor-card-big{
@@ -672,6 +673,17 @@ div.categoria h3{
     margin-right: 40px;
 }
 
+.datos-juego-small{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0px 10px;
+}
+
+.contenido-small-card{
+  flex-grow: 1;
+}
+
 .titulo-big-card{
     padding: 10px 20px;
 }
@@ -683,6 +695,11 @@ div.categoria h3{
 .precio-big-card{
     padding: 20px 20px 0px;
     text-align: right;
+}
+
+.precio-small-card{
+  align-self: center;
+  margin-bottom: 20px;
 }
 
 .btn-comprar-big-card,
