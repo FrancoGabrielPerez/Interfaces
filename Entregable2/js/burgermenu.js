@@ -5,3 +5,10 @@ document.querySelector('#nav-icon-right').addEventListener('click', hamButton);
 function hamButton(e){
 	e.currentTarget.classList.toggle('open');
 }
+
+
+document.querySelector("#nav-icon-right").addEventListener('click', deployUserMenu);
+
+function deployUserMenu(e){
+    document.querySelector('#nav-menu-usr').classList.toggle('hidden')
+}

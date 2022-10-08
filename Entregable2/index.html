@@ -29,16 +29,6 @@
             <ul class="nav-menu">
               <li><input id="check-menu-deployed" type="checkbox">
                 <label for="check-menu-deployed"><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Home.svg" alt="home button"></div><h3>Home</h3></div></label>
-                  <ul class="nav-menu-deployed">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Accion</a></li>
-                    <li><a href="#">Aventura & RPG</a></li>
-                    <li><a href="#">Clasicos</a></li>
-                    <li><a href="#">Deportes & Carreras</a></li>
-                    <li><a href="#">Estrategia & Defensa</a></li>
-                    <li><a href="#">Multijugador</a></li>
-                    <li><a href="#" class="featured">Novedades</a></li>
-                  </ul>
               </li>
               <li><input id="check-menu-deployed" type="checkbox">
                 <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Accion.svg" alt="Accion button"></div><h3>Accion</h3></div></label>
@@ -64,19 +54,20 @@
             </ul>
         </nav>  
         <nav class="usr-nav">
-              <input type="checkbox" id="checkUsr">
-              <label for="checkUsr" class="usr-btn">
-                <div id="nav-icon-right" class="nav-icon">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div></label>
-                <ul class="nav-menu-usr">
-                  <li><a href="#">Link 1</href></a></li>
-                  <li><a href="#">Link 2</href></a></li>
-                  <li><a href="#">Link 3</href></a></li>
-                  <li><a href="#">Link 4</href></a></li>
-                </ul>
+            <div id="nav-icon-right" class="nav-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div id="nav-menu-usr" class="nav-menu-usr hidden">
+              <div class="avatar-img"><img src="./img/img-games/Img-ProfileMain.png" alt="User avatar image"></div>
+              <ul>
+                <li><a href="#"><img src="./img/icons/Icon-Profile.svg" alt="Perfil"> Perfil</href></a></li>
+                <li><a href="#"><img src="./img/icons/Icon-Library.svg" alt="Libreria"> Biblioteca</href></a></li>
+                <li><a href="#"><img src="./img/icons/Icon-Friends.svg" alt="Amigos"> Amigos</href></a></li>
+              </ul>
+              <button class="button-small-primary" role="button"><a href=""><h3>Logout</h3></a></button>
+            </div>
           </nav>
       </section> 
     </header>

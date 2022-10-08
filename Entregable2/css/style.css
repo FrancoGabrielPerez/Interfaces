@@ -56,7 +56,7 @@
   
 }
 
-h1, h2, h3, p, a, li{
+h1, h2, h3, p, li{
   color:var(--Color-GreyL3);
 }
 
@@ -75,7 +75,7 @@ h3{
   font-weight: 500;
 }
 
-p{
+p, a{
   font-size: 16px;
   font-weight: 300;
 }
@@ -93,6 +93,19 @@ body {
   margin:0;
   background: #0C0228;
  
+}
+
+.button-small-primary{
+  width: 140px;
+  height: 40px;
+  border-radius: 10px;
+  border-style: none;
+  background-color: var(--Color-Primary);
+  color: var(--Color-GreyS3);
+}
+
+.button-small-primary h3{
+  color: var(--Color-GreyS3);
 }
 
 ::-webkit-scrollbar {display: none;}
@@ -313,7 +326,6 @@ header {
 }
 
 .bar-btn, .usr-btn{
-  margin-left: 30px;
   cursor: pointer;
   position: absolute;
 }
@@ -329,7 +341,7 @@ header {
   width: 60px;
   height: 45px;
   position: relative;
-  margin: 50px auto;
+  margin: auto 30px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -417,6 +429,35 @@ header {
   transition: all;
   z-index: 5000;
 }
+
+.nav-menu-usr ul li{
+  padding: 10px;
+  text-align: left;
+  
+}
+
+.nav-menu-usr ul li a{
+  color: var(--Color-GreyS3);
+}
+
+.nav-menu-usr, .nav-menu-usr ul{
+  text-align: center;
+}
+.nav-menu-usr ul{
+  width: fit-content;
+}
+
+.nav-menu-usr{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  background-color: var(--Color-GreyL2);
+  width: auto;
+  padding: 20px;
+  border-bottom-left-radius: 25px;
+}
+
 .nav-menu{
   width: auto;
 }
@@ -434,7 +475,7 @@ ul.nav-menu-deployed{
 }
 
 
-.nav-menu li, .nav-menu-usr li, ul.nav-menu-deployed li, ul.nav-menu-deployed li a{
+.nav-menu li, ul.nav-menu-deployed li, ul.nav-menu-deployed li a{
   display: none;
   line-height: 30px;
   transition: all .5s;
@@ -462,7 +503,7 @@ a.nav-menu-deployed{
   color:aqua;
 }
 
-#check, #checkUsr, #check-menu-deployed{
+#check, #checkUsr, #check-menu-deployed, .hidden{
   display: none;
 }
 
@@ -471,7 +512,7 @@ a.nav-menu-deployed{
   height: 100vh;
 }
 
-#checkUsr:checked ~ .nav-menu-usr li, #check:checked ~ .nav-menu li,
+#checkUsr:checked ~ .nav-menu-usr, #check:checked ~ .nav-menu li,
 #check-menu-deployed:checked ~ ul.nav-menu-deployed li a{
   display: block;
 }
