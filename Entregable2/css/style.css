@@ -309,7 +309,7 @@ header {
 
 }
 
-.bar-nav, .usr-nav {
+.bar-nav, .usr-nav, .header-search-bar {
   height: 100px;
   width: 100%;
   display: flex;
@@ -344,6 +344,35 @@ header {
 
 .usr-name h2{
   color: var(--Color-GreyS3);
+}
+
+
+.header-search-bar .input-buscar{
+  width: 100%;
+  height: 40%;
+  position: relative;
+}
+
+.header-search-bar .input-box-buscar::placeholder{
+  color: #555555;
+  padding: 5px;
+}
+
+.header-search-bar .input-box-buscar{
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  border-style: hidden;
+}
+
+.header-search-bar .input-buscar .input-icon {
+  color: #191919;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 12px;
+  top: 100%;
+  transform: translateY(-150%);
 }
 
 /* Hamburger Menu */
@@ -788,20 +817,36 @@ div.categoria h3{
     display: flex;
 }
 
-
 .juego-jugado .contenedor-card-small .datos-juego-small h2,
 .juego-recomendado .contenedor-card-small .datos-juego-small h2,
 .juego-accion .contenedor-card-small .datos-juego-small h2,
 .juego-multijugador .contenedor-card-small .datos-juego-small h2,
-.juego-deportes .contenedor-card-small .datos-juego-small h2{
-    
-    line-height: 36px;
-    
+.juego-deportes .contenedor-card-small .datos-juego-small h2{    
+    line-height: 36px;    
 }
 
 .indicador-estado-gratis, .indicador-estado-agregado{
   display:flex;
   position: fixed;
+}
+
+.card-small .back-btn{
+  display: none;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
+
+.card-big .back-btn{
+  display: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
 }
 
 .juego-jugado .contenedor-card-small,
@@ -1022,7 +1067,9 @@ justify-content: center;
                           "footer footer footer";
   }
  
-   
+  .header-search-bar .input-buscar, .usr-name{
+    display: none;
+  }
 
 .carrusel-categorias{
   margin-bottom: 40px;
