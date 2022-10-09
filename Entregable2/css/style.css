@@ -116,7 +116,7 @@ body{
   overflow: hidden;
   grid-template-columns: 10% 80% 10%;
   justify-content: center;
-  grid-template-rows: repeat(6, auto);
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:  "header header header"
                         "novedades novedades novedades"
                         ". contenedor ."
@@ -135,11 +135,12 @@ body{
 
 /*----------------LOADER--------------------------------------------------*/
 .loader{
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  background: rgba(0, 0, 0, 0.75);
-  display:flex;
+  background: rgba(0, 0, 0, 0.90);/*var(--Color-SecondaryL2);*/
+  display: flex;
+
 }
 
 .wrapper{
@@ -151,12 +152,13 @@ body{
   transform: translate(-50%, -50%);
   
 }
+
 .circle{
   width:40px;
   height:40px;
   position: absolute;
   border-radius: 50%;
-  background-image: url(/img/icons/IconoW.png);
+  background-image: url(../img/icons/IconoW.png);
   background-position: center;
   background-size: cover;
   left:15%;
@@ -183,19 +185,19 @@ body{
 .circle:nth-child(2){
   left:35%;
   animation-delay: .2s;
-  background-image: url(/img/icons/IconoA.png);
+  background-image: url(../img/icons/IconoA.png);
 }
 .circle:nth-child(3){
   left:auto;
   right:15%;
   animation-delay: .3s;
-  background-image: url(/img/icons/IconoS.png);
+  background-image: url(../img/icons/IconoS.png);
 }
 .circle:nth-child(4){
   left:auto;
   right:35%;
   animation-delay: .4s;
-  background-image: url(/img/icons/IconoD.png);
+  background-image: url(../img/icons/IconoD.png);
 }
 
 .shadow{
@@ -318,11 +320,16 @@ header {
   justify-content: end;
 }
 
+.img-logo{
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
 
 .logo {
-  width: 100px;
-  margin-left: 0px;
-  opacity: 25%;
+  margin-left: -40px;
+  opacity: 50%;
+  margin-top: -50px;
 }
 
 .bar-btn, .usr-btn{
@@ -333,6 +340,10 @@ header {
 .usr-btn{
   margin-right: 40px;
   margin-left: 0px;
+}
+
+.usr-name h2{
+  color: var(--Color-GreyS3);
 }
 
 /* Hamburger Menu */
@@ -498,8 +509,7 @@ ul.nav-menu-deployed li{
   transition: .3s;
 }
 
-a.nav-menu-deployed{
-  
+a.nav-menu-deployed{  
   color:aqua;
 }
 
@@ -546,11 +556,8 @@ div.categoria h3{
   width: 100%;
   height: 580px;
   align-items: center;
-}
-
-.contenedor-novedades{
-  background-image: url(/img/img-games/FondoTecno.png);
-  
+  margin-bottom: 30px;
+  background-image: url(../img/img-games/FondoTecno.png);  
 }
 
 .contenedor-novedades .titulo-novedades{
@@ -637,6 +644,7 @@ div.categoria h3{
   font-size: 30px;
 }
 
+.contenedor-titulo-controles .indicadores-jugado button,
 .contenedor-titulo-controles .indicadores-recomendado button,
 .contenedor-titulo-controles .indicadores-accion button,
 .contenedor-titulo-controles .indicadores-multijugador button,
@@ -649,6 +657,8 @@ div.categoria h3{
   margin-right: 2px;
 }
 
+.contenedor-titulo-controles .indicadores-jugado button:hover,
+.contenedor-titulo-controles .indicadores-jugado button.activo,
 .contenedor-titulo-controles .indicadores-recomendado button:hover,
 .contenedor-titulo-controles .indicadores-recomendado button.activo,
 .contenedor-titulo-controles .indicadores-accion button:hover,
@@ -674,14 +684,12 @@ div.categoria h3{
 
  .carrusel-categorias .contenedor-principal .flecha-izq,
  .carrusel-categorias .contenedor-principal .flecha-der{
-    /*position: absolute;*/
     border: none;
     background: rgba(0,0,0,.3);
     font-size: 40px;
     height: 50%;
     top: calc(50%-25%);
     line-height: 40px;
-    /*width: 50px;*/
     color: #FFFFFF;
     cursor: pointer;
     z-index: 500;
@@ -707,6 +715,8 @@ div.categoria h3{
   display:none;
  }
 
+ 
+ .carrusel-categorias .contenedor-carrusel-jugado,
  .carrusel-categorias .contenedor-carrusel-recomendado,
  .carrusel-categorias .contenedor-carrusel-accion,
  .carrusel-categorias .contenedor-carrusel-multijugador,
@@ -717,6 +727,7 @@ div.categoria h3{
   scroll-behavior: smooth;  
  }
 
+ .carrusel-categorias .contenedor-carrusel-jugado .carrusel,
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel,
  .carrusel-categorias .contenedor-carrusel-accion .carrusel,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel,
@@ -725,13 +736,13 @@ div.categoria h3{
   flex-wrap: nowrap;  
  }
 
+ .carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado,
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado,
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
   min-width: 33.33%;
   transition: .3s ease all;
-  /*box-shadow: 5px 5px 10px rgba(0,0,0,.3);*/
  }
 
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
@@ -739,7 +750,7 @@ div.categoria h3{
   text-align: -webkit-center;
  } 
 
- .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover,
+ .carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado.hover,
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
@@ -747,8 +758,13 @@ div.categoria h3{
   transform-origin: center; 
 }
 
+.carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
+  transform: scale(1.05);
+}
+
 /*-----------------------CARDS------------------------------------*/
 
+.juego-jugado .contenedor-card-small .datos-juego-small h3,
 .juego-recomendado .contenedor-card-small .datos-juego-small h3,
 .juego-accion .contenedor-card-small .datos-juego-small h3,
 .juego-multijugador .contenedor-card-small .datos-juego-small h3,
@@ -756,6 +772,7 @@ div.categoria h3{
     line-height: 36px;
 }
 
+.juego-jugado .contenedor-card-small .datos-juego-small p,
 .juego-recomendado .contenedor-card-small .datos-juego-small p,
 .juego-accion .contenedor-card-small .datos-juego-small p,
 .juego-multijugador .contenedor-card-small .datos-juego-small p,
@@ -771,6 +788,8 @@ div.categoria h3{
     display: flex;
 }
 
+
+.juego-jugado .contenedor-card-small .datos-juego-small h2,
 .juego-recomendado .contenedor-card-small .datos-juego-small h2,
 .juego-accion .contenedor-card-small .datos-juego-small h2,
 .juego-multijugador .contenedor-card-small .datos-juego-small h2,
@@ -780,8 +799,12 @@ div.categoria h3{
     
 }
 
+.indicador-estado-gratis, .indicador-estado-agregado{
+  display:flex;
+  position: fixed;
+}
 
-
+.juego-jugado .contenedor-card-small,
 .juego-recomendado .contenedor-card-small,
 .juego-accion .contenedor-card-small,
 .juego-multijugador .contenedor-card-small,
@@ -791,6 +814,7 @@ div.categoria h3{
     display: flex;
 }
 
+.juego-jugado .card-small,
 .juego-recomendado .card-small,
 .juego-accion .card-small,
 .juego-multijugador .card-small,
@@ -860,6 +884,8 @@ div.categoria h3{
     padding: 0px 40px;
 }
 
+
+.juego-jugado .card-small .img-juego-small img,
 .juego-recomendado .card-small .img-juego-small img,
 .juego-accion .card-small .img-juego-small img,
 .juego-multijugador .card-small .img-juego-small img,
@@ -882,6 +908,7 @@ div.categoria h3{
     /*display: none;*/
 }
 
+.juego-jugado .contenedor-card-small button,
 .juego-recomendado .contenedor-card-small button,
 .juego-accion .contenedor-card-small button,
 .juego-multijugador .contenedor-card-small button,
@@ -988,7 +1015,7 @@ justify-content: center;
     display: grid;
     grid-template-columns: 10% 80% 10%;
     justify-content: center;
-    grid-template-rows: repeat(6, auto);
+    grid-template-rows: repeat(4, auto);
     grid-template-areas:  "header header header"
                           "novedades novedades novedades"
                           ". contenedor ."
@@ -1000,7 +1027,9 @@ justify-content: center;
 .carrusel-categorias{
   margin-bottom: 40px;
 }
-/*.carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado,*/
+
+
+.carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado,
 .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
 .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
 .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
@@ -1010,11 +1039,29 @@ justify-content: center;
   overflow: visible;
  }
 
+ .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
+  transform: scale(0.9,0.9);
+ }
+
+ .carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado.hover,
+ .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
+ .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
+ .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
+  transform: scale(0.9);
+  transform-origin: center; 
+}
+
+.carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
+  transform: scale(1.0);
+}
+
  .carrusel-categorias .contenedor-principal{
   justify-content: center;  
   margin-bottom: -40px;
  }
 
+ 
+ .carrusel-categorias .contenedor-titulo-controles .indicadores-jugado,
  .carrusel-categorias .contenedor-titulo-controles .indicadores-accion,
  .carrusel-categorias .contenedor-titulo-controles .indicadores-multijugador,
  .carrusel-categorias .contenedor-titulo-controles .indicadores-deportes,
@@ -1022,14 +1069,15 @@ justify-content: center;
   display: none;
  }
 
+/* .carrusel-categorias .contenedor-titulo-controles h3,
  .carrusel-categorias .contenedor-titulo-controles h3,
- .carrusel-categorias .contenedor-titulo-controles h3,
- .carrusel-categorias .contenedor-titulo-controles h3,
+ .carrusel-categorias .contenedor-titulo-controles h3,*/
  .carrusel-categorias .contenedor-titulo-controles h3{
   text-align: center;
  }
 
 
+ .carrusel-categorias .contenedor-carrusel-jugado, 
  .carrusel-categorias .contenedor-carrusel-accion, 
  .carrusel-categorias .contenedor-carrusel-multijugador, 
  .carrusel-categorias .contenedor-carrusel-deportes {
@@ -1041,10 +1089,12 @@ justify-content: center;
    justify-content: center;
 }
   
-.carrusel-categorias .contenedor-carrusel-recomendado{
+/*.carrusel-categorias .contenedor-carrusel-recomendado{
     padding: 40px 0px;
-}
+}*/
 
+
+.juego-jugado .contenedor-card-small, 
 .juego-recomendado .contenedor-card-small, 
 .juego-accion .contenedor-card-small, 
 .juego-multijugador .contenedor-card-small, 
@@ -1106,6 +1156,7 @@ padding: 10px 10px;
 
 
 
+
   .contenedor-novedades .contenedor-card-preview{
     width:90%;
     flex-direction: column;
@@ -1134,6 +1185,7 @@ padding: 10px 10px;
     width: -webkit-fill-available;
     border-radius: 23px 23px 0px 0px;
   }
+
   .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .titulo-preview {
     padding: 10px;
 }
@@ -1184,12 +1236,7 @@ padding: 10px 10px;
   width: 100%;
 }
 
-/*.contenedor-ppal-footer .cont-redes .logos-redes .icons-redes-footer > div {
-  padding: 10px 40px;
-}*/
-
-.contenedor-ppal-footer .cont-redes .input-buscar .input-icon {
-  
+.contenedor-ppal-footer .cont-redes .input-buscar .input-icon {  
   transform: translateY(-120%);
 }
 

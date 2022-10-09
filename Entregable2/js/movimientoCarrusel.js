@@ -1,4 +1,4 @@
-
+"use strict";
 /**FUNCION DE MOVIMIENTO DEL CARRUSEL*/
 function movimientoCarrusel(e){
     const lado = e.currentTarget.classList[0];
@@ -25,8 +25,9 @@ function movimientoCarrusel(e){
 }
 
 /**PAGINACION */
-const variables = document.querySelectorAll('#contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
-variables.forEach(variable => paginacion(variable.attributes.name.nodeValue));
+const variables = document.querySelectorAll('.contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
+variables.forEach(variable => paginacion(variable.id));
+console.log(variables);
 function paginacion(variable){    
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    
     const juegos = document.querySelectorAll(`.juego-${variable}`);
@@ -53,10 +54,10 @@ function paginacion(variable){
 
 
 /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL */
-variables.forEach(variable => hover(variable.attributes.name.nodeValue));
+variables.forEach(variable => hover(variable.id));
 function hover(variable){
     const juegos = document.querySelectorAll(`.juego-${variable}`);
-    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);      
+    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);  
     juegos.forEach((juego)=>{
         juego.addEventListener('mouseenter', (e)=>{
             const elemento = e.currentTarget;
