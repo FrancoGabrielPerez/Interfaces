@@ -1,0 +1,56 @@
+body{
+	display: grid;
+	overflow:scroll;
+	grid-template-columns: 10% 80% 10%;
+	justify-content: center;
+	grid-template-rows: repeat(3, auto);
+	grid-template-areas: "header header header"
+						 ". main ." 
+						 "footer footer footer";
+}
+
+main{
+	grid-area: main;
+}
+
+nav.breadcrumbs{
+	color: var(--Color-GreyL3);
+}
+
+nav.breadcrumbs ul{
+	display: flex;
+	width: fit-content;
+}
+
+nav.breadcrumbs ul li{
+	width: max-content;
+	display: flex;
+	align-self: center;
+}
+
+.game-window{
+	border: solid var(--Color-GreyL3);
+	width: fit-content;
+	border-radius: 25px;
+}
+
+.game-window ul{
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.game-window ul li{
+	width: max-content;
+	display: flex;
+	align-self: center;
+}
+
+section{
+	display: flex;
+	flex-direction: column;
+}
+
+section ul{
+	display: inherit;
+}
