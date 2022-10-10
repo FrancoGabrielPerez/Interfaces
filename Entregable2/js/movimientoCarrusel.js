@@ -1,4 +1,4 @@
-
+"use strict";
 /**FUNCION DE MOVIMIENTO DEL CARRUSEL*/
 function movimientoCarrusel(e){
     const lado = e.currentTarget.classList[0];
@@ -25,8 +25,8 @@ function movimientoCarrusel(e){
 }
 
 /**PAGINACION */
-const variables = document.querySelectorAll('#contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
-variables.forEach(variable => paginacion(variable.attributes.name.nodeValue));
+const variables = document.querySelectorAll('.contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
+variables.forEach(variable => paginacion(variable.id));
 function paginacion(variable){    
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    
     const juegos = document.querySelectorAll(`.juego-${variable}`);
@@ -53,20 +53,45 @@ function paginacion(variable){
 
 
 /**HOVER: POR CADA JUEGO SE ASIGNA UN EVENLISTENER PARA SABER CUANDO EL MOUSE ESTA SOBRE EL */
-variables.forEach(variable => hover(variable.attributes.name.nodeValue));
+variables.forEach(variable => hover(variable.id));
 function hover(variable){
     const juegos = document.querySelectorAll(`.juego-${variable}`);
-    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);      
+    const fila = document.querySelector(`.contenedor-carrusel-${variable}`); 
     juegos.forEach((juego)=>{
         juego.addEventListener('mouseenter', (e)=>{
-            const elemento = e.currentTarget;
+            let elemento = e.currentTarget;
             setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER */
                 juegos.forEach(juego => juego.classList.remove('hover'));
                 elemento.classList.add('hover');
+                console.log(elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML);
+                if ((elemento.childNodes[1].childNodes[1].childNodes[1].classList == "indicador-estado-gratis") 
+                    || (elemento.childNodes[1].childNodes[1].childNodes[1].classList == "indicador-estado-agregado")) {
+                    elemento.childNodes[1].childNodes[1].style.background = "#7CD600";
+                    elemento.childNodes[1].childNodes[1].style.borderRadius = "20px";
+                    let auxURL = elemento.childNodes[1].childNodes[1].childNodes[5].childNodes[1].id;
+                    elemento.childNodes[1].childNodes[1].childNodes[5].style.display = "none";
+                    elemento.childNodes[1].childNodes[1].childNodes[7].style.display = "flex";
+                    elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML = `<a href=http://127.0.0.1:5500/pages/${auxURL}.html><h1>Jugar</h1></a>`;
+                    //console.log( elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML);
+                    }
+                else {
+                    elemento.childNodes[1].childNodes[1].style.background = "#AE5600";
+                    elemento.childNodes[1].childNodes[1].style.borderRadius = "20px";
+                    elemento.childNodes[1].childNodes[1].childNodes[5].style.display = "none";
+                    elemento.childNodes[1].childNodes[1].childNodes[7].style.display = "flex";
+                    elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML = "<h1>Comprar</h1>";
+                    console.log( elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML);
+                }
             }, 300);
         });
-        fila.addEventListener('mouseleave', () => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER */
+        juego.addEventListener('mouseleave', (e) => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER */
             juegos.forEach(juego => juego.classList.remove('hover'));
+            let elemento = e.currentTarget;
+            //console.log(elemento.childNodes[1].childNodes[1].childNodes[5]);
+            elemento.childNodes[1].childNodes[1].style.backgroundColor = "";
+            elemento.childNodes[1].childNodes[1].childNodes[5].style.display = "";
+            elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML = "";
+            elemento.childNodes[1].childNodes[1].childNodes[7].style.display = "none";
         });
     });            
 }
