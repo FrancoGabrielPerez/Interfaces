@@ -5,19 +5,16 @@ function movimientoCarrusel(e){
     const variable = e.currentTarget.parentNode.id;
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
-    
-
     if (lado === "flecha-der") {
-        fila.scrollLeft += fila.offsetWidth; 
-        if(indicadorActivo != null){
+        fila.scrollLeft += fila.offsetWidth;           
+        if(indicadorActivo.nextSibling != null){
             indicadorActivo.nextSibling.classList.add('activo');
             indicadorActivo.classList.remove('activo');
-        }
-       
+        }       
     } else if (lado === "flecha-izq")   
         {
             fila.scrollLeft -= fila.offsetWidth;
-            if(indicadorActivo != null){
+            if(indicadorActivo.previousSibling != null){
                 indicadorActivo.previousSibling.classList.add('activo');
                 indicadorActivo.classList.remove('activo');
             }
@@ -27,27 +24,28 @@ function movimientoCarrusel(e){
 /**PAGINACION */
 const variables = document.querySelectorAll('.contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
 variables.forEach(variable => paginacion(variable.id));
-function paginacion(variable){    
-    const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    
-    const juegos = document.querySelectorAll(`.juego-${variable}`);
-    
-    let cantCards = 0;
-    if (variable === "recomendado") //SI LA FLECHA CLICKEADA ESTA EN EL CARRUSEL DE RECOMENDADOS, LA DIVISION SE HACE POR UNO, YA QUE SE VA
-        cantCards = 1;              //A MOSTRAR UNA SOLA IMAGEN.
-    else
-        cantCards = 3;
-    const nroPaginas = Math.ceil(juegos.length / cantCards);
-    for(let i = 0; i < nroPaginas; i++){
-        const indicador = document.createElement('button');
-        if(i === 0){
-            indicador.classList.add('activo');
+function paginacion(variable){  
+    if (variable != "character"){  
+        const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    
+        const juegos = document.querySelectorAll(`.juego-${variable}`);        
+        let cantCards = 0;
+        if (variable === "recomendado") //SI LA FLECHA CLICKEADA ESTA EN EL CARRUSEL DE RECOMENDADOS, LA DIVISION SE HACE POR UNO, YA QUE SE VA
+            cantCards = 1;              //A MOSTRAR UNA SOLA IMAGEN.
+        else
+            cantCards = 3;
+        const nroPaginas = Math.ceil(juegos.length / cantCards);
+        for(let i = 0; i < nroPaginas; i++){
+            const indicador = document.createElement('button');
+            if(i === 0){
+                indicador.classList.add('activo');
+            }
+            document.querySelector(`.indicadores-${variable}`).appendChild(indicador);
+            indicador.addEventListener('click', (e) => {
+                fila.scrollLeft = i * fila.offsetWidth;
+                document.querySelector(`.indicadores-${variable} .activo`).classList.remove('activo');
+                e.target.classList.add('activo');
+            });
         }
-        document.querySelector(`.indicadores-${variable}`).appendChild(indicador);
-        indicador.addEventListener('click', (e) => {
-            fila.scrollLeft = i * fila.offsetWidth;
-            document.querySelector(`.indicadores-${variable} .activo`).classList.remove('activo');
-            e.target.classList.add('activo');
-        });
     }
 }
 
@@ -63,35 +61,41 @@ function hover(variable){
             setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER */
                 juegos.forEach(juego => juego.classList.remove('hover'));
                 elemento.classList.add('hover');
-                console.log(elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML);
-                if ((elemento.childNodes[1].childNodes[1].childNodes[1].classList == "indicador-estado-gratis") 
-                    || (elemento.childNodes[1].childNodes[1].childNodes[1].classList == "indicador-estado-agregado")) {
-                    elemento.childNodes[1].childNodes[1].style.background = "#7CD600";
-                    elemento.childNodes[1].childNodes[1].style.borderRadius = "20px";
-                    let auxURL = elemento.childNodes[1].childNodes[1].childNodes[5].childNodes[1].id;
-                    elemento.childNodes[1].childNodes[1].childNodes[5].style.display = "none";
-                    elemento.childNodes[1].childNodes[1].childNodes[7].style.display = "flex";
-                    elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML = `<a href=./Connect_4.html><h1>Jugar</h1></a>`;
-                    //console.log( elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML);
+                let subElemento = elemento.childNodes[1].childNodes[1];
+                if ((subElemento.childNodes[1].classList == "indicador-estado-gratis") 
+                    || (subElemento.childNodes[1].classList == "indicador-estado-agregado")) {
+                    subElemento.style.background = "#7CD600";
+                    subElemento.style.borderRadius = "20px";
+                    let auxURL = subElemento.childNodes[5].childNodes[1].id;
+                    subElemento.childNodes[5].style.display = "none";
+                    subElemento.childNodes[7].style.display = "flex";
+                    /*La siguiente linea funcionaria cuando esten todos los juegos, por ahora se carga a mano solo el que
+                    /*queremos ejecutar*/
+                    //subElemento.childNodes[7].innerHTML = `<a href="./pages/${auxURL}.html"><h1>Jugar</h1></a>`; 
+                    if (auxURL == "las-cuatro-estrellas-de-la-muerte")
+                        subElemento.childNodes[7].innerHTML = `<a href="./pages/las-cuatro-estrellas-de-la-muerte.html"><h1>Jugar</h1></a>`;
+                    else
+                        subElemento.childNodes[7].innerHTML = `<h1>Jugar</h1>`;
                     }
-                else {
-                    elemento.childNodes[1].childNodes[1].style.background = "#AE5600";
-                    elemento.childNodes[1].childNodes[1].style.borderRadius = "20px";
-                    elemento.childNodes[1].childNodes[1].childNodes[5].style.display = "none";
-                    elemento.childNodes[1].childNodes[1].childNodes[7].style.display = "flex";
-                    elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML = "<h1>Comprar</h1>";
-                    console.log( elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML);
+                else if (subElemento.childNodes[1].classList != "indicador-estado-character") {
+                    subElemento.style.background = "#AE5600";
+                    subElemento.style.borderRadius = "20px";
+                    subElemento.childNodes[5].style.display = "none";
+                    subElemento.childNodes[7].style.display = "flex";
+                    console.log(subElemento.childNodes);
+                    let imgJuego = subElemento.childNodes[3].id;
+                    console.log(imgJuego);
+                    subElemento.childNodes[7].innerHTML = `<a href='javascript:modalCompra("${imgJuego}")'><h1>Comprar</h1></a>`;
                 }
             }, 300);
         });
         juego.addEventListener('mouseleave', (e) => { /**CUANDO EL MOUSE SALE, SE QUITA LA CLASE HOVER */
             juegos.forEach(juego => juego.classList.remove('hover'));
-            let elemento = e.currentTarget;
-            //console.log(elemento.childNodes[1].childNodes[1].childNodes[5]);
-            elemento.childNodes[1].childNodes[1].style.backgroundColor = "";
-            elemento.childNodes[1].childNodes[1].childNodes[5].style.display = "";
-            elemento.childNodes[1].childNodes[1].childNodes[7].innerHTML = "";
-            elemento.childNodes[1].childNodes[1].childNodes[7].style.display = "none";
+            let elemento = e.currentTarget.childNodes[1].childNodes[1];
+            elemento.style.backgroundColor = "";
+            elemento.childNodes[5].style.display = "";
+            elemento.childNodes[7].innerHTML = "";
+            elemento.childNodes[7].style.display = "none";
         });
     });            
 }

@@ -26,7 +26,7 @@
             </label>
             <ul class="nav-menu">
               <li><input id="check-menu-deployed" type="checkbox">
-                <label for="check-menu-deployed"><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Home.svg" alt="home button"></div><h3>Home</h3></div></label>
+                <label for="check-menu-deployed"><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Home.svg" alt="home button"></div><a href="../index.html"><h3>Home</h3></a></div></label>
               </li>
               <li><input id="check-menu-deployed" type="checkbox">
                 <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Accion.svg" alt="Accion button"></div><h3>Accion</h3></div></label>
@@ -94,25 +94,287 @@
         </div>
       </div>      
     </div>
+    <section id="modalContainerMensaje" class="modalContainerMensaje ocultar">
+      <div class="modalMsge">
+          <h2>Informacion de pago</h2>
+          <div class="form">
+              <form action="nuevaCompra" method="POST">
+                  <div class="datos-compra">
+                    <div class="img-compra"><p>img compra</p></div>
+                    <div class="inputs-form-compra">
+                      <div class="form-datos-compra">
+                        <div class="mb-2">  
+                          <select class="form-select mb-2">
+                              <option value="1">VISA</option>                          
+                              <option value="2">Mastercard</option>
+                              <option value="3">CABAL</option>
+                              <option value="4">Naranja</option>
+                              <option value="5">VISA Debito</option>
+                              <option value="6">Maestro</option>
+                          </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="name">Nombre (como figura en la tarjeta)</label>
+                            <input type=text id="name">
+                        </div>
+                        <div class="mb-2">
+                            <label for="fechaVen">Fecha Venc</label>               
+                            <input type=text id="fechaVenc">
+                        </div>
+                        <div class="mb-2">   
+                            <label for="number">Numero</label>    
+                            <input type=number id="number">
+                        </div>
+                        <div class="mb-2">  
+                            <label for="codSeg">Cod. Seg.</label>     
+                            <input type=number id="codSeg">
+                        </div>
+                      </div>
+                      <div class="btn-detalle">
+                        <a class="btn-compra btn-cancelar" href="javascript:cerrarModalCompra()">Cancelar</a>
+                        <a class="btn-compra btn-confirmar" href="javascript:cerrarModalCompra()">Pagar</a>
+                      </div>   
+                    </div> 
+                  </div>                                     
+              </form>
+          </div>
+      </div>
+    </section>
     <div class="main-hero-page">
         <div class="hero-chart">
-            <div class="hero-title"><h1>Batalla por el medio oeste</h1></div>
-            <div class="cow-bones"><img src="../img/img-games/hero-section/CowboyCalavera.png" alt=""></div>
+            <div class="hero-title"><h1>Batalla por el medio oeste</h1></div>            
             <div class="heroe-space">
-                <div class="hero1"><img src="../img/img-games/hero-section/Hero1.png" alt=""></div>
-                <div class="hero2"><img src="../img/img-games/hero-section/Hero2.png" alt=""></div>
-            
-                <div class="hero3"><img src="../img/img-games/hero-section/Hero3.png" alt=""></div>
-                <div class="hero4"><img src="../img/img-games/hero-section/Hero4.png" alt=""></div>
+                <img src="../img/img-games/hero-section/Hero1.png" alt="hero 1" class="hero1">
+                <img src="../img/img-games/hero-section/Hero2.png" alt="hero 2" class="hero2">
+                <img src="../img/img-games/hero-section/CowboyCalavera.png" alt="cowboy calavera" class="cow-bones">
+                <img src="../img/img-games/hero-section/Hero3.png" alt="hero 3" class="hero3">
+                <img src="../img/img-games/hero-section/Hero4.png" alt="hero 4" class="hero4">
+                <img src="../img/img-games/hero-section/Reserve.png" alt="Reservar" class="reserva">
+            </div>            
+            <div class="time-counter">
+              <h2>dias  :  horas  :  mins  : seg</h2>
+              <h1> 120  :  23  :  12  :  23</h1>
             </div>
-            
-            <div class="time-counter"><h2>Contador</h2></div>
         </div>
-        <div class="history-chart"></div>
-        <div class="charcaters-chart"></div>
-        <div class="features-chart"></div>
-    </div> 
-        
+        <div class="history-chart">
+            <div class="history-title"><h1>Historia</h1></div>
+             <div class="history-text">
+              <h3>En una tierra sin ley, quien tenga mas balas y mejores armas manda.
+                Los bandidos mas odiados se deberan enfrentar en una batalla sin cuartel por el dominio del desierto de Nuevo Mexico.
+                Los jefes de las bandas de forajidos mas grandes estan llegando al desierto y la batalla esta por empezar.
+                La lista de pretendientes al trono es grande y solo uno sera el ganador.
+                ¿Sera acaso “El Mono”?, jefe del clan de Mexicanos, ¿sera “Mina”? la rubia reina del norte, ¿o tal vez “El Juez”?, el inmoral impartidor de la ley...
+                Los duelos van a comenzar, elige bien, y preparate para reinar...</h3>
+             </div>
+        </div>
+        <div class="characters-chart">
+          <section class="carruseles-categorias-character contenedor-categoria" id="character">
+            <div class="carrusel-categorias">
+              <section class="carruseles-categorias-character contenedor-categoria" id="character">
+                <div class="contenedor-carrusel-characters ">
+                  <div class="contenedor-titulo-controles">
+                    <h1>Los Contendientes</h1>
+                    <div class="indicadores-character"></div>
+                  </div>
+                  <div class="contenedor-principal" id="character">
+                    <button role="button" class="flecha-izq flecha-carrusel">❮</button>
+                    <div class="contenedor-carrusel-character">
+                      <ul class="carrusel">
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                                <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Mina.png" alt="Mina"></div>
+                                <div class="datos-juego-small">
+                                    <div class="titulo-small-card"><h2>Mina</h2></div>
+                                    <div class="subtitulo-small-card"><h3>(La reina del norte)</h3></div>
+                                    <div class="contenido-small-card"><p>La mas linda, pero mortal cuando se lo propone.</p></div>
+                                    <div class="power-small-card"><p class="bold">Con su belleza, te paraliza, no la mires a los ojos.</p></div>                             
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Magnolia.png" alt="Magnolia"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Magnolia</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(La flor del oeste)</h3></div>
+                                  <div class="contenido-small-card"><p>Mucho cuidado con ella, con su rifle nunca falla.</p></div>
+                                  <div class="power-small-card"><p class="bold">Puede crear las pociones mas mortiferas.</p></div>   
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Manfredi.png" alt="Manfredi"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Manfredi</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El tano)</h3></div>
+                                  <div class="contenido-small-card"><p>El mas bajito y con un par de cuchillos muy afilados.</p></div>
+                                  <div class="power-small-card"><p class="bold">Sabe como invocar a los forajidos de la Cossa Nostra.</p></div>  
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/El Juez.png" alt="El juez"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>McTrill</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El juez)</h3></div>
+                                  <div class="contenido-small-card"><p>Sus secuaces le temen, es impiadoso con quienes lo enfrenta.</p></div>
+                                  <div class="power-small-card"><p class="bold">Con se martillo puede bloquear todos tus ataques.</p></div>  
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/El Mono.png" alt="El mono"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Tio</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El mono)</h3></div>
+                                  <div class="contenido-small-card"><p>Fiero, malo y sanguinario. Su maldad es infinita.</p></div>
+                                  <div class="power-small-card"><p class="bold">Su agilidad para saltar y esquivar, es legendaria.</p></div>  
+                                </div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Rey Garufa.png" alt="Rey garufa"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Rey Garufa</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El simple)</h3></div>
+                                  <div class="contenido-small-card"><p>Lo simple no quita lo eficaz. Asesino silencioso.</p></div>
+                                  <div class="power-small-card"><p class="bold">Embriagador, cuidado con su aliento.</p></div> 
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Billy.png" alt="Billy"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Billy</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El pistolero)</h3></div>
+                                  <div class="contenido-small-card"><p>Su reputacion lo precede. Implacable. Maestro de las armas.</p></div>
+                                  <div class="power-small-card"><p class="bold">Con sus dos pistolas en mano, es implacable.</p></div> 
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Manito.png" alt="Manito"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Manito</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El rifle)</h3></div>
+                                  <div class="contenido-small-card"><p>Tan flaco que ni sombra hace. Su mejor arma es su punteria.</p></div>
+                                  <div class="power-small-card"><p class="bold">Su rifle, cuando esta recargado, es infalible.</p></div> 
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="juego-character">
+                          <div class="contenedor-card-small-character">
+                            <div class="card-small-character">
+                              <div class="indicador-estado-character"></div>
+                                <div class="img-juego-small"><img src="../img/img-games/hero-section/Huesos.png" alt="Huesos"></div>
+                                <div class="datos-juego-small">
+                                  <div class="titulo-small-card"><h2>Huesos</h2></div>
+                                  <div class="subtitulo-small-card"><h3>(El calavera)</h3></div>
+                                  <div class="contenido-small-card"><p>Los que lo conocen se arrepienten. Mortal con el arco y la flecha.</p></div>
+                                  <div class="power-small-card"><p class="bold">Sabe como llamar refuerzos, directo del cementerio.</p></div> 
+                                </div>
+                                <div class="back-btn"></div>
+                            </div>
+                        </div>
+                        </li>
+                      </ul>
+                    </div>           
+                    <button role="button" class="flecha-der flecha-carrusel">❯</i></button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+        <div class="features-chart">
+          <div class="features-chart-title"><h1>Features</h1></div>
+            <div class="container-features-1">
+            <div class="feature-container-a">
+              <div class="feature-text">
+                <div class="feature-title"><h3>Modo historia</h3></div>
+                <div class="feature-p"><p>Tres campañas disponibles, elige el bando que mas te guste y pasa el rato con tus amigos.</p></div>
+              </div>
+              <div class="feature-img"><img src="../img/img-games/hero-section/img modo historia.png" alt="Modo historia"></div>
+            </div>
+            <div class="feature-container-a">
+              <div class="feature-text-a">
+                <div class="feature-title"><h3>Progresion de personajes</h3></div>
+                <div class="feature-p"><p>Personajes personalizados, adquiere nuevas habilidades y mejora la capacidad de pelea.</p></div>
+              </div>
+              <div class="feature-img"><img src="../img/img-games/hero-section/img progresion personajes.png" alt="Progresion de personajes"></div>
+            </div>
+            </div>
+            <div class="container-features-2">            
+              <div class="feature-container-b">
+                <div class="feature-text-a">
+                  <div class="feature-title"><h3>Firs Person Shooter</h3></div>
+                  <div class="feature-p"><p>Sistema de cadencia realista. Apunta y dispara. Las armas de los personajes pueden evolucionar.</p></div>
+                </div>
+                <div class="feature-img"><img src="../img/img-games/hero-section/img FPS.png" alt="Progresion de personajes"></div>
+              </div>
+              <div class="feature-container-b">
+                <div class="feature-text">
+                  <div class="feature-title"><h3>Mundo hiperrealista</h3></div>
+                  <div class="feature-p"><p>Mapa explorable. Visita las distintas zonas y escenarios. Visualizacion de 360°.</p></div>
+                </div>
+                <div class="feature-img"><img src="../img/img-games/hero-section/img mundo 3d.png" alt="Mundo hiperrealista"></div>
+              </div>
+            </div>       
+            <div class="container-features-1">
+              <div class="feature-container-a">
+                <div class="feature-text">
+                  <div class="feature-title"><h3>Multijugador en linea</h3></div>
+                  <div class="feature-p"><p>Diviertete con tus amigos, o conoce nuevos. Cuanto mas jugadores, mejor dinamica de juego.</p></div>
+                </div>
+                <div class="feature-img"><img src="../img/img-games/hero-section/img multijugador online.png" alt="Multijuagador en linea"></div>
+              </div>
+              <div class="feature-container-a">
+                <div class="feature-text-a">
+                  <div class="feature-title"><h3>Multiplataforma</h3></div>
+                  <div class="feature-p"><p>Juega desde tu PC, Playstation, XBox, Nintendo Switch o cualquier dispositivo movil. </p></div>
+                </div>
+                <div class="feature-img"><img src="../img/img-games/hero-section/img multi plataforma.png" alt="Multiplataforma"></div>
+              </div>
+            </div>
+          </div> 
+    </div>
     <footer class="footer">
         <div class="contenedor-ppal-footer">
           <div class="cont-categorias">
@@ -161,10 +423,9 @@
           </div>
         </div>
     </footer>    
-    
     <script src="../js/loader.js"></script>
     <script src="../js/burgermenu.js"></script> 
     <script src="../js/movimientoCarrusel.js"></script>     
-    <script src="../js/scrolltop.js"></script>   
+  
 </body>
 </html>
