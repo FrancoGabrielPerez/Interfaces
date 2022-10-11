@@ -1,13 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/reset.css" type="text/css">
+	<link rel="stylesheet" href="../css/style.css" type="text/css">
+	<link rel="stylesheet" href="../css/Connect_4.css" type="text/css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<title>El Imperio y las cuatro estrellas de la muerte - WASD Games</title>
 </head>
 <body>
-    <h1>hola</h1>
-    <a href=http://127.0.0.1:5500/index.html><h1>Volver</h1></a>
+	<header class="header">
+      <section class="container-nav-bar">
+        <nav class="bar-nav">     
+            <div class="img-logo">
+              <img src="../img/icons/Img-Logo.svg" alt="logo WASD games" class="logo">
+            </div>          
+            <input type="checkbox" id="check">
+            <label for="check" class="bar-btn">
+              <div id="nav-icon-left" class="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </label>
+            <ul class="nav-menu">
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed"><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Home.svg" alt="home button"></div><h3>Home</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Accion.svg" alt="Accion button"></div><h3>Accion</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Aventura.svg" alt="Aventura & RPG button"></div><h3>Aventura & RPG</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Clasicos.svg" alt="Clasicos button"></div><h3>Clasicos</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Deportes.svg" alt="Deportes & Carreras button"></div><h3>Deportes & Carreras</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Estrategia.svg" alt="Estrategia & Defensa button"></div><h3>Estrategia & Defensa</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Multiplayer.svg" alt="Multijugador button"></div><h3>Multijugador</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="../img/icons/Icon-Novedades.svg" alt="Novedades button"></div><h3>Novedades</h3></div></label>
+              </li>
+            </ul>
+        </nav>  
+        <nav class="header-search-bar">
+            <div class="input-buscar">
+              <input class="input-box-buscar" type="text" placeholder="Buscar en el sitio">
+              <img src="../img/icons/Icon-Lupa.svg" alt="Buscar" class="input-icon">
+            </div>
+         
+        </nav>
+        <nav class="usr-nav">
+            <div class="usr-name"><h2>¡Hola Mauro!</h2></div>
+            <div id="nav-icon-right" class="nav-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div id="nav-menu-usr" class="nav-menu-usr hidden">
+              <div class="avatar-img"><img src="../img/img-games/Img-ProfileMain.png" alt="User avatar image"></div>
+              <ul>
+                <li><a href="#"><img src="../img/icons/Icon-Profile.svg" alt="Perfil"> Perfil</href></a></li>
+                <li><a href="#"><img src="../img/icons/Icon-Library.svg" alt="Libreria"> Biblioteca</href></a></li>
+                <li><a href="#"><img src="../img/icons/Icon-Friends.svg" alt="Amigos"> Amigos</href></a></li>
+              </ul>
+              <button class="button-small-primary" role="button"><a href=""><h3>Logout</h3></a></button>
+            </div>
+          </nav>
+      </section> 
+    </header>
+	<main>
+		<nav class="breadcrumbs">
+			<ul>
+				<li>Home</li>
+				<span class="material-symbols-outlined">
+					chevron_right
+				</span>
+				<li>Estrategia & Defensa</li>
+				<span class="material-symbols-outlined">
+					chevron_right
+				</span>
+				<li>El Imperio y las cuatro estrellas de la muerte</li>
+			</ul>
+		</nav>
+		<div class="game-window">
+			<div><img src="../img/img-games/img-imperio/Game-running.svg" alt="Ventana del juego"></div>
+			<ul>
+				<li><img src="../img/icons/Img-Logo.svg" alt="WASD Games"></li>
+				<li><h3>El Imperio y las cuatro estrellas de la muerte</h3></li>
+				<li>
+					<img src="../img/img-games/img-imperio/Game-running-icons.svg" alt="">
+				</li>
+			</ul>
+		</div>
+		<section>
+			<h3>El imperio y las cuatro estrellas de la muerte.</h3>
+			<p>En una galaxia muy, muy lejana, el Imperio intenta alinear sus Estrellas de la Muerte y asi terminar con la Resistencia de una buena vez por todas, pero la Resistencia no tiene la  intencion de ser derrotada... </p>
+		</section>
+		<section class="preview">
+			<h3>Game preview</h3>
+			<ul>
+				<li><img src="../img/img-games/img-imperio/Game-preview-video.svg" alt=""></li>
+				<li><img src="../img/img-games/img-imperio/Game-preview-img1.svg" alt=""></li>
+				<li><img src="../img/img-games/img-imperio/Game-preview-img2.svg" alt=""></li>
+			</ul>
+		</section>
+		<section class="how-to">
+			<h3>¿Como se juega?</h3>
+			<ul>
+				<li><img src="../img/img-games/img-imperio/Game-help-img1.svg" alt=""></li>
+				<li><img src="../img/img-games/img-imperio/Game-help-img2.svg" alt=""></li>
+				<li><img src="../img/img-games/img-imperio/Game-help-img3.svg" alt=""></li>
+			</ul>
+		</section>
+        <section class="comunidad">
+            <h3>¿Que opinas del juego?</h3>
+            <div class="review send-review">
+				<div class="comment-user">
+					<div class="comment-avatar"><img src="../img/img-games/Img-ProfileMain.png" alt=""></div>
+					<h3>Mauro</h3>
+					<p>@mauritoloco</p>
+				</div>
+				<div class="comment-comment">
+                    <textarea name="" id="" cols="30" rows="5"></textarea>
+					<div class="rating">
+						<div>
+							<span class="material-symbols-outlined">star</span>
+							<span class="material-symbols-outlined">star</span>
+							<span class="material-symbols-outlined">star</span>
+							<span class="material-symbols-outlined">star</span>
+							<span class="material-symbols-outlined">star</span>
+						</div>
+						<div class="button-comment"><button class="btn-enviar"><h3>Enviar</h3></button></div>
+					</div>
+				</div>
+			</div>
+        </section>
+		<section class="comunidad">
+			<h3>Comentarios</h3>
+			<div class="review">
+				<div class="comment-user">
+					<div class="comment-avatar"><img src="../img/img-games/img-imperio/Avatar1.svg" alt=""></div>
+					<h3>ManuJota</h3>
+					<p>@Manito39</p>
+				</div>
+				<div class="comment-comment">
+					<div class="rating">
+						<div>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined">star</span>
+						</div>
+						<span>hace 1 semana</span>
+					</div>
+					<p>El juego es simple de entender y esta muy bueno. lo mejor es que podes pasarle el link a tu amigo y empezas a jugar re facil</p>
+					<div class="comment-review">
+						<span>¿Te resulto util?</span>
+						<div class="thumbs"><span class="material-symbols-outlined filled">thumb_up</span><span>14</span></div>
+						<div class="thumbs"><span class="material-symbols-outlined filled">thumb_down</span><span>3</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="review">
+				<div class="comment-user">
+					<div class="comment-avatar"><img src="../img/img-games/img-imperio/Avatar2.svg" alt=""></div>
+					<h3>Rubenn</h3>
+					<p>@Rubencito20</p>
+				</div>
+				<div class="comment-comment">
+					<div class="rating">
+						<div>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined">star</span>
+							<span class="material-symbols-outlined">star</span>
+							<span class="material-symbols-outlined">star</span>
+						</div>
+						<span>hace 1 semana</span>
+					</div>
+					<p>El juego es simple, muy simple. Los graficos podrian ser mejores. Les doy dos estrellas por que para pasar el rato sirve.</p>
+					<div class="comment-review">
+						<span>¿Te resulto util?</span>
+						<div class="thumbs"><span class="material-symbols-outlined filled">thumb_up</span><span>4</span></div>
+						<div class="thumbs"><span class="material-symbols-outlined filled">thumb_down</span><span>23</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="review">
+				<div class="comment-user">
+					<div class="comment-avatar"><img src="../img/img-games/img-imperio/Avatar3.svg" alt=""></div>
+					<h3>Juan Manuel José...</h3>
+					<p>@maxpowers</p>
+				</div>
+				<div class="comment-comment">
+					<div class="rating">
+						<div>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+							<span class="material-symbols-outlined filled">star</span>
+						</div>
+						<span>hace 2 semanas</span>
+					</div>
+					<p>¡Juegazo! Lo empezamos a jugar con mi primo de España y nos pasamos el rato jugando... mañana se suma mi tia y hacemos un desafio.... </p>
+					<div class="comment-review">
+						<span>¿Te resulto util?</span>
+						<div class="thumbs"><span class="material-symbols-outlined filled">thumb_up</span><span>3</span></div>
+						<div class="thumbs"><span class="material-symbols-outlined filled">thumb_down</span><span>0</span></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>juegos similares</section>
+	</main>
+	<footer class="footer">
+        <div class="contenedor-ppal-footer">
+          <div class="cont-categorias">
+            <h3>Categorias</h3>
+            <ul>
+              <li>Accion</li>
+              <li>Aventuras & RPG</li>
+              <li>Clasicos</li>
+              <li>Deportes & Carreras</li>
+              <li>Estrategia & Defensa</li>
+              <li>Multijugador</li>
+              <li>Novedades</li>
+            </ul>
+          </div>
+          <div class="cont-micuenta">
+            <h3>Mi cuenta</h3>
+            <ul>
+              <li>Perfil</li>
+              <li>Biblioteca</li>
+              <li>Amigos</li>
+              <li>Cerrar sesion</li>
+            </ul>
+          </div>
+          <div class="cont-datos-wasd">
+            <h3>WASD Games</h3>
+            <ul>
+              <li>Politica de privacidad</li>
+              <li>Contacto</li>
+              <li>Licencias</li>
+              <li>Nuestro equipo</em></li>
+            </ul>
+          </div>
+          <div class="cont-redes">
+            <div class="logos-redes">
+              <h3>¡Seguinos!</h3>
+              <div class="icons-redes-footer">
+                <div class="icons-redes-facebook"><img src="../img/icons/🦆 icon _Facebook Square_.png" alt="Icono Facebook"></div>
+                <div class="icons-redes-instagram"><img src="../img/icons/🦆 icon _Instagram Square_.png" alt="Icono Instagram"></div>
+                <div class="icons-redes-tweeter"><img src="../img/icons/🦆 icon _Twitter Square_.png" alt="Icono Tweeter"></div>
+              </div>
+            </div>
+            <div class="input-buscar">
+              <input class="input-box-buscar" type="text" placeholder="Buscar en el sitio">
+              <img src="../img/icons/Icon-Lupa.svg" alt="Buscar" class="input-icon">
+            </div>
+          </div>
+        </div>
+    </footer> 
+	<script src="../js/loader.js"></script>
+    <script src="../js/burgermenu.js"></script> 
+    <script src="../js/movimientoCarrusel.js"></script>     
+    <script src="../js/scrolltop.js"></script>
 </body>
 </html>
