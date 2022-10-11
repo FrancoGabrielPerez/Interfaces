@@ -73,7 +73,7 @@ section.how-to ul, section.preview ul{
 
 textarea{
 	resize: none;
-	border-radius: 25px;
+	border-radius: 10px;
 }
 
 .btn-enviar{
