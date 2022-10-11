@@ -71,6 +71,38 @@ section.how-to ul, section.preview ul{
 	justify-content: space-between;
 }
 
+textarea{
+	resize: none;
+	border-radius: 25px;
+}
+
+.btn-enviar{
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: var(--Color-PrimaryL1);
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.btn-enviar h3{
+	color: var(--Color-GreyS3);
+}
+
+.send-review .material-symbols-outlined {
+	color: var(--Color-GreyL3);
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  font-size: 40px;
+}
+
+.send-review .material-symbols-outlined:hover{
+	font-variation-settings:'FILL' 1;
+}
+
 section.comunidad .review{
 	display: flex;
 	padding: 10px 0px;
@@ -88,6 +120,7 @@ section.comunidad .review .comment-user{
 	width: 280px;
 	flex-shrink: 0;
 	border-right: 1px solid var(--Color-GreyL3);
+	justify-content: center;
 }
 
 section.comunidad div.review .comment-avatar,
