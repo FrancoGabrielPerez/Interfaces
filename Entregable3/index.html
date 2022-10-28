@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>WASD Games</title>
+</head>
+<body>    
+    <header class="header">
+      <section class="container-nav-bar">
+        <nav class="bar-nav">     
+            <div class="img-logo">
+              <img src="./img/icons/Img-Logo.svg" alt="logo WASD games" class="logo">
+            </div>          
+            <input type="checkbox" id="check">
+            <label for="check" class="bar-btn">
+              <div id="nav-icon-left" class="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </label>
+            <ul class="nav-menu">
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed"><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Home.svg" alt="home button"></div><a href="#"><h3>Home</h3></a></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Accion.svg" alt="Accion button"></div><h3>Accion</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Aventura.svg" alt="Aventura & RPG button"></div><h3>Aventura & RPG</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Clasicos.svg" alt="Clasicos button"></div><h3>Clasicos</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Deportes.svg" alt="Deportes & Carreras button"></div><h3>Deportes & Carreras</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Estrategia.svg" alt="Estrategia & Defensa button"></div><h3>Estrategia & Defensa</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Multiplayer.svg" alt="Multijugador button"></div><h3>Multijugador</h3></div></label>
+              </li>
+              <li><input id="check-menu-deployed" type="checkbox">
+                <label for="check-menu-deployed" ><div class="categoria"><div class="icon"><img src="./img/icons/Icon-Novedades.svg" alt="Novedades button"></div><a href="./pages/batalla-por-el-medio-oeste.html"><h3>Novedades</h3></a></div></label>
+              </li>
+            </ul>
+        </nav>  
+        <nav class="header-search-bar">
+            <div class="input-buscar">
+              <input class="input-box-buscar" type="text" placeholder="Buscar en el sitio">
+              <img src="./img/icons/Icon-Lupa.svg" alt="Buscar" class="input-icon">
+            </div>
+         
+        </nav>
+        <nav class="usr-nav">
+            <div class="usr-name"><h2>¡Hola Mauro!</h2></div>
+            <div id="nav-icon-right" class="nav-icon">
+              <img src="./img/img-games/Img-ProfileMain.png" alt="User avatar image"></div>              
+            </div>
+            <div id="nav-menu-usr" class="nav-menu-usr hidden">
+              <div class="avatar-img"><img src="./img/img-games/Img-ProfileMain.png" alt="User avatar image"></div>
+              <ul>
+                <li><a href="#"><img src="./img/icons/Icon-Profile.svg" alt="Perfil"> Perfil</href></a></li>
+                <li><a href="#"><img src="./img/icons/Icon-Library.svg" alt="Libreria"> Biblioteca</href></a></li>
+                <li><a href="#"><img src="./img/icons/Icon-Friends.svg" alt="Amigos"> Amigos</href></a></li>
+              </ul>
+              <button class="button-small-primary" role="button"><a href=""><h3>Logout</h3></a></button>
+            </div>
+          </nav>
+      </section> 
+    </header>
+    <div class="loader">
+      <div class="wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="progress">
+          <div class="progress-bar">
+              <span class="progress-bar-text"></span>
+          </div>
+        </div>
+      </div>      
+    </div>
+      <section class="contenedor-novedades">
+        <div class="titulo-novedades"><h1>Proximamente en WASD Games</h1></div>
+        <div class="contenedor-card-preview">
+            <div class="img-preview"><img src="./img/img-games/hero-section/JuegoHero1.png" alt="Batalla por el medio oeste, preview"></div>
+            <div class="contenedor-texto-preview">
+              <div class="titulo-preview"><h2>Batalla por el medio oeste</h2></div>
+              <div class="cuerpo-preview"><h3>Pelea con los mas odiados del condado, elige tus armas y preparate para la batalla.</h3></div>
+            <div class="button-preview"><a href="./pages/batalla-por-el-medio-oeste.html"><button class="btn">Preview</button></a></div>
+            </div>
+        </div>
+      </section>
+      <section id="modalContainerMensaje" class="modalContainerMensaje ocultar">
+        <div class="modalMsge">
+            <h2>Informacion de pago</h2>
+            <div class="form">
+                <form action="nuevaCompra" method="POST">
+                    <div class="datos-compra">
+                      <div class="img-compra"><p>img compra</p></div>
+                      <div class="inputs-form-compra">
+                        <div class="form-datos-compra">
+                          <div class="mb-2">  
+                            <select class="form-select mb-2">
+                                <option value="1">VISA</option>                          
+                                <option value="2">Mastercard</option>
+                                <option value="3">CABAL</option>
+                                <option value="4">Naranja</option>
+                                <option value="5">VISA Debito</option>
+                                <option value="6">Maestro</option>
+                            </select>
+                          </div>
+                          <div class="mb-2">
+                              <label for="name">Nombre (como figura en la tarjeta)</label>
+                              <input type=text id="name">
+                          </div>
+                          <div class="mb-2">
+                              <label for="fechaVen">Fecha Venc</label>               
+                              <input type=text id="fechaVenc">
+                          </div>
+                          <div class="mb-2">   
+                              <label for="number">Numero</label>    
+                              <input type=number id="number">
+                          </div>
+                          <div class="mb-2">  
+                              <label for="codSeg">Cod. Seg.</label>     
+                              <input type=number id="codSeg">
+                          </div>
+                        </div>
+                        <div class="btn-detalle">
+                          <a class="btn-compra btn-cancelar" href="javascript:cerrarModalCompra()">Cancelar</a>
+                          <a class="btn-compra btn-confirmar" href="javascript:cerrarModalCompra()">Pagar</a>
+                        </div>   
+                      </div> 
+                    </div>                                     
+                </form>
+            </div>
+        </div>
+      </section>
+      <div class="main"> <!-- usar el tag main en vez del div generico -->        
+        <section class="carruseles-categorias-recomendado contenedor-categoria" id="recomendado"> 
+          <div class="carrusel-categorias "> 
+            <div class="contenedor-titulo-controles">
+              <h3>Recomendados para ti</h3>
+              <div class="indicadores-recomendado"></div>
+            </div>
+            <div class="contenedor-principal" id="recomendado">
+              <button role="button" class="flecha-izq flecha-carrusel" >❮</button>
+              <div class="contenedor-carrusel-recomendado">
+                <ul class="carrusel">
+                  <li class="juego-recomendado">
+                    <div class="contenedor-card-big">        
+                      <div class="card-big">                        
+                          <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-big" id="CuatroEstrellaPNG.png"><img src="./img/img-games/img-cards-big/CuatroEstrellaPNG.png" alt="El Imperio y las Cuatro estrellas de la muerte."></div>
+                          <div class="datos-juego-big">
+                              <div class="titulo-big-card" id="las-cuatro-estrellas-de-la-muerte"><h2>El Imperio y las cuatro Estrellas de la Muerte</h2></div>                
+                              <div class="contenido-big-card"><p>Lucha con o contra el Imperio para dominar la Galaxia.</p></div>
+                              <div class="precio-big-card"><h3>Agregado</h3></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>          
+                    </div>
+                  </li>
+                  <li class="juego-recomendado">
+                    <div class="contenedor-card-big">        
+                      <div class="card-big">
+                          <div></div>
+                          <div class="img-juego-big" id="AmongUs2.jpg"><img src="./img/img-games/img-cards-big/AmogUs2.jpg" alt="Among Us 2."></div>
+                          <div class="datos-juego-big">
+                              <div class="titulo-big-card"><h2>Among us 2</h2></div>                
+                              <div class="contenido-big-card"><p>Descubre quien es el traidor o ganara. Juega partidas en linea no tus amigos.</p></div>
+                              <div class="precio-big-card"><h3>$ 2500</h3></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>          
+                    </div>
+                  </li>
+                  <li class="juego-recomendado">
+                    <div class="contenedor-card-big">        
+                      <div class="card-big">
+                        <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                        <div class="img-juego-big" id="BadlandBrawl.png"><img src="./img/img-games/img-cards-big/BadlandBrawl.png" alt="Badland brawl."></div>
+                        <div class="datos-juego-big">
+                            <div class="titulo-big-card"><h2>Badland brawl</h2></div>                
+                            <div class="contenido-big-card"><p>Pelea contra otros jugadores en linea, lucha para ganar mejoras para tu personaje.</p></div>
+                            <div class="precio-big-card"><h3>Agregado</h3></div>
+                        </div>
+                        <div class="back-btn"></div>
+                      </div>          
+                    </div>
+                  </li>
+                  <li class="juego-recomendado">
+                    <div class="contenedor-card-big">        
+                      <div class="card-big">
+                        <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                          <div class="img-juego-big" id="candycrush2.jpg"><img src="./img/img-games/img-cards-big/candycrush2.jpg" alt="Candy Crush Saga."></div>
+                          <div class="datos-juego-big">
+                              <div class="titulo-big-card"><h2>Candy Crush Saga</h2></div>                
+                              <div class="contenido-big-card"><p>Nueva version del clasico juego de hacer desaparecer dulces. Suma puntos y sube de nivel.</p></div>
+                              <div class="precio-big-card"><h3>Gratis</h3></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>          
+                    </div>
+                  </li>                  
+                  <li class="juego-recomendado">
+                    <div class="contenedor-card-big">        
+                      <div class="card-big">
+                          <div></div>
+                          <div class="img-juego-big" id="IslandLife 2.png"><img src="./img//img-games/img-cards-big/Island-Life-Gameplay-cover.webp" alt="Island life 2."></div>
+                          <div class="datos-juego-big">
+                              <div class="titulo-big-card"><h2>Island life 2</h2></div>                
+                              <div class="contenido-big-card"><p>Prueba la vida en la isla, te gustara. Varios modos de juego online.</p></div>
+                              <div class="precio-big-card"><h3>$ 550</h3></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>          
+                    </div>
+                  </li>
+                  <li class="juego-recomendado">
+                    <div class="contenedor-card-big">        
+                      <div class="card-big">
+                          <div></div>
+                          <div class="img-juego-big" id="PlantsVsZombies.png"><img src="./img/img-games/img-cards-big/plants-vs-zombies-2-9220.jpg" alt="Plantas vs zombies 2."></div>
+                          <div class="datos-juego-big">
+                              <div class="titulo-big-card"><h2>Plantas vs Zombies 2</h2></div>                
+                              <div class="contenido-big-card"><p>La lucha en el jardin esta cada vez mas reñida. Los Zombies son mas de los que esperabas.</p></div>
+                              <div class="precio-big-card"><h3>$ 2400</h3></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>          
+                    </div>
+                  </li>
+                </ul>
+              </div>           
+              <button role="button" class="flecha-der flecha-carrusel">❯</i></button>
+            </div>
+          </div>
+        </section>
+        <section class="carruseles-categorias-jugado contenedor-categoria" id="jugado">
+          <div class="carrusel-categorias ">
+            <div class="contenedor-titulo-controles">
+              <h3>Ultimos jugados</h3>
+              <div class="indicadores-jugado"></div>
+            </div>
+            <div class="contenedor-principal" id="jugado">
+              <button role="button" class="flecha-izq flecha-carrusel">❮</button>
+              <div class="contenedor-carrusel-jugado">
+                <ul class="carrusel">
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="TitanfallII.png"><img src="./img/img-games/img-cards-small/TitanfallII.png" alt="Titanfall 2"></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Titanfall II</h3></div>
+                              <div class="contenido-small-card"><p>Pelea de robots gigantes...</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>                             
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="Bloodborne.png"><img src="./img/img-games/img-cards-small/Bloodborne.png" alt="Bloodborne."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Bloodborne</h3></div>
+                              <div class="contenido-small-card"><p>Acaba con todos los vampiros.</p></div>
+                              <div class="precio-small-card"><h2>Gratis</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                         <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="PUBG.png"><img src="./img/img-games/img-cards-small/PUBG.png" alt="PUBG."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>PUBG</h3></div>
+                              <div class="contenido-small-card"><p>Utiliza tus armas, se el mejor.</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="DanMan.png"><img src="./img/img-games/img-cards-small/DanMan.png" alt="Dan Man."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Dan Man</h3></div>
+                              <div class="contenido-small-card"><p>Salta y da patadas por doquier.</p></div>
+                              <div class="precio-small-card"><h2>Gratis</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="SankePass.png"><img src="./img/img-games/img-cards-small/SankePass.png" alt="Snake pass."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Snake pass</h3></div>
+                              <div class="contenido-small-card"><p>Esquiva las serpientes y gana.</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="BadlandBrawl.png"><img src="./img/img-games/img-cards-small/BadlandBrawl.png" alt="Badland Brawl."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Badland Brawl</h3></div>
+                              <div class="contenido-small-card"><p>Pelea, pelea, pelea...</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                          <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="img-cards-small/DOOM.png"><img src="./img/img-games/img-cards-small/DOOM.png" alt="DOOM."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>DOOM</h3></div>
+                              <div class="contenido-small-card"><p>Elimina a los aliens.</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-jugado">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                          <div class="img-juego-small" id="RodeoStampede.png"><img src="./img/img-games/img-cards-small/RodeoStampede.png" alt="Rodeo Stampede."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Rodeo Stampede</h3></div>
+                              <div class="contenido-small-card"><p>La puerta del corral esta abierta, corre...</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+              </div>           
+              <button role="button" class="flecha-der flecha-carrusel">❯</i></button>
+            </div>
+          </div>
+        </section>
+        <section class="carruseles-categorias-accion contenedor-categoria" id="accion">
+            <div class="carrusel-categorias ">
+              <div class="contenedor-titulo-controles">
+                <h3>Accion</h3>
+                <div class="indicadores-accion"></div>
+              </div>
+              <div class="contenedor-principal" id="accion">
+                <button role="button" class="flecha-izq flecha-carrusel">❮</button>
+                <div class="contenedor-carrusel-accion">
+                  <ul class="carrusel">
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="DanMan.png"><img src="./img/img-games/img-cards-small/DanMan.png" alt="Dan Man."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Dan Man</h3></div>
+                                <div class="contenido-small-card"><p>Salta y da patadas por doquier.</p></div>
+                                <div class="precio-small-card"><h2>Gratis</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div></div>
+                            <div class="img-juego-small" id="Batalla Star Wars.png"><img src="./img/img-games/img-cards-small/Batalla Star Wars.png" alt="Batalla Star Wars."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Batalla Star Wars</h3></div>
+                                <div class="contenido-small-card"><p>Coloniza un mundo y defiendela del Imperio.</p></div>
+                                <div class="precio-small-card"><h2>$ 850</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="Bloodborne.png"><img src="./img/img-games/img-cards-small/Bloodborne.png" alt="Bloodborne."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Bloodborne</h3></div>
+                                <div class="contenido-small-card"><p>Acaba con todos los vampiros.</p></div>
+                                <div class="precio-small-card"><h2>Gratis</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="MoveOrDie.png"><img src="./img/img-games/img-cards-small/MoveOrDie.png" alt="Move or die."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Move or Die</h3></div>
+                                <div class="contenido-small-card"><p>Muevete rapido, o muere...</p></div>
+                                <div class="precio-small-card"><h2>Gratis</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="TitanfallII.png"><img src="./img/img-games/img-cards-small/TitanfallII.png" alt="Titanfall 2"></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Titanfall II</h3></div>
+                                <div class="contenido-small-card"><p>Pelea de robots gigantes...</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                          <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="RodeoStampede.png"><img src="./img/img-games/img-cards-small/RodeoStampede.png" alt="Rodeo Stampede."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Rodeo Stampede</h3></div>
+                                <div class="contenido-small-card"><p>La puerta del corral esta abierta, corre...</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="BadlandBrawl.png"><img src="./img/img-games/img-cards-small/BadlandBrawl.png" alt="Badland Brawl."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Badland Brawl</h3></div>
+                                <div class="contenido-small-card"><p>Pelea, pelea, pelea...</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="DOOM.png"><img src="./img/img-games/img-cards-small/DOOM.png" alt="DOOM."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>DOOM</h3></div>
+                                <div class="contenido-small-card"><p>Elimina a los aliens.</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                          <div></div>
+                            <div class="img-juego-small" id="BestFriends.png"><img src="./img/img-games/img-cards-small/BestFriends.png" alt="Best friends."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Best Friends</h3></div>
+                                <div class="contenido-small-card"><p>¿Mejores amigos?</p></div>
+                                <div class="precio-small-card"><h2>$ 150</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="SankePass.png"><img src="./img/img-games/img-cards-small/SankePass.png" alt="Snake pass."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Snake pass</h3></div>
+                                <div class="contenido-small-card"><p>Esquiva las serpientes y gana.</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                          <div></div>
+                            <div class="img-juego-small" id="ItTakeTwo.png"><img src="./img/img-games/img-cards-small/ItTakeTwo.png" alt="It take two."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>It take two</h3></div>
+                                <div class="contenido-small-card"><p>Una historia de otro mundo.</p></div>
+                                <div class="precio-small-card"><h2>$ 250</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="juego-accion">
+                      <div class="contenedor-card-small">
+                        <div class="card-small">
+                            <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                            <div class="img-juego-small" id="PUBG.png"><img src="./img/img-games/img-cards-small/PUBG.png" alt="PUBG."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>PUBG</h3></div>
+                                <div class="contenido-small-card"><p>Utiliza tus armas, se el mejor.</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                        </div>
+                    </div>
+                    </li>
+                  </ul>
+                </div>           
+                <button role="button" class="flecha-der flecha-carrusel">❯</i></button>
+              </div>
+            </div>
+        </section>
+        <section class="carruseles-categorias-multijugador contenedor-categoria" id="multijugador">
+          <div class="carrusel-categorias ">
+            <div class="contenedor-titulo-controles">
+              <h3>Multijugador</h3>
+              <div class="indicadores-multijugador"></div>
+            </div>
+            <div class="contenedor-principal" id="multijugador">
+              <button role="button" class="flecha-izq flecha-carrusel">❮</button>
+              <div class="contenedor-carrusel-multijugador">
+                <ul class="carrusel">
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                        <div class="img-juego-small" id="PUBG.png"><img src="./img/img-games/img-cards-small/PUBG.png" alt="PUBG."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>PUBG</h3></div>
+                              <div class="contenido-small-card"><p>Utiliza tus armas, se el mejor.</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                        <div class="img-juego-small" id="SankePass.png"><img src="./img/img-games/img-cards-small/SankePass.png" alt="Snake pass."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Snake pass</h3></div>
+                              <div class="contenido-small-card"><p>Esquiva las serpientes y gana.</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                        <div class="img-juego-small" id="DOOM.png"><img src="./img/img-games/img-cards-small/DOOM.png" alt="DOOM."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>DOOM</h3></div>
+                              <div class="contenido-small-card"><p>Elimina a los aliens.</p></div>
+                              <div class="precio-small-card"><h2>Agregado</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-agregado"><img src="./img/img-games/CintaAgregado.png" alt="" srcset=""></div>
+                        <div class="img-juego-small" id="BadlandBrawl.png"><img src="./img/img-games/img-cards-small/BadlandBrawl.png" alt="Badland Brawl."></div>
+                            <div class="datos-juego-small">
+                                <div class="titulo-small-card"><h3>Badland Brawl</h3></div>
+                                <div class="contenido-small-card"><p>Pelea, pelea, pelea...</p></div>
+                                <div class="precio-small-card"><h2>Agregado</h2></div>
+                            </div>
+                            <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                        <div class="img-juego-small" id="MoveOrDie.png"><img src="./img/img-games/img-cards-small/MoveOrDie.png" alt="Move or die."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Move or Die</h3></div>
+                              <div class="contenido-small-card"><p>Muevete rapido, o muere...</p></div>
+                              <div class="precio-small-card"><h2>Gratis</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div class="indicador-estado-gratis"><img src="./img/img-games/CintaGratis.png" alt="" srcset=""></div>
+                        <div class="img-juego-small" id="DanMan.png"><img src="./img/img-games/img-cards-small/DanMan.png" alt="Dan Man."></div>
+                        <div class="datos-juego-small">
+                            <div class="titulo-small-card"><h3>Dan Man</h3></div>
+                            <div class="contenido-small-card"><p>Salta y da patadas por doquier.</p></div>
+                            <div class="precio-small-card"><h2>Gratis</h2></div>
+                        </div>
+                        <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                        <div class="img-juego-small" id="BestFriends.png"><img src="./img/img-games/img-cards-small/BestFriends.png" alt="Best friends."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Best Friends</h3></div>
+                              <div class="contenido-small-card"><p>¿Mejores amigos?</p></div>
+                              <div class="precio-small-card"><h2>$ 150</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                        <div class="img-juego-small" id="ItTakeTwo.png"><img src="./img/img-games/img-cards-small/ItTakeTwo.png" alt="It take two."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>It take two</h3></div>
+                              <div class="contenido-small-card"><p>Una historia de otro mundo.</p></div>
+                              <div class="precio-small-card"><h2>$ 250</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="Bejeweled.png"><img src="./img/img-games/img-cards-small/Bejeweled.png" alt="Bejeweled"></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Bejeweled</h3></div>
+                              <div class="contenido-small-card"><p>Acaba con todas las piedras preciosas.</p></div>
+                              <div class="precio-small-card"><h2>$ 250</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="Batalla Star Wars.png"><img src="./img/img-games//img-cards-small/Batalla Star Wars.png" alt="Batalla Star Wars."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Batalle Star Wars</h3></div>
+                              <div class="contenido-small-card"><p>Coloniza un mundo y defiendela del Imperio</p></div>
+                              <div class="precio-small-card"><h2>$ 850</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="InvasionStarWars.png"><img src="./img/img-games/img-cards-small/InvasionStarWars.png" alt="Invasion Star Wars."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Invasion Star Wars</h3></div>
+                              <div class="contenido-small-card"><p>Salta y da patadas por doquier.</p></div>
+                              <div class="precio-small-card"><h2>$ 2300</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-multijugador">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="LegoFutbol.png"><img src="./img/img-games/img-cards-small/LegoFutbol.png" alt="LEGO Futbol."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>LEGO Fubtol</h3></div>
+                              <div class="contenido-small-card"><p>Participa del mundial LEGO de futbol.</p></div>
+                              <div class="precio-small-card"><h2>$ 800</h2></div>
+                          </div>    
+                          <div class="back-btn"></div>                      
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+              </div>           
+              <button role="button" class="flecha-der flecha-carrusel">❯</i></button>
+            </div>
+          </div>
+        </section>
+        <section class="carruseles-categorias-deportes contenedor-categoria" id="deportes">
+          <div class="carrusel-categorias">
+            <div class="contenedor-titulo-controles">
+              <h3>Deportes y carreras</h3>
+              <div class="indicadores-deportes"></div>
+            </div>
+            <div class="contenedor-principal" id="deportes">
+              <button role="button" class="flecha-izq flecha-carrusel">❮</button>
+              <div class="contenedor-carrusel-deportes">
+                <ul class="carrusel">
+                  <li class="juego-deportes">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="LegoFutbol.png"><img src="./img/img-games/img-cards-small/LegoFutbol.png" alt="LEGO Futbol."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>LEGO Fubtol</h3></div>
+                              <div class="contenido-small-card"><p>Participa del mundial LEGO de futbol.</p></div>
+                              <div class="precio-small-card"><h2>$ 800</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-deportes">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="SuperGP.png"><img src="./img/img-games/img-cards-small/SuperGP.png" alt="Super GP."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Super GP</h3></div>
+                              <div class="contenido-small-card"><p>A toda velocidad y en dos ruedas.</p></div>
+                              <div class="precio-small-card"><h2>$ 300</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-deportes">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="F12018.png"><img src="./img/img-games/img-cards-small/F12018.png" alt="Formuna 1 2018"></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>F1 2018</h3></div>
+                              <div class="contenido-small-card"><p>Los mejores pilotos, las mejores maquinas.</p></div>
+                              <div class="precio-small-card"><h2>$ 2300</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-deportes">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="MarathonMan.png"><img src="./img/img-games/img-cards-small/MarathonMan.png" alt="Marathon Man."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Marathon Man</h3></div>
+                              <div class="contenido-small-card"><p>Corre mas rapido para ser el mejor.</p></div>
+                              <div class="precio-small-card"><h2>$ 150</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>
+                  <li class="juego-deportes">
+                    <div class="contenedor-card-small">
+                      <div class="card-small">
+                        <div></div>
+                          <div class="img-juego-small" id="RocketBrawl.png"><img src="./img/img-games/img-cards-small/RocketBrawl.png" alt="Rocket brawl."></div>
+                          <div class="datos-juego-small">
+                              <div class="titulo-small-card"><h3>Rocket Brawl</h3></div>
+                              <div class="contenido-small-card"><p>Pelea con autos y cohetes.</p></div>
+                              <div class="precio-small-card"><h2>$ 350</h2></div>
+                          </div>
+                          <div class="back-btn"></div>
+                      </div>
+                  </div>
+                  </li>                  
+                </ul>
+              </div>           
+              <button role="button" class="flecha-der flecha-carrusel">❯</i></button>
+            </div>
+          </div>
+        </section>
+      </div>
+    <footer class="footer">
+        <div class="contenedor-ppal-footer">
+          <div class="cont-categorias">
+            <h3>Categorias</h3>
+            <ul>
+              <li>Accion</li>
+              <li>Aventuras & RPG</li>
+              <li>Clasicos</li>
+              <li>Deportes & Carreras</li>
+              <li>Estrategia & Defensa</li>
+              <li>Multijugador</li>
+              <li>Novedades</li>
+            </ul>
+          </div>
+          <div class="cont-micuenta">
+            <h3>Mi cuenta</h3>
+            <ul>
+              <li>Perfil</li>
+              <li>Biblioteca</li>
+              <li>Amigos</li>
+              <li>Cerrar sesion</li>
+            </ul>
+          </div>
+          <div class="cont-datos-wasd">
+            <h3>WASD Games</h3>
+            <ul>
+              <li>Politica de privacidad</li>
+              <li>Contacto</li>
+              <li>Licencias</li>
+              <li>Nuestro equipo</em></li>
+            </ul>
+          </div>
+          <div class="cont-redes">
+            <div class="logos-redes">
+              <h3>¡Seguinos!</h3>
+              <div class="icons-redes-footer">
+                <div class="icons-redes-facebook"><img src="./img/icons/🦆 icon _Facebook Square_.png" alt="Icono Facebook"></div>
+                <div class="icons-redes-instagram"><img src="./img/icons/🦆 icon _Instagram Square_.png" alt="Icono Instagram"></div>
+                <div class="icons-redes-tweeter"><img src="./img/icons/🦆 icon _Twitter Square_.png" alt="Icono Tweeter"></div>
+              </div>
+            </div>
+            <div class="input-buscar">
+              <input class="input-box-buscar" type="text" placeholder="Buscar en el sitio">
+              <img src="./img/icons/Icon-Lupa.svg" alt="Buscar" class="input-icon">
+            </div>
+          </div>
+        </div>
+    </footer>
+    <script src="./js/loader.js"></script>
+    <script src="./js/burgermenu.js"></script> 
+    <script src="./js/movimientoCarrusel.js"></script>
+    <script src="./js/modalCompra.js"></script> 
+</body>
+</html>
