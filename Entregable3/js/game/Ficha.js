@@ -32,11 +32,11 @@ class Ficha{
 	}
 
 	isSelected(){
-        return this.selected;
+        return this.#selected;
     }
 
     setSelected(selected){
-        this.selected = selected;
+        this.#selected = selected;
     }
 
 	move(x,y){
