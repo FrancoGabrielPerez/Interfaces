@@ -21,6 +21,10 @@ nav.breadcrumbs{
 	margin-top: 20px;
 }
 
+nav.breadcrumbs a{
+	color: var(--Color-GreyL3);
+}
+
 nav.breadcrumbs ul{
 	display: flex;
 	width: fit-content;
