@@ -933,7 +933,7 @@ form label{
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
-  transform: scale(1.2);
+  transform: scale(1.05);
   transform-origin: center; 
 }
 
@@ -1493,6 +1493,20 @@ justify-content: center;
     display: none;
   }
 
+  .img-logo{
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+  }
+  
+  .logo {
+    margin-left: 0px;
+    opacity: 50%;
+    margin-top: -5px;
+    width: 100%;
+    transform: rotateZ(-30deg);
+  }
+
 .carrusel-categorias{
   margin-bottom: 40px;
 }
@@ -1503,8 +1517,8 @@ justify-content: center;
 .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
 .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
 .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
-  min-width: 100%;
-  transform: scale(0.8,0.8);
+  min-width: 33.33%;
+  transform: scale(0.3,0.3);
   transition: .3s ease all;
   overflow: visible;
  }
@@ -1518,8 +1532,18 @@ justify-content: center;
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
-  transform: scale(0.9);
+  transform: scale(0.35);
   transform-origin: center; 
+}
+
+.carrusel-categorias .contenedor-carrusel-character .carrusel, 
+.carrusel-categorias .contenedor-carrusel-jugado .carrusel, 
+.carrusel-categorias .contenedor-carrusel-accion .carrusel, 
+.carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
+.carrusel-categorias .contenedor-carrusel-deportes .carrusel,
+.contenedor-small-cards-mobile {
+  height: 200px;
+  align-items: center;
 }
 
 .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
@@ -1549,9 +1573,15 @@ justify-content: center;
  .carrusel-categorias .contenedor-carrusel-accion, 
  .carrusel-categorias .contenedor-carrusel-multijugador, 
  .carrusel-categorias .contenedor-carrusel-deportes {
-   width: 84%;
+   /*width: 84%;*/
    padding: 0px 0px;
  }
+
+ 
+ /*.carrusel-categorias .contenedor-principal .flecha-izq, 
+ .carrusel-categorias .contenedor-principal .flecha-der {
+  display: none;
+ }*/
 
  .contenedor-titulo-controles {
    justify-content: center;
@@ -1570,6 +1600,19 @@ justify-content: center;
   height: 500px;
   flex-direction: column;
 }
+
+.modalContainerMensaje {
+  transform: scale(0.7);
+}
+
+.img-compra img {
+  padding-bottom: 10px;
+}
+
+.modalContainerMensaje .datos-compra {
+   flex-direction: column;
+}
+
 
 .btn-comprar-big-card, .btn-comprar-small-card {
   text-align: right;
