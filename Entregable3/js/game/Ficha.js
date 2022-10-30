@@ -7,8 +7,10 @@ class Ficha{
 	#radius;
 	#selected;
 	#ctx;
+	#jugador;
 
-	constructor(x,y,r,contexto){
+	constructor(jugador,x,y,r,contexto){
+		this.#jugador=jugador;
 		this.#centerX=x;
 		this.#centerY=y;
 		this.#radius=r;
@@ -44,4 +46,8 @@ class Ficha{
         this.posX = x;
         this.posY = y; 
     }
+
+	getJugador(){
+		return this.#jugador;
+	}
 }
