@@ -3,13 +3,15 @@
 
 class Tablero{
 	#Matriz;
-	#Tamaño;
+	#Ancho;
+	#Alto;
 
-	constructor(tamaño){
-		this.#Tamaño=tamaño;
-		this.#Matriz=new Array(tamaño);
-		for (let i=0; i<this.#Tamaño; i++){
-			this.#Matriz[i] = new Array(tamaño);
+	constructor(ancho, alto){
+		this.#Ancho=ancho;
+		this.#Alto=alto;
+		this.#Matriz=new Array(this.#Ancho);
+		for (let i=0; i<this.#Ancho; i++){
+			this.#Matriz[i] = new Array(this.#Alto);
 		}
 	}
 
@@ -22,7 +24,7 @@ class Tablero{
 	}
 }
 
-let cosa = new Tablero(15);
+let cosa = new Tablero(10, 6);
 
 cosa.agregarFicha("ficha", 3, 4);
 
