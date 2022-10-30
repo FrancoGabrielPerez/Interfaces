@@ -1,4 +1,5 @@
 "use strict"
+/** @type {CanvasRenderingContext2D} */
 
 class Ficha{
 	#centerX;
