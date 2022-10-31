@@ -9,11 +9,11 @@ class Ficha{
 	#ctx;
 	#jugador;
 
-	constructor(jugador,x,y,r,contexto){
+	constructor(jugador,x,y,contexto){
 		this.#jugador=jugador;
 		this.#centerX=x;
 		this.#centerY=y;
-		this.#radius=r;
+		this.#radius=50;
 		this.#selected=false;
 		this.#ctx=contexto;
 	}
