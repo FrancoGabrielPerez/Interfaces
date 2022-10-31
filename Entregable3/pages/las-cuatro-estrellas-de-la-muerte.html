@@ -111,59 +111,121 @@
 		<div class="game-window">
 			<section id="modalContainerMensaje" class="modalContainerMensaje ocultar">
 				<div class="modal-game">
-					<h2>Nuevo Juego</h2>
+					<!--h2>Nuevo Juego</h2-->
 					<div class="tipo-de-juego">
 							<div class="check-radios">
-								<div class="radio-check"><input type="radio" id="4enlinea" name="game-type" value="4enlinea" checked><label for="4enlinea"> 4 en linea</label></div>
+								<div><input type="radio"  class="chk-icon-game" id="g-type-4" name="game-type" value="g-type-4">
+									<label for="g-type-4" >
+										<div class="img-icon-game"><img src="../img/img-games/img-imperio/4EnLinea-Icono.png"  alt="Cuatro en linea" width="100" height="100"></div>
+									</label>
+								</div>
+								<div><input type="radio"  class="chk-icon-game" id="g-type-5" name="game-type" value="g-type-5">
+									<label for="g-type-5" >
+										<div class="img-icon-game"><img src="../img/img-games/img-imperio/5EnLinea-Icono.png"  alt="Cinco en linea" width="100" height="100"></div>
+									</label>
+								</div>
+								<div><input type="radio"  class="chk-icon-game" id="g-type-6" name="game-type" value="g-type-6">
+									<label for="g-type-6" >
+										<div class="img-icon-game"><img src="../img/img-games/img-imperio/6EnLinea-Icono.png"  alt="Seis en linea" width="100" height="100"></div>
+									</label>
+								</div>
+								<div><input type="radio"  class="chk-icon-game" id="g-type-7" name="game-type" value="g-type-7">
+									<label for="g-type-7" >
+										<div class="img-icon-game"><img src="../img/img-games/img-imperio/7EnLinea-Icono.png"  alt="Siete en linea" width="100" height="100"></div>
+									</label>
+								</div>
+								<!--div class="radio-check"><input type="radio" id="4enlinea" name="game-type" value="4enlinea" checked><label for="4enlinea"> 4 en linea</label></div>
 								<div class="radio-check"><input type="radio" id="5enlinea" name="game-type" value="5enlinea" checked><label for="5enlinea"> 5 en linea</label></div>
 								<div class="radio-check"><input type="radio" id="6enlinea" name="game-type" value="6enlinea" checked><label for="6enlinea"> 6 en linea</label></div>
-								<div class="radio-check"><input type="radio" id="7enlinea" name="game-type" value="7enlinea" checked><label for="7enlinea"> 7 en linea</label></div>
+								<div class="radio-check"><input type="radio" id="7enlinea" name="game-type" value="7enlinea" checked><label for="7enlinea"> 7 en linea</label></div-->
 							</div>
 					</div>
 					<div class="form">
 						<form action="nuevoJuego" method="POST">
 							<div class="datos-nuevo-juego">								
 								<div class="inputs-form-jugador-uno">
+									<div class="img-jugador-1"><img src="../img/img-games/img-imperio/Resistencia.png" alt="Republic rebels" width="100" height="100"></div>
 									<div class="form-datos-jugador-uno">										
-										<div class="mb-2">
+										<div class="mb-3">
 											<label for="name">Nombre Jugador 1</label>
 											<input type=text id="name-jug-1" required>
 										</div>
-										<div class="mb-2">  
-											<select class="form-select mb-2">
-												<option value="1">VISA</option>                          
-												<option value="2">Mastercard</option>
-												<option value="3">CABAL</option>
-												<option value="4">Naranja</option>
-												<option value="5">VISA Debito</option>
-												<option value="6">Maestro</option>
-											</select>
+										<div class="mb-3">  
+											<label>Elige tu escudo</label> 
+										</div>
+										<div class="iconos-fichas-1">
+											<div><input type="radio"  class="chk-icon-game-1" id="f-res-1" name="game-type-1" value="f-res-1">
+												<label for="f-res-1" >
+													<div class="img-icon-game-1"><img src="../img/img-games/img-imperio/FichaResistencia-1.png"  alt="Ficha resistencia 1" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-1" id="f-res-2" name="game-type-1" value="f-res-2" >
+												<label for="f-res-2">
+													<div class="img-icon-game-1"><img src="../img/img-games/img-imperio/FichaResistencia-2.png" alt="Ficha resistencia 2" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-1" id="f-res-3" name="game-type-1" value="f-res-3" >
+												<label for="f-res-3">
+													<div class="img-icon-game-1"><img src="../img/img-games/img-imperio/FichaResistencia-3.png" alt="Ficha resistencia 3" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-1" id="f-res-4" name="game-type-1" value="f-res-4" >
+												<label for="f-res-4">
+													<div class="img-icon-game-1"><img src="../img/img-games/img-imperio/FichaResistencia-4.png" alt="Ficha resistencia 4" width="50" height="50"></div>
+												</label>
+											</div>
+											<div><input type="radio" class="chk-icon-game-1" id="f-res-5" name="game-type-1" value="f-res-5" >
+												<label for="f-res-5">
+													<div class="img-icon-game-1"><img src="../img/img-games/img-imperio/FichaResistencia-5.png" alt="Ficha resistencia 5" width="50" height="50"></div>
+												</label>
+											</div>
 										</div>
 									</div>	
 								</div>
-								<div class="inputs-form-jugador-dos">
-									<div class="form-datos-jugador-dos">
-										<div class="mb-2">  											
-											<div class="mb-2">  
-												<label for="codSeg">Nombre Jugador 2</label>     
-												<input type=text id="name-jug-2" required>
-											</div>
-											<select class="form-select mb-2">
-												<option value="1">VISA</option>                          
-												<option value="2">Mastercard</option>
-												<option value="3">CABAL</option>
-												<option value="4">Naranja</option>
-												<option value="5">VISA Debito</option>
-												<option value="6">Maestro</option>
-											</select>
+								<div class="inputs-form-jugador-dos">																			
+									<div class="img-jugador-2"><img src="../img/img-games/img-imperio/StormTrooper.png" alt="Storm troopers" width="100" height="100"></div>
+									<div class="form-datos-jugador-dos">	
+										<div class="mb-3">  
+											<label>Nombre Jugador 2</label>     
+											<input type=text id="name-jug-2" required>
 										</div>
-										
+										<div class="mb-3">  
+											<label>Elige tu escudo</label> 
+										</div>
+										<div class="iconos-fichas-2">
+											<div ><input type="radio"  class="chk-icon-game-2" id="f-imp-1" name="game-type-2" value="f-imp-1">
+												<label for="f-imp-1" >
+													<div class="img-icon-game-2"><img src="../img/img-games/img-imperio/FichaImperio-1.png"  alt="Ficha imperio 1" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-2" id="f-imp-2" name="game-type-2" value="f-imp-2" >
+												<label for="f-imp-2">
+													<div class="img-icon-game-2"><img src="../img/img-games/img-imperio/FichaImperio-2.png" alt="Ficha imperio 2" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-2" id="f-imp-3" name="game-type-2" value="f-imp-3" >
+												<label for="f-imp-3">
+													<div class="img-icon-game-2"><img src="../img/img-games/img-imperio/FichaImperio-3.png" alt="Ficha imperio3" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-2" id="f-imp-4" name="game-type-2" value="f-imp-4" >
+												<label for="f-imp-4">
+													<div class="img-icon-game-2"><img src="../img/img-games/img-imperio/FichaImperio-4.png" alt="Ficha imperio4" width="50" height="50"></div>
+												</label>
+											</div>
+											<div ><input type="radio" class="chk-icon-game-2" id="f-imp-5" name="game-type-2" value="f-imp-5" >
+												<label for="f-imp-5">
+													<div class="img-icon-game-2"><img src="../img/img-games/img-imperio/FichaImperio-5.png" alt="Ficha imperio 5" width="50" height="50"></div>
+												</label>
+											</div>
+										</div>
 									</div>
-								</div> 
-							</div>    
+								</div>
+							</div> 
+							 
 							<div class="btn-detalle">
-								<button><a class="btn-juego btn-cancelar" href="javascript:cerrarModalCompra()">Cancelar</a></button>
-								<button><a class="btn-juego btn-jugar" href="javascript:cerrarModalCompra()">Jugar</a></button>
+								<a class="btn-juego btn-cancelar" href="javascript:cerrarModalCompra()">Cancelar</a>
+								<a class="btn-juego btn-jugar" href="javascript:cerrarModalCompra()">Jugar</a>
 							</div>						                                 
 						</form>
 					</div>
