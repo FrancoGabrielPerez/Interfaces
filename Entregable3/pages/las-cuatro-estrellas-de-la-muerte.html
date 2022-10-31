@@ -109,35 +109,35 @@
 			</ul>
 		</nav>
 		<div class="game-window">
-			<section id="modalContainerMensaje" class="modalContainerMensaje ocultar">
+			<section id="modalContainerMensaje ModalContainerConfigGame" class="modalContainerMensaje ModalContainerConfigGame ocultar">
 				<div class="modal-game">
 					<!--h2>Nuevo Juego</h2-->
-					<div class="tipo-de-juego">
-							<div class="check-radios">
-								<div><input type="radio"  class="chk-icon-game" id="g-type-4" name="game-type" value="g-type-4">
-									<label for="g-type-4" >
-										<div class="img-icon-game"><img src="../img/img-games/img-imperio/4EnLinea-Icono.png"  alt="Cuatro en linea" width="100" height="100"></div>
-									</label>
-								</div>
-								<div><input type="radio"  class="chk-icon-game" id="g-type-5" name="game-type" value="g-type-5">
-									<label for="g-type-5" >
-										<div class="img-icon-game"><img src="../img/img-games/img-imperio/5EnLinea-Icono.png"  alt="Cinco en linea" width="100" height="100"></div>
-									</label>
-								</div>
-								<div><input type="radio"  class="chk-icon-game" id="g-type-6" name="game-type" value="g-type-6">
-									<label for="g-type-6" >
-										<div class="img-icon-game"><img src="../img/img-games/img-imperio/6EnLinea-Icono.png"  alt="Seis en linea" width="100" height="100"></div>
-									</label>
-								</div>
-								<div><input type="radio"  class="chk-icon-game" id="g-type-7" name="game-type" value="g-type-7">
-									<label for="g-type-7" >
-										<div class="img-icon-game"><img src="../img/img-games/img-imperio/7EnLinea-Icono.png"  alt="Siete en linea" width="100" height="100"></div>
-									</label>
-								</div>								
-							</div>
-					</div>
 					<div class="form">
 						<form action="nuevoJuego" method="POST">
+							<div class="tipo-de-juego">
+									<div class="check-radios">
+										<div><input type="radio"  class="chk-icon-game" id="g-type-4" name="game-type" value="g-type-4">
+											<label for="g-type-4" >
+												<div class="img-icon-game"><img src="../img/img-games/img-imperio/4EnLinea-Icono.png"  alt="Cuatro en linea" width="100" height="100"></div>
+											</label>
+										</div>
+										<div><input type="radio"  class="chk-icon-game" id="g-type-5" name="game-type" value="g-type-5">
+											<label for="g-type-5" >
+												<div class="img-icon-game"><img src="../img/img-games/img-imperio/5EnLinea-Icono.png"  alt="Cinco en linea" width="100" height="100"></div>
+											</label>
+										</div>
+										<div><input type="radio"  class="chk-icon-game" id="g-type-6" name="game-type" value="g-type-6">
+											<label for="g-type-6" >
+												<div class="img-icon-game"><img src="../img/img-games/img-imperio/6EnLinea-Icono.png"  alt="Seis en linea" width="100" height="100"></div>
+											</label>
+										</div>
+										<div><input type="radio"  class="chk-icon-game" id="g-type-7" name="game-type" value="g-type-7">
+											<label for="g-type-7" >
+												<div class="img-icon-game"><img src="../img/img-games/img-imperio/7EnLinea-Icono.png"  alt="Siete en linea" width="100" height="100"></div>
+											</label>
+										</div>								
+									</div>
+							</div>					
 							<div class="datos-nuevo-juego">								
 								<div class="inputs-form-jugador-uno">
 									<div class="img-jugador-1"><img src="../img/img-games/img-imperio/Resistencia.png" alt="Republic rebels" width="100" height="100"></div>
@@ -217,11 +217,10 @@
 										</div>
 									</div>
 								</div>
-							</div> 
-							 
+							</div> 							 
 							<div class="btn-detalle">
-								<a class="btn-juego btn-cancelar" href="javascript:cerrarModalCompra()">Cancelar</a>
-								<a class="btn-juego btn-jugar" href="javascript:cerrarModalCompra()">Jugar</a>
+								<a class="btn-juego btn-cancelar" href="javascript:cerrarModalGame()">Cancelar</a>
+								<a class="btn-juego btn-jugar" href="javascript:cerrarModalGame()">Jugar</a>
 							</div>						                                 
 						</form>
 					</div>
@@ -410,7 +409,7 @@
 	<!-- <script src="../js/loader.js"></script> -->
     <script src="../js/burgermenu.js"></script> 
     <script src="../js/movimientoCarrusel.js"></script>
-    <script src="../js/modalCompra.js"></script> 
+    <script src="../js/modalGame.js"></script> 
     <script src="../js/game/Ficha.js"></script>
     <script src="../js/game/Tablero.js"></script>
     <script src="../js/game/main.js"></script>

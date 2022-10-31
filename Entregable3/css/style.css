@@ -86,6 +86,13 @@ p.bold{
   font-weight: 700;
 }
 
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  /*margin: 8px 0;*/
+  box-sizing: border-box;
+}
+
 body, input, textarea, button{
   font-family: var(--Font-Type, sans-serif);/* esto esta asi porque sino el boton no heredaba el font */
 }
@@ -1029,6 +1036,7 @@ form label{
 
 .card-big{
     display: flex;
+    height: 100%;
 }
 
 .juego-jugado .contenedor-card-small .datos-juego-small h2,
@@ -1159,7 +1167,7 @@ form label{
 .contenedor-card-big .card-big .img-juego-big,
 .contenedor-card-big .card-big .img-juego-big img {
     border-radius: 20px 0px 0px 20px;
-    height: 452px;
+    height: 100%;
     width: 566px;
     position: initial;
     object-fit:cover;
