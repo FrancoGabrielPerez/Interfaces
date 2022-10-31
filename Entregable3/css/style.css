@@ -614,7 +614,7 @@ div.categoria h3, div.categoria a{
   text-align: center;
 }
 
-.modalMsge {
+.modalMsge, .modal-game{
   background-color: var(--Color-Secondary);
   width: 800px;
   max-width: 90%;
@@ -626,11 +626,11 @@ div.categoria h3, div.categoria a{
   margin-top:40px;
 }
 
-.modalMsge h2{
+.modalMsge h2, .modal-game h2{
   margin-bottom: 20px;
 }
 
-.modal h1 {
+.modal h1, .modal-game h1 {
   margin: 0;
 }
 
@@ -665,7 +665,8 @@ form label{
   padding: 5px;
 }
 
-.modalContainerMensaje .datos-compra{
+.modalContainerMensaje .datos-compra, 
+.modalContainerMensaje .datos-nuevo-juego{
   display: flex;
   flex-direction: row;
 }
@@ -676,7 +677,9 @@ form label{
   display: contents;
 }
 
-.modalContainerMensaje .form-datos-compra{
+.modalContainerMensaje .form-datos-compra, 
+.modalContainerMensaje .form-datos-jugarod-uno,
+.modalContainerMensaje .form-datos-jugarod-dos{
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -697,13 +700,15 @@ form label{
 }
 
 
-.inputs-form-compra{
+.inputs-form-compra, .inputs-form-jugador-uno, .inputs-form-jugador-dos{
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.modalContainerMensaje .form .btn-detalle .btn-compra{
+.modalContainerMensaje .form .btn-detalle .btn-compra,
+.modalContainerMensaje .form .btn-detalle .btn-jugar,
+.modalContainerMensaje .form .btn-detalle .btn-cancelar{
   background-color: var(--Color-AccentS1);
   border: none;
   color: var(--Color-GreyF3);
@@ -715,12 +720,34 @@ form label{
   font-size: 20px;
 } 
 
+.modalContainerMensaje .form .btn-detalle .btn-cancelar,
 .modalContainerMensaje .form .btn-detalle .btn-cancelar{
   background-color: var(--Color-Secondary);
   margin-right: 20px;
 }
+/*-----------------------MODAL GAME-----------------------------------------*/
+.modal-game .datos-nuevo-juego{
+  display: flex;
+}
 
+.modal-game .tipo-de-juego label{
+  color: var(--Color-GreyL3);
+}
 
+.modal-game .tipo-de-juego, .modal-game .check-radios,
+.modal-game .titulo-juego{
+    padding-bottom: 20px;
+}
+
+.modal-game .check-radios{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-game .radio-check{
+  margin-right: 30px;
+}
 /*-----------------------PREVIEW NOVEDADES-----------------------------------*/
 .contenedor-novedades{
   display: flex;

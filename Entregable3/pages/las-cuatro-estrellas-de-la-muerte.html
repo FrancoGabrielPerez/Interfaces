@@ -108,7 +108,67 @@
 			</ul>
 		</nav>
 		<div class="game-window">
-			<canvas id="canvas" width="1100" height="400" ></canvas>
+			<section id="modalContainerMensaje" class="modalContainerMensaje ocultar">
+				<div class="modal-game">
+					<h2>Nuevo Juego</h2>
+					<div class="tipo-de-juego">
+							<div class="check-radios">
+								<div class="radio-check"><input type="radio" id="4enlinea" name="game-type" value="4enlinea" checked><label for="4enlinea"> 4 en linea</label></div>
+								<div class="radio-check"><input type="radio" id="5enlinea" name="game-type" value="5enlinea" checked><label for="5enlinea"> 5 en linea</label></div>
+								<div class="radio-check"><input type="radio" id="6enlinea" name="game-type" value="6enlinea" checked><label for="6enlinea"> 6 en linea</label></div>
+								<div class="radio-check"><input type="radio" id="7enlinea" name="game-type" value="7enlinea" checked><label for="7enlinea"> 7 en linea</label></div>
+							</div>
+					</div>
+					<div class="form">
+						<form action="nuevoJuego" method="POST">
+							<div class="datos-nuevo-juego">								
+								<div class="inputs-form-jugador-uno">
+									<div class="form-datos-jugador-uno">										
+										<div class="mb-2">
+											<label for="name">Nombre Jugador 1</label>
+											<input type=text id="name-jug-1" required>
+										</div>
+										<div class="mb-2">  
+											<select class="form-select mb-2">
+												<option value="1">VISA</option>                          
+												<option value="2">Mastercard</option>
+												<option value="3">CABAL</option>
+												<option value="4">Naranja</option>
+												<option value="5">VISA Debito</option>
+												<option value="6">Maestro</option>
+											</select>
+										</div>
+									</div>	
+								</div>
+								<div class="inputs-form-jugador-dos">
+									<div class="form-datos-jugador-dos">
+										<div class="mb-2">  											
+											<div class="mb-2">  
+												<label for="codSeg">Nombre Jugador 2</label>     
+												<input type=text id="name-jug-2" required>
+											</div>
+											<select class="form-select mb-2">
+												<option value="1">VISA</option>                          
+												<option value="2">Mastercard</option>
+												<option value="3">CABAL</option>
+												<option value="4">Naranja</option>
+												<option value="5">VISA Debito</option>
+												<option value="6">Maestro</option>
+											</select>
+										</div>
+										
+									</div>
+								</div> 
+							</div>    
+							<div class="btn-detalle">
+								<button><a class="btn-juego btn-cancelar" href="javascript:cerrarModalCompra()">Cancelar</a></button>
+								<button><a class="btn-juego btn-jugar" href="javascript:cerrarModalCompra()">Jugar</a></button>
+							</div>						                                 
+						</form>
+					</div>
+				</div>
+			</section>
+			<canvas id="canvas" width="1100" height="400" ><a href="link.html">BOTON </a></canvas>
 			<ul>
 				<li><img src="../img/icons/Img-Logo.svg" alt="WASD Games"></li>
 				<li><h3>El Imperio y las cuatro estrellas de la muerte</h3></li>
@@ -293,5 +353,9 @@
     <script src="../js/movimientoCarrusel.js"></script>
     <script src="../js/modalCompra.js"></script> 
     <script src="../js/game/Tablero.js"></script> 
+
+	<script src="../js/game/playButton.js"></script>
+	<script src="../js/game/drawPlayButton.js"></script>
+	
 </body>
 </html>

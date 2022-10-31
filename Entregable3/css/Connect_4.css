@@ -39,7 +39,7 @@ nav.breadcrumbs ul li{
 .game-window{
 	border: solid var(--Color-GreyL3);
 	width: fit-content;
-	border-radius: 25px;
+	border-radius: 0px 0px 25px 25px;
 }
 
 .game-window ul{
