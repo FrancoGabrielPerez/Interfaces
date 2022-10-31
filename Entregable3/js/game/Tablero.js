@@ -113,10 +113,10 @@ class Tablero{
 	printConsole(){
 		let first = "   ";
 		for (let i=0; i<this.#NCols; i++)
-			first += " " + (i+1) + " ";
+			first += " " + (i) + " ";
 		console.log(first);
 		for (let j=0, row=""; j<this.#NRows; j++, row=""){
-			row = j+1 + "| "
+			row = j + "| "
 			for (let i=0; i<this.#NCols; i++){
 				if (this.#Matrix[i][j] == undefined)
 					row += "00 ";

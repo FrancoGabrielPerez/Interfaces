@@ -24,7 +24,7 @@ let ficha20 = new Ficha("J2",0,0,null);
 
 tablero.printConsole();
 
-tablero.agregarFicha(ficha1, 0);
+/* tablero.agregarFicha(ficha1, 0);
 tablero.printConsole();
 tablero.agregarFicha(ficha11, 1);
 tablero.printConsole();
@@ -59,10 +59,11 @@ tablero.printConsole();
 tablero.agregarFicha(ficha8, 1);
 tablero.printConsole();
 tablero.agregarFicha(ficha19, 1);
-tablero.printConsole();
+tablero.printConsole(); */
 
-//console.log(tablero.getMatriz());
-console.log("---------------------------");
-console.log("Ganador");
-console.log("jugador: " + tablero.getGanador());
-tablero.printConsole();
+function mostrarGanador(){
+	console.log("---------------------------");
+	console.log("Ganador");
+	console.log("jugador: " + tablero.getGanador());
+	tablero.printConsole();
+}
