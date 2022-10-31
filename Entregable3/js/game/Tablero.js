@@ -1,30 +1,30 @@
 "use strict"
-///** @type {CanvasRenderingContext2D} */
+/** @type {CanvasRenderingContext2D} */
 
 class Tablero{
-	#Matriz;
-	#Ancho;
-	#Alto;
+	#Matrix;
+	#NCols;
+	#NRows;
 	#EnLinea;
 	#Ganador;
 
 	constructor(ancho, alto){
 		this.#EnLinea = 4;
 		this.#Ganador = false;
-		this.#Ancho = ancho;
-		this.#Alto = alto;
-		this.#Matriz = new Array(this.#Ancho);
-		for (let i = 0; i < this.#Ancho; i++){
-			this.#Matriz[i] = new Array(this.#Alto);
+		this.#NCols = ancho;
+		this.#NRows = alto;
+		this.#Matrix = new Array(this.#NCols);
+		for (let i = 0; i < this.#NCols; i++){
+			this.#Matrix[i] = new Array(this.#NRows);
 		}
 	}
 
 	agregarFicha(ficha, X){
 		let agregada = false;
-		if (X < this.#Matriz.length)
-			for (let i = this.#Matriz[X].length-1; i>=0 && !agregada; i--) {
-				if (this.#Matriz[X][i] == undefined ) {
-					this.#Matriz[X][i] = ficha;
+		if (X < this.#Matrix.length)
+			for (let i = this.#Matrix[X].length-1; i>=0 && !agregada; i--) {
+				if (this.#Matrix[X][i] == undefined ) {
+					this.#Matrix[X][i] = ficha;
 					agregada = true;
 					if (this.checkGanador(ficha.getJugador(), X, i))
 						this.#Ganador = ficha.getJugador();
@@ -34,19 +34,23 @@ class Tablero{
 	}
 
 	getAt(X,Y){
-		return this.#Matriz[X][Y];
+		return this.#Matrix[X][Y];
 	}
 
 	checkGanador(jugador, X,Y){
+		return (this.#checkColumn(jugador, X, Y) || this.#checkRow(jugador, X, Y) || this.#checkDiagonal1(jugador, X, Y) || this.#checkDiagonal2(jugador, X, Y));
+	}
+
+	#checkColumn(jugador, X, Y){
 		let cant = 1;
 		for (let j=Y-1, corte=false; j>=0 && j>(Y-this.#EnLinea) && !corte; j--){
-			if ((this.#Matriz[X][j]!=undefined) && (this.#Matriz[X][j].getJugador() == jugador))
+			if ((this.#Matrix[X][j]!=undefined) && (this.#Matrix[X][j].getJugador() == jugador))
 				cant++;
 			else
 			corte=true;
 		}
-		for (let j=Y+1, corte=false; j<this.#Matriz[X].length && j<(Y+this.#EnLinea) && !corte; j++){
-			if ((this.#Matriz[X][j]!=undefined) && (this.#Matriz[X][j].getJugador() == jugador))
+		for (let j=Y+1, corte=false; j<this.#Matrix[X].length && j<(Y+this.#EnLinea) && !corte; j++){
+			if ((this.#Matrix[X][j]!=undefined) && (this.#Matrix[X][j].getJugador() == jugador))
 				cant++;
 			else
 				corte=true;
@@ -54,69 +58,81 @@ class Tablero{
 		return (cant >= 4);
 	}
 
+	#checkRow(jugador, X, Y){
+		let cant = 1;
+		for (let i=X-1, corte=false; i>=0 && i>(X-this.#EnLinea) && !corte; i--){
+			if ((this.#Matrix[i][Y]!=undefined) && (this.#Matrix[i][Y].getJugador() == jugador))
+				cant++;
+			else
+			corte=true;
+		}
+		for (let i=X+1, corte=false; i<this.#Matrix.length && i<(X+this.#EnLinea) && !corte; i++){
+			if ((this.#Matrix[i][Y]!=undefined) && (this.#Matrix[i][Y].getJugador() == jugador))
+				cant++;
+			else
+				corte=true;
+		}
+		return (cant >= 4);
+	}
+
+	#checkDiagonal1(jugador, X, Y){
+		let cant = 1;
+		for (let i=X-1, j=Y-1, corte=false; i>=0 && i>(X-this.#EnLinea) && j>=0 && j>(Y-this.#EnLinea) && !corte; i--, j--){
+			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
+				cant++;
+			else
+			corte=true;
+		}
+		for (let i=X+1, j=Y+1, corte=false; i<this.#Matrix.length && i<(X+this.#EnLinea) && j<this.#Matrix[i].length && j<(Y+this.#EnLinea) && !corte; i++, j++){
+			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
+				cant++;
+			else
+				corte=true;
+		}
+		return (cant >= 4);
+	}
+
+	#checkDiagonal2(jugador, X, Y){
+		let cant = 1;
+		for (let i=X+1, j=Y-1, corte=false; i<this.#Matrix.length && i<(X+this.#EnLinea) && j>=0 && j>(Y-this.#EnLinea) && !corte; i++, j--){
+			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
+				cant++;
+			else
+			corte=true;
+		}
+		for (let i=X-1, j=Y+1, corte=false; i>=0 && i>(X-this.#EnLinea) && j<this.#Matrix[i].length && j<(Y+this.#EnLinea) && !corte; i--, j++){
+			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
+				cant++;
+			else
+				corte=true;
+		}
+		return (cant >= 4);
+	}
+
+	//for testing
 	printConsole(){
 		let first = "   ";
-		for (let i=0; i<this.#Matriz.length; i++)
+		for (let i=0; i<this.#NCols; i++)
 			first += " " + (i+1) + " ";
 		console.log(first);
-		for (let j=0, row=""; j<this.#Matriz[0].length; j++, row=""){
+		for (let j=0, row=""; j<this.#NRows; j++, row=""){
 			row = j+1 + "| "
-			for (let i=0; i<this.#Matriz.length; i++){
-				if (this.#Matriz[i][j] == undefined)
+			for (let i=0; i<this.#NCols; i++){
+				if (this.#Matrix[i][j] == undefined)
 					row += "00 ";
 				else
-					row += this.#Matriz[i][j].getJugador() + " ";
+					row += this.#Matrix[i][j].getJugador() + " ";
 			}
 			console.log(row);
 		}
 	}
 
+	//for testing
 	getMatriz(){
-		return this.#Matriz;
+		return this.#Matrix;
 	}
 
 	getGanador(){
 		return this.#Ganador;
 	}
 }
-
-let tablero = new Tablero(7, 6);
-let ficha1 = new Ficha("J1",0,0,null);
-let ficha2 = new Ficha("J1",0,0,null);
-let ficha3 = new Ficha("J1",0,0,null);
-let ficha4 = new Ficha("J1",0,0,null);
-let ficha5 = new Ficha("J1",0,0,null);
-let ficha6 = new Ficha("J2",0,0,null);
-let ficha7 = new Ficha("J2",0,0,null);
-let ficha8 = new Ficha("J2",0,0,null);
-let ficha9 = new Ficha("J2",0,0,null);
-let ficha10 = new Ficha("J2",0,0,null);
-let ficha11 = new Ficha("J2",0,0,null);
-
-tablero.agregarFicha(ficha8, 0);
-tablero.printConsole();
-tablero.agregarFicha(ficha9, 0);
-tablero.printConsole();
-tablero.agregarFicha(ficha10, 0);
-tablero.printConsole();
-tablero.agregarFicha(ficha11, 0);
-tablero.printConsole();
-tablero.agregarFicha(ficha1, 0);
-tablero.printConsole();
-tablero.agregarFicha(ficha2, 1);
-tablero.printConsole();
-tablero.agregarFicha(ficha3, 2);
-tablero.printConsole();
-tablero.agregarFicha(ficha4, 3);
-tablero.printConsole();
-tablero.agregarFicha(ficha5, 4);
-tablero.printConsole();
-tablero.agregarFicha(ficha6, 5);
-tablero.printConsole();
-tablero.agregarFicha(ficha7, 6);
-tablero.printConsole();
-
-//console.log(tablero.getMatriz());
-
-tablero.printConsole();
-console.log(tablero.getGanador());
