@@ -5,14 +5,14 @@ class Tablero{
 	#Matrix;
 	#NCols;
 	#NRows;
-	#EnLinea;
+	#NConnect;
 	#Ganador;
 
-	constructor(ancho, alto){
-		this.#EnLinea = 4;
+	constructor(Ncols, NRows, NConnect){
 		this.#Ganador = false;
-		this.#NCols = ancho;
-		this.#NRows = alto;
+		this.#NConnect = NConnect;
+		this.#NCols = Ncols;
+		this.#NRows = NRows;
 		this.#Matrix = new Array(this.#NCols);
 		for (let i = 0; i < this.#NCols; i++){
 			this.#Matrix[i] = new Array(this.#NRows);
@@ -43,70 +43,70 @@ class Tablero{
 
 	#checkColumn(jugador, X, Y){
 		let cant = 1;
-		for (let j=Y-1, corte=false; j>=0 && j>(Y-this.#EnLinea) && !corte; j--){
+		for (let j=Y-1, corte=false; j>=0 && j>(Y-this.#NConnect) && !corte; j--){
 			if ((this.#Matrix[X][j]!=undefined) && (this.#Matrix[X][j].getJugador() == jugador))
 				cant++;
 			else
 			corte=true;
 		}
-		for (let j=Y+1, corte=false; j<this.#Matrix[X].length && j<(Y+this.#EnLinea) && !corte; j++){
+		for (let j=Y+1, corte=false; j<this.#Matrix[X].length && j<(Y+this.#NConnect) && !corte; j++){
 			if ((this.#Matrix[X][j]!=undefined) && (this.#Matrix[X][j].getJugador() == jugador))
 				cant++;
 			else
 				corte=true;
 		}
-		return (cant >= 4);
+		return (cant >= this.#NConnect);
 	}
 
 	#checkRow(jugador, X, Y){
 		let cant = 1;
-		for (let i=X-1, corte=false; i>=0 && i>(X-this.#EnLinea) && !corte; i--){
+		for (let i=X-1, corte=false; i>=0 && i>(X-this.#NConnect) && !corte; i--){
 			if ((this.#Matrix[i][Y]!=undefined) && (this.#Matrix[i][Y].getJugador() == jugador))
 				cant++;
 			else
 			corte=true;
 		}
-		for (let i=X+1, corte=false; i<this.#Matrix.length && i<(X+this.#EnLinea) && !corte; i++){
+		for (let i=X+1, corte=false; i<this.#Matrix.length && i<(X+this.#NConnect) && !corte; i++){
 			if ((this.#Matrix[i][Y]!=undefined) && (this.#Matrix[i][Y].getJugador() == jugador))
 				cant++;
 			else
 				corte=true;
 		}
-		return (cant >= 4);
+		return (cant >= this.#NConnect);
 	}
 
 	#checkDiagonal1(jugador, X, Y){
 		let cant = 1;
-		for (let i=X-1, j=Y-1, corte=false; i>=0 && i>(X-this.#EnLinea) && j>=0 && j>(Y-this.#EnLinea) && !corte; i--, j--){
+		for (let i=X-1, j=Y-1, corte=false; i>=0 && i>(X-this.#NConnect) && j>=0 && j>(Y-this.#NConnect) && !corte; i--, j--){
 			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
 				cant++;
 			else
 			corte=true;
 		}
-		for (let i=X+1, j=Y+1, corte=false; i<this.#Matrix.length && i<(X+this.#EnLinea) && j<this.#Matrix[i].length && j<(Y+this.#EnLinea) && !corte; i++, j++){
+		for (let i=X+1, j=Y+1, corte=false; i<this.#Matrix.length && i<(X+this.#NConnect) && j<this.#Matrix[i].length && j<(Y+this.#NConnect) && !corte; i++, j++){
 			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
 				cant++;
 			else
 				corte=true;
 		}
-		return (cant >= 4);
+		return (cant >= this.#NConnect);
 	}
 
 	#checkDiagonal2(jugador, X, Y){
 		let cant = 1;
-		for (let i=X+1, j=Y-1, corte=false; i<this.#Matrix.length && i<(X+this.#EnLinea) && j>=0 && j>(Y-this.#EnLinea) && !corte; i++, j--){
+		for (let i=X+1, j=Y-1, corte=false; i<this.#Matrix.length && i<(X+this.#NConnect) && j>=0 && j>(Y-this.#NConnect) && !corte; i++, j--){
 			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
 				cant++;
 			else
 			corte=true;
 		}
-		for (let i=X-1, j=Y+1, corte=false; i>=0 && i>(X-this.#EnLinea) && j<this.#Matrix[i].length && j<(Y+this.#EnLinea) && !corte; i--, j++){
+		for (let i=X-1, j=Y+1, corte=false; i>=0 && i>(X-this.#NConnect) && j<this.#Matrix[i].length && j<(Y+this.#NConnect) && !corte; i--, j++){
 			if ((this.#Matrix[i][j]!=undefined) && (this.#Matrix[i][j].getJugador() == jugador))
 				cant++;
 			else
 				corte=true;
 		}
-		return (cant >= 4);
+		return (cant >= this.#NConnect);
 	}
 
 	//for testing

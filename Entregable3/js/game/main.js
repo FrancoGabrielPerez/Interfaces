@@ -1,6 +1,6 @@
 "use strict"
 
-let tablero = new Tablero(7, 6);
+let tablero = new Tablero(7, 6, 5);
 let ficha1 = new Ficha("J1",0,0,null);
 let ficha2 = new Ficha("J1",0,0,null);
 let ficha3 = new Ficha("J1",0,0,null);
@@ -52,8 +52,14 @@ tablero.agregarFicha(ficha17, 3);
 tablero.printConsole();
 tablero.agregarFicha(ficha6, 2);
 tablero.printConsole();
-/* tablero.agregarFicha(ficha18, 2);
-tablero.printConsole(); */
+tablero.agregarFicha(ficha18, 2);
+tablero.printConsole();
+tablero.agregarFicha(ficha7, 1);
+tablero.printConsole();
+tablero.agregarFicha(ficha8, 1);
+tablero.printConsole();
+tablero.agregarFicha(ficha19, 1);
+tablero.printConsole();
 
 //console.log(tablero.getMatriz());
 console.log("---------------------------");
