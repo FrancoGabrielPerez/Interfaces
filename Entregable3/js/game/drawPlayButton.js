@@ -49,7 +49,7 @@ function drawBackImage() {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");                
     var img=new Image();
-    img.src = "../img/img-games/img-imperio/CuatroEstrellaPNG.png";
+    img.src = "../img/img-games/img-imperio/StarWars.png";
     img.onload = function() {
 		var w = canvas.width;
 		var h = canvas.height;
