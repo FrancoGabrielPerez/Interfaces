@@ -3,13 +3,16 @@ class PlayButton{
     #posY;
     #ancho;
     #alto;
+    #ctx;
     
-    constructor(){
-        this.posX = 450;
-        this.posY = 150;
-        this.ancho = 200;
-        this.alto = 100;
+    constructor(ctx){
+        this.#ctx= this.ctx;
+        this.#posX = ctx.width /2;
+        this.#posY = ctx.height / 2;
+        this.#ancho = 200;
+        this.#alto = 100;
         this.selected = false;
+        
     }
 
     roundedRect(x,y,width,height,radius,ctx,fillColor){
@@ -27,17 +30,17 @@ class PlayButton{
         ctx.fill();
      }
 
-    drawNewCuadrado(ctx, fillColor){
-        ctx.beginPath();  
-        ctx.globalAlpha = 1;        
-        this.roundedRect(this.posX, this.posY, this.ancho, this.alto,20,ctx, fillColor);
-        ctx.fillStyle = "#F1F1F1";
-        ctx.font = "30px Arial";
-        ctx.fillText ("Jugar", 510, 210);
+    drawNewButton(fillColor){
+        this.#ctx.beginPath();  
+        this.#ctx.globalAlpha = 1;        
+        this.roundedRect(this.#posX, this.#posY, this.#ancho, this.#alto, 20, this.#ctx, fillColor);
+        this.#ctx.fillStyle = "#F1F1F1";
+        this.#ctx.font = "30px Arial";
+        this.#ctx.fillText ("Jugar", 510, 210);
     }
 
     checkSelected(x, y){
-        return (x > this.posX && x < this.posX + this.ancho) && (y > this.posY && y < this.posY + this.alto);
+        return (x > this.#posX && x < this.#posX + this.#ancho) && (y > this.#posY && y < this.#posY + this.#alto);
     }
 
     isSelected(){

@@ -2,9 +2,9 @@ var button;
 function drawButton(){
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d'); 
-    button = new PlayButton();
+    button = new PlayButton(ctx);
     var fillColor = "#EA7400";
-    button.drawNewCuadrado(ctx, fillColor);
+    button.drawNewButton(fillColor);
 }
 
 function initEvent(){
@@ -32,14 +32,14 @@ function mouseMove(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
     var canvas = document.getElementById('canvas');
-        var ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d');
     if(button.checkSelected(x,y)){
         var fillColor = "#7CD600";
-        button.drawNewCuadrado(ctx, fillColor);
+        button.drawNewButton(ctx, fillColor);
     }
     else {
         var fillColor = "#EA7400";
-        button.drawNewCuadrado(ctx, fillColor);
+        button.drawNewButton(ctx, fillColor);
     }
 }
 
