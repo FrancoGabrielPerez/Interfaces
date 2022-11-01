@@ -1,4 +1,5 @@
 "use strict"
+/** @type {CanvasRenderingContext2D} */
 
 class Ficha{
 	#centerX;
@@ -12,24 +13,25 @@ class Ficha{
 		this.#jugador=jugador;
 		this.#centerX=x;
 		this.#centerY=y;
-		this.#radius=20;
+		this.#radius=50;
 		this.#selected=false;
 		this.#ctx=contexto;
 	}
 
 	drawDefault(){
-		if (this.#jugador == "J1")
-			this.drawColor("red");
-		else
-			this.drawColor("blue");
+		this.drawColor('red');
 	}
 
 	drawColor(color){
 		this.#ctx.beginPath();
-    	this.#ctx.fillStyle = color;
-    	this.#ctx.arc(this.#centerX, this.#centerY, this.#radius, 0, 2 * Math.PI, false);
+    	this.#ctx.arc(this.#centerX, this.#centerY, this.#radius, 0, 2 * Math.PI, false);    	
+		var img=new Image();
+		img.src = "../img/img-games/img-imperio/FichaResistencia-1.png";
+		img.onload = function() {
+			this.#ctx.fillStyle = img;
+		}
     	this.#ctx.fill();
-		//this.#ctx.stroke();
+		this.#ctx.stroke();
 	}
 
 	isInside(posX, posY){
@@ -45,8 +47,8 @@ class Ficha{
     }
 
 	move(x,y){
-        this.#centerX = x;
-        this.#centerY = y;
+        this.posX = x;
+        this.posY = y; 
     }
 
 	getJugador(){
