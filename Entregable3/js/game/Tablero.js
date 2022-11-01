@@ -1,5 +1,4 @@
 "use strict"
-/** @type {CanvasRenderingContext2D} */
 
 class Tablero{
 	#Matrix;
@@ -7,8 +6,12 @@ class Tablero{
 	#NRows;
 	#NConnect;
 	#Ganador;
+	#ctx;
+	#CellSize;
 
-	constructor(Ncols, NRows, NConnect){
+	constructor(Ncols, NRows, NConnect, context, cellSize){
+		this.#ctx = context;
+		this.#CellSize = cellSize;
 		this.#Ganador = false;
 		this.#NConnect = NConnect;
 		this.#NCols = Ncols;
@@ -22,19 +25,17 @@ class Tablero{
 	agregarFicha(ficha, X){
 		let agregada = false;
 		if (X < this.#Matrix.length)
-			for (let i = this.#Matrix[X].length-1; i>=0 && !agregada; i--) {
-				if (this.#Matrix[X][i] == undefined ) {
-					this.#Matrix[X][i] = ficha;
+			for (let j = this.#Matrix[X].length-1; j>=0 && !agregada; j--) {
+				if (this.#Matrix[X][j] == undefined ) {
+					this.#Matrix[X][j] = ficha;
+					ficha.move(this.getContextOrigin().x + this.#CellSize*X + this.#CellSize/2, this.getContextOrigin().y + this.#CellSize*j + this.#CellSize/2);
 					agregada = true;
-					if (this.checkGanador(ficha.getJugador(), X, i))
+					if (this.checkGanador(ficha.getJugador(), X, j))
 						this.#Ganador = ficha.getJugador();
+					this.draw();
 				}
 			}
 		return agregada;
-	}
-
-	getAt(X,Y){
-		return this.#Matrix[X][Y];
 	}
 
 	checkGanador(jugador, X,Y){
@@ -135,4 +136,29 @@ class Tablero{
 	getGanador(){
 		return this.#Ganador;
 	}
+
+	draw(){
+		this.#ctx.clearRect(this.getContextOrigin().x, this.getContextOrigin().y, (this.#CellSize*this.#NCols), (this.#CellSize*this.#NRows));
+		// this.#ctx.beginPath();
+		// this.#ctx.fillStyle = "white";
+		// this.#ctx.fillRect(this.getContextOrigin().x, this.getContextOrigin().y, (this.#CellSize*this.#NCols), (this.#CellSize*this.#NRows));
+		for (let i = 0; i < this.#Matrix.length; i++) {
+			for (let j = 0; j < this.#Matrix[i].length; j++) {
+				this.#ctx.beginPath();
+				this.#ctx.strokeStyle = "white";
+				this.#ctx.strokeRect(this.getContextOrigin().x+this.#CellSize*i, this.getContextOrigin().y+this.#CellSize*j, this.#CellSize, this.#CellSize);
+				const celda = this.#Matrix[i][j];
+				if (celda != undefined)
+					celda.drawDefault();
+			}
+		}
+	}
+	
+	getContextOrigin(){
+		return {
+			x:((this.#ctx.canvas.clientWidth/2)-(this.#CellSize*this.#NCols/2)),
+			y:((this.#ctx.canvas.clientHeight/2)-(this.#CellSize*this.#NRows/2)),
+		};
+	}
+
 }
