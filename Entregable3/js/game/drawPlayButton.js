@@ -18,8 +18,8 @@ function mouseDown(event){
     console.log(x);
     console.log(y);
     if(button.checkSelected(x,y)){
-        document.querySelector('.modalContainerMensaje').classList.remove('ocultar');
-        document.querySelector('.modalContainerMensaje').classList.add('mostrar');
+        document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
+        document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
         button.setSelected(true);
     }else{
         button.setSelected(false);
@@ -32,9 +32,7 @@ function mouseMove(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
     var canvas = document.getElementById('canvas');
-        var ctx = canvas.getContext('2d'); 
-    console.log("x "+x);
-    console.log("y "+y);
+        var ctx = canvas.getContext('2d');
     if(button.checkSelected(x,y)){
         var fillColor = "#7CD600";
         button.drawNewCuadrado(ctx, fillColor);

@@ -113,10 +113,10 @@
 				<div class="modal-game">
 					<!--h2>Nuevo Juego</h2-->
 					<div class="form">
-						<form action="nuevoJuego" method="POST">
+						<form action="nuevoJuego" id="form-nuevo-juego" method="POST">
 							<div class="tipo-de-juego">
 									<div class="check-radios">
-										<div><input type="radio"  class="chk-icon-game" id="g-type-4" name="game-type" value="g-type-4">
+										<div><input type="radio"  class="chk-icon-game" id="g-type-4" name="game-type" value="g-type-4" checked>
 											<label for="g-type-4" >
 												<div class="img-icon-game"><img src="../img/img-games/img-imperio/4EnLinea-Icono.png"  alt="Cuatro en linea" width="100" height="100"></div>
 											</label>
@@ -144,13 +144,13 @@
 									<div class="form-datos-jugador-uno">										
 										<div class="mb-3">
 											<label for="name">Nombre Jugador 1</label>
-											<input type=text id="name-jug-1" required>
+											<input type=text id="name-jug-1" name="name-jug-1" required>
 										</div>
 										<div class="mb-3">  
 											<label>Elige tu escudo</label> 
 										</div>
 										<div class="iconos-fichas-1">
-											<div><input type="radio"  class="chk-icon-game-1" id="f-res-1" name="game-type-1" value="f-res-1">
+											<div><input type="radio"  class="chk-icon-game-1" id="f-res-1" name="game-type-1" value="f-res-1" checked>
 												<label for="f-res-1" >
 													<div class="img-icon-game-1"><img src="../img/img-games/img-imperio/FichaResistencia-1.png"  alt="Ficha resistencia 1" width="50" height="50"></div>
 												</label>
@@ -183,13 +183,13 @@
 									<div class="form-datos-jugador-dos">	
 										<div class="mb-3">  
 											<label>Nombre Jugador 2</label>     
-											<input type=text id="name-jug-2" required>
+											<input type=text id="name-jug-2" name="name-jug-2" required>
 										</div>
 										<div class="mb-3">  
 											<label>Elige tu escudo</label> 
 										</div>
 										<div class="iconos-fichas-2">
-											<div ><input type="radio"  class="chk-icon-game-2" id="f-imp-1" name="game-type-2" value="f-imp-1">
+											<div ><input type="radio"  class="chk-icon-game-2" id="f-imp-1" name="game-type-2" value="f-imp-1" checked>
 												<label for="f-imp-1" >
 													<div class="img-icon-game-2"><img src="../img/img-games/img-imperio/FichaImperio-1.png"  alt="Ficha imperio 1" width="50" height="50"></div>
 												</label>
@@ -220,7 +220,7 @@
 							</div> 							 
 							<div class="btn-detalle">
 								<a class="btn-juego btn-cancelar" href="javascript:cerrarModalGame()">Cancelar</a>
-								<a class="btn-juego btn-jugar" href="javascript:cerrarModalGame()">Jugar</a>
+								<input type="submit" value="Jugar" class="btn-juego btn-jugar"><!--a class="btn-juego btn-jugar" href="javascript:modalGame()">Jugar</a-->
 							</div>						                                 
 						</form>
 					</div>

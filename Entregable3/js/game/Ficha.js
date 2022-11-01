@@ -24,8 +24,12 @@ class Ficha{
 
 	drawColor(color){
 		this.#ctx.beginPath();
-    	this.#ctx.arc(this.#centerX, this.#centerY, this.#radius, 0, 2 * Math.PI, false);
-    	this.#ctx.fillStyle = color;
+    	this.#ctx.arc(this.#centerX, this.#centerY, this.#radius, 0, 2 * Math.PI, false);    	
+		var img=new Image();
+		img.src = "../img/img-games/img-imperio/FichaResistencia-1.png";
+		img.onload = function() {
+			this.#ctx.fillStyle = img;
+		}
     	this.#ctx.fill();
 		this.#ctx.stroke();
 	}
