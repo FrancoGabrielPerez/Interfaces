@@ -9,9 +9,9 @@ class Tablero{
 	#ctx;
 	#CellSize;
 
-	constructor(Ncols, NRows, NConnect, context, cellSize){
+	constructor(Ncols, NRows, NConnect, context, coinSize){
 		this.#ctx = context;
-		this.#CellSize = cellSize;
+		this.#CellSize = coinSize+10;
 		this.#Ganador = false;
 		this.#NConnect = NConnect;
 		this.#NCols = Ncols;
@@ -128,12 +128,11 @@ class Tablero{
 		}
 	}
 
-	//for testing
-	getMatriz(){
-		return this.#Matrix;
+	getAmount(){
+		return this.#NCols*this.#NRows;
 	}
 
-	getGanador(){
+	getWinner(){
 		return this.#Ganador;
 	}
 

@@ -4,34 +4,26 @@
 class Ficha{
 	#centerX;
 	#centerY;
-	#radius;
+	#diameter;
 	#selected;
 	#ctx;
 	#jugador;
+	#img;
 
-	constructor(jugador,x,y,contexto){
+	constructor(jugador,x,y,contexto, img, tam){
 		this.#jugador=jugador;
+		this.#img.src=img;
 		this.#centerX=x;
 		this.#centerY=y;
-		this.#radius=50;
+		this.#diameter=tam;
 		this.#selected=false;
 		this.#ctx=contexto;
 	}
 
-	drawDefault(){
-		this.drawColor('red');
-	}
-
-	drawColor(color){
+	draw(){
 		this.#ctx.beginPath();
-    	this.#ctx.arc(this.#centerX, this.#centerY, this.#radius, 0, 2 * Math.PI, false);    	
-		var img=new Image();
-		img.src = "../img/img-games/img-imperio/FichaResistencia-1.png";
-		img.onload = function() {
-			this.#ctx.fillStyle = img;
-		}
-    	this.#ctx.fill();
-		this.#ctx.stroke();
+    	this.#ctx.drawImage(img, this.#centerX-this.#diameter/2, this.#centerY-this.#diameter/2, this.#diameter, this.#diameter);
+		//this.#ctx.stroke();
 	}
 
 	isInside(posX, posY){
