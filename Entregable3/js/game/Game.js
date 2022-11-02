@@ -25,7 +25,7 @@ class Game{
 		this.#playerTurn = this.#player1;
 		this.#chipSelected = null;
 		this.draw();
-		this.test();
+		//this.test();
 	}
 
 	getChipSelected(){
@@ -107,8 +107,8 @@ let currentGame;
 
 function init(){
 	currentGame = new Game(3, "J1", "J2", null, null, "../img/img-games/img-imperio/FichaResistencia-1.png", "../img/img-games/img-imperio/FichaImperio-1.png", ctx);
-	initEvents();  
-	//setInterval(currentGame.draw(),100);
+	initEvents();
+	//setInterval(currentGame.draw,100);
 }
 
 function initEvents(){
