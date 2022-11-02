@@ -23,7 +23,7 @@ class Board{
 			this.#matrix[i] = new Array(this.#nRows);		
 		}
 		this.#imgBoard = new Image();
-		this.#imgBoard.scr = "../img/img-games/img-imperio/cuadroTablero.png";
+		this.#imgBoard.src = '../img/img-games/img-imperio/cuadroTablero.png';
 	}
 
 	addChip(chip, x){
@@ -166,18 +166,12 @@ class Board{
 		this.#ctx.clearRect(this.getcOrigin().x, this.getcOrigin().y, (this.#tileSize*this.#nCols), (this.#tileSize*this.#nRows));
 		for (let i = 0; i < this.#matrix.length; i++) {
 			for (let j = 0; j < this.#matrix[i].length; j++) {
-				//this.#ctx.beginPath();
+				this.#ctx.beginPath();
 				//this.#ctx.strokeStyle = "white";
 				//this.#ctx.fillStyle = "rgba(158, 158, 158, 0.4)";
 				//this.#ctx.strokeRect(this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
 				//this.#ctx.fillRect(this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
-				console.log(this.#imgBoard);
-				console.log(this.getcOrigin().x+this.#tileSize*i);
-				console.log(this.getcOrigin().y+this.#tileSize*j);
-				console.log(this.#tileSize); 
-					console.log(this.#tileSize);
-				
-					this.#ctx.drawImage(this.#imgBoard, this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, 30, 30);
+				this.#ctx.drawImage(this.#imgBoard, this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
 				
 				
 				const chip = this.#matrix[i][j];

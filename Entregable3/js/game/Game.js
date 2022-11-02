@@ -25,7 +25,7 @@ class Game{
 		this.#playerTurn = this.#player1;
 		this.#chipSelected = null;
 		this.draw();
-		//this.test();
+		this.test();
 	}
 
 	getChipSelected(){
