@@ -16,6 +16,10 @@ main{
 	flex-direction: column;
 }
 
+canvas{
+	margin: 20px;
+}
+
 nav.breadcrumbs{
 	color: var(--Color-GreyL3);
 	margin-top: 20px;
