@@ -47,7 +47,26 @@
   --Color-GreyL3:#F1F1F1;
 }
 
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('../img/fonts/StarJedi-DGRW.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
 
+@font-face {
+  font-family: 'Star Jedi Hollow';
+  src: url('../img/fonts/StarJediHollow-A4lL.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Star Jedi Rounded';
+  src: url('../img/fonts/StarJediRounded-jW3R.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -749,13 +768,33 @@ form label{
   border-radius: 10px;
   color: var(--Color-AccentL3);
   font-size: 20px;
+  align-self: center;
 } 
 
 .modalContainerMensaje .form .btn-detalle .btn-cancelar{
   background-color: var(--Color-Secondary);
-  margin-right: 20px;
+  margin-right: 20px;  
+  padding: 19px 20px;
 }
 /*-----------------------MODAL GAME-----------------------------------------*/
+.modal-game{
+  background-image: url(../img/img-games/img-imperio/Espacio-4.png);
+  background-size:auto;
+}
+
+.modal-game .selec-dif{
+  padding-bottom: 20px;
+}
+
+.modal-game .selec-dif h3, .modal-game label{
+  font-family: 'Star Jedi Rounded';
+  letter-spacing: 5px;
+}
+
+.modal-game label img {  
+  cursor: pointer;
+}
+
 .modal-game .datos-nuevo-juego{
   display: flex;
 }
@@ -764,9 +803,30 @@ form label{
   color: var(--Color-GreyL3);
 }
 
+.modal-game .inputs-form-jugador-dos,
+.modal-game .inputs-form-jugador-uno,
+.modal-game .tipo-de-juego{
+  background-color: rgb(158 158 158 / 40%);
+  border-radius: 20px;
+}
+
+.modal-game .inputs-form-jugador-dos .img-jugador-2 img,
+.modal-game .inputs-form-jugador-uno .img-jugador-1 img{
+  padding-top: 10px;
+}
+
+.modal-game .inputs-form-jugador-dos .mb-3,
+.modal-game .inputs-form-jugador-uno .mb-3{
+  align-items: center;
+}
 .modal-game .tipo-de-juego,
 .modal-game .titulo-juego{
-    padding-bottom: 20px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.modal-game input[type=text] {
+  width: 95%;
 }
 
 .modal-game .check-radios{
@@ -790,7 +850,6 @@ form label{
 .modalContainerMensaje .form .iconos-fichas-2 .chk-icon-game-2:checked ~ label .img-icon-game-2 img,
 .modalContainerMensaje .chk-icon-game:checked ~ label .img-icon-game img
 {
- /* box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #F1F1F1;*/
   transform: scale(1.2);
   transform-origin: center; 
 }

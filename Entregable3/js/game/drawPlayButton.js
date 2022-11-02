@@ -15,8 +15,6 @@ function initEvent(){
 function mouseDown(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
-    console.log(x);
-    console.log(y);
     if(button.checkSelected(x,y)){
         document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
@@ -29,8 +27,6 @@ function mouseDown(event){
 function mouseMove(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
     if(button.checkSelected(x,y)){
         var fillColor = "#7CD600";
         button.drawNewButton(fillColor);

@@ -6,7 +6,7 @@ function drawBackImage() {
     img.onload = function() {
 		var w = canvas.width;
 		var h = canvas.height;
-        ctx.globalAlpha = 0.2;
+    ctx.globalAlpha = 0.2;
 		ctx.drawImage( img, 0, 0 ,w, h);
     }
 }
