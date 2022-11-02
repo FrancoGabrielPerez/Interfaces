@@ -41,7 +41,6 @@ class Game{
 	}
 
 	draw(){
-		console.log("draw");
 		this.clearCanvas();
 		this.#board.draw();
 		this.#player1.draw();
@@ -108,17 +107,16 @@ let currentGame;
 function init(){
 	currentGame = new Game(3, "J1", "J2", null, null, "../img/img-games/img-imperio/FichaResistencia-1.png", "../img/img-games/img-imperio/FichaImperio-1.png", ctx);
 	initEvents();
-	//setInterval(currentGame.draw,100);
+	setTimeout(() => currentGame.draw(),500)
 }
 
 function initEvents(){
 	ctx.canvas.onmousedown = mouseDown;
 	ctx.canvas.onmousemove = mouseMove;
-	ctx.canvas.onmouseup = mouseUp;
+	document.onmouseup = mouseUp;
 }
 	
 function mouseDown(event){
-	console.log("down");
 	event.preventDefault();
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
@@ -127,7 +125,6 @@ function mouseDown(event){
 }
 
 function mouseMove(event){
-	//console.log(currentGame.getChipSelected());
 	if (currentGame.getChipSelected() != null){
 		event.preventDefault();
 		let x = event.pageX - event.currentTarget.offsetLeft;
@@ -138,7 +135,6 @@ function mouseMove(event){
 }
 
 function mouseUp(event){
-	console.log("up");
 	if (currentGame.getChipSelected() != null){
 		event.preventDefault();
 		currentGame.getChipSelected().setSelected(false);
@@ -151,5 +147,4 @@ function clearCanvas(){
 	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 }
 
-init();
-//game.test();
+document.onload = init();
