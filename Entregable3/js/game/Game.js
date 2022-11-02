@@ -20,8 +20,6 @@ class Game{
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
 		this.#player1 = new Player(player1Name, "../img/img-games/img-imperio/Resistencia.png", player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, "../img/img-games/img-imperio/StormTrooper.png", player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
-		// this.#player1.draw();
-		// this.#player2.draw();
 		this.#playerTurn = this.#player1;
 		this.#chipSelected = null;
 		this.draw();
