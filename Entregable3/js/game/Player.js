@@ -64,8 +64,8 @@ class Player{
 		this.#ctx.strokeStyle = "white";
 		this.#ctx.strokeRect(this.#origin.x, this.#origin.y, this.#size.x, this.#size.y);
 		let img = new Image();
-		//img.src = profilePic;
-		//this.#ctx.drawImage(img, this.#origin.x + 300, this.#origin.y + 300);
+		img.src = this.#avatar;
+		this.#ctx.drawImage(img, this.#origin.x+15, this.#origin.y+20, 150,150);
 		this.#chips.forEach(chip => {
 			chip.draw();
 		});
