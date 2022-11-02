@@ -22,9 +22,7 @@ function mouseDown(event){
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
         button.setSelected(true);
     }else{
-        button.setSelected(false);
-        console.log("no selected");
-       
+        button.setSelected(false);       
     }
 }
 
@@ -35,11 +33,11 @@ function mouseMove(event){
     var ctx = canvas.getContext('2d');
     if(button.checkSelected(x,y)){
         var fillColor = "#7CD600";
-        button.drawNewButton(ctx, fillColor);
+        button.drawNewButton(fillColor);
     }
     else {
         var fillColor = "#EA7400";
-        button.drawNewButton(ctx, fillColor);
+        button.drawNewButton(fillColor);
     }
 }
 

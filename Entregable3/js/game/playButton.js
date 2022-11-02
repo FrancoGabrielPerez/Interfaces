@@ -6,11 +6,12 @@ class PlayButton{
     #ctx;
     
     constructor(ctx){
-        this.#ctx= this.ctx;
-        this.#posX = ctx.width /2;
-        this.#posY = ctx.height / 2;
+        this.#ctx = ctx;
         this.#ancho = 200;
         this.#alto = 100;
+        this.#posX = (this.#ctx.canvas.clientWidth /2) - this.#ancho/2;
+        this.#posY = (this.#ctx.canvas.clientHeight /2) - this.#alto/2;
+        
         this.selected = false;
         
     }
@@ -32,11 +33,11 @@ class PlayButton{
 
     drawNewButton(fillColor){
         this.#ctx.beginPath();  
-        this.#ctx.globalAlpha = 1;        
+        this.#ctx.globalAlpha = 1;  
         this.roundedRect(this.#posX, this.#posY, this.#ancho, this.#alto, 20, this.#ctx, fillColor);
         this.#ctx.fillStyle = "#F1F1F1";
         this.#ctx.font = "30px Arial";
-        this.#ctx.fillText ("Jugar", 510, 210);
+        this.#ctx.fillText ("Jugar", this.#ctx.canvas.clientWidth /2, this.#ctx.canvas.clientHeight /2);
     }
 
     checkSelected(x, y){
