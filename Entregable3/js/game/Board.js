@@ -184,7 +184,7 @@ class Board{
 	getcOrigin(){
 		return {
 			x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
-			y:((this.#ctx.canvas.clientHeight/2)-(this.#tileSize*this.#nRows/2)),
+			y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
 		};
 	}
 
