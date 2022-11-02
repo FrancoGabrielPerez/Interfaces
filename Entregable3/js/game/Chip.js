@@ -27,7 +27,7 @@ class Chip{
 	}
 
 	isInside(posX, posY){
-		return (Math.sqrt(Math.pow(posX - this.#centerX,2) + Math.pow(posY - this.#centerY,2)) < this.#diameter/2);
+		return (Math.sqrt(Math.pow(posX - this.#centerX,2) + Math.pow(posY - this.#centerY,2)) < (this.#diameter/2));
 	}
 
 	isSelected(){

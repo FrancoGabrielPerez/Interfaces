@@ -22,7 +22,7 @@ class Player{
 		this.#chips = [];
 		let firstPosX = this.#origin.x + this.#size.x - chipSize/2;
 		let firstPosY = this.#size.y - chipSize/2;
-		for(let i = 0, posX = firstPosX, posY = firstPosY; i < amount; i++){
+		for(let i=0, posX=firstPosX, posY=firstPosY; i<amount; i++){
 			if (posX-chipSize/2 < this.#origin.x){
 				posY -= chipSize+10;
 				posX = firstPosX;
@@ -46,6 +46,18 @@ class Player{
 			posY -= 20;
 		}
 	} */
+
+	getSelected(posX, posY){
+		for(let i=0; i<this.#chips.length; i++){
+			if (this.#chips[i].isInside(posX, posY)){
+				let chipSelected = this.#chips[i];
+				chipSelected.setSelected(true);
+				this.#chips.splice(i,1);
+				this.#chips.push(chipSelected);
+				return this.#chips[i];
+			}
+		}
+	}
 
 	draw(){
 		this.#ctx.beginPath();

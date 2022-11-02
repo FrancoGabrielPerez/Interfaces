@@ -11,6 +11,7 @@ class Game{
 	#player2;
 	#playerTurn;
 	#board;
+	#chipSelected;
 	#ctx;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
@@ -19,9 +20,35 @@ class Game{
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
+		// this.#player1.draw();
+		// this.#player2.draw();
+		this.#playerTurn = this.#player1;
+		this.#chipSelected = null;
+		this.draw();
+	}
+
+	getChipSelected(){
+		return this.#chipSelected;
+	}
+
+	selectChip(x, y){
+		this.#chipSelected = this.#playerTurn.getSelected(x, y);
+	}
+
+	deselectChip(){
+		this.#chipSelected = null;
+	}
+
+	draw(){
+		console.log("draw");
+		this.clearCanvas();
+		this.#board.draw();
 		this.#player1.draw();
 		this.#player2.draw();
-		this.#playerTurn = this.#player1;
+	}
+
+	clearCanvas(){
+		ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
 	}
 
 	test(){
@@ -74,7 +101,54 @@ class Game{
 }
 
 let canvas = document.getElementById('canvas');
-let ctx = canvas.getContext('2d'); 
+let ctx = canvas.getContext('2d');
+let currentGame;
 
-let game = new Game(3, "J1", "J2", null, null, "../img/img-games/img-imperio/FichaResistencia-1.png", "../img/img-games/img-imperio/FichaImperio-1.png", ctx);
-game.test();
+function init(){
+	currentGame = new Game(3, "J1", "J2", null, null, "../img/img-games/img-imperio/FichaResistencia-1.png", "../img/img-games/img-imperio/FichaImperio-1.png", ctx);
+	initEvents();  
+	//setInterval(currentGame.draw(),100);
+}
+
+function initEvents(){
+	ctx.canvas.onmousedown = mouseDown;
+	ctx.canvas.onmousemove = mouseMove;
+	ctx.canvas.onmouseup = mouseUp;
+}
+	
+function mouseDown(event){
+	console.log("down");
+	event.preventDefault();
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
+	currentGame.selectChip(x, y);
+	currentGame.draw();
+}
+
+function mouseMove(event){
+	//console.log(currentGame.getChipSelected());
+	if (currentGame.getChipSelected() != null){
+		event.preventDefault();
+		let x = event.pageX - event.currentTarget.offsetLeft;
+		let y = event.pageY - event.currentTarget.offsetTop;
+		currentGame.getChipSelected().move(x, y);
+		currentGame.draw();
+	}
+}
+
+function mouseUp(event){
+	console.log("up");
+	if (currentGame.getChipSelected() != null){
+		event.preventDefault();
+		currentGame.getChipSelected().setSelected(false);
+		currentGame.deselectChip();
+		currentGame.draw();
+	}
+}
+	
+function clearCanvas(){
+	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
+}
+
+init();
+//game.test();
