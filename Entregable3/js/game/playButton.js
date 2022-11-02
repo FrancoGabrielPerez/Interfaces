@@ -6,7 +6,7 @@ class PlayButton{
     #ctx;
     
     constructor(ctx){
-        this.#ctx= this.ctx;
+        this.#ctx= ctx;
         this.#posX = ctx.width /2;
         this.#posY = ctx.height / 2;
         this.#ancho = 200;

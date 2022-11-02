@@ -6,72 +6,75 @@ class Game{
 	static #defaultColumns = 7;
 	static #defaultRows = 6;
 	#defaultCoinSize = 40;
+	#padding = 20;
 	#player1;
 	#player2;
 	#playerTurn;
 	#board;
-	#context;
+	#ctx;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
-		this.#context = context;
-		this.#board = new Tablero(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#context, this.#defaultCoinSize);
-		this.#player1 = new Jugador(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getSize()/2, this.#context, {x:0,y:0});
-		this.#player2 = new Jugador(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getSize()/2, this.#context, {x:,y:0});
+		this.#ctx = context;
+		this.#board = new Board(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#ctx, this.#defaultCoinSize);
+		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
+		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
+		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
+		this.#player1.draw();
+		this.#player2.draw();
 		this.#playerTurn = this.#player1;
+	}
+
+	test(){
+		this.#board.printConsole();
+		let imgSrc1 = "../img/img-games/img-imperio/FichaResistencia-1.png";
+		let imgSrc2 = "../img/img-games/img-imperio/FichaImperio-1.png";
+		let ficha1 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha2 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha3 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha4 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha5 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha6 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha7 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha8 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha9 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha10 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
+		let ficha11 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha12 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha13 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha14 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha15 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha16 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha17 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha18 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha19 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+		let ficha20 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
+
+		this.#board.addChip(ficha1, 0);
+		this.#board.addChip(ficha11, 3);
+		this.#board.addChip(ficha2, 0);
+		this.#board.addChip(ficha12, 0);
+		this.#board.addChip(ficha3, 1);
+		this.#board.addChip(ficha13, 0);
+		this.#board.addChip(ficha4, 1);
+		this.#board.addChip(ficha14, 1);
+		this.#board.addChip(ficha5, 3);
+		this.#board.addChip(ficha15, 2);
+		this.#board.addChip(ficha6, 4);
+		this.#board.addChip(ficha16, 2);
+
+		mostrarGanador(this.#board);
+
+		function mostrarGanador(tablero){
+			console.log("---------------------------");
+			console.log("Ganador");
+			console.log("jugador: " + tablero.getWinner());
+			tablero.printConsole();
+		}
 	}
 }
 
-let canvas = document.querySelector("#canvas");
-let context = canvas.getContext('2d');
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d'); 
 
-let tablero = new Tablero(7, 6, 4, context, 50);
-let ficha1 = new Ficha("J1",0,0,context);
-let ficha2 = new Ficha("J1",0,0,context);
-let ficha3 = new Ficha("J1",0,0,context);
-let ficha4 = new Ficha("J1",0,0,context);
-let ficha5 = new Ficha("J1",0,0,context);
-let ficha6 = new Ficha("J1",0,0,context);
-let ficha7 = new Ficha("J1",0,0,context);
-let ficha8 = new Ficha("J1",0,0,context);
-let ficha9 = new Ficha("J1",0,0,context);
-let ficha10 = new Ficha("J1",0,0,context);
-let ficha11 = new Ficha("J2",0,0,context);
-let ficha12 = new Ficha("J2",0,0,context);
-let ficha13 = new Ficha("J2",0,0,context);
-let ficha14 = new Ficha("J2",0,0,context);
-let ficha15 = new Ficha("J2",0,0,context);
-let ficha16 = new Ficha("J2",0,0,context);
-let ficha17 = new Ficha("J2",0,0,context);
-let ficha18 = new Ficha("J2",0,0,context);
-let ficha19 = new Ficha("J2",0,0,context);
-let ficha20 = new Ficha("J2",0,0,context);
-
-tablero.printConsole();
-tablero.draw();
-
-tablero.agregarFicha(ficha1, 0);
-tablero.agregarFicha(ficha11, 3);
-tablero.agregarFicha(ficha2, 0);
-tablero.agregarFicha(ficha12, 0);
-tablero.agregarFicha(ficha3, 1);
-tablero.agregarFicha(ficha13, 0);
-tablero.agregarFicha(ficha4, 1);
-tablero.agregarFicha(ficha14, 1);
-tablero.agregarFicha(ficha5, 3);
-tablero.agregarFicha(ficha15, 2);
-tablero.agregarFicha(ficha6, 4);
-tablero.agregarFicha(ficha16, 2);
-
-function mostrarGanador(){
-	console.log("---------------------------");
-	console.log("Ganador");
-	console.log("jugador: " + tablero.getGanador());
-	tablero.printConsole();
-}
-
-function drawPoint(x, y,){
-	context.beginPath();
-	context.arc(x, y, 10, 0, 2 * Math.PI, false);
-	context.fillStyle = "green";
-	context.fill();
-}
+let game = new Game(3, "J1", "J2", null, null, "../img/img-games/img-imperio/FichaResistencia-1.png", "../img/img-games/img-imperio/FichaImperio-1.png", ctx);
+game.test();
