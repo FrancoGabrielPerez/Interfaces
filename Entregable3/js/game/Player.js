@@ -28,7 +28,7 @@ class Player{
 				posX = firstPosX;
 			}
 			this.#chips.push(new Chip(this, posX, posY, this.#ctx, img, chipSize));
-			posX -= 30;
+			posX -= 10;
 		}
 	}
 
@@ -48,13 +48,13 @@ class Player{
 	} */
 
 	getSelected(posX, posY){
-		for(let i=0; i<this.#chips.length; i++){
+		for(let i=this.#chips.length-1; i>=0; i--){
 			if (this.#chips[i].isInside(posX, posY)){
 				let chipSelected = this.#chips[i];
 				chipSelected.setSelected(true);
 				this.#chips.splice(i,1);
 				this.#chips.push(chipSelected);
-				return this.#chips[i];
+				return chipSelected;
 			}
 		}
 	}
