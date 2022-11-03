@@ -155,7 +155,7 @@ class Board{
 	}
 
 	getSize(){
-		return {x:this.#tileSize*this.#nCols, y:this.#tileSize*this.#nRows};
+		return {x:this.#tileSize*this.#nCols, y:this.#tileSize*this.#nRows, origin:this.getcOrigin(), tileSize:this.#tileSize};
 	}
 
 	getWinner(){

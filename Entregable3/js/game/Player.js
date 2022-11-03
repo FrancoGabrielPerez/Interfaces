@@ -65,7 +65,7 @@ class Player{
 		this.#ctx.strokeRect(this.#origin.x, this.#origin.y, this.#size.x, this.#size.y);
 		let img = new Image();
 		img.src = this.#avatar;
-		this.#ctx.drawImage(img, this.#origin.x+15, this.#origin.y+20, 150,150);
+		this.#ctx.drawImage(img, this.#origin.x + this.#size.x/2-150/2, this.#origin.y+20, 150,150);
 		this.#chips.forEach(chip => {
 			chip.draw();
 		});

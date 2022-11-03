@@ -43,6 +43,11 @@ class Chip{
 		this.#centerY = y; 
 	}
 
+	getPosition(){
+		return {x: this.#centerX,
+		y: this.#centerY};
+	}
+
 	getPlayer(){
 		return this.#player;
 	}

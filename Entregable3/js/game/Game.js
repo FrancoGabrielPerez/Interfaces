@@ -34,6 +34,15 @@ class Game{
 		this.#chipSelected = this.#playerTurn.getSelected(x, y);
 	}
 
+	addChip(chip){
+		let posX = chip.getPosition().x;
+		this.#board.getSize().origin
+	}
+
+	showWinner(){
+		
+	}
+
 	deselectChip(){
 		this.#chipSelected = null;
 	}
@@ -135,6 +144,7 @@ function mouseMove(event){
 function mouseUp(event){
 	if (currentGame.getChipSelected() != null){
 		event.preventDefault();
+		currentGame.addChip(currentGame.getChipSelected());
 		currentGame.getChipSelected().setSelected(false);
 		currentGame.deselectChip();
 		currentGame.draw();
