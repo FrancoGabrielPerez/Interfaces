@@ -11,12 +11,14 @@ class PlayButton{
     #posX;
     #posY;
     #ctx;
+    #active;
     
     constructor(ctx){
         this.#ctx = ctx;
         this.#posX = (this.#ctx.canvas.clientWidth / 2) - PlayButton.#ancho / 2;
         this.#posY = (this.#ctx.canvas.clientHeight / 2) - PlayButton.#alto / 2;        
-        this.selected = false;        
+        this.selected = false;  
+        this.#active = true;      
     }
 
     roundedRect(x, y, width, height, radius, fillColor){
@@ -35,14 +37,16 @@ class PlayButton{
      }
 
     drawNewButton(fillColor){
-        this.#ctx.beginPath();  
-        this.#ctx.globalAlpha = PlayButton.#ctxGlobalAlpha;
-        this.roundedRect(this.#posX, this.#posY, PlayButton.#ancho, PlayButton.#alto, PlayButton.#radiousCornerButton, fillColor);
-        this.#ctx.fillStyle = PlayButton.#textButtonFillStyle;
-        this.#ctx.font = PlayButton.#buttonFontConfig;
-        this.#ctx.textAlign = PlayButton.#textAlign;
-        this.#ctx.textBaseline = PlayButton.#textBaseline;
-        this.#ctx.fillText (PlayButton.#textButton, this.#ctx.canvas.clientWidth / 2, this.#ctx.canvas.clientHeight / 2);
+        if (this.#active){
+            this.#ctx.beginPath();  
+            this.#ctx.globalAlpha = PlayButton.#ctxGlobalAlpha;
+            this.roundedRect(this.#posX, this.#posY, PlayButton.#ancho, PlayButton.#alto, PlayButton.#radiousCornerButton, fillColor);
+            this.#ctx.fillStyle = PlayButton.#textButtonFillStyle;
+            this.#ctx.font = PlayButton.#buttonFontConfig;
+            this.#ctx.textAlign = PlayButton.#textAlign;
+            this.#ctx.textBaseline = PlayButton.#textBaseline;
+            this.#ctx.fillText (PlayButton.#textButton, this.#ctx.canvas.clientWidth / 2, this.#ctx.canvas.clientHeight / 2);
+        }
     }
 
     checkSelected(x, y){
@@ -51,6 +55,14 @@ class PlayButton{
 
     isSelected(){
         return this.selected;
+    }
+
+    enable(){
+        this.#active = true;
+    }
+
+    disable(){
+        this.#active = false;
     }
 
     setSelected(selected){

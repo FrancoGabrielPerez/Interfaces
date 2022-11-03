@@ -18,12 +18,21 @@ class Board{
 		this.#nConnect = nConnect;
 		this.#nCols = ncols;
 		this.#nRows = nRows;
+		this.generateBoard();
+		this.#imgBoard = new Image();
+		this.#imgBoard.src = '../img/img-games/img-imperio/cuadroTablero.png';
+	}
+
+	generateBoard(){
 		this.#matrix = new Array(this.#nCols);
 		for (let i = 0; i < this.#nCols; i++){
 			this.#matrix[i] = new Array(this.#nRows);		
 		}
-		this.#imgBoard = new Image();
-		this.#imgBoard.src = '../img/img-games/img-imperio/cuadroTablero.png';
+	}
+
+	reset(){
+		this.generateBoard();
+		this.#winner = false;
 	}
 
 	addChip(chip, x){
@@ -176,8 +185,9 @@ class Board{
 				this.#ctx.beginPath();
 				this.#ctx.drawImage(this.#imgBoard, this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
 				const chip = this.#matrix[i][j];
-				if (chip != undefined)
+				if (chip != undefined){
 					chip.draw();
+				}
 			}
 		}
 	}
