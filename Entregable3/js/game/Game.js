@@ -6,6 +6,7 @@ class Game{
 	static #defaultColumns = 7;
 	static #defaultRows = 6;
 	#defaultCoinSize = 40;
+	#validAreas;
 	#padding = 20;
 	#player1;
 	#player2;
@@ -22,28 +23,80 @@ class Game{
 		this.#player2 = new Player(player2Name, "../img/img-games/img-imperio/StormTrooper.png", player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
 		this.#playerTurn = this.#player1;
 		this.#chipSelected = null;
+		this.defineValidAreas(Game.#defaultColumns+tam);
 		this.draw();
-		this.test();
 	}
 
+	defineValidAreas(nCols){
+		let origin = {
+			x: this.#board.getcOrigin().x + (this.#board.getSize().tileSize-this.#defaultCoinSize)/2,
+			y:this.#board.getcOrigin().y - this.#board.getSize().tileSize,
+		};
+		this.#validAreas = {origin: origin, nCols: nCols};
+	}
+
+	drawValidAreas(){
+		for (let i = 0; i < this.#validAreas.nCols; i++){
+			this.#ctx.beginPath();
+			this.#ctx.strokeStyle = "white";
+			this.#ctx.fillStyle = "rgba(158, 158, 158, 0.4)";
+			let tileSize = this.#board.getSize().tileSize;
+			this.#ctx.strokeRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
+			this.#ctx.fillRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
+		}
+	}
+
+	addChip(chip){
+		let success = false;
+		let pos = chip.getPosition();
+		let tileSize = this.#board.getSize().tileSize;
+		let startY = this.#validAreas.origin.y;
+		let endY = startY + this.#defaultCoinSize;
+		for (let i = 0, startX, endX; i < this.#validAreas.nCols && !success; i++){
+			startX = this.#validAreas.origin.x + tileSize*i;
+			endX = startX + this.#defaultCoinSize;
+			if ((pos.x > startX) && (pos.x < endX) && (pos.y > startY) && (pos.y < endY)){
+				success = this.#board.addChip(chip, i);
+			}
+		}
+		if (success){
+			chip.getPlayer().removeChip(chip);
+			this.changeTurn();
+		}
+		if (success && this.#board.getWinner()){
+			this.showWinner(this.#board.getWinner());
+		}
+		return success;
+	}
+
+	changeTurn(){
+		switch (this.#playerTurn) {
+			case this.#player1:
+				this.#playerTurn = this.#player2;
+				break;
+			case this.#player2:
+				this.#playerTurn = this.#player1;
+				break;
+		}
+	}
+
+	showWinner(winner){
+		console.log("jugador: " + winner.getName());
+		this.#playerTurn = null;
+	}
+	
 	getChipSelected(){
 		return this.#chipSelected;
 	}
 
 	selectChip(x, y){
-		this.#chipSelected = this.#playerTurn.getSelected(x, y);
-	}
-
-	addChip(chip){
-		let posX = chip.getPosition().x;
-		this.#board.getSize().origin
-	}
-
-	showWinner(){
-		
+		if (this.#playerTurn != null){
+			this.#chipSelected = this.#playerTurn.getSelected(x, y);
+		}
 	}
 
 	deselectChip(){
+		this.#chipSelected.setSelected(false);
 		this.#chipSelected = null;
 	}
 
@@ -52,58 +105,11 @@ class Game{
 		this.#board.draw();
 		this.#player1.draw();
 		this.#player2.draw();
+		this.drawValidAreas();
 	}
 
 	clearCanvas(){
 		ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
-	}
-
-	test(){
-		this.#board.printConsole();
-		let imgSrc1 = "../img/img-games/img-imperio/FichaResistencia-1.png";
-		let imgSrc2 = "../img/img-games/img-imperio/FichaImperio-1.png";
-		let ficha1 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha2 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha3 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha4 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha5 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha6 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha7 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha8 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha9 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha10 = new Chip("J1", 0, 0, this.#ctx, imgSrc1, 40);
-		let ficha11 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha12 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha13 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha14 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha15 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha16 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha17 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha18 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha19 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-		let ficha20 = new Chip("J2", 0, 0, this.#ctx, imgSrc2, 40);
-
-		this.#board.addChip(ficha1, 0);
-		this.#board.addChip(ficha11, 3);
-		this.#board.addChip(ficha2, 0);
-		this.#board.addChip(ficha12, 0);
-		this.#board.addChip(ficha3, 1);
-		this.#board.addChip(ficha13, 0);
-		this.#board.addChip(ficha4, 1);
-		this.#board.addChip(ficha14, 1);
-		this.#board.addChip(ficha5, 3);
-		this.#board.addChip(ficha15, 2);
-		this.#board.addChip(ficha6, 4);
-		this.#board.addChip(ficha16, 2);
-
-		mostrarGanador(this.#board);
-
-		function mostrarGanador(tablero){
-			console.log("---------------------------");
-			console.log("Ganador");
-			console.log("jugador: " + tablero.getWinner());
-			tablero.printConsole();
-		}
 	}
 }
 
@@ -114,7 +120,7 @@ let currentGame;
 function init(){
 	currentGame = new Game(3, "J1", "J2", null, null, "../img/img-games/img-imperio/FichaResistencia-1.png", "../img/img-games/img-imperio/FichaImperio-1.png", ctx);
 	initEvents();
-	setTimeout(() => currentGame.draw(),500)
+	setTimeout(() => currentGame.draw(),500);
 }
 
 function initEvents(){
@@ -144,15 +150,16 @@ function mouseMove(event){
 function mouseUp(event){
 	if (currentGame.getChipSelected() != null){
 		event.preventDefault();
-		currentGame.addChip(currentGame.getChipSelected());
-		currentGame.getChipSelected().setSelected(false);
+		if (!currentGame.addChip(currentGame.getChipSelected())){
+			currentGame.getChipSelected().resetPos();
+		}
 		currentGame.deselectChip();
 		currentGame.draw();
 	}
 }
 	
-function clearCanvas(){
+/* function clearCanvas(){
 	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
-}
+} */
 
 document.onload = init();

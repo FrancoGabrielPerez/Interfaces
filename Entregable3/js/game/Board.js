@@ -155,7 +155,14 @@ class Board{
 	}
 
 	getSize(){
-		return {x:this.#tileSize*this.#nCols, y:this.#tileSize*this.#nRows, origin:this.getcOrigin(), tileSize:this.#tileSize};
+		return {x:this.#tileSize*this.#nCols, y:this.#tileSize*this.#nRows, tileSize:this.#tileSize};
+	}
+
+	getcOrigin(){
+		return {
+			x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
+			y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
+		};
 	}
 
 	getWinner(){
@@ -180,12 +187,4 @@ class Board{
 			}
 		}
 	}
-	
-	getcOrigin(){
-		return {
-			x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
-			y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
-		};
-	}
-
 }

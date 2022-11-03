@@ -59,6 +59,15 @@ class Player{
 		}
 	}
 
+	removeChip(chip){
+		let index = this.#chips.indexOf(chip);
+		this.#chips.splice(index,1);
+	}
+
+	getName(){
+		return this.#name;
+	}
+
 	draw(){
 		this.#ctx.beginPath();
 		this.#ctx.strokeStyle = "white";

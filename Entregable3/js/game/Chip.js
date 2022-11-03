@@ -2,6 +2,7 @@
 /** @type {CanvasRenderingContext2D} */
 
 class Chip{
+	#startingPos;
 	#centerX;
 	#centerY;
 	#diameter;
@@ -14,6 +15,7 @@ class Chip{
 		this.#player=player;
 		this.#img = new Image();
 		this.#img.src=imgSrc;
+		this.#startingPos = {x:x, y:y};
 		this.#centerX=x;
 		this.#centerY=y;
 		this.#diameter=size;
@@ -41,6 +43,11 @@ class Chip{
 	move(x,y){
 		this.#centerX = x;
 		this.#centerY = y; 
+	}
+
+	resetPos(){
+		this.#centerX = this.#startingPos.x;
+		this.#centerY = this.#startingPos.y; 
 	}
 
 	getPosition(){
