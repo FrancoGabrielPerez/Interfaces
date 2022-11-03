@@ -19,6 +19,7 @@ function mouseDown(event){
         document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
         button.setSelected(true);
+        clearCanvas();
     }else{
         button.setSelected(false);       
     }
@@ -47,17 +48,19 @@ function drawBackImage() {
 		var h = canvas.height;
         ctx.globalAlpha = 0.4;
 		ctx.drawImage( img, 0, 0 ,w, h);
+        drawButton();
     }
+
 }
 
 function clearCanvas(){
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0,0,900,500);
 }
 
-function init(){
+function initDrawButton(){
     drawBackImage();
-    setTimeout(drawButton,100);
+    //setTimeout(drawButton,100);
     initEvent();
 }
 
-init();
+initDrawButton();

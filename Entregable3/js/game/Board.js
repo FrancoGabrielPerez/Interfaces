@@ -174,13 +174,7 @@ class Board{
 		for (let i = 0; i < this.#matrix.length; i++) {
 			for (let j = 0; j < this.#matrix[i].length; j++) {
 				this.#ctx.beginPath();
-				//this.#ctx.strokeStyle = "white";
-				//this.#ctx.fillStyle = "rgba(158, 158, 158, 0.4)";
-				//this.#ctx.strokeRect(this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
-				//this.#ctx.fillRect(this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
 				this.#ctx.drawImage(this.#imgBoard, this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
-				
-				
 				const chip = this.#matrix[i][j];
 				if (chip != undefined)
 					chip.draw();

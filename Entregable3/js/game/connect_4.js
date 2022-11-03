@@ -22,6 +22,12 @@ function modalGame(event){
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d'); 
 
+    player1Img = `"${player1Img}"`;
+    player2Img = `"${player2Img}"`;
+    player1Profile = `"${player1Profile}"`;
+    player2Profile = `"${player2Profile}"`;
+
+
     cuatroEnLinea = new Game(gameType, player1name, player2name, player1Profile, player2Profile, player1Img, player2Img, ctx);
 }
 
