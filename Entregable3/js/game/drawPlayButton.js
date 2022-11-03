@@ -8,24 +8,25 @@ function drawButton(){
 }
 
 function initEvent(){
-    canvas.onmousedown = mouseDown;
-    canvas.onmousemove = mouseMove;
+    console.log("init button");
+    canvas.onmousedown = mouseDownButton;
+    canvas.onmousemove = mouseMoveButton;
 }
 
-function mouseDown(event){
+function mouseDownButton(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
     if(button.checkSelected(x,y)){
         document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
         button.setSelected(true);
-        clearCanvas();
+        //clearCanvas();
     }else{
         button.setSelected(false);       
     }
 }
 
-function mouseMove(event){
+function mouseMoveButton(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
     if(button.checkSelected(x,y)){

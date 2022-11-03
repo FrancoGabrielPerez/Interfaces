@@ -12,6 +12,7 @@ class Player{
 	#ctx;
 	#origin;
 	#size;
+	#currentState;
 
 	constructor(name, profilePic, chipImg, chipSize, amtChips, context, origin, size){
 		this.#name = name;
@@ -19,6 +20,7 @@ class Player{
 		this.#ctx = context;
 		this.#origin = origin;
 		this.#size = size;
+		this.#currentState = {chipImg:chipImg, chipSize:chipSize, amtChips:amtChips}
 		this.generateChips(chipImg, chipSize, amtChips);
 	}
 
@@ -32,10 +34,14 @@ class Player{
 				posX = firstPosX;
 			}
 			this.#chips.push(new Chip(this, posX, posY, this.#ctx, img, chipSize));
+			//console.log(i);
 			posX -= 10;
 		}
 	}
 
+	reset(){
+		this.generateChips(this.#currentState.chipImg, this.#currentState.chipSize, this.#currentState.amtChips);
+	}
 	//genera las fichas verticalmente
 	/* generateChips(img, size, amount){
 		this.#chips = [];

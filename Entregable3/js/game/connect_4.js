@@ -14,21 +14,15 @@ function modalGame(event){
     let player2Img = document.querySelector('input[name="game-type-2"]:checked').value;
     let player1Profile = document.querySelector('.img-jugador-1 img').getAttribute("src");
     let player2Profile = document.querySelector('.img-jugador-2 img').getAttribute("src");
-    
+    button.disable();
     cerrarModalGame();
     let formulario = document.getElementById("form-nuevo-juego");
     formulario.reset();
 
     let canvas = document.getElementById('canvas');
-    let ctx = canvas.getContext('2d'); 
+    let ctx = canvas.getContext('2d');
 
-    player1Img = `"${player1Img}"`;
-    player2Img = `"${player2Img}"`;
-    player1Profile = `"${player1Profile}"`;
-    player2Profile = `"${player2Profile}"`;
-
-
-    cuatroEnLinea = new Game(gameType, player1name, player2name, player1Profile, player2Profile, player1Img, player2Img, ctx);
+    init( new Game(gameType, player1name, player2name, player1Profile, player2Profile, player1Img, player2Img, ctx));
 }
 
 function cerrarModalGame(){
