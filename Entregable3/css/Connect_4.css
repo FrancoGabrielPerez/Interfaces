@@ -18,6 +18,7 @@ main{
 
 canvas{
 	margin: 20px;
+
 }
 
 nav.breadcrumbs{
@@ -45,6 +46,7 @@ nav.breadcrumbs ul li{
 	width: fit-content;
 	border-radius: 25px;
 	overflow: hidden;
+	align-self: center;
 }
 
 .game-window ul{
