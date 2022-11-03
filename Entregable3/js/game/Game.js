@@ -69,7 +69,7 @@ class Game{
 			this.changeTurn();
 		}
 		if (success && this.#board.getWinner()){
-			this.showWinner(this.#board.getWinner());
+			return this.#board.getWinner();
 		}
 		return success;
 	}
@@ -94,9 +94,9 @@ class Game{
 				console.log("jugador: " + winner.getName());
 				break;
 		}
-		// let winnerChart = new PlayButton(this.#ctx);
+		 let winnerChart = new PlayButton(this.#ctx);
 		// //clearCanvas();
-		// winnerChart.roundedRect(0, 0, 200,200,20,"#7B5BCD");
+		 winnerChart.roundedRect(0, 0, 200,200,20,"#7B5BCD");
 		// this.#playerTurn = null;	
 		//document.querySelector('.modalContainerMensaje').classList.remove('ocultar');
 		//document.querySelector('.modalContainerMensaje').classList.add('mostrar');
@@ -129,8 +129,8 @@ class Game{
 		this.#playerTurn = this.#player1;
 		this.draw();
 		this.showWinner(this.#board.getWinner());
-		console.log(timer);
-		clearInterval(timer);
+		clearInterval(timerID);
+		timer();
 	}
 
 	draw(){
@@ -149,7 +149,7 @@ class Game{
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let currentGame;
-let timer;
+let timerID;
 
 function init(game){
 	currentGame = game;
@@ -185,15 +185,21 @@ function mouseMove(event){
 function mouseUp(event){
 	if (currentGame.getChipSelected() != null){
 		event.preventDefault();
-		if (!currentGame.addChip(currentGame.getChipSelected())){
+		let result = currentGame.addChip(currentGame.getChipSelected());
+		if (result == false){
 			currentGame.getChipSelected().resetPos();
 		}
 		currentGame.deselectChip();
 		currentGame.draw();
+		if ((result != false) && (result !=true)){
+			ctx.canvas.removeEventListener('onmousedown', mouseDown, false);
+			ctx.canvas.removeEventListener('onmousemove', mouseMove, false);
+			currentGame.showWinner(result);
+		}
 	}
 }
 	
-timer = function timer(){
+function timer(){
 	var date = new Date('2022-01-01 00:05');
     var canvas = document.getElementById('timerCanvas');
     var ctx = canvas.getContext('2d'); 
@@ -204,7 +210,7 @@ timer = function timer(){
     var padLeft = n => "00".substring(0, "00".length - n.length) + n;
 	
 	// Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
-	var interval = setInterval(() => {
+	timerID = setInterval(() => {
         // Asignar el valor de minutos
         var minutes = padLeft(date.getMinutes() + "");
         // Asignar el valor de segundos
@@ -224,11 +230,10 @@ timer = function timer(){
             
         // Si llega a 0:00, eliminar el intervalo		
         if(minutes == '00' && seconds == '00' ){
-            clearInterval(interval);
+            clearInterval(timerID);
 			currentGame.showWinner(false);
         }    
     }, 1000);
-	return interval;
 }
 
 function clearCanvas(){

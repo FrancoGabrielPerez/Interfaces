@@ -168,10 +168,18 @@ class Board{
 	}
 
 	getcOrigin(){
-		return {
-			x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
-			y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
-		};
+		if (this.#nConnect == 7){
+			return {
+				x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
+				y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
+			}
+		}
+		else{
+			return {
+				x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
+				y:((this.#ctx.canvas.clientHeight/2)-(this.#tileSize*this.#nRows/2)),
+			};
+		}
 	}
 
 	getWinner(){
