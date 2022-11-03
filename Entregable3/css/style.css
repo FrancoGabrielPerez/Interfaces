@@ -1666,7 +1666,18 @@ justify-content: center;
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
   transform: scale(0.35);
-  transform-origin: center; 
+  transform-origin: center;
+  
+}
+
+.carrusel-categorias .contenedor-carrusel-character .carrusel, 
+.carrusel-categorias .contenedor-carrusel-jugado .carrusel, 
+.carrusel-categorias .contenedor-carrusel-accion .carrusel, 
+.carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
+.carrusel-categorias .contenedor-carrusel-deportes .carrusel,
+.contenedor-small-cards-mobile {
+  height: 200px;
+  align-items: center;
 }
 
 .carrusel-categorias .contenedor-carrusel-character .carrusel, 
@@ -1710,7 +1721,6 @@ justify-content: center;
    padding: 0px 0px;
  }
 
- 
  /*.carrusel-categorias .contenedor-principal .flecha-izq, 
  .carrusel-categorias .contenedor-principal .flecha-der {
   display: none;
@@ -1745,7 +1755,6 @@ justify-content: center;
 .modalContainerMensaje .datos-compra {
    flex-direction: column;
 }
-
 
 .btn-comprar-big-card, .btn-comprar-small-card {
   text-align: right;
