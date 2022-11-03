@@ -192,8 +192,8 @@ function mouseUp(event){
 		currentGame.deselectChip();
 		currentGame.draw();
 		if ((result != false) && (result !=true)){
-			ctx.canvas.removeEventListener('onmousedown', mouseDown, false);
-			ctx.canvas.removeEventListener('onmousemove', mouseMove, false);
+			// ctx.canvas.removeEventListener('onmousedown', mouseDown, true);
+			// ctx.canvas.removeEventListener('onmousemove', mouseMove, true);
 			currentGame.showWinner(result);
 		}
 	}
