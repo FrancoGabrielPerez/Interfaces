@@ -1,8 +1,14 @@
 var button;
-function drawButton(){
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d'); 
-    button = new PlayButton(ctx);
+function drawButton(ctx){
+    var ancho = 200;
+    var alto = 100; 
+    var posX = (ctx.canvas.clientWidth / 2) - ancho / 2;
+    var posY =(ctx.canvas.clientHeight / 2) - alto / 2; 
+    var textPosX = (ctx.canvas.clientWidth / 2);
+    var textPosY = (ctx.canvas.clientHeight / 2);
+    console.log(posX);
+    console.log(posY);
+    button = new PlayButton(ctx, posX, posY, ancho, alto, textPosX, textPosY, "Jugar");
     var fillColor = "#EA7400";
     button.drawNewButton(fillColor);
 }
@@ -20,8 +26,7 @@ function mouseDownButton(event){
         document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
         button.setSelected(true);
-        //clearCanvas();
-    }else{
+    } else {
         button.setSelected(false);       
     }
 }
@@ -32,8 +37,7 @@ function mouseMoveButton(event){
     if(button.checkSelected(x,y)){
         var fillColor = "#7CD600";
         button.drawNewButton(fillColor);
-    }
-    else {
+    } else {
         var fillColor = "#EA7400";
         button.drawNewButton(fillColor);
     }
@@ -49,7 +53,7 @@ function drawBackImage() {
 		var h = canvas.height;
         ctx.globalAlpha = 0.4;
 		ctx.drawImage( img, 0, 0 ,w, h);
-        drawButton();
+        drawButton(ctx);
     }
 
 }
@@ -60,7 +64,6 @@ function clearCanvas(){
 
 function initDrawButton(){
     drawBackImage();
-    //setTimeout(drawButton,100);
     initEvent();
 }
 

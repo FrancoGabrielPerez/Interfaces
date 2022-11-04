@@ -69,6 +69,10 @@ class Player{
 		}
 	}
 
+	getProfilePic(){
+		return this.#avatar;
+	}
+
 	removeChip(chip){
 		let index = this.#chips.indexOf(chip);
 		this.#chips.splice(index,1);

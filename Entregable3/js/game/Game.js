@@ -14,6 +14,7 @@ class Game{
 	#board;
 	#chipSelected;
 	#ctx;
+	#imgDeuce;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
 		tam = parseInt(tam);
@@ -23,10 +24,11 @@ class Game{
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
 		this.#playerTurn = this.#player1;
-		this.#chipSelected = null;
+		this.#chipSelected = null;	
+		this.#imgDeuce = new Image();	
+		this.#imgDeuce.src = '../img/img-games/img-imperio/DeathStar.png';
 		this.defineValidAreas(Game.#defaultColumns+tam);
 		this.draw();
-
 		// initEvents();
 		// setTimeout(() => this.draw(),500);
 		// timer();
@@ -94,16 +96,55 @@ class Game{
 				console.log("jugador: " + winner.getName());
 				break;
 		}
-		 let winnerChart = new PlayButton(this.#ctx);
-		// //clearCanvas();
-		 winnerChart.roundedRect(0, 0, 200,200,20,"#7B5BCD");
-		// this.#playerTurn = null;	
-		//document.querySelector('.modalContainerMensaje').classList.remove('ocultar');
-		//document.querySelector('.modalContainerMensaje').classList.add('mostrar');
-		//setTimeout(() => {document.querySelector('.modalContainerMensaje').classList.remove('mostrar');
-		//document.querySelector('.modalContainerMensaje').classList.add('ocultar');
-		//drawPlayButton();}, 1000);
 		
+		let winnerChart = new PlayButton(this.#ctx);
+		clearInterval(timerID);
+		
+		var ancho = 600;
+		var alto = 300; 
+		var posX = (this.#ctx.canvas.clientWidth / 2) - ancho/2;
+		var posY = (this.#ctx.canvas.clientHeight / 2)  - alto/2;
+		console.log('x ', posX);
+        console.log('y ', posY);
+        console.log('alto ', alto);
+        console.log('ancho ', ancho); 
+		var textPosX = this.#ctx.canvas.clientWidth/2;
+		var textPosY = (this.#ctx.canvas.clientHeight / 2);
+		winnerChart.roundedRect(posX, posY, ancho,alto,20,"#7B5BCD");
+		this.#ctx.fillStyle = "#F1F1F1";
+		this.#ctx.font = "Normal 23px Arial";
+		this.#ctx.textAlign = 'center';
+		this.#ctx.textBaseline = 'middle';		
+		if (winner != false){
+			var img = new Image();
+			img.src = winner.getProfilePic();				
+			var winnerName = winner.getName();
+			if (winner.getProfilePic().includes('Resistencia')){
+				var winnerText1 = "¡El Imperio a sido derrotado!";
+				var winnerText2 = "Larga vida a nuestro heroe...";
+			} else {
+				var winnerText1 = "¡La Resistencia a sido derrotada!";
+				var winnerText2 = "Larga vida a nuestro heroe...";
+			}
+		} else {
+			var img = this.#imgDeuce;
+			var winnerText1 = "La batalla ha sido dura...";
+			var winnerText2 = "Ningun bando resulto ganador...";
+			var winnerName = "Aunque, siempre hay revancha...";
+		}
+		
+		
+		this.#ctx.drawImage(img, posX + posX / 4, posY + posY / 2, 200, 200);
+		let winnerText1Width = this.#ctx.measureText(winnerText1).width;
+		let winnerText2Width = this.#ctx.measureText(winnerText2).width;
+		let winnerNameWidth =  this.#ctx.measureText(winnerName).width;
+		this.#ctx.fillText(winnerText1, textPosX + winnerText1Width/3, textPosY - 40 );
+		this.#ctx.fillText(winnerText2, textPosX + winnerText2Width/3, textPosY);
+		if(winner != false){
+			this.#ctx.fillText(winnerName, (textPosX + ((ancho+150)-textPosX)/3) - winnerNameWidth/2 , textPosY + 40);		
+		} else {
+			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
+		}
 	}
 	
 	getChipSelected(){
@@ -122,13 +163,13 @@ class Game{
 	}
 
 	reset(){
-		console.log("reset");
+		//console.log("reset");
 		this.#board.reset();
 		this.#player1.reset();
 		this.#player2.reset();
 		this.#playerTurn = this.#player1;
 		this.draw();
-		this.showWinner(this.#board.getWinner());
+		//this.showWinner(this.#board.getWinner());
 		clearInterval(timerID);
 		timer();
 	}
@@ -148,8 +189,13 @@ class Game{
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
+let resetCanvas = document.getElementById('timerCanvas');
+let resetCtx = resetCanvas.getContext('2d');
+console.log("resetCTX ", resetCtx);
+
 let currentGame;
 let timerID;
+let resetButton;
 
 function init(game){
 	currentGame = game;
@@ -161,9 +207,22 @@ function init(game){
 function initEvents(){
 	ctx.canvas.onmousedown = mouseDown;
 	ctx.canvas.onmousemove = mouseMove;
+	resetCanvas.onmousedown = resetMouseDown;
+	resetCanvas.onmouseover = resetMouseOver;
 	document.onmouseup = mouseUp;
 }
 	
+function resetMouseDown(event){
+	event.preventDefault();
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
+	console.log("clic");
+	if (resetButton.checkSelected(x,y)){
+		console.log("clic");
+		currentGame.reset();
+	}
+}
+
 function mouseDown(event){
 	event.preventDefault();
 	let x = event.pageX - event.currentTarget.offsetLeft;
@@ -172,14 +231,28 @@ function mouseDown(event){
 	currentGame.draw();
 }
 
+function resetMouseOver(event){
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
+	if(resetButton.checkSelected(x,y)){
+        var fillColor = "#7CD600";
+		console.log("selected");
+        resetButton.drawNewButton(fillColor);
+    } else {
+        var fillColor = "#EA7400";
+		console.log("deselected");
+        resetButton.drawNewButton(fillColor);
+    }
+}
+
 function mouseMove(event){
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
 	if ((currentGame.getChipSelected() != null)){
-		event.preventDefault();
-		let x = event.pageX - event.currentTarget.offsetLeft;
-		let y = event.pageY - event.currentTarget.offsetTop;
+		event.preventDefault();		
 		currentGame.getChipSelected().move(x, y);
 		currentGame.draw();
-	}
+	}	
 }
 
 function mouseUp(event){
@@ -198,20 +271,33 @@ function mouseUp(event){
 		}
 	}
 }
+
+
+function drawResetButton(ctx){
+	var posX = ctx.canvas.clientWidth - 150;
+	var posY = ctx.canvas.clientHeight / 2 - 25;
+	var alto = 150;
+	var ancho = 50;
+	var textPosX = ctx.canvas.clientWidth - 75;
+	var textPosY = ctx.canvas.clientHeight / 2;
+	var buttonText = "Reset";
+	resetButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
+	resetButton.drawNewButton("#F1F1F1");
+}
+
+
 	
 function timer(){
-	var date = new Date('2022-01-01 00:05');
+	var date = new Date('2022-01-01 00:01');
     var canvas = document.getElementById('timerCanvas');
     var ctx = canvas.getContext('2d'); 
-	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 	
     // Función para rellenar con ceros
-
-    var padLeft = n => "00".substring(0, "00".length - n.length) + n;
-	
+    var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
 	// Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
 	timerID = setInterval(() => {
-        // Asignar el valor de minutos
+        
+		// Asignar el valor de minutos
         var minutes = padLeft(date.getMinutes() + "");
         // Asignar el valor de segundos
         var seconds = padLeft(date.getSeconds() + "");  
@@ -223,11 +309,10 @@ function timer(){
     	ctx.textBaseline = 'middle';
 		// Se resetea el canvas para que se haga el efecto de cambio en los contadores
         ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
-        ctx.fillText(timer, ctx.canvas.clientWidth / 2,ctx.canvas.clientHeight / 2);
-        
+        ctx.fillText(timer, ctx.canvas.clientWidth / 2, ctx.canvas.clientHeight / 2);
+		drawResetButton(ctx);
         // Restarle a la fecha actual 1000 milisegundos
-        date = new Date(date.getTime() - 1000);
-            
+        date = new Date(date.getTime() - 1000);            
         // Si llega a 0:00, eliminar el intervalo		
         if(minutes == '00' && seconds == '00' ){
             clearInterval(timerID);

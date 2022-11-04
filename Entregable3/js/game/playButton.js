@@ -1,7 +1,6 @@
 class PlayButton{
-    static #ancho = 200;
-    static #alto = 100; 
-    static #textButton = "Jugar";
+     
+   
     static #buttonFontConfig = "30px Star Jedi Rounded";
     static #textButtonFillStyle = "#270977";
     static #radiousCornerButton = 20;
@@ -10,18 +9,29 @@ class PlayButton{
     static #textBaseline = 'middle';
     #posX;
     #posY;
+    #textPosX;
+    #textPosY;
     #ctx;
     #active;
+    #alto;
+    #ancho;
+    #textButton;
     
-    constructor(ctx){
+    constructor(ctx, posX, posY, ancho, alto, textPosX, textPosY, textButton){
         this.#ctx = ctx;
-        this.#posX = (this.#ctx.canvas.clientWidth / 2) - PlayButton.#ancho / 2;
-        this.#posY = (this.#ctx.canvas.clientHeight / 2) - PlayButton.#alto / 2;        
+        this.#ancho = ancho;
+        this.#alto = alto;   
+        this.#posX = posX;
+        this.#posY = posY; 
+        this.#textPosX = textPosX;
+        this.#textPosY = textPosY;       
         this.selected = false;  
-        this.#active = true;      
+        this.#active = true;           
+        this.#textButton = textButton;
     }
 
     roundedRect(x, y, width, height, radius, fillColor){
+       // console.log("dibuaja ", fillColor);
         this.#ctx.beginPath();
         this.#ctx.fillStyle = fillColor;
         this.#ctx.moveTo(x, y + radius);
@@ -40,17 +50,21 @@ class PlayButton{
         if (this.#active){
             this.#ctx.beginPath();  
             this.#ctx.globalAlpha = PlayButton.#ctxGlobalAlpha;
-            this.roundedRect(this.#posX, this.#posY, PlayButton.#ancho, PlayButton.#alto, PlayButton.#radiousCornerButton, fillColor);
+           /*  console.log('x ', this.#posX);
+            console.log('y ', this.#posY);
+            console.log('alto ', this.#alto);
+            console.log('ancho ', this.#ancho); */
+            this.roundedRect(this.#posX, this.#posY, this.#ancho, this.#alto, PlayButton.#radiousCornerButton, fillColor);
             this.#ctx.fillStyle = PlayButton.#textButtonFillStyle;
             this.#ctx.font = PlayButton.#buttonFontConfig;
             this.#ctx.textAlign = PlayButton.#textAlign;
             this.#ctx.textBaseline = PlayButton.#textBaseline;
-            this.#ctx.fillText (PlayButton.#textButton, this.#ctx.canvas.clientWidth / 2, this.#ctx.canvas.clientHeight / 2);
+            this.#ctx.fillText (this.#textButton, this.#textPosX, this.#textPosY);
         }
     }
 
     checkSelected(x, y){
-        return (x > this.#posX && x < this.#posX + PlayButton.#ancho) && (y > this.#posY && y < this.#posY + PlayButton.#alto);
+        return (x > this.#posX && x < this.#posX + this.#ancho) && (y > this.#posY && y < this.#posY + this.#alto);
     }
 
     isSelected(){
