@@ -18,12 +18,21 @@ class Board{
 		this.#nConnect = nConnect;
 		this.#nCols = ncols;
 		this.#nRows = nRows;
+		this.generateBoard();
+		this.#imgBoard = new Image();
+		this.#imgBoard.src = '../img/img-games/img-imperio/cuadroTablero.png';
+	}
+
+	generateBoard(){
 		this.#matrix = new Array(this.#nCols);
 		for (let i = 0; i < this.#nCols; i++){
 			this.#matrix[i] = new Array(this.#nRows);		
 		}
-		this.#imgBoard = new Image();
-		this.#imgBoard.src = '../img/img-games/img-imperio/cuadroTablero.png';
+	}
+
+	reset(){
+		this.generateBoard();
+		this.#winner = false;
 	}
 
 	addChip(chip, x){
@@ -159,10 +168,18 @@ class Board{
 	}
 
 	getcOrigin(){
-		return {
-			x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
-			y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
-		};
+		if (this.#nConnect == 7){
+			return {
+				x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
+				y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
+			}
+		}
+		else{
+			return {
+				x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
+				y:((this.#ctx.canvas.clientHeight/2)-(this.#tileSize*this.#nRows/2)),
+			};
+		}
 	}
 
 	getWinner(){
@@ -174,16 +191,11 @@ class Board{
 		for (let i = 0; i < this.#matrix.length; i++) {
 			for (let j = 0; j < this.#matrix[i].length; j++) {
 				this.#ctx.beginPath();
-				//this.#ctx.strokeStyle = "white";
-				//this.#ctx.fillStyle = "rgba(158, 158, 158, 0.4)";
-				//this.#ctx.strokeRect(this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
-				//this.#ctx.fillRect(this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
 				this.#ctx.drawImage(this.#imgBoard, this.getcOrigin().x+this.#tileSize*i, this.getcOrigin().y+this.#tileSize*j, this.#tileSize, this.#tileSize);
-				
-				
 				const chip = this.#matrix[i][j];
-				if (chip != undefined)
+				if (chip != undefined){
 					chip.draw();
+				}
 			}
 		}
 	}

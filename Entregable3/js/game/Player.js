@@ -12,6 +12,7 @@ class Player{
 	#ctx;
 	#origin;
 	#size;
+	#currentState;
 
 	constructor(name, profilePic, chipImg, chipSize, amtChips, context, origin, size){
 		this.#name = name;
@@ -19,6 +20,7 @@ class Player{
 		this.#ctx = context;
 		this.#origin = origin;
 		this.#size = size;
+		this.#currentState = {chipImg:chipImg, chipSize:chipSize, amtChips:amtChips}
 		this.generateChips(chipImg, chipSize, amtChips);
 	}
 
@@ -32,10 +34,14 @@ class Player{
 				posX = firstPosX;
 			}
 			this.#chips.push(new Chip(this, posX, posY, this.#ctx, img, chipSize));
+			//console.log(i);
 			posX -= 10;
 		}
 	}
 
+	reset(){
+		this.generateChips(this.#currentState.chipImg, this.#currentState.chipSize, this.#currentState.amtChips);
+	}
 	//genera las fichas verticalmente
 	/* generateChips(img, size, amount){
 		this.#chips = [];
@@ -73,9 +79,6 @@ class Player{
 	}
 
 	draw(){
-		//this.#ctx.beginPath();
-		//this.#ctx.strokeStyle = "white";
-		//this.#ctx.strokeRect(this.#origin.x, this.#origin.y, this.#size.x, this.#size.y);
 		let img = new Image();
 		img.src = this.#avatar;
 		this.#ctx.drawImage(img, this.#origin.x + this.#size.x / 2 - 150/2, this.#origin.y + 20, 150,150);
@@ -86,6 +89,6 @@ class Player{
 		this.#ctx.fillStyle = Player.#textButtonFillStyle;
 		this.#ctx.textAlign = Player.#textAlign;
         this.#ctx.textBaseline = Player.#textBaseline;
-        this.#ctx.fillText (this.#name, this.#origin.x + this.#size.x / 2, this.#origin.y+200);
+        this.#ctx.fillText (this.#name, this.#origin.x + this.#size.x / 2, this.#origin.y + 200);
 	}
 }
