@@ -88,15 +88,6 @@ class Game{
 	}
 
 	showWinner(winner){
-		switch (winner) {
-			case false:
-				console.log("Empate");
-				break;
-			default:
-				console.log("jugador: " + winner.getName());
-				break;
-		}
-		
 		let winnerChart = new PlayButton(this.#ctx);
 		clearInterval(timerID);
 		
@@ -174,6 +165,12 @@ class Game{
 		timer();
 	}
 
+	exit(){
+		clearCanvas();
+		clearInterval(timerID);
+		initDrawButton();
+	}
+
 	draw(){
 		this.clearCanvas();
 		this.#board.draw();
@@ -191,11 +188,11 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let resetCanvas = document.getElementById('timerCanvas');
 let resetCtx = resetCanvas.getContext('2d');
-console.log("resetCTX ", resetCtx);
 
 let currentGame;
 let timerID;
 let resetButton;
+let exitButton;
 
 function init(game){
 	currentGame = game;
@@ -216,10 +213,12 @@ function resetMouseDown(event){
 	event.preventDefault();
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
-	console.log("clic");
 	if (resetButton.checkSelected(x,y)){
-		console.log("clic");
 		currentGame.reset();
+	}
+	if (exitButton.checkSelected(x,y)){
+		resetCtx.clearRect(0, 0, resetCanvas.clientWidth, resetCanvas.clientHeight);
+		currentGame.exit();
 	}
 }
 
@@ -285,6 +284,18 @@ function drawResetButton(ctx){
 	resetButton.drawNewButton("#F1F1F1");
 }
 
+function drawExitButton(ctx){
+	var posX = 0;
+	var posY = ctx.canvas.clientHeight / 2 - 25;
+	var alto = 150;
+	var ancho = 50;
+	var textPosX = ctx.canvas.clientWidth - 822;
+	var textPosY = ctx.canvas.clientHeight / 2;
+	var buttonText = "Salir";
+	exitButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
+	exitButton.drawNewButton("#F1F1F1");
+}
+
 
 	
 function timer(){
@@ -311,6 +322,7 @@ function timer(){
         ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
         ctx.fillText(timer, ctx.canvas.clientWidth / 2, ctx.canvas.clientHeight / 2);
 		drawResetButton(ctx);
+		drawExitButton(ctx);
         // Restarle a la fecha actual 1000 milisegundos
         date = new Date(date.getTime() - 1000);            
         // Si llega a 0:00, eliminar el intervalo		

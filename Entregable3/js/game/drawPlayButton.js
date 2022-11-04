@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", initDrawButton);
+
 var button;
 function drawButton(ctx){
     var ancho = 200;

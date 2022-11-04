@@ -8,8 +8,7 @@ class Board{
 	#nConnect;
 	#winner;
 	#ctx;
-	#tileSize;
-	
+	#tileSize;	
 
 	constructor(ncols, nRows, nConnect, c, chipSize){
 		this.#ctx = c;
@@ -188,6 +187,7 @@ class Board{
 
 	draw(){
 		this.#ctx.clearRect(this.getcOrigin().x, this.getcOrigin().y, (this.#tileSize*this.#nCols), (this.#tileSize*this.#nRows));
+		//drawBackImage();
 		for (let i = 0; i < this.#matrix.length; i++) {
 			for (let j = 0; j < this.#matrix[i].length; j++) {
 				this.#ctx.beginPath();
