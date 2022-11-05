@@ -1,6 +1,4 @@
-class PlayButton{
-     
-   
+class PlayButton{   
     static #buttonFontConfig = "30px Distant Galaxy";
     static #textButtonFillStyle = "#270977";
     static #radiousCornerButton = 20;
@@ -30,8 +28,8 @@ class PlayButton{
         this.#textButton = textButton;
     }
 
+    // Metodo que dibuja un rectangulo con bordes redondeados.
     roundedRect(x, y, width, height, radius, fillColor){
-       // console.log("dibuaja ", fillColor);
         this.#ctx.beginPath();
         this.#ctx.fillStyle = fillColor;
         this.#ctx.moveTo(x, y + radius);
@@ -46,14 +44,11 @@ class PlayButton{
         this.#ctx.fill();
      }
 
+    // Metodo encargado del dibujado del boton "Jugar", y del texto dentro del mismo.
     drawNewButton(fillColor){
         if (this.#active){
             this.#ctx.beginPath();  
             this.#ctx.globalAlpha = PlayButton.#ctxGlobalAlpha;
-           /*  console.log('x ', this.#posX);
-            console.log('y ', this.#posY);
-            console.log('alto ', this.#alto);
-            console.log('ancho ', this.#ancho); */
             this.roundedRect(this.#posX, this.#posY, this.#ancho, this.#alto, PlayButton.#radiousCornerButton, fillColor);
             this.#ctx.fillStyle = PlayButton.#textButtonFillStyle;
             this.#ctx.font = PlayButton.#buttonFontConfig;
@@ -63,24 +58,31 @@ class PlayButton{
         }
     }
 
+    // Metodo encargado de calcular si el mouse o click, estan dentro del elemento dibujado.
     checkSelected(x, y){
         return (x > this.#posX && x < this.#posX + this.#ancho) && (y > this.#posY && y < this.#posY + this.#alto);
     }
 
+    // Metodo que retorna si el boton esta seleccionado o no.
     isSelected(){
         return this.selected;
     }
 
+    // Metodo para setear el estado, seleccionado o no, del boton jugar.
+    setSelected(selected){
+        this.selected = selected;
+    }
+
+    // Metodo para activar el boton y que se puede utilizar.
     enable(){
         this.#active = true;
     }
 
+    // Similar al anterior, setea el estado activo del boton el falso.
     disable(){
         this.#active = false;
     }
 
-    setSelected(selected){
-        this.selected = selected;
-    }
+    
 
 }

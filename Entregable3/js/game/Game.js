@@ -163,13 +163,11 @@ class Game{
 	}
 
 	reset(){
-		//console.log("reset");
 		this.#board.reset();
 		this.#player1.reset();
 		this.#player2.reset();
 		this.#playerTurn = this.#player1;
 		this.draw();
-		//this.showWinner(this.#board.getWinner());
 		clearInterval(timerID);
 		timer();
 	}
@@ -177,7 +175,6 @@ class Game{
 	exit(){
 		clearCanvas();
 		clearInterval(timerID);
-		//stopEvents();
 		initDrawButton();
 	}
 
@@ -225,7 +222,6 @@ function initEvents(){
 	ctx.canvas.onmousedown = mouseDown;
 	ctx.canvas.onmousemove = mouseMove;
 	upperCanvas.onmousedown = resetMouseDown;
-	//upperCanvas.onmouseenter = resetMouseEnter;
 	document.onmouseup = mouseUp;
 }
 
@@ -250,27 +246,6 @@ function mouseDown(event){
 	currentGame.draw();
 }
 
-/* function resetMouseEnter(event){
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	if(resetButton.checkSelected(x,y)){
-        var fillColor = "#7CD600";
-        resetButton.drawNewButton(fillColor);
-    } else {
-        var fillColor = "#EA7400";
-        resetButton.drawNewButton(fillColor);
-	}
-	if(exitButton.checkSelected(x,y)){
-		var fillColor = "#EA7400";
-		exitButton.drawNewButton(fillColor);
-	} else {
-		var fillColor = "#7CD600";
-		exitButton.drawNewButton(fillColor);
-	}
-	
-}
- */
-
 function mouseMove(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
@@ -292,10 +267,7 @@ function mouseUp(event){
 		currentGame.deselectChip();
 		currentGame.draw();
 		if ((result != false) && (result !=true)){
-			// ctx.canvas.removeEventListener('onmousedown', mouseDown, true);
-			// ctx.canvas.removeEventListener('onmousemove', mouseMove, true);
-			currentGame.showWinner(result);
-		
+			currentGame.showWinner(result);		
 		}
 	}
 }
@@ -324,14 +296,11 @@ function drawExitButton(ctx){
 	exitButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
 	exitButton.drawNewButton("#7B5BCD");
 }
-
-
 	
 function timer(){
 	var date = new Date('2022-01-01 00:01');
     var canvas = document.getElementById('upperCanvas');
-    var ctx = canvas.getContext('2d'); 
-	
+    var ctx = canvas.getContext('2d'); 	
     // Función para rellenar con ceros
     var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
 	// Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
