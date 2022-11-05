@@ -1,7 +1,8 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", initDrawButton);
 
-var button;
+let button;
+
 // Funcion encargada de dibujar el boton de jugar en el menu principal.
 function drawButton(ctx){
     var ancho = 200;
@@ -10,8 +11,6 @@ function drawButton(ctx){
     var posY =(ctx.canvas.clientHeight / 2) - alto / 2; 
     var textPosX = (ctx.canvas.clientWidth / 2);
     var textPosY = (ctx.canvas.clientHeight / 2);
-    console.log(posX);
-    console.log(posY);
     button = new PlayButton(ctx, posX, posY, ancho, alto, textPosX, textPosY, "Jugar");
     var fillColor = "#EA7400";
     button.drawNewButton(fillColor);
