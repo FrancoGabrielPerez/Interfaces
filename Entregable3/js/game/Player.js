@@ -2,7 +2,7 @@
 /** @type {CanvasRenderingContext2D} */
 
 class Player{
-	static #buttonFontConfig = "30px Star Jedi Rounded";
+	static #buttonFontConfig = "30px Star Jedi";
     static #textButtonFillStyle = "#F1F1F1";
 	static #textAlign = 'center';
     static #textBaseline = 'middle';
@@ -34,7 +34,6 @@ class Player{
 				posX = firstPosX;
 			}
 			this.#chips.push(new Chip(this, posX, posY, this.#ctx, img, chipSize));
-			//console.log(i);
 			posX -= 10;
 		}
 	}

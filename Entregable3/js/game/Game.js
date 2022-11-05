@@ -19,6 +19,7 @@ class Game{
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
 		tam = parseInt(tam);
 		this.#ctx = context;
+		drawBoardBackImage();
 		this.#board = new Board(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#ctx, this.#defaultCoinSize);
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
@@ -47,9 +48,15 @@ class Game{
 			this.#ctx.beginPath();
 			this.#ctx.strokeStyle = "white";
 			this.#ctx.fillStyle = "rgba(158, 158, 158, 0.4)";
+			this.#ctx.font = "Normal 30px Lucida Sans Unicode";
+			
 			let tileSize = this.#board.getSize().tileSize;
+			
+		
 			this.#ctx.strokeRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
 			this.#ctx.fillRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
+			this.#ctx.fillStyle = "#F1F1F1";
+			this.#ctx.fillText('▼', this.#validAreas.origin.x + tileSize*i+20, this.#validAreas.origin.y*1.4);
 		}
 	}
 
@@ -76,14 +83,17 @@ class Game{
 		return success;
 	}
 
-	changeTurn(){
+	changeTurn(endTimer){
 		switch (this.#playerTurn) {
+			case (endTimer == true):
+				this.#playerTurn = null;
+				break;
 			case this.#player1:
 				this.#playerTurn = this.#player2;
 				break;
 			case this.#player2:
 				this.#playerTurn = this.#player1;
-				break;
+				break;			
 		}
 	}
 
@@ -106,7 +116,7 @@ class Game{
 		this.#ctx.font = "Normal 23px Arial";
 		this.#ctx.textAlign = 'center';
 		this.#ctx.textBaseline = 'middle';		
-		if (winner != false){
+		if ((winner != false) && (winner != "timerEnd")){
 			var img = new Image();
 			img.src = winner.getProfilePic();				
 			var winnerName = winner.getName();
@@ -117,11 +127,17 @@ class Game{
 				var winnerText1 = "¡La Resistencia a sido derrotada!";
 				var winnerText2 = "Larga vida a nuestro heroe...";
 			}
+		} else if (winner == "timerEnd") {
+			var img = this.#imgDeuce;			
+			var winnerText1 = "El tiempo se acabo...";
+			var winnerText2 = "Ningun bando resulto ganador...";
+			var winnerName = "Aunque, siempre habra revancha...";
+
 		} else {
-			var img = this.#imgDeuce;
+			var img = this.#imgDeuce;			
 			var winnerText1 = "La batalla ha sido dura...";
 			var winnerText2 = "Ningun bando resulto ganador...";
-			var winnerName = "Aunque, siempre hay revancha...";
+			var winnerName = "Aunque, siempre habra revancha...";
 		}
 		
 		
@@ -131,7 +147,7 @@ class Game{
 		let winnerNameWidth =  this.#ctx.measureText(winnerName).width;
 		this.#ctx.fillText(winnerText1, textPosX + winnerText1Width/3, textPosY - 40 );
 		this.#ctx.fillText(winnerText2, textPosX + winnerText2Width/3, textPosY);
-		if(winner != false){
+		if((winner != false) || (winner == "timerEnd")){
 			this.#ctx.fillText(winnerName, (textPosX + ((ancho+150)-textPosX)/3) - winnerNameWidth/2 , textPosY + 40);		
 		} else {
 			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
@@ -205,7 +221,7 @@ function initEvents(){
 	ctx.canvas.onmousedown = mouseDown;
 	ctx.canvas.onmousemove = mouseMove;
 	resetCanvas.onmousedown = resetMouseDown;
-	resetCanvas.onmouseover = resetMouseOver;
+	resetCanvas.onmouseenter = resetMouseEnter;
 	document.onmouseup = mouseUp;
 }
 	
@@ -230,19 +246,26 @@ function mouseDown(event){
 	currentGame.draw();
 }
 
-function resetMouseOver(event){
+function resetMouseEnter(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
 	if(resetButton.checkSelected(x,y)){
         var fillColor = "#7CD600";
-		console.log("selected");
         resetButton.drawNewButton(fillColor);
     } else {
         var fillColor = "#EA7400";
-		console.log("deselected");
         resetButton.drawNewButton(fillColor);
-    }
+	}
+	if(exitButton.checkSelected(x,y)){
+		var fillColor = "#EA7400";
+		exitButton.drawNewButton(fillColor);
+	} else {
+		var fillColor = "#7CD600";
+		exitButton.drawNewButton(fillColor);
+	}
+	
 }
+
 
 function mouseMove(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
@@ -314,7 +337,7 @@ function timer(){
         var seconds = padLeft(date.getSeconds() + "");  
 		// Variable para imprimir por pantalla      
         var timer = `${minutes} : ${seconds}`;
-		ctx.font = "30px Star Jedi Rounded";
+		ctx.font = "Normal 30px Distant Galaxy";
     	ctx.fillStyle = "#F1F1F1";
 		ctx.textAlign = 'center';
     	ctx.textBaseline = 'middle';
@@ -328,7 +351,8 @@ function timer(){
         // Si llega a 0:00, eliminar el intervalo		
         if(minutes == '00' && seconds == '00' ){
             clearInterval(timerID);
-			currentGame.showWinner(false);
+			currentGame.changeTurn(true);
+			currentGame.showWinner("timerEnd");
         }    
     }, 1000);
 }

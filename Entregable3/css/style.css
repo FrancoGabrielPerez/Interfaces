@@ -48,6 +48,21 @@
 }
 
 @font-face {
+  font-family: 'Distant Galaxy';
+  src: url('../img/fonts/SfDistantGalaxy-0l3d.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Distant Galaxy Italic';
+  src: url('../img/fonts/SfDistantGalaxyItalic-WV3Y.ttf') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+}
+
+
+@font-face {
   font-family: 'Star Jedi';
   src: url('../img/fonts/StarJedi-DGRW.ttf') format('truetype');
   font-style: normal;
@@ -787,7 +802,7 @@ form label{
 }
 
 .modal-game .selec-dif h3, .modal-game label{
-  font-family: 'Star Jedi';
+  font-family: 'Distant Galaxy';
   letter-spacing: 5px;
 }
 

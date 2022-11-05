@@ -1,7 +1,7 @@
 class PlayButton{
      
    
-    static #buttonFontConfig = "30px Star Jedi Rounded";
+    static #buttonFontConfig = "30px Distant Galaxy";
     static #textButtonFillStyle = "#270977";
     static #radiousCornerButton = 20;
     static #ctxGlobalAlpha = 1;
