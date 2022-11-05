@@ -2,7 +2,7 @@
 /** @type {CanvasRenderingContext2D} */
 
 class Player{
-	static #buttonFontConfig = "30px Star Jedi Rounded";
+	#buttonFontConfig;
     static #textButtonFillStyle = "#F1F1F1";
 	static #textAlign = 'center';
     static #textBaseline = 'middle';
@@ -20,6 +20,7 @@ class Player{
 		this.#ctx = context;
 		this.#origin = origin;
 		this.#size = size;
+		this.#buttonFontConfig = "30px Distant Galaxy";
 		this.#currentState = {chipImg:chipImg, chipSize:chipSize, amtChips:amtChips}
 		this.generateChips(chipImg, chipSize, amtChips);
 	}
@@ -34,7 +35,6 @@ class Player{
 				posX = firstPosX;
 			}
 			this.#chips.push(new Chip(this, posX, posY, this.#ctx, img, chipSize));
-			//console.log(i);
 			posX -= 10;
 		}
 	}
@@ -57,16 +57,27 @@ class Player{
 		}
 	} */
 
-	getSelected(posX, posY){
+	isOverChip(posX, posY){
 		for(let i=this.#chips.length-1; i>=0; i--){
 			if (this.#chips[i].isInside(posX, posY)){
-				let chipSelected = this.#chips[i];
-				chipSelected.setSelected(true);
-				this.#chips.splice(i,1);
-				this.#chips.push(chipSelected);
-				return chipSelected;
+				return this.#chips[i];
 			}
 		}
+	}
+
+	getSelected(posX, posY){
+		let chipSelected = this.isOverChip(posX, posY);
+		if (chipSelected){
+			chipSelected.setSelected(true);
+			this.#chips.splice(this.#chips.indexOf(chipSelected),1);
+			this.#chips.push(chipSelected);
+			return chipSelected;
+		}
+		return false;
+	}
+
+	getProfilePic(){
+		return this.#avatar;
 	}
 
 	removeChip(chip){
@@ -81,14 +92,33 @@ class Player{
 	draw(){
 		let img = new Image();
 		img.src = this.#avatar;
+		this.roundedRect(this.#origin.x, this.#origin.y, this.#size.x, this.#size.y, 20,"rgba(158, 158, 158, .4)");
 		this.#ctx.drawImage(img, this.#origin.x + this.#size.x / 2 - 150/2, this.#origin.y + 20, 150,150);
-		this.#chips.forEach(chip => {
-			chip.draw();
-		});
-		this.#ctx.font = Player.#buttonFontConfig;
+		
+		this.#ctx.font = this.#buttonFontConfig;
 		this.#ctx.fillStyle = Player.#textButtonFillStyle;
 		this.#ctx.textAlign = Player.#textAlign;
         this.#ctx.textBaseline = Player.#textBaseline;
+		if (this.#ctx.measureText(this.#name).width > this.#size.x)
+			this.#buttonFontConfig = "20px Distant Galaxy";
         this.#ctx.fillText (this.#name, this.#origin.x + this.#size.x / 2, this.#origin.y + 200);
+		this.#chips.forEach(chip => {
+			chip.draw();
+		});
 	}
+
+	roundedRect(x, y, width, height, radius, fillColor){
+        this.#ctx.beginPath();
+        this.#ctx.fillStyle = fillColor;
+        this.#ctx.moveTo(x, y + radius);
+        this.#ctx.lineTo(x, y + height - radius);
+        this.#ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+        this.#ctx.lineTo(x + width - radius, y + height);
+        this.#ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+        this.#ctx.lineTo(x + width, y + radius);
+        this.#ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+        this.#ctx.lineTo(x + radius, y);
+        this.#ctx.quadraticCurveTo(x , y, x, y + radius);
+        this.#ctx.fill();
+     }
 }

@@ -48,6 +48,21 @@
 }
 
 @font-face {
+  font-family: 'Distant Galaxy';
+  src: url('../img/fonts/SfDistantGalaxy-0l3d.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Distant Galaxy Italic';
+  src: url('../img/fonts/SfDistantGalaxyItalic-WV3Y.ttf') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+}
+
+
+@font-face {
   font-family: 'Star Jedi';
   src: url('../img/fonts/StarJedi-DGRW.ttf') format('truetype');
   font-style: normal;
@@ -71,9 +86,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  list-style: none;
-  /*box-sizing: border-box;*/
-  
+  list-style: none;  
 }
 
 h1, h2, h3, p, li{
@@ -108,7 +121,6 @@ p.bold{
 input[type=text] {
   width: 100%;
   padding: 12px 20px;
-  /*margin: 8px 0;*/
   box-sizing: border-box;
 }
 
@@ -118,7 +130,7 @@ body, input, textarea, button{
 
 body {
   margin:0;
-  background: #0C0228;
+  background: var(--Color-SecondaryS3);
  
 }
 
@@ -404,7 +416,7 @@ header {
   transform: translateY(-150%);
 }
 
-/* Hamburger Menu */
+/*------------------- HAMBURGER MENU -----------------------------------------*/
 
 .nav-icon{
   width: 60px;
@@ -787,7 +799,7 @@ form label{
 }
 
 .modal-game .selec-dif h3, .modal-game label{
-  font-family: 'Star Jedi';
+  font-family: 'Distant Galaxy';
   letter-spacing: 5px;
 }
 
@@ -913,7 +925,6 @@ form label{
   border-color: #3498db;
   color: #fff;
   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
- /*transition: all 150ms ease-in-out;*/
   transition: all 150ms ease-in-out;
 }
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover {
@@ -935,7 +946,6 @@ form label{
   display:flex;
   flex-direction: column;
 }
-
 
 /*-----------------------------CARRUSELES---------------------------------------*/
 
@@ -1201,17 +1211,6 @@ form label{
   margin-bottom: 20px;
 }
 
-/*.btn-comprar-big-card,
-.btn-comprar-small-card{
-    text-align: right;
-    padding: 0px 20px;
-}
-
-.btn-comprar-small-card{
-    padding: 0px 40px;
-}*/
-
-
 .juego-jugado .card-small .img-juego-small img,
 .juego-recomendado .card-small .img-juego-small img,
 .juego-accion .card-small .img-juego-small img,
@@ -1232,34 +1231,11 @@ form label{
     width: 566px;
     position: initial;
     object-fit:cover;
-    /*display: none;*/
 }
-
-/*.juego-jugado .contenedor-card-small button,
-.juego-recomendado .contenedor-card-small button,
-.juego-accion .contenedor-card-small button,
-.juego-multijugador .contenedor-card-small button,
-.juego-deportes .contenedor-card-small button,
-.card-big .datos-juego-big .button{
-    /*position: absolute;
-    text-align: right;
-    background: #7B5BCD;
-    border-radius: 10px;
-    font-size:x-large;
-    font-weight: 700;
-}
-
-
-.card-big .datos-juego-big .button{
-    padding: 10px;
-}*/
 
 /*--------------------PAGINA HERO----------------------------------*/
 body.hero-page{
- /* display: grid;
-  overflow: hidden;*/
   grid-template-columns: 100%;
- /* justify-content: center;*/
   grid-template-rows: repeat(3, auto);
   grid-template-areas:  "header"
                         "main-hero-page"
@@ -1316,17 +1292,14 @@ body.hero-page{
 
 .hero1, .hero2{  
   transform: translate(160px, 350px);
-
 }
 
 .hero3, .hero4{
-  transform: translate(250px, 350px);
-  
+  transform: translate(250px, 350px);  
 }
 
 .reserva{
   transform: translate(-1250px, -10px);
-
   height: 70%;
 }
 
@@ -1334,7 +1307,6 @@ body.hero-page{
   width: 35%;
   height: 80%;
   transform: translate(220px,10px);
-
 }
 
 .time-counter{
@@ -1379,19 +1351,19 @@ body.hero-page{
 }
 
 .juego-character .contenedor-card-small-character .datos-juego-small h3{
-    line-height: 36px;
+  line-height: 36px;
 }
 
 
 .juego-character .contenedor-card-small-character .datos-juego-small p{
-    text-align: center;
-    line-height: 20px;
-    letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 0.05em;
     
 }
 
 .juego-character .contenedor-card-small-character .datos-juegos-small h2{    
-    line-height: 36px;    
+  line-height: 36px;    
 }
 
 .indicador-estado-gratis, .indicador-estado-agregado{
@@ -1417,9 +1389,9 @@ body.hero-page{
 }
 
 .juego-character .contenedor-card-small-character{
-    padding: 40px;   
-    justify-content: center;
-    display: flex;
+  padding: 40px;   
+  justify-content: center;
+  display: flex;
 }
 
 .contenedor-carrusel-characters .contenedor-titulo-controles{
@@ -1428,16 +1400,16 @@ body.hero-page{
 }
 
 .juego-character .card-small-character{
-    display: flex;
-    flex-direction: column;
-    width: 285px;
-    height: 427px;
-    border: var(--Color-GreyL3);
-    border-radius: 23px;
-    border-width: 3px;
-    border-style: solid;
-    background: var(--Color-Primary);
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 285px;
+  height: 427px;
+  border: var(--Color-GreyL3);
+  border-radius: 23px;
+  border-width: 3px;
+  border-style: solid;
+  background: var(--Color-Primary);
+  cursor: pointer;
 }
 
 .juego-character .card-small-character .datos-juego-small{
@@ -1451,12 +1423,10 @@ body.hero-page{
   flex-grow: 1;
 }
 
-
 .juego-character .card-small-character .precio-small-card{
   align-self: center;
   margin-bottom: 20px;
 }
-
 
 .juego-character .card-small-character .img-juego-small img{
     border-radius: 20px 20px 0px 0px;
@@ -1466,7 +1436,6 @@ body.hero-page{
     object-fit:cover;
     background: var(--Color-Primary);
 }
-
 
 .features-chart{
   display: flex;
@@ -1490,7 +1459,6 @@ body.hero-page{
 .features-chart .feature-container-a img,
 .features-chart .feature-container-b img{
   height: 100%;
-
 }
 
 .features-chart .feature-text-a{
@@ -1507,18 +1475,15 @@ body.hero-page{
   padding: 20px;
 }
 
-
 .features-chart .feature-container-a .feature-title,
 .features-chart .feature-container-b .feature-title{
   margin-bottom: 20px;
 }
 
-
 .features-chart .feature-container-a .feature-p,
 .features-chart .feature-container-b .feature-p{
   line-height: normal;
 }
-
 
 .container-features-1, .container-features-2{
   display: flex; 
@@ -1539,7 +1504,6 @@ footer{
   justify-content: space-between;
   padding: 40px 80px 40px 80px;
   background: #270977;
-  /*width: 100%;*/
 }
 
 .contenedor-ppal-footer > div li,
@@ -1555,8 +1519,8 @@ footer{
 }
 
 .contenedor-ppal-footer .cont-redes .icons-redes-footer{
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .contenedor-ppal-footer .cont-redes .icons-redes-footer img{
@@ -1621,8 +1585,8 @@ justify-content: center;
                           ". main ."
                           "footer footer footer";
   }
- 
-.header-search-bar .input-buscar, .usr-name{
+
+  .header-search-bar .input-buscar, .usr-name{
     display: none;
   }
 
@@ -1631,7 +1595,7 @@ justify-content: center;
     height: 100px;
     overflow: hidden;
   }
-  
+
   .logo {
     margin-left: 0px;
     opacity: 50%;
@@ -1640,188 +1604,165 @@ justify-content: center;
     transform: rotateZ(-30deg);
   }
 
-.carrusel-categorias{
-  margin-bottom: 40px;
-}
+  .carrusel-categorias{
+    margin-bottom: 40px;
+  }
 
+  .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character,
+  .carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado,
+  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
+  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
+  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
+    min-width: 33.33%;
+    transform: scale(0.3,0.3);
+    transition: .3s ease all;
+    overflow: visible;
+  }
 
-.carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character,
-.carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado,
-.carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
-.carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
-.carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
-  min-width: 33.33%;
-  transform: scale(0.3,0.3);
-  transition: .3s ease all;
-  overflow: visible;
- }
+  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
+    transform: scale(0.9,0.9);
+  }
 
- .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
-  transform: scale(0.9,0.9);
- }
+  .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character.hover,
+  .carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado.hover,
+  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
+  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
+  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
+    transform: scale(0.35);
+    transform-origin: center; 
+  }
 
- .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character.hover,
- .carrusel-categorias .contenedor-carrusel-jugado .carrusel .juego-jugado.hover,
- .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
- .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
- .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
-  transform: scale(0.35);
-  transform-origin: center;
+  .carrusel-categorias .contenedor-carrusel-character .carrusel, 
+  .carrusel-categorias .contenedor-carrusel-jugado .carrusel, 
+  .carrusel-categorias .contenedor-carrusel-accion .carrusel, 
+  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
+  .carrusel-categorias .contenedor-carrusel-deportes .carrusel,
+  .contenedor-small-cards-mobile {
+    height: 200px;
+    align-items: center;
+  }
+
+  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
+    transform: scale(1.0);
+  }
+
+  .carrusel-categorias .contenedor-principal{
+    justify-content: center;  
+    margin-bottom: -40px;
+  }
   
-}
+  .carrusel-categorias .contenedor-titulo-controles .indicadores-jugado,
+  .carrusel-categorias .contenedor-titulo-controles .indicadores-accion,
+  .carrusel-categorias .contenedor-titulo-controles .indicadores-multijugador,
+  .carrusel-categorias .contenedor-titulo-controles .indicadores-deportes,
+  .carrusel-categorias .contenedor-titulo-controles .indicadores-recomendado{
+    display: none;
+  }
 
-.carrusel-categorias .contenedor-carrusel-character .carrusel, 
-.carrusel-categorias .contenedor-carrusel-jugado .carrusel, 
-.carrusel-categorias .contenedor-carrusel-accion .carrusel, 
-.carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
-.carrusel-categorias .contenedor-carrusel-deportes .carrusel,
-.contenedor-small-cards-mobile {
-  height: 200px;
-  align-items: center;
-}
+  .carrusel-categorias .contenedor-titulo-controles h3{
+    text-align: center;
+  }
 
-.carrusel-categorias .contenedor-carrusel-character .carrusel, 
-.carrusel-categorias .contenedor-carrusel-jugado .carrusel, 
-.carrusel-categorias .contenedor-carrusel-accion .carrusel, 
-.carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
-.carrusel-categorias .contenedor-carrusel-deportes .carrusel,
-.contenedor-small-cards-mobile {
-  height: 200px;
-  align-items: center;
-}
+  .carrusel-categorias .contenedor-carrusel-jugado, 
+  .carrusel-categorias .contenedor-carrusel-accion, 
+  .carrusel-categorias .contenedor-carrusel-multijugador, 
+  .carrusel-categorias .contenedor-carrusel-deportes {
+    padding: 0px 0px;
+  }
 
-.carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
-  transform: scale(1.0);
-}
+  .contenedor-titulo-controles {
+    justify-content: center;
+  }
 
- .carrusel-categorias .contenedor-principal{
-  justify-content: center;  
-  margin-bottom: -40px;
- }
+  .juego-jugado .contenedor-card-small, 
+  .juego-recomendado .contenedor-card-small, 
+  .juego-accion .contenedor-card-small, 
+  .juego-multijugador .contenedor-card-small, 
+  .juego-deportes .contenedor-card-small {
+    padding: 0px;
+  }
 
- 
- .carrusel-categorias .contenedor-titulo-controles .indicadores-jugado,
- .carrusel-categorias .contenedor-titulo-controles .indicadores-accion,
- .carrusel-categorias .contenedor-titulo-controles .indicadores-multijugador,
- .carrusel-categorias .contenedor-titulo-controles .indicadores-deportes,
- .carrusel-categorias .contenedor-titulo-controles .indicadores-recomendado{
-  display: none;
- }
+  .contenedor-card-big{
+    width:100%;
+    height: 500px;
+    flex-direction: column;
+  }
 
- .carrusel-categorias .contenedor-titulo-controles h3{
-  text-align: center;
- }
+  .modalContainerMensaje {
+    transform: scale(0.7);
+  }
 
+  .img-compra img {
+    padding-bottom: 10px;
+  }
 
- .carrusel-categorias .contenedor-carrusel-jugado, 
- .carrusel-categorias .contenedor-carrusel-accion, 
- .carrusel-categorias .contenedor-carrusel-multijugador, 
- .carrusel-categorias .contenedor-carrusel-deportes {
-   /*width: 84%;*/
-   padding: 0px 0px;
- }
+  .modalContainerMensaje .datos-compra {
+    flex-direction: column;
+  }
 
- /*.carrusel-categorias .contenedor-principal .flecha-izq, 
- .carrusel-categorias .contenedor-principal .flecha-der {
-  display: none;
- }*/
+  .btn-comprar-big-card, .btn-comprar-small-card {
+    text-align: right;
+    padding: 0px;
+  }
 
- .contenedor-titulo-controles {
-   justify-content: center;
-}
+  .contenedor-card-big .card-big{
+    width: 100%;
+    height: 500px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+  }
 
-.juego-jugado .contenedor-card-small, 
-.juego-recomendado .contenedor-card-small, 
-.juego-accion .contenedor-card-small, 
-.juego-multijugador .contenedor-card-small, 
-.juego-deportes .contenedor-card-small {
-  padding: 0px;
-}
-
-.contenedor-card-big{
-  width:100%;
-  height: 500px;
-  flex-direction: column;
-}
-
-.modalContainerMensaje {
-  transform: scale(0.7);
-}
-
-.img-compra img {
-  padding-bottom: 10px;
-}
-
-.modalContainerMensaje .datos-compra {
-   flex-direction: column;
-}
-
-.btn-comprar-big-card, .btn-comprar-small-card {
-  text-align: right;
-  padding: 0px;
-}
-
-.contenedor-card-big .card-big{
-  width: 100%;
-  height: 500px;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-}
-
-.contenedor-card-big .card-big .img-juego-big{
-border-radius: 20px 0px 0px 20px;
-height: 50%;
-width: 100%;
-}
+  .contenedor-card-big .card-big .img-juego-big{
+    border-radius: 20px 0px 0px 20px;
+    height: 50%;
+    width: 100%;
+  }
 
 
-.contenedor-card-big .card-big .img-juego-big img {
-border-radius: 20px 20px 0px 0px;
-height: 100%;
-width: 100%;
-position: initial;
-object-fit: cover;
-}
+  .contenedor-card-big .card-big .img-juego-big img {
+    border-radius: 20px 20px 0px 0px;
+    height: 100%;
+    width: 100%;
+    position: initial;
+    object-fit: cover;
+  }
 
-.datos-juego-big {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+  .datos-juego-big {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
-.contenedor-card-big .card-big .datos-juego-big .titulo-big-card{
-padding: 10px 10px;
-}
-.contenedor-card-big .card-big .datos-juego-big .contenido-big-card{
-padding: 10px 10px;
-}
-.contenedor-card-big .card-big .datos-juego-big .precio-big-card{
-padding: 10px 10px;
-}
-
-
-
+  .contenedor-card-big .card-big .datos-juego-big .titulo-big-card{
+    padding: 10px 10px;
+  }
+  .contenedor-card-big .card-big .datos-juego-big .contenido-big-card{
+    padding: 10px 10px;
+  }
+  .contenedor-card-big .card-big .datos-juego-big .precio-big-card{
+    padding: 10px 10px;
+  }
 
   .contenedor-novedades .contenedor-card-preview{
     width:90%;
     flex-direction: column;
   }
 
- .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview h2{
-  display: none;
- }
+  .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview h2{
+    display: none;
+  }
 
- .contenedor-novedades .cuerpo-preview{
-  padding: 10px;
- }
+  .contenedor-novedades .cuerpo-preview{
+    padding: 10px;
+  }
 
- .contenedor-novedades{
-  height: 650px;
-  justify-content: flex-start;
-  margin-bottom: 20px;
- }
+  .contenedor-novedades{
+    height: 650px;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
 
   .contenedor-novedades h1 {
     font-size: 50px;
@@ -1835,17 +1776,17 @@ padding: 10px 10px;
 
   .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .titulo-preview {
     padding: 10px;
-}
+  }
 
-.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .button-preview {
-  align-self: center;
-  margin-bottom: 10px;
-  margin-left: 0px;
-}
+  .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .button-preview {
+    align-self: center;
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
 
-.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview {
-  margin-left: 0px;
-}
+  .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview {
+    margin-left: 0px;
+  }
 
   .contenedor-ppal-footer{    
     flex-wrap: wrap;
@@ -1871,22 +1812,21 @@ padding: 10px 10px;
     align-items: flex-start;
     align-content: center;
     flex-direction: row;
-}
+  }
 
-.contenedor-ppal-footer .cont-redes .logos-redes{
-  width: 100%;
-  flex-direction: column;
-}
+  .contenedor-ppal-footer .cont-redes .logos-redes{
+    width: 100%;
+    flex-direction: column;
+  }
 
-.contenedor-ppal-footer .cont-redes .input-box-buscar {
-  margin-top: 15px;
-  width: 100%;
-}
+  .contenedor-ppal-footer .cont-redes .input-box-buscar {
+    margin-top: 15px;
+    width: 100%;
+  }
 
-.contenedor-ppal-footer .cont-redes .input-buscar .input-icon {  
-  transform: translateY(-120%);
-}
-
+  .contenedor-ppal-footer .cont-redes .input-buscar .input-icon {  
+    transform: translateY(-120%);
+  }
 }
 
 

@@ -144,7 +144,7 @@
 									<div class="form-datos-jugador-uno">										
 										<div class="mb-3">
 											<label for="name">Nombre Jugador 1</label>
-											<input type=text id="name-jug-1" name="name-jug-1" required>
+											<input type=text id="name-jug-1" name="name-jug-1" maxlength="10" required>
 										</div>
 										<div class="mb-3">  
 											<label>Elige tu escudo</label> 
@@ -183,7 +183,7 @@
 									<div class="form-datos-jugador-dos">	
 										<div class="mb-3">  
 											<label>Nombre Jugador 2</label>     
-											<input type=text id="name-jug-2" name="name-jug-2" required>
+											<input type=text id="name-jug-2" name="name-jug-2" maxlength="10" required>
 										</div>
 										<div class="mb-3">  
 											<label>Elige tu escudo</label> 
@@ -226,8 +226,10 @@
 					</div>
 				</div>
 			</section>
-			<canvas id="timerCanvas" width="900" height="50" ></canvas>
-			<canvas id="canvas" width="900" height="500" ></canvas>
+			<div class="game">
+				<canvas id="upperCanvas" class="canvas" width="900" height="50" ></canvas>
+				<canvas id="canvas" class="canvas" width="900" height="500" ></canvas>
+			</div>
 			<ul>
 				<li><img src="../img/icons/Img-Logo.svg" alt="WASD Games"></li>
 				<li><h3>El Imperio y las cuatro estrellas de la muerte</h3></li>
@@ -414,7 +416,7 @@
     <script src="../js/game/Player.js"></script>
     <script src="../js/game/Board.js"></script>
     <script src="../js/game/Game.js"></script>
-	
+	<script src="../js/game/drawBoardBackImage.js"></script>
 	<script src="../js/game/playButton.js"></script>
 	<script src="../js/game/drawPlayButton.js"></script>
     <script src="../js/game/connect_4.js"></script> 

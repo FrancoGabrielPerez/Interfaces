@@ -8,8 +8,7 @@ class Board{
 	#nConnect;
 	#winner;
 	#ctx;
-	#tileSize;
-	
+	#tileSize;	
 
 	constructor(ncols, nRows, nConnect, c, chipSize){
 		this.#ctx = c;
@@ -173,8 +172,7 @@ class Board{
 				x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
 				y:((this.#ctx.canvas.clientHeight)-(this.#tileSize*this.#nRows)),
 			}
-		}
-		else{
+		} else {
 			return {
 				x:((this.#ctx.canvas.clientWidth/2)-(this.#tileSize*this.#nCols/2)),
 				y:((this.#ctx.canvas.clientHeight/2)-(this.#tileSize*this.#nRows/2)),
@@ -187,7 +185,8 @@ class Board{
 	}
 
 	draw(){
-		this.#ctx.clearRect(this.getcOrigin().x, this.getcOrigin().y, (this.#tileSize*this.#nCols), (this.#tileSize*this.#nRows));
+		//drawBoardBackImage();
+		this.#ctx.clearRect(this.getcOrigin().x, this.getcOrigin().y, (this.#tileSize*this.#nCols), (this.#tileSize*this.#nRows));		
 		for (let i = 0; i < this.#matrix.length; i++) {
 			for (let j = 0; j < this.#matrix[i].length; j++) {
 				this.#ctx.beginPath();
