@@ -19,7 +19,7 @@ class Game{
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
 		tam = parseInt(tam);
 		this.#ctx = context;
-		drawBoardBackImage();
+		//drawBoardBackImage();
 		this.#board = new Board(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#ctx, this.#defaultCoinSize);
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
@@ -48,11 +48,8 @@ class Game{
 			this.#ctx.beginPath();
 			this.#ctx.strokeStyle = "white";
 			this.#ctx.fillStyle = "rgba(158, 158, 158, 0.4)";
-			this.#ctx.font = "Normal 30px Lucida Sans Unicode";
-			
-			let tileSize = this.#board.getSize().tileSize;
-			
-		
+			this.#ctx.font = "Normal 30px Lucida Sans Unicode";			
+			let tileSize = this.#board.getSize().tileSize;	
 			this.#ctx.strokeRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
 			this.#ctx.fillRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
 			this.#ctx.fillStyle = "#F1F1F1";
@@ -78,29 +75,31 @@ class Game{
 			this.changeTurn();
 		}
 		if (success && this.#board.getWinner()){
+			this.changeTurn(true);
 			return this.#board.getWinner();
+			
 		}
 		return success;
 	}
 
-	changeTurn(endTimer){
-		switch (this.#playerTurn) {
-			case (endTimer == true):
-				this.#playerTurn = null;
-				break;
-			case this.#player1:
-				this.#playerTurn = this.#player2;
-				break;
-			case this.#player2:
-				this.#playerTurn = this.#player1;
-				break;			
+	changeTurn(turn){
+		if (turn == true){
+			this.#playerTurn = null;
+		} else {
+			switch (this.#playerTurn) {
+				case this.#player1:
+					this.#playerTurn = this.#player2;
+					break;
+				case this.#player2:
+					this.#playerTurn = this.#player1;
+					break;			
+			}
 		}
 	}
 
 	showWinner(winner){
 		let winnerChart = new PlayButton(this.#ctx);
 		clearInterval(timerID);
-		
 		var ancho = 600;
 		var alto = 300; 
 		var posX = (this.#ctx.canvas.clientWidth / 2) - ancho/2;
@@ -139,8 +138,6 @@ class Game{
 			var winnerText2 = "Ningun bando resulto ganador...";
 			var winnerName = "Aunque, siempre habra revancha...";
 		}
-		
-		
 		this.#ctx.drawImage(img, posX + posX / 4, posY + posY / 2, 200, 200);
 		let winnerText1Width = this.#ctx.measureText(winnerText1).width;
 		let winnerText2Width = this.#ctx.measureText(winnerText2).width;
@@ -152,6 +149,7 @@ class Game{
 		} else {
 			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
 		}
+		this.changeTurn(true);
 	}
 	
 	getChipSelected(){
@@ -184,6 +182,7 @@ class Game{
 	exit(){
 		clearCanvas();
 		clearInterval(timerID);
+		//stopEvents();
 		initDrawButton();
 	}
 
@@ -202,8 +201,8 @@ class Game{
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
-let resetCanvas = document.getElementById('timerCanvas');
-let resetCtx = resetCanvas.getContext('2d');
+let upperCanvas = document.getElementById('upperCanvas');
+let resetCtx = upperCanvas.getContext('2d');
 
 let currentGame;
 let timerID;
@@ -220,11 +219,11 @@ function init(game){
 function initEvents(){
 	ctx.canvas.onmousedown = mouseDown;
 	ctx.canvas.onmousemove = mouseMove;
-	resetCanvas.onmousedown = resetMouseDown;
-	resetCanvas.onmouseenter = resetMouseEnter;
+	upperCanvas.onmousedown = resetMouseDown;
+	//upperCanvas.onmouseenter = resetMouseEnter;
 	document.onmouseup = mouseUp;
 }
-	
+
 function resetMouseDown(event){
 	event.preventDefault();
 	let x = event.pageX - event.currentTarget.offsetLeft;
@@ -233,7 +232,7 @@ function resetMouseDown(event){
 		currentGame.reset();
 	}
 	if (exitButton.checkSelected(x,y)){
-		resetCtx.clearRect(0, 0, resetCanvas.clientWidth, resetCanvas.clientHeight);
+		resetCtx.clearRect(0, 0, upperCanvas.clientWidth, upperCanvas.clientHeight);
 		currentGame.exit();
 	}
 }
@@ -246,7 +245,7 @@ function mouseDown(event){
 	currentGame.draw();
 }
 
-function resetMouseEnter(event){
+/* function resetMouseEnter(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
 	if(resetButton.checkSelected(x,y)){
@@ -265,7 +264,7 @@ function resetMouseEnter(event){
 	}
 	
 }
-
+ */
 
 function mouseMove(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
@@ -281,6 +280,7 @@ function mouseUp(event){
 	if (currentGame.getChipSelected() != null){
 		event.preventDefault();
 		let result = currentGame.addChip(currentGame.getChipSelected());
+		console.log(result);
 		if (result == false){
 			currentGame.getChipSelected().resetPos();
 		}
@@ -290,6 +290,7 @@ function mouseUp(event){
 			// ctx.canvas.removeEventListener('onmousedown', mouseDown, true);
 			// ctx.canvas.removeEventListener('onmousemove', mouseMove, true);
 			currentGame.showWinner(result);
+		
 		}
 	}
 }
@@ -304,7 +305,7 @@ function drawResetButton(ctx){
 	var textPosY = ctx.canvas.clientHeight / 2;
 	var buttonText = "Reset";
 	resetButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
-	resetButton.drawNewButton("#F1F1F1");
+	resetButton.drawNewButton("#7CD600");
 }
 
 function drawExitButton(ctx){
@@ -316,14 +317,14 @@ function drawExitButton(ctx){
 	var textPosY = ctx.canvas.clientHeight / 2;
 	var buttonText = "Salir";
 	exitButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
-	exitButton.drawNewButton("#F1F1F1");
+	exitButton.drawNewButton("#7B5BCD");
 }
 
 
 	
 function timer(){
 	var date = new Date('2022-01-01 00:01');
-    var canvas = document.getElementById('timerCanvas');
+    var canvas = document.getElementById('upperCanvas');
     var ctx = canvas.getContext('2d'); 
 	
     // Función para rellenar con ceros

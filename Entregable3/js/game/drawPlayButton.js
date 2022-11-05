@@ -1,3 +1,4 @@
+"use strict";
 document.addEventListener("DOMContentLoaded", initDrawButton);
 
 var button;
@@ -16,10 +17,10 @@ function drawButton(ctx){
 }
 
 function initEvent(){
-    console.log("init button");
+    //console.log("init button");
     canvas.onmousedown = mouseDownButton;
     canvas.onmousemove = mouseMoveButton;
-}
+}   
 
 function mouseDownButton(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
@@ -57,7 +58,6 @@ function drawBackImage() {
 		ctx.drawImage( img, 0, 0 ,w, h);
         drawButton(ctx);
     }
-
 }
 
 function clearCanvas(){
