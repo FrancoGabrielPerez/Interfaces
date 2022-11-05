@@ -37,7 +37,7 @@ class Game{
 	defineValidAreas(nCols){
 		let origin = {
 			x: this.#board.getcOrigin().x + (this.#board.getSize().tileSize-this.#defaultCoinSize)/2,
-			y:this.#board.getcOrigin().y - this.#board.getSize().tileSize,
+			y: this.#board.getcOrigin().y - this.#board.getSize().tileSize,
 		};
 		this.#validAreas = {origin: origin, nCols: nCols};
 	}
@@ -52,7 +52,7 @@ class Game{
 			this.#ctx.strokeRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
 			this.#ctx.fillRect(this.#validAreas.origin.x + tileSize*i, this.#validAreas.origin.y, this.#defaultCoinSize, this.#defaultCoinSize);
 			this.#ctx.fillStyle = "#F1F1F1";
-			this.#ctx.fillText('▼', this.#validAreas.origin.x + tileSize*i+20, this.#validAreas.origin.y*1.4);
+			this.#ctx.fillText('▼', this.#validAreas.origin.x + tileSize*i+20, this.#validAreas.origin.y+20);
 		}
 	}
 
@@ -289,7 +289,7 @@ function drawExitButton(upperCTX){
 	var posY = upperCTX.canvas.clientHeight / 2 - 25;
 	var alto = 150;
 	var ancho = 50;
-	var textPosX = upperCTX.canvas.clientWidth - 822;
+	var textPosX = posX + 70;
 	var textPosY = upperCTX.canvas.clientHeight / 2;
 	var buttonText = "Salir";
 	exitButton = new PlayButton(upperCTX, posX, posY, alto, ancho, textPosX, textPosY, buttonText);

@@ -21,6 +21,7 @@ main{
 }
 
 .game{
+	width: min-content;
 	background-image: url("../img/img-games/img-imperio/Espacio-4.png");
 }
 
