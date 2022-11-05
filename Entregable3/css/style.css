@@ -130,7 +130,7 @@ body, input, textarea, button{
 
 body {
   margin:0;
-  background: #0C0228;
+  background: var(--Color-SecondaryS3);
  
 }
 

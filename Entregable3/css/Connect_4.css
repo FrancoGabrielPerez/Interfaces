@@ -16,9 +16,12 @@ main{
 	flex-direction: column;
 }
 
-canvas{
+.canvas{
 	margin: 20px;
+}
 
+.game{
+	background-image: url("../img/img-games/img-imperio/Espacio-4.png");
 }
 
 nav.breadcrumbs{
@@ -49,6 +52,7 @@ nav.breadcrumbs ul li{
 	border-radius: 25px;
 	overflow: hidden;
 	align-self: center;
+	
 }
 
 .game-window ul{

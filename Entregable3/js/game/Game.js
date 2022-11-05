@@ -180,15 +180,14 @@ class Game{
 
 	draw(){
 		this.clearCanvas();
-		this.drawBoardBackImage();
+		//this.drawBoardBackImage();
 		this.#board.draw();
 		this.drawValidAreas();
 		this.#player1.draw();
 		this.#player2.draw();
 	}
 
-	drawBoardBackImage() {             
-		
+	drawBoardBackImage() {    	
 		var w = canvas.width;
 		var h = canvas.height;
 		this.#ctx.globalAlpha = 1;
@@ -273,27 +272,27 @@ function mouseUp(event){
 }
 
 
-function drawResetButton(ctx){
-	var posX = ctx.canvas.clientWidth - 150;
-	var posY = ctx.canvas.clientHeight / 2 - 25;
+function drawResetButton(upperCTX){
+	var posX = upperCTX.canvas.clientWidth - 150;
+	var posY = upperCTX.canvas.clientHeight / 2 - 25;
 	var alto = 150;
 	var ancho = 50;
-	var textPosX = ctx.canvas.clientWidth - 75;
-	var textPosY = ctx.canvas.clientHeight / 2;
+	var textPosX = upperCTX.canvas.clientWidth - 75;
+	var textPosY = upperCTX.canvas.clientHeight / 2;
 	var buttonText = "Reset";
-	resetButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
+	resetButton = new PlayButton(upperCTX, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
 	resetButton.drawNewButton("#7CD600");
 }
 
-function drawExitButton(ctx){
+function drawExitButton(upperCTX){
 	var posX = 0;
-	var posY = ctx.canvas.clientHeight / 2 - 25;
+	var posY = upperCTX.canvas.clientHeight / 2 - 25;
 	var alto = 150;
 	var ancho = 50;
-	var textPosX = ctx.canvas.clientWidth - 822;
-	var textPosY = ctx.canvas.clientHeight / 2;
+	var textPosX = upperCTX.canvas.clientWidth - 822;
+	var textPosY = upperCTX.canvas.clientHeight / 2;
 	var buttonText = "Salir";
-	exitButton = new PlayButton(ctx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
+	exitButton = new PlayButton(upperCTX, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
 	exitButton.drawNewButton("#7B5BCD");
 }
 	
