@@ -18,10 +18,10 @@ class Game{
 	#imgBackground;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
+		this.#imgBackground = new Image();
+		this.#imgBackground.src = "../img/img-games/img-imperio/Espacio-4.png";
 		this.#imgTie = new Image();	
 		this.#imgTie.src = '../img/img-games/img-imperio/DeathStar.png';
-		this.#imgBackground = new Image();
-		this.#imgBackground.src = "../img/img-games/img-imperio/Espacio-5.png";
 		this.#ctx = context;
 		tam = parseInt(tam);
 		this.#board = new Board(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#ctx, this.#defaultCoinSize);
