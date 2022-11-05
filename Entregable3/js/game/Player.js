@@ -57,16 +57,23 @@ class Player{
 		}
 	} */
 
-	getSelected(posX, posY){
+	isOverChip(posX, posY){
 		for(let i=this.#chips.length-1; i>=0; i--){
 			if (this.#chips[i].isInside(posX, posY)){
-				let chipSelected = this.#chips[i];
-				chipSelected.setSelected(true);
-				this.#chips.splice(i,1);
-				this.#chips.push(chipSelected);
-				return chipSelected;
+				return this.#chips[i];
 			}
 		}
+	}
+
+	getSelected(posX, posY){
+		let chipSelected = this.isOverChip(posX, posY);
+		if (chipSelected){
+			chipSelected.setSelected(true);
+			this.#chips.splice(this.#chips.indexOf(chipSelected),1);
+			this.#chips.push(chipSelected);
+			return chipSelected;
+		}
+		return false;
 	}
 
 	getProfilePic(){

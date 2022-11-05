@@ -43,9 +43,11 @@ function mouseMoveButton(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
     if(button.checkSelected(x,y)){
+        event.currentTarget.style.cursor = "pointer";
         var fillColor = "#7CD600";
         button.drawNewButton(fillColor);
     } else {
+        event.currentTarget.style.cursor = "default";
         var fillColor = "#EA7400";
         button.drawNewButton(fillColor);
     }

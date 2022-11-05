@@ -74,8 +74,7 @@ class Game{
 			this.changeTurn();
 		}
 		if (success && this.#board.getWinner()){
-			this.changeTurn(true);
-			return this.#board.getWinner();
+			this.showWinner(this.#board.getWinner());
 			
 		}
 		return success;
@@ -157,6 +156,12 @@ class Game{
 		}
 	}
 
+	isOverChip(x, y){
+		if (this.#playerTurn != null){
+			return !!this.#playerTurn.isOverChip(x, y);
+		}
+	}
+
 	deselectChip(){
 		this.#chipSelected.setSelected(false);
 		this.#chipSelected = null;
@@ -179,6 +184,9 @@ class Game{
 	}
 
 	draw(){
+		if (this.#board.getWinner()){
+			return;
+		}
 		this.clearCanvas();
 		//this.drawBoardBackImage();
 		this.#board.draw();
@@ -218,8 +226,9 @@ function init(game){
 }
 
 function initEvents(){
-	ctx.canvas.onmousedown = mouseDown;
-	ctx.canvas.onmousemove = mouseMove;
+	canvas.onmousedown = mouseDown;
+	canvas.onmousemove = mouseMove;
+	upperCanvas.onmousemove = changePointerButton;
 	upperCanvas.onmousedown = resetMouseDown;
 	document.onmouseup = mouseUp;
 }
@@ -248,29 +257,57 @@ function mouseDown(event){
 function mouseMove(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
-	if ((currentGame.getChipSelected() != null)){
-		event.preventDefault();		
+	if ((currentGame.getChipSelected())){
+		event.preventDefault();
+		canvas.style.cursor = "grabbing";
 		currentGame.getChipSelected().move(x, y);
 		currentGame.draw();
-	}	
+		return;
+	}
+	if (currentGame.isOverChip(x, y)){
+		canvas.style.cursor = "grab";
+		return;
+	}
+	canvas.style.cursor = "default";
 }
 
 function mouseUp(event){
-	if (currentGame.getChipSelected() != null){
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
+	if (currentGame.getChipSelected()){
 		event.preventDefault();
 		let result = currentGame.addChip(currentGame.getChipSelected());
-		console.log(result);
 		if (result == false){
 			currentGame.getChipSelected().resetPos();
 		}
 		currentGame.deselectChip();
 		currentGame.draw();
-		if ((result != false) && (result !=true)){
-			currentGame.showWinner(result);		
-		}
+		canvas.style.cursor = "default";
 	}
 }
 
+function changePointerButton(event){
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
+	if (resetButton.checkSelected(x, y) || exitButton.checkSelected(x, y)){
+		upperCanvas.style.cursor = "pointer";
+		return;
+	}
+	upperCanvas.style.cursor = "default";
+}
+
+function changePointerChip(event){
+	let x = event.pageX - event.currentTarget.offsetLeft;
+	let y = event.pageY - event.currentTarget.offsetTop;
+	if (currentGame.getChipSelected()){
+		return;
+	}
+	if (currentGame.isOverChip(x, y)){
+		canvas.style.cursor = "grab";
+		return;
+	}
+	canvas.style.cursor = "default";
+}
 
 function drawResetButton(upperCTX){
 	var posX = upperCTX.canvas.clientWidth - 150;
@@ -297,7 +334,7 @@ function drawExitButton(upperCTX){
 }
 	
 function timer(){
-	var date = new Date('2022-01-01 00:01');
+	var date = new Date('2022-01-01 00:05');
     var canvas = document.getElementById('upperCanvas');
     var ctx = canvas.getContext('2d'); 	
     // Función para rellenar con ceros
@@ -321,7 +358,7 @@ function timer(){
 		drawResetButton(ctx);
 		drawExitButton(ctx);
         // Restarle a la fecha actual 1000 milisegundos
-        date = new Date(date.getTime() - 1000);            
+        date = new Date(date.getTime() - 1000);         
         // Si llega a 0:00, eliminar el intervalo		
         if(minutes == '00' && seconds == '00' ){
             clearInterval(timerID);
