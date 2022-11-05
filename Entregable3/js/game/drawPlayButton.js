@@ -14,6 +14,7 @@ function drawButton(ctx){
     button = new PlayButton(ctx, posX, posY, ancho, alto, textPosX, textPosY, "Jugar");
     var fillColor = "#EA7400";
     button.drawNewButton(fillColor);
+    setTimeout(() => button.drawNewButton(fillColor),50);
 }
 
 // Inicio de escucha de eventos del mouse.
