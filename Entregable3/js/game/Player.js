@@ -2,7 +2,7 @@
 /** @type {CanvasRenderingContext2D} */
 
 class Player{
-	static #buttonFontConfig = "30px Star Jedi";
+	static #buttonFontConfig = "30px Distant Galaxy";
     static #textButtonFillStyle = "#F1F1F1";
 	static #textAlign = 'center';
     static #textBaseline = 'middle';

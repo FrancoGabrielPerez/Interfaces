@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", initDrawButton);
 
 var button;
+// Funcion encargada de dibujar el boton de jugar en el menu principal.
 function drawButton(ctx){
     var ancho = 200;
     var alto = 100; 
@@ -16,15 +17,18 @@ function drawButton(ctx){
     button.drawNewButton(fillColor);
 }
 
+// Inicio de escucha de eventos del mouse.
 function initEvent(){
-    //console.log("init button");
     canvas.onmousedown = mouseDownButton;
     canvas.onmousemove = mouseMoveButton;
 }   
 
+// Esta funcion se encarga de escucha el evento onmousedown en el DOM.
 function mouseDownButton(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
+    // Si las coordenadas del click coinciden con las del boton dibujado, se despliega el modal
+    // para la configuracion del juego.
     if(button.checkSelected(x,y)){
         document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
@@ -34,6 +38,8 @@ function mouseDownButton(event){
     }
 }
 
+// Esta funcion, hace que cambie el color del boton si el mouse pasa por sobre las coordenadas 
+// donde se encuentra dibujado.
 function mouseMoveButton(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
@@ -46,11 +52,13 @@ function mouseMoveButton(event){
     }
 }
 
+// Metodo que dibuja la imagen del fondo del canvas.
 function drawBackImage() {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");                
     var img=new Image();
     img.src = "../img/img-games/img-imperio/StarWars.png";
+    // Una vez cargada la imagen se manda a dibujar y posterirormente el boton de jugar.
     img.onload = function() {
 		var w = canvas.width;
 		var h = canvas.height;
@@ -60,10 +68,12 @@ function drawBackImage() {
     }
 }
 
+// Metodo para borrar el canvas.
 function clearCanvas(){
     ctx.clearRect(0,0,900,500);
 }
 
+// Main function, llama a los metodos de dibujado de back image e inicio de eventos.
 function initDrawButton(){
     drawBackImage();
     initEvent();
