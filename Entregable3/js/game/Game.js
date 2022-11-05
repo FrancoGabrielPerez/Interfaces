@@ -14,25 +14,24 @@ class Game{
 	#board;
 	#chipSelected;
 	#ctx;
-	#imgDeuce;
+	#imgTie;
+	#imgBackground;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
-		tam = parseInt(tam);
+		this.#imgTie = new Image();	
+		this.#imgTie.src = '../img/img-games/img-imperio/DeathStar.png';
+		this.#imgBackground = new Image();
+		this.#imgBackground.src = "../img/img-games/img-imperio/Espacio-5.png";
 		this.#ctx = context;
-		//drawBoardBackImage();
+		tam = parseInt(tam);
 		this.#board = new Board(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#ctx, this.#defaultCoinSize);
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
 		this.#playerTurn = this.#player1;
 		this.#chipSelected = null;	
-		this.#imgDeuce = new Image();	
-		this.#imgDeuce.src = '../img/img-games/img-imperio/DeathStar.png';
 		this.defineValidAreas(Game.#defaultColumns+tam);
 		this.draw();
-		// initEvents();
-		// setTimeout(() => this.draw(),500);
-		// timer();
 	}
 
 	defineValidAreas(nCols){
@@ -104,10 +103,6 @@ class Game{
 		var alto = 300; 
 		var posX = (this.#ctx.canvas.clientWidth / 2) - ancho/2;
 		var posY = (this.#ctx.canvas.clientHeight / 2)  - alto/2;
-		console.log('x ', posX);
-        console.log('y ', posY);
-        console.log('alto ', alto);
-        console.log('ancho ', ancho); 
 		var textPosX = this.#ctx.canvas.clientWidth/2;
 		var textPosY = (this.#ctx.canvas.clientHeight / 2);
 		winnerChart.roundedRect(posX, posY, ancho,alto,20,"#7B5BCD");
@@ -127,13 +122,13 @@ class Game{
 				var winnerText2 = "Larga vida a nuestro heroe...";
 			}
 		} else if (winner == "timerEnd") {
-			var img = this.#imgDeuce;			
+			var img = this.#imgTie;			
 			var winnerText1 = "El tiempo se acabo...";
 			var winnerText2 = "Ningun bando resulto ganador...";
 			var winnerName = "Aunque, siempre habra revancha...";
 
 		} else {
-			var img = this.#imgDeuce;			
+			var img = this.#imgTie;			
 			var winnerText1 = "La batalla ha sido dura...";
 			var winnerText2 = "Ningun bando resulto ganador...";
 			var winnerName = "Aunque, siempre habra revancha...";
@@ -188,10 +183,20 @@ class Game{
 
 	draw(){
 		this.clearCanvas();
+		this.drawBoardBackImage();
 		this.#board.draw();
 		this.drawValidAreas();
 		this.#player1.draw();
 		this.#player2.draw();
+	}
+
+	drawBoardBackImage() {             
+		
+		var w = canvas.width;
+		var h = canvas.height;
+		this.#ctx.globalAlpha = 1;
+		this.#ctx.drawImage(this.#imgBackground, 0, 0 ,this.#ctx.canvas.width, this.#ctx.canvas.height);
+		
 	}
 
 	clearCanvas(){
@@ -202,7 +207,7 @@ class Game{
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let upperCanvas = document.getElementById('upperCanvas');
-let resetCtx = upperCanvas.getContext('2d');
+let upperCtx = upperCanvas.getContext('2d');
 
 let currentGame;
 let timerID;
@@ -232,7 +237,7 @@ function resetMouseDown(event){
 		currentGame.reset();
 	}
 	if (exitButton.checkSelected(x,y)){
-		resetCtx.clearRect(0, 0, upperCanvas.clientWidth, upperCanvas.clientHeight);
+		upperCtx.clearRect(0, 0, upperCanvas.clientWidth, upperCanvas.clientHeight);
 		currentGame.exit();
 	}
 }
