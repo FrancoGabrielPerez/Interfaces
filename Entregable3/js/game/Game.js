@@ -217,7 +217,7 @@ class Game{
 	}
 }
 
-let canvas = document.getElementById('canvas');
+/* let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let upperCanvas = document.getElementById('upperCanvas');
 let upperCtx = upperCanvas.getContext('2d');
@@ -392,4 +392,4 @@ function timer(){
 // Funcion encargada de borrar el canvas.
 function clearCanvas(){
 	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
-}
+} */
