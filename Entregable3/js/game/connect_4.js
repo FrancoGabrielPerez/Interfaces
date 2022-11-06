@@ -14,6 +14,7 @@ let timerID;
 let resetButton;
 let exitButton;
 
+// Funcion desde donde se cargan los datos de jugadores y juego para pasarlos como parametro al juego.
 function modalGame(event){
     event.preventDefault();
     let gameType = document.querySelector('input[name="game-type"]:checked').value;
@@ -27,6 +28,7 @@ function modalGame(event){
     cerrarModalGame();
     let formulario = document.getElementById("form-nuevo-juego");
     formulario.reset();
+    // Se inicia un nuevo juego con los datos cargados.
     init( new Game(gameType, player1name, player2name, player1Profile, player2Profile, player1Img, player2Img, ctx));
 
 }
@@ -174,8 +176,7 @@ function timer(){
         var resetButtonTextPosX = upperCtx.canvas.clientWidth - 75;
         var resetButtonText = "Reset";
         var resetButtonFillStyle = "#7CD600";
-        drawUpperButton(resetButtonPosX, resetButtonTextPosX, resetButtonText, resetButtonFillStyle);
-        
+        drawUpperButton(resetButtonPosX, resetButtonTextPosX, resetButtonText, resetButtonFillStyle);        
         var exitButtonPosX = 0;
         var exitButtonTextPosX = 70;;
         var exitButtonText = "Exit";
