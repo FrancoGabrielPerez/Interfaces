@@ -30,6 +30,15 @@ function mouseDownButton(event){
     // Si las coordenadas del click coinciden con las del boton dibujado, se despliega el modal
     // para la configuracion del juego.
     if(button.checkSelected(x,y)){
+        // Se selecciona de manera aleatoria el avatar de cada jugador.
+        let imgAvatarImperioNumber = Math.ceil(Math.random()*5);
+        let imgAvatarImperioSrc = `../img/img-games/img-imperio/PlayerImperioAvatar-${imgAvatarImperioNumber}.png`;
+        let imgAvatarResistenciaNumber = Math.ceil(Math.random()*5);
+        let imgAvatarResistenciaSrc = `../img/img-games/img-imperio/PlayerResistenciaAvatar-${imgAvatarResistenciaNumber}.png`;
+        // Se coloca el avatar seleccionado dentro del html del modal de configuracion
+        document.querySelector('.img-jugador-1 img').setAttribute("src", imgAvatarResistenciaSrc);
+        document.querySelector('.img-jugador-2 img').setAttribute("src",imgAvatarImperioSrc);
+        // Se aplica la clase mostar al modal del juego para que se visualice.
         document.querySelector('.ModalContainerConfigGame').classList.remove('ocultar');
         document.querySelector('.ModalContainerConfigGame').classList.add('mostrar');
         button.setSelected(true);

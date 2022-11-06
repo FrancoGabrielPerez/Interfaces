@@ -11,15 +11,13 @@ class Game{
 	#player1;
 	#player2;
 	#playerTurn;
+	#drawWinner;
 	#board;
 	#chipSelected;
 	#ctx;
 	#imgTie;
-	#imgBackground;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
-		this.#imgBackground = new Image();
-		this.#imgBackground.src = "../img/img-games/img-imperio/Espacio-4.png";
 		this.#imgTie = new Image();	
 		this.#imgTie.src = '../img/img-games/img-imperio/DeathStar.png';
 		this.#ctx = context;
@@ -29,6 +27,7 @@ class Game{
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
 		this.#playerTurn = this.#player1;
+		this.#drawWinner = false;
 		this.#chipSelected = null;	
 		this.defineValidAreas(Game.#defaultColumns+tam);
 		this.draw();
@@ -56,6 +55,11 @@ class Game{
 		}
 	}
 
+	/*
+	Recibe una ficha, toma la posicion de la misma y chequea en que columna la solataron.
+	Si la ficha esta en una posion valida se la pasa al tablero junto con la columna correspondiente para que el mismo la agregue.
+	Si el tablero la pudo agregar, cambia el turno y elimina la ficha del jugador. Ademas se fija si hay un ganador y lo muestra por pantalla
+	*/
 	addChip(chip){
 		let success = false;
 		let pos = chip.getPosition();
@@ -71,20 +75,23 @@ class Game{
 		}
 		if (success){
 			chip.getPlayer().removeChip(chip);
-			this.changeTurn();
+			this.changeTurn(this.#playerTurn);
+			this.draw();
 		}
-		if (success && this.#board.getWinner()){
-			this.showWinner(this.#board.getWinner());
+		if (this.#board.getWinner()){
+			this.changeTurn(null);
+			this.#drawWinner = true;
+			this.draw();
 			
 		}
 		return success;
 	}
 
-	changeTurn(turn){
-		if (turn == true){
-			this.#playerTurn = null;
-		} else {
-			switch (this.#playerTurn) {
+	// Metodo que se encarga de cambiar el turno de cada jugado, si hay ganador, empate o se acaba el tiempo,
+	// el turno se setea en null.
+	changeTurn(currentPlayer){
+		if (currentPlayer != null){
+			switch (currentPlayer) {
 				case this.#player1:
 					this.#playerTurn = this.#player2;
 					break;
@@ -92,11 +99,17 @@ class Game{
 					this.#playerTurn = this.#player1;
 					break;			
 			}
+		} else {
+			this.#playerTurn = null;
+			
 		}
 	}
 
+	// Metodo encargado de dibujar el aviso del ganador o empate.
 	showWinner(winner){
+		// Se crea un elemento de tipo PlayButton al que se le asignan luego los atributos deseados para mostar.
 		let winnerChart = new PlayButton(this.#ctx);
+		// Se detiene el temporizador.
 		clearInterval(timerID);
 		var ancho = 600;
 		var alto = 300; 
@@ -104,11 +117,14 @@ class Game{
 		var posY = (this.#ctx.canvas.clientHeight / 2)  - alto/2;
 		var textPosX = this.#ctx.canvas.clientWidth/2;
 		var textPosY = (this.#ctx.canvas.clientHeight / 2);
+		// Se dibuja el cuadro donde va a estar los datos.
 		winnerChart.roundedRect(posX, posY, ancho,alto,20,"#7B5BCD");
+		// Se configuran los estilos que se va a aplicar al texto mostrado.
 		this.#ctx.fillStyle = "#F1F1F1";
 		this.#ctx.font = "Normal 23px Arial";
 		this.#ctx.textAlign = 'center';
-		this.#ctx.textBaseline = 'middle';		
+		this.#ctx.textBaseline = 'middle';	
+		// Depenediendo quien gane, se va a mostrar determinado texto. Idem, si se caba el tiempo o hay empate.	
 		if ((winner != false) && (winner != "timerEnd")){
 			var img = new Image();
 			img.src = winner.getProfilePic();				
@@ -132,7 +148,9 @@ class Game{
 			var winnerText2 = "Ningun bando resulto ganador...";
 			var winnerName = "Aunque, siempre habra revancha...";
 		}
+		// Se dibuja el avatar en el cuadro.
 		this.#ctx.drawImage(img, posX + posX / 4, posY + posY / 2, 200, 200);
+		// Se toman las medidas de los textos a mostar para poder calcular la ubicacion de cada uno.
 		let winnerText1Width = this.#ctx.measureText(winnerText1).width;
 		let winnerText2Width = this.#ctx.measureText(winnerText2).width;
 		let winnerNameWidth =  this.#ctx.measureText(winnerName).width;
@@ -143,7 +161,6 @@ class Game{
 		} else {
 			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
 		}
-		this.changeTurn(true);
 	}
 	
 	getChipSelected(){
@@ -167,40 +184,39 @@ class Game{
 		this.#chipSelected = null;
 	}
 
+	changeDrawWinner(){
+		if (this.#board.getWinner()){
+			this.#drawWinner = !this.#drawWinner;
+			this.draw();
+		}
+	}
+
+	/* 
+	Metodo que resetear el juego mateniendo los parametros anteriores
+	*/
 	reset(){
 		this.#board.reset();
 		this.#player1.reset();
 		this.#player2.reset();
 		this.#playerTurn = this.#player1;
-		this.draw();
+		this.#drawWinner = false;
 		clearInterval(timerID);
 		timer();
+		this.draw();
 	}
 
-	exit(){
-		clearCanvas();
-		clearInterval(timerID);
-		initDrawButton();
-	}
-
+	/* 
+	Metodo que dibuja el juego, limpia el canvas y llama a los metodos de dibujado de sus componentes.
+	*/
 	draw(){
-		if (this.#board.getWinner()){
-			return;
-		}
 		this.clearCanvas();
-		//this.drawBoardBackImage();
 		this.#board.draw();
 		this.drawValidAreas();
 		this.#player1.draw();
 		this.#player2.draw();
-	}
-
-	drawBoardBackImage() {    	
-		var w = canvas.width;
-		var h = canvas.height;
-		this.#ctx.globalAlpha = 1;
-		this.#ctx.drawImage(this.#imgBackground, 0, 0 ,this.#ctx.canvas.width, this.#ctx.canvas.height);
-		
+		if (this.#drawWinner){
+			this.showWinner(this.#board.getWinner());
+		}
 	}
 
 	clearCanvas(){
@@ -208,7 +224,7 @@ class Game{
 	}
 }
 
-let canvas = document.getElementById('canvas');
+/* let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let upperCanvas = document.getElementById('upperCanvas');
 let upperCtx = upperCanvas.getContext('2d');
@@ -225,15 +241,17 @@ function init(game){
 	timer();
 }
 
+// Funcion encargada de iniciar los eventos.
 function initEvents(){
 	canvas.onmousedown = mouseDown;
 	canvas.onmousemove = mouseMove;
 	upperCanvas.onmousemove = changePointerButton;
-	upperCanvas.onmousedown = resetMouseDown;
+	upperCanvas.onmousedown = resetOrExitMouseDown;
 	document.onmouseup = mouseUp;
 }
 
-function resetMouseDown(event){
+// Funcion que responde ante el evento onmousedown sobre el boton reset o exit.
+function resetOrExitMouseDown(event){
 	event.preventDefault();
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
@@ -286,6 +304,9 @@ function mouseUp(event){
 	}
 }
 
+
+// Funcion que detecta el movimiento del mouse sobre alguno de los botones creados
+// y cambia el puntero del mouse.
 function changePointerButton(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
@@ -296,6 +317,7 @@ function changePointerButton(event){
 	upperCanvas.style.cursor = "default";
 }
 
+// Similar a la anterior, pero esta se activa cuando el mouse se encuentra sobre alguna ficha.
 function changePointerChip(event){
 	let x = event.pageX - event.currentTarget.offsetLeft;
 	let y = event.pageY - event.currentTarget.offsetTop;
@@ -309,57 +331,63 @@ function changePointerChip(event){
 	canvas.style.cursor = "default";
 }
 
-function drawResetButton(upperCTX){
-	var posX = upperCTX.canvas.clientWidth - 150;
-	var posY = upperCTX.canvas.clientHeight / 2 - 25;
-	var alto = 150;
-	var ancho = 50;
-	var textPosX = upperCTX.canvas.clientWidth - 75;
-	var textPosY = upperCTX.canvas.clientHeight / 2;
-	var buttonText = "Reset";
-	resetButton = new PlayButton(upperCTX, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
-	resetButton.drawNewButton("#7CD600");
-}
 
-function drawExitButton(upperCTX){
-	var posX = 0;
-	var posY = upperCTX.canvas.clientHeight / 2 - 25;
+// Funcion encargada de crear los botones de exit y reset.
+function drawUpperButton(buttonPosX, buttonTextPosX, buttonText, buttonFillStyle){	
+	var posX = buttonPosX;
+	var posY = upperCtx.canvas.clientHeight / 2 - 25;
 	var alto = 150;
 	var ancho = 50;
-	var textPosX = posX + 70;
-	var textPosY = upperCTX.canvas.clientHeight / 2;
-	var buttonText = "Salir";
-	exitButton = new PlayButton(upperCTX, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
-	exitButton.drawNewButton("#7B5BCD");
+	var textPosX = buttonTextPosX;
+	var textPosY = upperCtx.canvas.clientHeight / 2;
+	var buttonText = buttonText;
+	if (buttonText == "Reset") {
+		resetButton = new PlayButton(upperCtx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
+		resetButton.drawNewButton(buttonFillStyle);
+	} else {
+		exitButton = new PlayButton(upperCtx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
+		exitButton.drawNewButton(buttonFillStyle);
+	}
 }
 	
+//Funcion que crea un contador de tiempo
 function timer(){
-	var date = new Date('2022-01-01 00:05');
-    var canvas = document.getElementById('upperCanvas');
-    var ctx = canvas.getContext('2d'); 	
+	// Se setea el tiempo inicial en 5 minutos
+	var date = new Date('2022-01-01 00:05');   
     // Función para rellenar con ceros
     var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
 	// Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
-	timerID = setInterval(() => {
-        
+	timerID = setInterval(() => {        
 		// Asignar el valor de minutos
         var minutes = padLeft(date.getMinutes() + "");
         // Asignar el valor de segundos
         var seconds = padLeft(date.getSeconds() + "");  
 		// Variable para imprimir por pantalla      
         var timer = `${minutes} : ${seconds}`;
-		ctx.font = "Normal 30px Distant Galaxy";
-    	ctx.fillStyle = "#F1F1F1";
-		ctx.textAlign = 'center';
-    	ctx.textBaseline = 'middle';
+		upperCtx.font = "Normal 30px Distant Galaxy";
+    	upperCtx.fillStyle = "#F1F1F1";
+		upperCtx.textAlign = 'center';
+    	upperCtx.textBaseline = 'middle';
 		// Se resetea el canvas para que se haga el efecto de cambio en los contadores
-        ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
-        ctx.fillText(timer, ctx.canvas.clientWidth / 2, ctx.canvas.clientHeight / 2);
-		drawResetButton(ctx);
-		drawExitButton(ctx);
+        upperCtx.clearRect(0, 0, upperCtx.canvas.clientWidth, upperCtx.canvas.clientHeight);
+        // Se dibujan los numeros del contador a medida que avanza el tiempo
+		upperCtx.fillText(timer, upperCtx.canvas.clientWidth / 2, upperCtx.canvas.clientHeight / 2);
+		//Se dibujan tambien los botones "exit" y "reset"
+		var resetButtonPosX = upperCtx.canvas.clientWidth - 150;
+		var resetButtonTextPosX = upperCtx.canvas.clientWidth - 75;
+		var resetButtonText = "Reset";
+		var resetButtonFillStyle = "#7CD600";
+		drawUpperButton(resetButtonPosX, resetButtonTextPosX, resetButtonText, resetButtonFillStyle);
+		
+		var exitButtonPosX = 0;
+		var exitButtonTextPosX = 70;;
+		var exitButtonText = "Exit";
+		var exitButtonFillStyle = "#7B5BCD";
+		drawUpperButton(exitButtonPosX, exitButtonTextPosX, exitButtonText, exitButtonFillStyle);
         // Restarle a la fecha actual 1000 milisegundos
         date = new Date(date.getTime() - 1000);         
-        // Si llega a 0:00, eliminar el intervalo		
+        // Si llega a 0:00, se detiene el contador, y se envia el mensaje para que se muestre
+		// un aviso de que el tiempo se acabo. Se termina el juego actual como haya quedado.		
         if(minutes == '00' && seconds == '00' ){
             clearInterval(timerID);
 			currentGame.changeTurn(true);
@@ -368,6 +396,7 @@ function timer(){
     }, 1000);
 }
 
+// Funcion encargada de borrar el canvas.
 function clearCanvas(){
 	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
-}
+} */
