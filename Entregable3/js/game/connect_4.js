@@ -59,7 +59,9 @@ function resetOrExitMouseDown(event){
     }
     if (exitButton.checkSelected(x,y)){
         upperCtx.clearRect(0, 0, upperCanvas.clientWidth, upperCanvas.clientHeight);
-        currentGame.exit();
+        clearCanvas();
+		clearInterval(timerID);
+		initDrawButton();
     }
 }
 
@@ -91,11 +93,13 @@ function mouseMove(event){
 function mouseUp(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
-    if (currentGame.getChipSelected()){
+    let chipSelected = currentGame.getChipSelected();
+    currentGame.changeDrawWinner();
+    if (chipSelected){
         event.preventDefault();
-        let result = currentGame.addChip(currentGame.getChipSelected());
+        let result = currentGame.addChip(chipSelected);
         if (result == false){
-            currentGame.getChipSelected().resetPos();
+            chipSelected.resetPos();
         }
         currentGame.deselectChip();
         currentGame.draw();
