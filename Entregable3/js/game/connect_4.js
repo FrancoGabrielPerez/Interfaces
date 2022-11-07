@@ -96,7 +96,6 @@ function mouseUp(event){
     let y = event.pageY - event.currentTarget.offsetTop;
     let chipSelected = currentGame.getChipSelected();
     if (currentGame.ended()){
-        console.log("up change");
         currentGame.toggleDrawWinner();
     }
     if (chipSelected){
