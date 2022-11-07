@@ -220,10 +220,10 @@ class Game{
 			img.src = winner.getProfilePic();				
 			var winnerName = winner.getName();
 			if (winner.getProfilePic().includes('Resistencia')){
-				var winnerText1 = "¡El Imperio a sido derrotado!";
+				var winnerText1 = "¡El Imperio ha sido derrotado!";
 				var winnerText2 = "Larga vida a nuestro heroe...";
 			} else {
-				var winnerText1 = "¡La Resistencia a sido derrotada!";
+				var winnerText1 = "¡La Resistencia ha sido derrotada!";
 				var winnerText2 = "Larga vida a nuestro heroe...";
 			}
 		} else if (this.#gameState == "noTime") {

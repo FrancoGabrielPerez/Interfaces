@@ -1628,7 +1628,7 @@ footer{
  
   body{
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 5% 90% 5%;
     justify-content: center;
     grid-template-rows: repeat(4, auto);
     grid-template-areas:  "header header header"
@@ -1677,8 +1677,8 @@ footer{
   .juego-jugado .card-small, .juego-recomendado .card-small, 
   .juego-accion .card-small, .juego-multijugador .card-small, 
   .juego-deportes .card-small, .contenedor-card-big {
-    width: 55px;
-    height: 100px;
+    width: 70px;
+    height: 120px;
     border-width: 2px;
   }
 
@@ -1696,7 +1696,7 @@ footer{
   .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion.hover,
   .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador.hover,
   .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
-    transform: scale(0.35);
+    transform: scale(1.1);
     transform-origin: center; 
   }
 
@@ -1710,12 +1710,16 @@ footer{
     align-items: center;
   }
 
+.titulo-small-card {
+    padding-bottom: 0px;
+}
+
   .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
     transform: scale(1.0);
   }
 
   .datos-juego-small h2 {
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .datos-juego-small h3 {
@@ -1723,7 +1727,7 @@ footer{
   }
 
   .datos-juego-small p {
-    font-size: 5px;
+    font-size: 8px;
   }
 
   .datos-juego-small{
@@ -1752,7 +1756,7 @@ footer{
   .carrusel-categorias .contenedor-carrusel-accion, 
   .carrusel-categorias .contenedor-carrusel-multijugador, 
   .carrusel-categorias .contenedor-carrusel-deportes {
-    padding: 0px 0px;
+    padding: 10px 0px 10px;
   }
 
   .contenedor-titulo-controles {
@@ -1782,7 +1786,7 @@ footer{
   }
 
   .indicador-estado-gratis, .indicador-estado-agregado {
-    height: 70px;
+    height: 40px;
   }
 
   .contenedor-card-big{
