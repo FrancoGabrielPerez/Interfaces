@@ -159,7 +159,7 @@ function drawUpperButton(buttonPosX, buttonTextPosX, buttonText, buttonFillStyle
 //Funcion que crea un contador de tiempo
 function timer(){
     // Se setea el tiempo inicial en 5 minutos
-    var date = new Date('2022-01-01 00:01');   
+    var date = new Date('2022-01-01 00:05');   
     // Función para rellenar con ceros
     var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
     // Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
