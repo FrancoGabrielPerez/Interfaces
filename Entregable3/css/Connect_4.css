@@ -1,6 +1,6 @@
 body{
 	display: grid;
-	overflow:scroll;
+	overflow: hidden;
 	grid-template-columns: 10% 80% 10%;
 	justify-content: center;
 	grid-template-rows: repeat(3, auto);
