@@ -57,6 +57,10 @@ class Player{
 		}
 	} */
 
+	hasChips(){
+		return this.#chips.length;
+	}
+
 	isOverChip(posX, posY){
 		for(let i=this.#chips.length-1; i>=0; i--){
 			if (this.#chips[i].isInside(posX, posY)){

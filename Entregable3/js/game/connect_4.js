@@ -59,6 +59,7 @@ function resetOrExitMouseDown(event){
     }
     if (exitButton.checkSelected(x,y)){
         upperCtx.clearRect(0, 0, upperCanvas.clientWidth, upperCanvas.clientHeight);
+        currentGame.reset();
         clearCanvas();
 		clearInterval(timerID);
 		initDrawButton();
@@ -83,7 +84,7 @@ function mouseMove(event){
         currentGame.draw();
         return;
     }
-    if (currentGame.isOverChip(x, y)){
+    if ((!currentGame.ended()) && (currentGame.isOverChip(x, y))){
         canvas.style.cursor = "grab";
         return;
     }
@@ -94,7 +95,10 @@ function mouseUp(event){
     let x = event.pageX - event.currentTarget.offsetLeft;
     let y = event.pageY - event.currentTarget.offsetTop;
     let chipSelected = currentGame.getChipSelected();
-    currentGame.changeDrawWinner();
+    if (currentGame.ended()){
+        console.log("up change");
+        currentGame.toggleDrawWinner();
+    }
     if (chipSelected){
         event.preventDefault();
         let result = currentGame.addChip(chipSelected);
@@ -156,7 +160,7 @@ function drawUpperButton(buttonPosX, buttonTextPosX, buttonText, buttonFillStyle
 //Funcion que crea un contador de tiempo
 function timer(){
     // Se setea el tiempo inicial en 5 minutos
-    var date = new Date('2022-01-01 00:05');   
+    var date = new Date('2022-01-01 00:01');   
     // Función para rellenar con ceros
     var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
     // Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
@@ -192,8 +196,8 @@ function timer(){
         // un aviso de que el tiempo se acabo. Se termina el juego actual como haya quedado.		
         if(minutes == '00' && seconds == '00' ){
             clearInterval(timerID);
-            currentGame.changeTurn(true);
-            currentGame.showWinner("timerEnd");
+            currentGame.changeState("noTime");
+            currentGame.draw();
         }    
     }, 1000);
 }

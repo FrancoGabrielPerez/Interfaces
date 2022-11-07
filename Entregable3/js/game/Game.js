@@ -6,13 +6,13 @@ class Game{
 	static #defaultColumns = 7;
 	static #defaultRows = 6;
 	#defaultCoinSize = 40;
-	#validAreas;
 	#padding = 20;
+	#validAreas;
+	#board;
 	#player1;
 	#player2;
-	#playerTurn;
+	#gameState;
 	#drawWinner;
-	#board;
 	#chipSelected;
 	#ctx;
 	#imgTie;
@@ -24,9 +24,11 @@ class Game{
 		tam = parseInt(tam);
 		this.#board = new Board(Game.#defaultColumns+tam, Game.#defaultRows+tam, Game.#defaultLine+tam, this.#ctx, this.#defaultCoinSize);
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
-		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
-		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
-		this.#playerTurn = this.#player1;
+		//this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
+		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, 5, this.#ctx, {x:0,y:0}, playerDrawingSize);
+		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, 5, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
+		//this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
+		this.#gameState = this.#player1;
 		this.#drawWinner = false;
 		this.#chipSelected = null;	
 		this.defineValidAreas(Game.#defaultColumns+tam);
@@ -75,38 +77,115 @@ class Game{
 		}
 		if (success){
 			chip.getPlayer().removeChip(chip);
-			this.changeTurn(this.#playerTurn);
+			this.changeState(this.#gameState);
+			if (!this.#gameState.hasChips()){
+				this.changeState("tie");
+				this.draw();
+			}
 			this.draw();
 		}
 		if (this.#board.getWinner()){
-			this.changeTurn(null);
-			this.#drawWinner = true;
+			this.changeState("win");
 			this.draw();
 			
 		}
 		return success;
 	}
 
-	// Metodo que se encarga de cambiar el turno de cada jugado, si hay ganador, empate o se acaba el tiempo,
-	// el turno se setea en null.
-	changeTurn(currentPlayer){
-		if (currentPlayer != null){
-			switch (currentPlayer) {
-				case this.#player1:
-					this.#playerTurn = this.#player2;
-					break;
-				case this.#player2:
-					this.#playerTurn = this.#player1;
-					break;			
-			}
-		} else {
-			this.#playerTurn = null;
-			
+	// Metodo que se encarga de cambiar el turno de cada jugador, si recibe null el turno se setea en null para indicar que termino el juego
+	changeState(currentState){
+		switch (currentState) {
+			case "tie":
+				this.#gameState = currentState;
+				this.#drawWinner = true;
+				break;
+			case "win":
+				this.#gameState = currentState;
+				this.#drawWinner = true;
+				break;
+			case "noTime":
+				this.#gameState = currentState;
+				this.#drawWinner = true;
+				break;
+			case this.#player1:
+				this.#gameState = this.#player2;
+				break;
+			case this.#player2:
+				this.#gameState = this.#player1;
+				break;	
+			default:
+				this.#gameState = null;
+				break;
+		}
+	}
+	
+	ended(){
+		return ((this.#gameState != this.#player1) && (this.#gameState != this.#player2))
+	}
+
+	getChipSelected(){
+		return this.#chipSelected;
+	}
+
+	selectChip(x, y){
+		if (!this.ended()){
+			this.#chipSelected = this.#gameState.getSelected(x, y);
 		}
 	}
 
+	isOverChip(x, y){
+		if (!this.ended()){
+			return !!this.#gameState.isOverChip(x, y);
+		}
+	}
+
+	deselectChip(){
+		this.#chipSelected.setSelected(false);
+		this.#chipSelected = null;
+	}
+
+	toggleDrawWinner(){
+		if (this.ended()){
+			this.#drawWinner = !this.#drawWinner;
+			this.draw();
+		}
+	}
+
+	/* 
+	Metodo que resetear el juego mateniendo los parametros anteriores
+	*/
+	reset(){
+		this.#board.reset();
+		this.#player1.reset();
+		this.#player2.reset();
+		this.#gameState = this.#player1;
+		this.#drawWinner = false;
+		clearInterval(timerID);
+		timer();
+		this.draw();
+	}
+
+	/* 
+	Metodo que dibuja el juego, limpia el canvas y llama a los metodos de dibujado de sus componentes.
+	*/
+	draw(){
+		this.clearCanvas();
+		this.#board.draw();
+		this.drawValidAreas();
+		this.#player1.draw();
+		this.#player2.draw();
+		if ((this.ended()) && (this.#drawWinner)){
+			this.#showWinner();
+		}
+	}
+
+	clearCanvas(){
+		ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
+	}
+
 	// Metodo encargado de dibujar el aviso del ganador o empate.
-	showWinner(winner){
+	#showWinner(){
+		let winner = this.#board.getWinner();
 		// Se crea un elemento de tipo PlayButton al que se le asignan luego los atributos deseados para mostar.
 		let winnerChart = new PlayButton(this.#ctx);
 		// Se detiene el temporizador.
@@ -125,7 +204,7 @@ class Game{
 		this.#ctx.textAlign = 'center';
 		this.#ctx.textBaseline = 'middle';	
 		// Depenediendo quien gane, se va a mostrar determinado texto. Idem, si se caba el tiempo o hay empate.	
-		if ((winner != false) && (winner != "timerEnd")){
+		if (this.#gameState == "win"){
 			var img = new Image();
 			img.src = winner.getProfilePic();				
 			var winnerName = winner.getName();
@@ -136,7 +215,7 @@ class Game{
 				var winnerText1 = "¡La Resistencia a sido derrotada!";
 				var winnerText2 = "Larga vida a nuestro heroe...";
 			}
-		} else if (winner == "timerEnd") {
+		} else if (this.#gameState == "noTime") {
 			var img = this.#imgTie;			
 			var winnerText1 = "El tiempo se acabo...";
 			var winnerText2 = "Ningun bando resulto ganador...";
@@ -161,66 +240,6 @@ class Game{
 		} else {
 			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
 		}
-	}
-	
-	getChipSelected(){
-		return this.#chipSelected;
-	}
-
-	selectChip(x, y){
-		if (this.#playerTurn != null){
-			this.#chipSelected = this.#playerTurn.getSelected(x, y);
-		}
-	}
-
-	isOverChip(x, y){
-		if (this.#playerTurn != null){
-			return !!this.#playerTurn.isOverChip(x, y);
-		}
-	}
-
-	deselectChip(){
-		this.#chipSelected.setSelected(false);
-		this.#chipSelected = null;
-	}
-
-	changeDrawWinner(){
-		if (this.#board.getWinner()){
-			this.#drawWinner = !this.#drawWinner;
-			this.draw();
-		}
-	}
-
-	/* 
-	Metodo que resetear el juego mateniendo los parametros anteriores
-	*/
-	reset(){
-		this.#board.reset();
-		this.#player1.reset();
-		this.#player2.reset();
-		this.#playerTurn = this.#player1;
-		this.#drawWinner = false;
-		clearInterval(timerID);
-		timer();
-		this.draw();
-	}
-
-	/* 
-	Metodo que dibuja el juego, limpia el canvas y llama a los metodos de dibujado de sus componentes.
-	*/
-	draw(){
-		this.clearCanvas();
-		this.#board.draw();
-		this.drawValidAreas();
-		this.#player1.draw();
-		this.#player2.draw();
-		if (this.#drawWinner){
-			this.showWinner(this.#board.getWinner());
-		}
-	}
-
-	clearCanvas(){
-		ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
 	}
 }
 
@@ -390,7 +409,7 @@ function timer(){
 		// un aviso de que el tiempo se acabo. Se termina el juego actual como haya quedado.		
         if(minutes == '00' && seconds == '00' ){
             clearInterval(timerID);
-			currentGame.changeTurn(true);
+			currentGame.changeState(true);
 			currentGame.showWinner("timerEnd");
         }    
     }, 1000);
