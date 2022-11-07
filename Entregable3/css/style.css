@@ -94,17 +94,17 @@ h1, h2, h3, p, li{
 }
 
 h1{
-  font-size:64px;
+  font-size:34px;
   font-weight: 600;
 }
 
 h2{
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 500;
 }
 
 h3{
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
 }
 
@@ -349,7 +349,7 @@ header {
 }
 
 .bar-nav, .usr-nav, .header-search-bar {
-  height: 100px;
+  height: 70px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -361,7 +361,7 @@ header {
 
 .img-logo{
   width: 100%;
-  height: 100px;
+  height: 70px;
   overflow: hidden;
 }
 
@@ -413,14 +413,14 @@ header {
   height: 20px;
   right: 12px;
   top: 100%;
-  transform: translateY(-150%);
+  transform: translateY(-130%);
 }
 
 /*------------------- HAMBURGER MENU -----------------------------------------*/
 
 .nav-icon{
-  width: 60px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   position: relative;
   margin: auto 30px;
   -webkit-transform: rotate(0deg);
@@ -432,6 +432,12 @@ header {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
+  vertical-align: middle;
+}
+
+.nav-icon img{
+  width: 100%;
+  height: 100%;
 }
 
 .nav-icon span {
@@ -462,7 +468,7 @@ header {
 }
 
 .nav-icon span:nth-child(2) {
-  top: 18px;
+  top: 14px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -o-transform-origin: left center;
@@ -470,7 +476,7 @@ header {
 }
 
 .nav-icon span:nth-child(3) {
-  top: 36px;
+  top: 29px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -o-transform-origin: left center;
@@ -482,7 +488,7 @@ header {
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
-  top: -3px;
+  top: 3px;
   left: 8px;
 }
 
@@ -496,7 +502,7 @@ header {
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  top: 39px;
+  top: 32px;
   left: 8px;
 }
 
@@ -504,7 +510,7 @@ header {
   position: absolute;
   width: 30%;
   height: 0vh;
-  top: 100px;
+  top: 70px;
   background: rgba(0,0,0,.95);
   text-align: left;
   transition: all;
@@ -879,6 +885,10 @@ form label{
   background-image: url(../img/img-games/FondoTecno.png);  
 }
 
+.titulo-preview{
+  padding-top: 20px;
+}
+
 .contenedor-novedades .titulo-novedades{
   padding: 20px;
 }
@@ -990,7 +1000,7 @@ form label{
 
  /*contenedor principal y flechas*/
  .carrusel-categorias{
-    margin-bottom: 70px;
+    margin-bottom: 30px;
  }
 
  .carrusel-categorias .contenedor-principal{
@@ -1013,6 +1023,7 @@ form label{
     transition: .2s ease all;
  }
 
+
  .carrusel-categorias .contenedor-principal .flecha-izq{
     left:0;
  }
@@ -1034,17 +1045,19 @@ form label{
 
  .carrusel-categorias .contenedor-carrusel-character,
  .carrusel-categorias .contenedor-carrusel-jugado,
- .carrusel-categorias .contenedor-carrusel-recomendado,
  .carrusel-categorias .contenedor-carrusel-accion,
+ .carrusel-categorias .contenedor-carrusel-recomendado,
  .carrusel-categorias .contenedor-carrusel-multijugador,
  .carrusel-categorias .contenedor-carrusel-deportes{
-  width: 100%;
-  padding: 20px 0px;
+  width: 100%;  
   overflow: hidden;
   scroll-behavior: smooth;  
  }
 
- 
+ .carrusel-categorias .contenedor-carrusel-recomendado{
+  padding: 20px 0px;
+ }
+
  .carrusel-categorias .contenedor-carrusel-character .carrusel,
  .carrusel-categorias .contenedor-carrusel-jugado .carrusel,
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel,
@@ -1061,13 +1074,19 @@ form label{
  .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
  .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
-  min-width: 33.33%;
+  min-width: 20%;
   transition: .3s ease all;
  }
 
+ 
+ .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character{
+  min-width: 25%;
+ }
+
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
-  min-width: 100%;
+  min-width: 50%;
   text-align: -webkit-center;
+  /* padding-left: 12px; */
  } 
 
  .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character.hover,
@@ -1083,17 +1102,25 @@ form label{
   transform: scale(1.05);
 }
 
+.contenedor-carrusel-character .datos-juego-small h2{
+  font-size: 28px;
+}
+
+.contenedor-carrusel-character .datos-juego-small p{
+  font-size: 16px;
+}
+
 /*-----------------------CARDS------------------------------------*/
 
-.juego-jugado .contenedor-card-small .datos-juego-small h3,
+/* .juego-jugado .contenedor-card-small .datos-juego-small h3,
 .juego-recomendado .contenedor-card-small .datos-juego-small h3,
 .juego-accion .contenedor-card-small .datos-juego-small h3,
 .juego-multijugador .contenedor-card-small .datos-juego-small h3,
 .juego-deportes .contenedor-card-small .datos-juego-small h3{
     line-height: 36px;
-}
+} */
 
-.juego-jugado .contenedor-card-small .datos-juego-small p,
+/* .juego-jugado .contenedor-card-small .datos-juego-small p,
 .juego-recomendado .contenedor-card-small .datos-juego-small p,
 .juego-accion .contenedor-card-small .datos-juego-small p,
 .juego-multijugador .contenedor-card-small .datos-juego-small p,
@@ -1103,6 +1130,10 @@ form label{
     line-height: 20px;
     letter-spacing: 0.05em;
     
+} */
+
+.titulo-small-card{
+  padding-bottom: 5px;
 }
 
 .card-big{
@@ -1110,14 +1141,14 @@ form label{
     height: 100%;
 }
 
-.juego-jugado .contenedor-card-small .datos-juego-small h2,
+/* .juego-jugado .contenedor-card-small .datos-juego-small h2,
 .juego-recomendado .contenedor-card-small .datos-juego-small h2,
 .juego-accion .contenedor-card-small .datos-juego-small h2,
 .juego-multijugador .contenedor-card-small .datos-juego-small h2,
 .juego-deportes .contenedor-card-small .datos-juego-small h2{    
     line-height: 36px;    
 }
-
+ */
 .indicador-estado-gratis, .indicador-estado-agregado{
   display:flex;
   position: fixed;
@@ -1150,6 +1181,7 @@ form label{
     padding: 40px;   
     justify-content: center;
     display: flex;
+    /* transform: scale(0.5); */
 }
 
 .juego-jugado .card-small,
@@ -1160,10 +1192,10 @@ form label{
 .contenedor-card-big {
     display: flex;
     flex-direction: column;
-    width: 285px;
-    height: 427px;
+    width: 142px;
+    height: 213px;
     border: var(--Color-GreyL3);
-    border-radius: 23px;
+    border-radius: 10px;
     border-width: 3px;
     border-style: solid;
     background: var(--Color-SecondaryS3);
@@ -1171,44 +1203,61 @@ form label{
 }
 
 .contenedor-card-big{
-    width: 975px;
-    height: 458px;
+    width: 487px;
+    height: 229px;
     font-weight: 500;
 }
 
 .datos-juego-big{    
+    display: flex;
     font-size: 30px;
     text-align: left;
-    margin-right: 40px;
+    /* margin-right: 40px; */
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
 }
 
 .datos-juego-small{
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0px 10px;
+    justify-content: space-around;
 }
 
-.contenido-small-card{
+/* .contenido-small-card{
   flex-grow: 1;
-}
+} */
 
 .titulo-big-card{
-    padding: 10px 20px;
+    padding: 10px;
 }
 
 .contenido-big-card{
-    padding: 90px 20px;
+    padding: 10px;
 }
 
 .precio-big-card{
-    padding: 20px 20px 0px;
+    padding: 10px;
     text-align: right;
 }
 
 .precio-small-card{
   align-self: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+}
+
+.datos-juego-small h1{
+  font-size: 15px;
+}
+
+.datos-juego-small h2{
+  font-size: 12px;
+}
+
+.datos-juego-small p{
+  font-size: 10px;
 }
 
 .juego-jugado .card-small .img-juego-small img,
@@ -1216,9 +1265,9 @@ form label{
 .juego-accion .card-small .img-juego-small img,
 .juego-multijugador .card-small .img-juego-small img,
 .juego-deportes .card-small .img-juego-small img{
-    border-radius: 20px 20px 0px 0px;
-    height: 234px;
-    width: 280px;
+    border-radius: 10px 10px 0px 0px;
+    height: 117px;
+    width: 142px;
     position: initial;
     object-fit:cover;
     background: #0C0228;
@@ -1226,9 +1275,9 @@ form label{
 
 .contenedor-card-big .card-big .img-juego-big,
 .contenedor-card-big .card-big .img-juego-big img {
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 8px 0px 0px 8px;
     height: 100%;
-    width: 566px;
+    width: 250px;
     position: initial;
     object-fit:cover;
 }
@@ -1250,8 +1299,8 @@ body.hero-page{
 
 .hero-chart{
   display: flex;
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -1263,7 +1312,7 @@ body.hero-page{
 
 .heroe-space{
   display: flex;
-  width: 100%;
+ /*  width: 100%; */
   height: 100%;
   justify-content: center;
 }
@@ -1291,15 +1340,15 @@ body.hero-page{
 }
 
 .hero1, .hero2{  
-  transform: translate(160px, 350px);
+  transform: translate(160px, 250px);
 }
 
 .hero3, .hero4{
-  transform: translate(250px, 350px);  
+  transform: translate(250px, 250px);  
 }
 
 .reserva{
-  transform: translate(-1250px, -10px);
+  transform: translate(-1000px, -10px);
   height: 70%;
 }
 
@@ -1311,11 +1360,12 @@ body.hero-page{
 
 .time-counter{
   padding:30px;
+  text-align: center;
 }
 
 .history-chart{
   display: flex;
-  width: 100%;
+ /*  width: 100%; */
   height: 500px;
   background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
   flex-direction: column;
@@ -1369,6 +1419,7 @@ body.hero-page{
 .indicador-estado-gratis, .indicador-estado-agregado{
   display:flex;
   position: fixed;
+  height: 100px;
 }
 
 .card-small .back-btn{
@@ -1502,7 +1553,7 @@ footer{
 .contenedor-ppal-footer{
   display: flex;
   justify-content: space-between;
-  padding: 40px 80px 40px 80px;
+  padding: 20px 80px 20px 80px;
   background: #270977;
 }
 
