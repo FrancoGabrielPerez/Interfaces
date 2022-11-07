@@ -30,9 +30,9 @@ function paginacion(variable){
         const juegos = document.querySelectorAll(`.juego-${variable}`);        
         let cantCards = 0;
         if (variable === "recomendado") //SI LA FLECHA CLICKEADA ESTA EN EL CARRUSEL DE RECOMENDADOS, LA DIVISION SE HACE POR UNO, YA QUE SE VA
-            cantCards = 1;              //A MOSTRAR UNA SOLA IMAGEN.
+            cantCards = 2;              //A MOSTRAR UNA SOLA IMAGEN.
         else
-            cantCards = 3;
+            cantCards = 5;
         const nroPaginas = Math.ceil(juegos.length / cantCards);
         for(let i = 0; i < nroPaginas; i++){
             const indicador = document.createElement('button');
@@ -65,7 +65,7 @@ function hover(variable){
                 if ((subElemento.childNodes[1].classList == "indicador-estado-gratis") 
                     || (subElemento.childNodes[1].classList == "indicador-estado-agregado")) {
                     subElemento.style.background = "#7CD600";
-                    subElemento.style.borderRadius = "20px";
+                    subElemento.style.borderRadius = "8px";
                     let auxURL = subElemento.childNodes[5].childNodes[1].id;
                     subElemento.childNodes[5].style.display = "none";
                     subElemento.childNodes[7].style.display = "flex";
@@ -75,17 +75,16 @@ function hover(variable){
                     if (auxURL == "las-cuatro-estrellas-de-la-muerte")
                         subElemento.childNodes[7].innerHTML = `<a href="./pages/las-cuatro-estrellas-de-la-muerte.html"><h1>Jugar</h1></a>`;
                     else
-                        subElemento.childNodes[7].innerHTML = `<h1>Jugar</h1>`;
+                        subElemento.childNodes[7].innerHTML = `<h2>Jugar</h2>`;
                     }
                 else if (subElemento.childNodes[1].classList != "indicador-estado-character") {
                     subElemento.style.background = "#AE5600";
-                    subElemento.style.borderRadius = "20px";
+                    subElemento.style.borderRadius = "8px";
                     subElemento.childNodes[5].style.display = "none";
                     subElemento.childNodes[7].style.display = "flex";
-                    console.log(subElemento.childNodes);
                     let imgJuego = subElemento.childNodes[3].id;
                     console.log(imgJuego);
-                    subElemento.childNodes[7].innerHTML = `<a href='javascript:modalCompra("${imgJuego}")'><h1>Comprar</h1></a>`;
+                    subElemento.childNodes[7].innerHTML = `<a href='javascript:modalCompra("${imgJuego}")'><h2>Comprar</h2></a>`;
                 }
             }, 300);
         });
