@@ -1643,7 +1643,7 @@ footer{
 
   .img-logo{
     width: 100%;
-    height: 100px;
+    height: 70px;
     overflow: hidden;
   }
 
@@ -1664,14 +1664,31 @@ footer{
   .carrusel-categorias .contenedor-carrusel-accion .carrusel .juego-accion,
   .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
   .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
-    min-width: 33.33%;
-    transform: scale(0.3,0.3);
+    min-width: 25%;
+    /* transform: scale(0.4,0.4); */
     transition: .3s ease all;
     overflow: visible;
   }
 
-  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
+ .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
     transform: scale(0.9,0.9);
+  }
+ 
+  .juego-jugado .card-small, .juego-recomendado .card-small, 
+  .juego-accion .card-small, .juego-multijugador .card-small, 
+  .juego-deportes .card-small, .contenedor-card-big {
+    width: 55px;
+    height: 100px;
+    border-width: 2px;
+  }
+
+  .juego-jugado .card-small .img-juego-small img, 
+  .juego-recomendado .card-small .img-juego-small img, 
+  .juego-accion .card-small .img-juego-small img, 
+  .juego-multijugador .card-small .img-juego-small img, 
+  .juego-deportes .card-small .img-juego-small img {
+    height: 100%;
+    width: 100%;
   }
 
   .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character.hover,
@@ -1689,7 +1706,7 @@ footer{
   .carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
   .carrusel-categorias .contenedor-carrusel-deportes .carrusel,
   .contenedor-small-cards-mobile {
-    height: 200px;
+    /* height: 200px; */
     align-items: center;
   }
 
@@ -1697,9 +1714,25 @@ footer{
     transform: scale(1.0);
   }
 
+  .datos-juego-small h2 {
+    font-size: 7px;
+  }
+
+  .datos-juego-small h3 {
+    font-size: 10px;
+  }
+
+  .datos-juego-small p {
+    font-size: 5px;
+  }
+
+  .datos-juego-small{
+    padding: 1px;
+  }
+
   .carrusel-categorias .contenedor-principal{
     justify-content: center;  
-    margin-bottom: -40px;
+    margin-bottom: 10px;
   }
   
   .carrusel-categorias .contenedor-titulo-controles .indicadores-jugado,
@@ -1712,6 +1745,7 @@ footer{
 
   .carrusel-categorias .contenedor-titulo-controles h3{
     text-align: center;
+    font-size: 28px;
   }
 
   .carrusel-categorias .contenedor-carrusel-jugado, 
@@ -1722,8 +1756,22 @@ footer{
   }
 
   .contenedor-titulo-controles {
+    padding-bottom: 10px;
     justify-content: center;
   }
+
+ .contenedor-ppal-footer .cont-redes .icons-redes-footer img {
+    width: 60px;
+    height: 60px;
+}
+
+.contenedor-ppal-footer .cont-redes .logos-redes .icons-redes-footer > div {
+  padding: 20px;
+}
+
+  .carrusel-categorias .contenedor-carrusel-recomendado {
+    padding: 0px;
+}
 
   .juego-jugado .contenedor-card-small, 
   .juego-recomendado .contenedor-card-small, 
@@ -1733,9 +1781,13 @@ footer{
     padding: 0px;
   }
 
+  .indicador-estado-gratis, .indicador-estado-agregado {
+    height: 70px;
+  }
+
   .contenedor-card-big{
     width:100%;
-    height: 500px;
+    height: 270px;
     flex-direction: column;
   }
 
@@ -1765,29 +1817,41 @@ footer{
   }
 
   .contenedor-card-big .card-big .img-juego-big{
-    border-radius: 20px 0px 0px 20px;
-    height: 50%;
+    border-radius: 9px 0px 0px 9px;
+    height: 40%;
     width: 100%;
   }
 
 
   .contenedor-card-big .card-big .img-juego-big img {
-    border-radius: 20px 20px 0px 0px;
-    height: 100%;
+    border-radius: 9px 9px 0px 0px;
+    height: 100px;
     width: 100%;
     position: initial;
     object-fit: cover;
   }
 
   .datos-juego-big {
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
     flex-direction: column;
     width: 100%;
   }
 
+  .datos-juego-big h2 {
+    font-size: 18px;
+  }
+
+  .datos-juego-big h3 {
+    font-size: 14px;
+  }
+
+  .datos-juego-big p {
+    font-size: 10px;
+  }
+
   .contenedor-card-big .card-big .datos-juego-big .titulo-big-card{
-    padding: 10px 10px;
+    padding: 5px;
   }
   .contenedor-card-big .card-big .datos-juego-big .contenido-big-card{
     padding: 10px 10px;
