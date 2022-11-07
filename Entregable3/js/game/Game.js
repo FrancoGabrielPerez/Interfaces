@@ -6,13 +6,13 @@ class Game{
 	static #defaultColumns = 7;
 	static #defaultRows = 6;
 	#defaultCoinSize = 40;
-	#validAreas;
 	#padding = 20;
+	#validAreas;
+	#board;
 	#player1;
 	#player2;
-	#playerTurn;
+	#gameState;
 	#drawWinner;
-	#board;
 	#chipSelected;
 	#ctx;
 	#imgTie;
@@ -26,7 +26,7 @@ class Game{
 		let playerDrawingSize = {x:(((this.#ctx.canvas.clientWidth-this.#board.getSize().x)/2)-this.#padding), y:this.#ctx.canvas.clientHeight};
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
-		this.#playerTurn = this.#player1;
+		this.#gameState = this.#player1;
 		this.#drawWinner = false;
 		this.#chipSelected = null;	
 		this.defineValidAreas(Game.#defaultColumns+tam);
@@ -58,7 +58,7 @@ class Game{
 	/*
 	Recibe una ficha, toma la posicion de la misma y chequea en que columna la solataron.
 	Si la ficha esta en una posion valida se la pasa al tablero junto con la columna correspondiente para que el mismo la agregue.
-	Si el tablero la pudo agregar, cambia el turno y elimina la ficha del jugador. Ademas se fija si hay un ganador y lo muestra por pantalla
+	Si el tablero la pudo agregar, cambia el turno y elimina la ficha del jugador. Ademas se fija si hay un ganador o empate.
 	*/
 	addChip(chip){
 		let success = false;
@@ -75,38 +75,128 @@ class Game{
 		}
 		if (success){
 			chip.getPlayer().removeChip(chip);
-			this.changeTurn(this.#playerTurn);
+			this.changeState(this.#gameState);
+			if (!this.#gameState.hasChips()){
+				this.changeState("tie");
+				this.draw();
+			}
 			this.draw();
 		}
 		if (this.#board.getWinner()){
-			this.changeTurn(null);
-			this.#drawWinner = true;
+			this.changeState("win");
 			this.draw();
 			
 		}
 		return success;
 	}
 
-	// Metodo que se encarga de cambiar el turno de cada jugado, si hay ganador, empate o se acaba el tiempo,
-	// el turno se setea en null.
-	changeTurn(currentPlayer){
-		if (currentPlayer != null){
-			switch (currentPlayer) {
-				case this.#player1:
-					this.#playerTurn = this.#player2;
-					break;
-				case this.#player2:
-					this.#playerTurn = this.#player1;
-					break;			
-			}
-		} else {
-			this.#playerTurn = null;
-			
+	// Metodo que se encarga de cambiar el estado del juego, si recice un jugador cambia el turno al otro jugador.
+	changeState(currentState){
+		switch (currentState) {
+			case "tie":
+				this.#gameState = currentState;
+				this.#drawWinner = true;
+				break;
+			case "win":
+				this.#gameState = currentState;
+				this.#drawWinner = true;
+				break;
+			case "noTime":
+				this.#gameState = currentState;
+				this.#drawWinner = true;
+				break;
+			case this.#player1:
+				this.#gameState = this.#player2;
+				break;
+			case this.#player2:
+				this.#gameState = this.#player1;
+				break;	
+			default:
+				this.#gameState = null;
+				break;
+		}
+	}
+	
+	/* 
+	Metodo que devuelve si el jugo esta en un estado final
+	*/
+	ended(){
+		return ((this.#gameState != this.#player1) && (this.#gameState != this.#player2))
+	}
+
+	getChipSelected(){
+		return this.#chipSelected;
+	}
+
+	/* 
+	Metodo que selecciona un ficha a partir de una posicion x,y. Le delega la responsabilidad de buscar la ficha al jugador de turno.
+	*/
+	selectChip(x, y){
+		if (!this.ended()){
+			this.#chipSelected = this.#gameState.getSelected(x, y);
 		}
 	}
 
+	/* 
+	Metodo que devuleve si una posicion x,y esta sobre una ficha del jugador de turno
+	*/
+	isOverChip(x, y){
+		if (!this.ended()){
+			return !!this.#gameState.isOverChip(x, y);
+		}
+	}
+
+	deselectChip(){
+		this.#chipSelected.setSelected(false);
+		this.#chipSelected = null;
+	}
+
+	/* 
+	Metodo que cambia entre dibujar al ganador o no. Se usa en caso que se quiera ocultar 
+	el panel de ganador para ver el estado final del tablero
+	*/
+	toggleDrawWinner(){
+		if (this.ended()){
+			this.#drawWinner = !this.#drawWinner;
+			this.draw();
+		}
+	}
+
+	/* 
+	Metodo que resetear el juego mateniendo los parametros que tiene seteados
+	*/
+	reset(){
+		this.#board.reset();
+		this.#player1.reset();
+		this.#player2.reset();
+		this.#gameState = this.#player1;
+		this.#drawWinner = false;
+		clearInterval(timerID);
+		timer();
+		this.draw();
+	}
+
+	/* 
+	Metodo que dibuja el juego; limpia el canvas y llama a los metodos de dibujado de sus componentes.
+	*/
+	draw(){
+		this.clearCanvas();
+		this.#board.draw();
+		this.drawValidAreas();
+		this.#player1.draw();
+		this.#player2.draw();
+		if ((this.ended()) && (this.#drawWinner)){
+			this.#showWinner();
+		}
+	}
+
+	clearCanvas(){
+		this.#ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
+	}
+
 	// Metodo encargado de dibujar el aviso del ganador o empate.
-	showWinner(winner){
+	#showWinner(){
+		let winner = this.#board.getWinner();
 		// Se crea un elemento de tipo PlayButton al que se le asignan luego los atributos deseados para mostar.
 		let winnerChart = new PlayButton(this.#ctx);
 		// Se detiene el temporizador.
@@ -125,7 +215,7 @@ class Game{
 		this.#ctx.textAlign = 'center';
 		this.#ctx.textBaseline = 'middle';	
 		// Depenediendo quien gane, se va a mostrar determinado texto. Idem, si se caba el tiempo o hay empate.	
-		if ((winner != false) && (winner != "timerEnd")){
+		if (this.#gameState == "win"){
 			var img = new Image();
 			img.src = winner.getProfilePic();				
 			var winnerName = winner.getName();
@@ -136,7 +226,7 @@ class Game{
 				var winnerText1 = "¡La Resistencia a sido derrotada!";
 				var winnerText2 = "Larga vida a nuestro heroe...";
 			}
-		} else if (winner == "timerEnd") {
+		} else if (this.#gameState == "noTime") {
 			var img = this.#imgTie;			
 			var winnerText1 = "El tiempo se acabo...";
 			var winnerText2 = "Ningun bando resulto ganador...";
@@ -162,241 +252,4 @@ class Game{
 			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
 		}
 	}
-	
-	getChipSelected(){
-		return this.#chipSelected;
-	}
-
-	selectChip(x, y){
-		if (this.#playerTurn != null){
-			this.#chipSelected = this.#playerTurn.getSelected(x, y);
-		}
-	}
-
-	isOverChip(x, y){
-		if (this.#playerTurn != null){
-			return !!this.#playerTurn.isOverChip(x, y);
-		}
-	}
-
-	deselectChip(){
-		this.#chipSelected.setSelected(false);
-		this.#chipSelected = null;
-	}
-
-	changeDrawWinner(){
-		if (this.#board.getWinner()){
-			this.#drawWinner = !this.#drawWinner;
-			this.draw();
-		}
-	}
-
-	/* 
-	Metodo que resetear el juego mateniendo los parametros anteriores
-	*/
-	reset(){
-		this.#board.reset();
-		this.#player1.reset();
-		this.#player2.reset();
-		this.#playerTurn = this.#player1;
-		this.#drawWinner = false;
-		clearInterval(timerID);
-		timer();
-		this.draw();
-	}
-
-	/* 
-	Metodo que dibuja el juego, limpia el canvas y llama a los metodos de dibujado de sus componentes.
-	*/
-	draw(){
-		this.clearCanvas();
-		this.#board.draw();
-		this.drawValidAreas();
-		this.#player1.draw();
-		this.#player2.draw();
-		if (this.#drawWinner){
-			this.showWinner(this.#board.getWinner());
-		}
-	}
-
-	clearCanvas(){
-		ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
-	}
 }
-
-/* let canvas = document.getElementById('canvas');
-let ctx = canvas.getContext('2d');
-let upperCanvas = document.getElementById('upperCanvas');
-let upperCtx = upperCanvas.getContext('2d');
-
-let currentGame;
-let timerID;
-let resetButton;
-let exitButton;
-
-function init(game){
-	currentGame = game;
-	initEvents();
-	setTimeout(() => currentGame.draw(),500);
-	timer();
-}
-
-// Funcion encargada de iniciar los eventos.
-function initEvents(){
-	canvas.onmousedown = mouseDown;
-	canvas.onmousemove = mouseMove;
-	upperCanvas.onmousemove = changePointerButton;
-	upperCanvas.onmousedown = resetOrExitMouseDown;
-	document.onmouseup = mouseUp;
-}
-
-// Funcion que responde ante el evento onmousedown sobre el boton reset o exit.
-function resetOrExitMouseDown(event){
-	event.preventDefault();
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	if (resetButton.checkSelected(x,y)){
-		currentGame.reset();
-	}
-	if (exitButton.checkSelected(x,y)){
-		upperCtx.clearRect(0, 0, upperCanvas.clientWidth, upperCanvas.clientHeight);
-		currentGame.exit();
-	}
-}
-
-function mouseDown(event){
-	event.preventDefault();
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	currentGame.selectChip(x, y);
-	currentGame.draw();
-}
-
-function mouseMove(event){
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	if ((currentGame.getChipSelected())){
-		event.preventDefault();
-		canvas.style.cursor = "grabbing";
-		currentGame.getChipSelected().move(x, y);
-		currentGame.draw();
-		return;
-	}
-	if (currentGame.isOverChip(x, y)){
-		canvas.style.cursor = "grab";
-		return;
-	}
-	canvas.style.cursor = "default";
-}
-
-function mouseUp(event){
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	if (currentGame.getChipSelected()){
-		event.preventDefault();
-		let result = currentGame.addChip(currentGame.getChipSelected());
-		if (result == false){
-			currentGame.getChipSelected().resetPos();
-		}
-		currentGame.deselectChip();
-		currentGame.draw();
-		canvas.style.cursor = "default";
-	}
-}
-
-
-// Funcion que detecta el movimiento del mouse sobre alguno de los botones creados
-// y cambia el puntero del mouse.
-function changePointerButton(event){
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	if (resetButton.checkSelected(x, y) || exitButton.checkSelected(x, y)){
-		upperCanvas.style.cursor = "pointer";
-		return;
-	}
-	upperCanvas.style.cursor = "default";
-}
-
-// Similar a la anterior, pero esta se activa cuando el mouse se encuentra sobre alguna ficha.
-function changePointerChip(event){
-	let x = event.pageX - event.currentTarget.offsetLeft;
-	let y = event.pageY - event.currentTarget.offsetTop;
-	if (currentGame.getChipSelected()){
-		return;
-	}
-	if (currentGame.isOverChip(x, y)){
-		canvas.style.cursor = "grab";
-		return;
-	}
-	canvas.style.cursor = "default";
-}
-
-
-// Funcion encargada de crear los botones de exit y reset.
-function drawUpperButton(buttonPosX, buttonTextPosX, buttonText, buttonFillStyle){	
-	var posX = buttonPosX;
-	var posY = upperCtx.canvas.clientHeight / 2 - 25;
-	var alto = 150;
-	var ancho = 50;
-	var textPosX = buttonTextPosX;
-	var textPosY = upperCtx.canvas.clientHeight / 2;
-	var buttonText = buttonText;
-	if (buttonText == "Reset") {
-		resetButton = new PlayButton(upperCtx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
-		resetButton.drawNewButton(buttonFillStyle);
-	} else {
-		exitButton = new PlayButton(upperCtx, posX, posY, alto, ancho, textPosX, textPosY, buttonText);
-		exitButton.drawNewButton(buttonFillStyle);
-	}
-}
-	
-//Funcion que crea un contador de tiempo
-function timer(){
-	// Se setea el tiempo inicial en 5 minutos
-	var date = new Date('2022-01-01 00:05');   
-    // Función para rellenar con ceros
-    var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
-	// Asignar el intervalo a una variable para poder eliminar el intervale cuando llegue al limite
-	timerID = setInterval(() => {        
-		// Asignar el valor de minutos
-        var minutes = padLeft(date.getMinutes() + "");
-        // Asignar el valor de segundos
-        var seconds = padLeft(date.getSeconds() + "");  
-		// Variable para imprimir por pantalla      
-        var timer = `${minutes} : ${seconds}`;
-		upperCtx.font = "Normal 30px Distant Galaxy";
-    	upperCtx.fillStyle = "#F1F1F1";
-		upperCtx.textAlign = 'center';
-    	upperCtx.textBaseline = 'middle';
-		// Se resetea el canvas para que se haga el efecto de cambio en los contadores
-        upperCtx.clearRect(0, 0, upperCtx.canvas.clientWidth, upperCtx.canvas.clientHeight);
-        // Se dibujan los numeros del contador a medida que avanza el tiempo
-		upperCtx.fillText(timer, upperCtx.canvas.clientWidth / 2, upperCtx.canvas.clientHeight / 2);
-		//Se dibujan tambien los botones "exit" y "reset"
-		var resetButtonPosX = upperCtx.canvas.clientWidth - 150;
-		var resetButtonTextPosX = upperCtx.canvas.clientWidth - 75;
-		var resetButtonText = "Reset";
-		var resetButtonFillStyle = "#7CD600";
-		drawUpperButton(resetButtonPosX, resetButtonTextPosX, resetButtonText, resetButtonFillStyle);
-		
-		var exitButtonPosX = 0;
-		var exitButtonTextPosX = 70;;
-		var exitButtonText = "Exit";
-		var exitButtonFillStyle = "#7B5BCD";
-		drawUpperButton(exitButtonPosX, exitButtonTextPosX, exitButtonText, exitButtonFillStyle);
-        // Restarle a la fecha actual 1000 milisegundos
-        date = new Date(date.getTime() - 1000);         
-        // Si llega a 0:00, se detiene el contador, y se envia el mensaje para que se muestre
-		// un aviso de que el tiempo se acabo. Se termina el juego actual como haya quedado.		
-        if(minutes == '00' && seconds == '00' ){
-            clearInterval(timerID);
-			currentGame.changeTurn(true);
-			currentGame.showWinner("timerEnd");
-        }    
-    }, 1000);
-}
-
-// Funcion encargada de borrar el canvas.
-function clearCanvas(){
-	ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
-} */
