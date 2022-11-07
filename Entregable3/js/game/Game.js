@@ -11,15 +11,13 @@ class Game{
 	#player1;
 	#player2;
 	#playerTurn;
+	#drawWinner;
 	#board;
 	#chipSelected;
 	#ctx;
 	#imgTie;
-	#imgBackground;
 
 	constructor(tam, player1Name, player2Name, player1Profile, player2Profile, player1Img, player2Img, context){
-		this.#imgBackground = new Image();
-		this.#imgBackground.src = "../img/img-games/img-imperio/Espacio-4.png";
 		this.#imgTie = new Image();	
 		this.#imgTie.src = '../img/img-games/img-imperio/DeathStar.png';
 		this.#ctx = context;
@@ -29,6 +27,7 @@ class Game{
 		this.#player1 = new Player(player1Name, player1Profile, player1Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:0,y:0}, playerDrawingSize);
 		this.#player2 = new Player(player2Name, player2Profile, player2Img, this.#defaultCoinSize, this.#board.getAmountTiles()/2, this.#ctx, {x:(this.#ctx.canvas.clientWidth-playerDrawingSize.x),y:0}, playerDrawingSize);
 		this.#playerTurn = this.#player1;
+		this.#drawWinner = false;
 		this.#chipSelected = null;	
 		this.defineValidAreas(Game.#defaultColumns+tam);
 		this.draw();
@@ -56,6 +55,11 @@ class Game{
 		}
 	}
 
+	/*
+	Recibe una ficha, toma la posicion de la misma y chequea en que columna la solataron.
+	Si la ficha esta en una posion valida se la pasa al tablero junto con la columna correspondiente para que el mismo la agregue.
+	Si el tablero la pudo agregar, cambia el turno y elimina la ficha del jugador. Ademas se fija si hay un ganador y lo muestra por pantalla
+	*/
 	addChip(chip){
 		let success = false;
 		let pos = chip.getPosition();
@@ -71,10 +75,13 @@ class Game{
 		}
 		if (success){
 			chip.getPlayer().removeChip(chip);
-			this.changeTurn();
+			this.changeTurn(this.#playerTurn);
+			this.draw();
 		}
-		if (success && this.#board.getWinner()){
-			this.showWinner(this.#board.getWinner());
+		if (this.#board.getWinner()){
+			this.changeTurn(null);
+			this.#drawWinner = true;
+			this.draw();
 			
 		}
 		return success;
@@ -82,11 +89,9 @@ class Game{
 
 	// Metodo que se encarga de cambiar el turno de cada jugado, si hay ganador, empate o se acaba el tiempo,
 	// el turno se setea en null.
-	changeTurn(turn){
-		if (turn == true){
-			this.#playerTurn = null;
-		} else {
-			switch (this.#playerTurn) {
+	changeTurn(currentPlayer){
+		if (currentPlayer != null){
+			switch (currentPlayer) {
 				case this.#player1:
 					this.#playerTurn = this.#player2;
 					break;
@@ -94,6 +99,9 @@ class Game{
 					this.#playerTurn = this.#player1;
 					break;			
 			}
+		} else {
+			this.#playerTurn = null;
+			
 		}
 	}
 
@@ -153,8 +161,6 @@ class Game{
 		} else {
 			this.#ctx.fillText(winnerName, textPosX + winnerText2Width/3, textPosY + 40);
 		}
-		// Se pone a null al jugador en turno para que el juego se detenga.
-		this.changeTurn(true);
 	}
 	
 	getChipSelected(){
@@ -178,39 +184,40 @@ class Game{
 		this.#chipSelected = null;
 	}
 
+	changeDrawWinner(){
+		if (this.#board.getWinner()){
+			this.#drawWinner = !this.#drawWinner;
+			this.draw();
+		}
+	}
+
+	/* 
+	Metodo que resetear el juego mateniendo los parametros anteriores
+	*/
 	reset(){
 		this.#board.reset();
 		this.#player1.reset();
 		this.#player2.reset();
 		this.#playerTurn = this.#player1;
-		this.draw();
+		this.#drawWinner = false;
 		clearInterval(timerID);
 		timer();
+		this.draw();
 	}
 
-	exit(){
-		clearCanvas();
-		clearInterval(timerID);
-		initDrawButton();
-	}
-
+	/* 
+	Metodo que dibuja el juego, limpia el canvas y llama a los metodos de dibujado de sus componentes.
+	*/
 	draw(){
-		if (this.#board.getWinner()){
-			return;
-		}
 		this.clearCanvas();
 		this.#board.draw();
 		this.drawValidAreas();
 		this.#player1.draw();
 		this.#player2.draw();
+		if (this.#drawWinner){
+			this.showWinner(this.#board.getWinner());
+		}
 	}
-
-	/* drawBoardBackImage() {    	
-		var w = canvas.width;
-		var h = canvas.height;
-		this.#ctx.globalAlpha = 1;
-		this.#ctx.drawImage(this.#imgBackground, 0, 0 ,this.#ctx.canvas.width, this.#ctx.canvas.height);		
-	} */
 
 	clearCanvas(){
 		ctx.clearRect(0, 0, this.#ctx.canvas.clientWidth, this.#ctx.canvas.clientHeight);
