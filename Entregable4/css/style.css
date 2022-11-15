@@ -1081,6 +1081,7 @@ form label{
  
  .carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character{
   min-width: 25%;
+  transform: scale(.8);
  }
 
  .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado{
@@ -1096,6 +1097,10 @@ form label{
  .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes.hover{
   transform: scale(1.05);
   transform-origin: center; 
+}
+
+.carrusel-categorias .contenedor-carrusel-character .carrusel .juego-character.hover{
+  transform: scale(.9);
 }
 
 .carrusel-categorias .contenedor-carrusel-recomendado .carrusel .juego-recomendado.hover{
@@ -1366,12 +1371,13 @@ body.hero-page{
 .history-chart{
   display: flex;
  /*  width: 100%; */
-  height: 500px;
+ /*  height: 500px; */
   background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+  background-size: cover;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 40px 10px 40px 10px;
 }
 
 .history-text
@@ -1384,6 +1390,92 @@ body.hero-page{
   line-height: normal;
 }
 
+
+.history-wrapper{
+  font-family: 'Slackey', cursive;
+  display: flex;
+}
+
+.history-wrapper #about{
+  color: var(--Color-Primary);  
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.history-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+  /* background: rgb(250, 249, 252); */
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  flex-direction: column;
+  padding: 0px 10px 0px 10px;
+ 
+}
+
+.history-title > h2{
+  color: var(--Color-Primary);  
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+
+}
+
+.history-scroll{
+  width:50%;
+  color: white;
+}
+
+#logo{
+  padding: 15px 0px 15px 0px;
+}
+
+.history-scroll div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.history-scroll div > h2 {
+  width: 80%;
+  text-align: center;
+}
+
+.history-scroll div > h3 {
+  width: 80%;
+  line-height: 30px;
+  text-align: center;
+}
+
+.history-scroll div:nth-child(1){
+  background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+  background-size: auto;
+  opacity: .3;
+}
+
+.history-scroll div:nth-child(2){
+  background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+  background-size: auto;
+  opacity: .3;
+}
+
+.history-scroll div:nth-child(3){
+  background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+  background-size: auto;
+  opacity: .3;
+}
+
+
+
+
+
+
+
 .characters-chart{  
   background-image: url(../img/img-games/hero-section/ImgBackCharacters.png);
   background-size: cover; 
@@ -1395,6 +1487,40 @@ body.hero-page{
   flex-direction: column;
   align-items: center;
 }
+
+.right-movement{
+  opacity: .1;
+  animation: right-movement 1s linear;
+} 
+
+@keyframes right-movement {
+  0%{
+    opacity: 0;
+    transform: scale(.2) rotateZ(60deg);
+  }
+  20%{
+    opacity: .7;
+    transform: scale(.3) rotateZ(120deg);
+  }
+  40%{
+    opacity: .7;
+    transform: scale(.5) rotateZ(180deg);
+  }
+  60%{
+    opacity: .7;
+    transform: scale(.7) rotateZ(240deg);
+  }
+  80%{
+    opacity: .7;
+    transform: scale(.8) rotateZ(300deg);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(.9) rotateZ(360deg);
+  }
+  
+}
+
 
 .carruseles-categorias-character .contenedor-principal{
   width: 90%;
@@ -1440,7 +1566,7 @@ body.hero-page{
 }
 
 .juego-character .contenedor-card-small-character{
-  padding: 40px;   
+ /*  padding: 40px; */   
   justify-content: center;
   display: flex;
 }
@@ -1482,7 +1608,7 @@ body.hero-page{
 .juego-character .card-small-character .img-juego-small img{
     border-radius: 20px 20px 0px 0px;
     height: 234px;
-    width: 280px;
+    width: 100%;
     position: initial;
     object-fit:cover;
     background: var(--Color-Primary);

@@ -6,7 +6,16 @@ function movimientoCarrusel(e){
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
     if (lado === "flecha-der") {
-        fila.scrollLeft += fila.offsetWidth;           
+        if (variable == 'character'){
+            fila.scrollLeft += fila.offsetWidth / 4;
+        } else {  
+            fila.scrollLeft += fila.offsetWidth;
+        }
+        if (fila.scrollLeft <= fila.offsetWidth ){
+            let rights = document.querySelectorAll('.juego-character');            
+            rights.forEach(right => right.classList.add('right-movement'));
+            setTimeout(() => {rights.forEach(right => right.classList.remove('right-movement'));},700);         
+        }
         if(indicadorActivo.nextSibling != null){
             indicadorActivo.nextSibling.classList.add('activo');
             indicadorActivo.classList.remove('activo');
@@ -58,7 +67,6 @@ function hover(variable){
     juegos.forEach((juego)=>{
         juego.addEventListener('mouseenter', (e)=>{
             let elemento = e.currentTarget;
-            console.log(e);
             setTimeout(() => { /**DESPUES DEL TIEMPO SETEADO SE APLICA LA CLASE HOVER */
                 juegos.forEach(juego => juego.classList.remove('hover'));
                 elemento.classList.add('hover');

@@ -1,6 +1,6 @@
 "use strict";
 
-setTimeout(()=>{    
-    document.querySelector('.loader').style.display = "none";
+setTimeout(()=>{   
     document.body.style.overflow = "visible"; 
+    document.querySelector('.loader').style.display = "none";   
 },5000);
