@@ -1324,17 +1324,22 @@ body.hero-page{
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
 .contenedor-carrusel-characters .contenedor-titulo-controles h1,
-.features-chart .features-chart-title h1{
+.features-chart .features-chart-title h1, .characters-chart .contenedor-characters-title h1{
   font-family: 'Slackey', cursive;
   color: var(--Color-Primary);  
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
 
-.hero-title h1{
+.hero-title h1, .characters-title{
   transform: translateY(50%);
   z-index: 100;
 }
+
+.contenedor-characters-title{
+  text-align: center;
+}
+
 
 .hero2, .hero3, .hero2 img, .hero3 img{
   height: 50%;
@@ -1470,24 +1475,6 @@ body.hero-page{
   opacity: .3;
 }
 
-
-
-
-
-
-
-.characters-chart{  
-  background-image: url(../img/img-games/hero-section/ImgBackCharacters.png);
-  background-size: cover; 
-  height: 650px;
-}
-
-.carruseles-categorias-character .contenedor-carrusel-characters{
-  display: flex;  
-  flex-direction: column;
-  align-items: center;
-}
-
 .right-movement{
   opacity: .1;
   animation: right-movement 1s linear;
@@ -1520,6 +1507,64 @@ body.hero-page{
   }
   
 }
+
+
+.characters-chart{  
+  background-image: url(../img/img-games/hero-section/ImgBackCharacters.png);
+  background-size: cover; 
+  /* height: 650px; */
+   /* position: relative; */   
+    margin: 60px auto;
+  }
+
+
+.characters-chart .carrusel{
+  display: flex;    
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-evenly;
+  position: relative;
+ 
+}
+
+.cards-movement-left{ 
+  animation: cards-move-left 2s linear;
+}
+
+@keyframes cards-move-left {
+  0%{
+    transform: translateX(-1000px);
+  }
+  50%{
+    transform: translateX(-500px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+  
+}
+
+.cards-movement-right{ 
+  animation: cards-move-right 2s linear;
+}
+
+@keyframes cards-move-right {
+  0%{
+    transform: translateX(1000px);
+  }
+  50%{
+    transform: translateX(500px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+  
+}
+
+
+
 
 
 .carruseles-categorias-character .contenedor-principal{
@@ -1571,6 +1616,10 @@ body.hero-page{
   display: flex;
 }
 
+.characters-chart .carrusel > li{
+  transform: scale(0.8);
+}
+
 .contenedor-carrusel-characters .contenedor-titulo-controles{
   justify-content: center;
   padding-top: 40px;
@@ -1587,6 +1636,7 @@ body.hero-page{
   border-style: solid;
   background: var(--Color-Primary);
   cursor: pointer;
+  
 }
 
 .juego-character .card-small-character .datos-juego-small{
