@@ -360,17 +360,19 @@ header {
 }
 
 .img-logo{
-  width: 100%;
-  height: 70px;
+  width: inherit;
+  height: inherit;
   overflow: hidden;
+  position: absolute;
 }
 
 .logo {
-  margin-left: -40px;
-    opacity: 50%;
-    margin-top: -30px;
-    width: 50%;
-    transform: rotateZ(-30deg)
+  margin-left: -60px;
+  opacity: 50%;
+  width: 250px;
+  transform: rotateZ(-30deg);
+  height: 70px;
+  scale: 200%;
 }
 
 .bar-btn, .usr-btn{
@@ -432,7 +434,6 @@ header {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-  vertical-align: middle;
 }
 
 .nav-icon img{
@@ -561,48 +562,120 @@ ul.nav-menu-deployed{
   z-index: 5000;
 }
 
-
+/* 
 .nav-menu li, ul.nav-menu-deployed li, ul.nav-menu-deployed li a{
   display: none;
   line-height: 30px;
   transition: all .5s;
-}
+} */
 
-ul.nav-menu-deployed li{  
+/* ul.nav-menu-deployed li{  
   margin: 20px 0px 0px 20px;
-}
+} */
 
-.nav-menu, .nav-menu-usr, .nav-menu-deployed{
+/* .nav-menu, .nav-menu-usr{
   color: #FFFFFF;
   font-size: 16px;
   font-weight: 600;
+} */
+
+.nav-menu{
+  position: absolute;
+  height: 100vh;
+  transform: translateX(0%);
+  transition: transform 1s;
 }
 
-.nav-menu li a.active, .nav-menu li a:hover,
-.nav-menu-usr li a.active, .nav-menu-usr li a:hover,
-.nav-menu-deployed li a:active, .nav-menu-deployed li a:hover{
+.nav-menu.hiddenn{  
+  transform: translateX(-100%);
+}
+
+.nav-menu .categoria:hover h3{
   color: orange;
   transition: .3s;
 }
 
-a.nav-menu-deployed{  
-  color:aqua;
+/* .nav-menu li{
+  transform: translateX(0%);
+  transition: transform 1s ease 1s;
+} */
+
+
+.nav-menu.hiddenn li:nth-child(1){
+  transform: translateX(-100%);
 }
 
-#check, #checkUsr, #check-menu-deployed, .hidden,
+.nav-menu li:nth-child(1){
+  transform: translateX(0%);
+  transition: transform 1s ease .1s;
+}
+
+.nav-menu.hiddenn li:nth-child(2){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(2){
+  transform: translateX(0%);
+  transition: transform 1s ease .2s;
+}
+
+.nav-menu.hiddenn li:nth-child(3){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(3){
+  transform: translateX(0%);
+  transition: transform 1s ease .3s;
+}
+
+.nav-menu.hiddenn li:nth-child(4){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(4){
+  transform: translateX(0%);
+  transition: transform 1s ease .4s;
+}
+
+.nav-menu.hiddenn li:nth-child(5){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(5){
+  transform: translateX(0%);
+  transition: transform 1s ease .5s;
+}
+
+.nav-menu.hiddenn li:nth-child(6){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(6){
+  transform: translateX(0%);
+  transition: transform 1s ease .6s;
+}
+
+.nav-menu.hiddenn li:nth-child(7){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(7){
+  transform: translateX(0%);
+  transition: transform 1s ease .7s;
+}
+.nav-menu.hiddenn li:nth-child(8){
+  transform: translateX(-100%);
+}
+
+.nav-menu li:nth-child(8){
+  transform: translateX(0%);
+  transition: transform 1s ease .8s;
+}
+
+.hidden,
 .chk-icon-game-1, .chk-icon-game-2,
 .chk-icon-game{
   display: none;
-}
-
-#check:checked ~ .nav-menu, #checkUsr:checked ~ .nav-menu-usr,
-#check-menu-deployed:checked ~ ul.nav-menu-deployed{
-  height: 100vh;
-}
-
-#checkUsr:checked ~ .nav-menu-usr, #check:checked ~ .nav-menu li,
-#check-menu-deployed:checked ~ ul.nav-menu-deployed li a{
-  display: block;
 }
 
 div.categoria{
