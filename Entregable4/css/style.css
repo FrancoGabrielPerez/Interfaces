@@ -1396,6 +1396,8 @@ body.hero-page{
 }
 
 
+/*--------------------HISTORY SECTION-------------------------*/
+
 .history-wrapper{
   font-family: 'Slackey', cursive;
   display: flex;
@@ -1438,6 +1440,28 @@ body.hero-page{
   padding: 15px 0px 15px 0px;
 }
 
+.history-animation{
+  animation: transition 2s linear;
+}
+
+@keyframes transition {
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  50%{
+    transform: scale(.6);
+    opacity: .5;
+  }
+  100%{
+    transform: scale(.2);
+    opacity: 0;
+  }
+  
+}
+
+
+
 .history-scroll div{
   display: flex;
   flex-direction: column;
@@ -1475,6 +1499,12 @@ body.hero-page{
   opacity: .3;
 }
 
+
+
+
+
+
+/*-----------------CHARACTERS SECTION---------------------*/
 .right-movement{
   opacity: .1;
   animation: right-movement 1s linear;
@@ -1535,12 +1565,15 @@ body.hero-page{
 
 @keyframes cards-move-left {
   0%{
+    opacity: 0;
     transform: translateX(-1000px);
   }
   50%{
+    opacity: .5;
     transform: translateX(-500px);
   }
   100%{
+    opacity: 1;
     transform: translateX(0px);
   }
   
@@ -1552,16 +1585,50 @@ body.hero-page{
 
 @keyframes cards-move-right {
   0%{
+    opacity: 0;
     transform: translateX(1000px);
   }
   50%{
+    opacity: .5;
     transform: translateX(500px);
   }
   100%{
+    opacity: 1;
     transform: translateX(0px);
-  }
-  
+  }  
 }
+
+.layer1{
+  animation: cards-move-left .6s linear;
+}
+
+.layer2{
+  animation: cards-move-right 1s linear;
+}
+
+.layer3{
+  animation: cards-move-left .8s linear;
+}
+
+.layer4{
+  animation: cards-move-right 1.1s linear;
+}
+
+.layer5{
+  animation: cards-move-left .7s linear;
+}
+
+.layer6{
+  animation: cards-move-right .9s linear;
+}
+
+.layer7{
+  animation: cards-move-left 1.2s linear;
+}
+
+.layer8{
+  animation: cards-move-right .5s linear;
+} 
 
 
 
