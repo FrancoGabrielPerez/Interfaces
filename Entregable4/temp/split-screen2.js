@@ -4,42 +4,58 @@ window.addEventListener(
   "scroll",
   () => {
     let scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
-    scrollPosition = scrollPosition.toFixed(2);
-    console.log(scrollPosition);
+    scrollPosition = scrollPosition.toFixed(3);
+    //console.log(scrollPosition);
+    console.log(window.pageYOffset );
 
-    if (scrollPosition >= 0.30  && scrollPosition < 0.40){
-        document.querySelector('#scrollLogo').setAttribute('src', "../img/img-games/hero-section/El Mono.png");
+    //Animacion de history section
+    if (scrollPosition >= 0.300  && scrollPosition < 0.400){
+        document.querySelector('#scrollimg').setAttribute('src', "../img/img-games/hero-section/El Mono.png");
         if(scrollPosition == 0.30){
-          document.querySelector('.history-paragraph-2').classList.add('history-animation');
-          document.querySelector('#scrollLogo').classList.add('history-animation');
+          document.querySelector('.history-paragraph-2').classList.add('history-paragraph-animation');
+          document.querySelector('#scrollimg').classList.add('history-img-animation');
+          document.querySelector(`.history-paragraph-3`).style = "opcity: 0";
         }
-          let animacion = document.querySelector('.history-paragraph-2');
-          animacion.addEventListener('animationend', () => {
-            document.querySelector(`.history-paragraph-2`).classList.remove('history-animation');
-            document.querySelector('#scrollLogo').classList.remove('history-animation');
+          let paragrapAnimation = document.querySelector('.history-paragraph-2');
+          paragrapAnimation.addEventListener('animationend', () => {
+            document.querySelector(`.history-paragraph-2`).classList.remove('history-paragraph-animation');
           });
+          let imgAnimation =  document.querySelector('#scrollimg');
+          imgAnimation.addEventListener('animationend', () => {
+            document.querySelector('#scrollimg').classList.remove('history-img-animation');
+          });
+
        
-    } else if (scrollPosition >= 0.40 && scrollPosition <= 0.54){
-          document.querySelector('#scrollLogo').setAttribute('src', "../img/img-games/hero-section/Billy.png");
+    } else if (scrollPosition >= 0.400 && scrollPosition <= 0.540){
+          document.querySelector('#scrollimg').setAttribute('src', "../img/img-games/hero-section/Billy.png");
           if(scrollPosition == 0.40){
-            document.querySelector('.history-paragraph-3').classList.add('history-animation');
-            document.querySelector('#scrollLogo').classList.add('history-animation');
+            document.querySelector('.history-paragraph-3').classList.add('history-paragraph-animation');
+            document.querySelector('#scrollimg').classList.add('history-img-animation');
           }
-            let animacion = document.querySelector('.history-paragraph-3');
-            animacion.addEventListener('animationend', () => {
-              document.querySelector(`.history-paragraph-3`).classList.remove('history-animation');
-              document.querySelector('#scrollLogo').classList.remove('history-animation');
+            let paragrapAnimation = document.querySelector('.history-paragraph-3');
+            paragrapAnimation.addEventListener('animationend', () => {
+              document.querySelector(`.history-paragraph-3`).classList.remove('history-paragraph-animation');
+              document.querySelector(`.history-paragraph-3`).style = "opcity: 0";
+            });
+            let imgAnimation =  document.querySelector('#scrollimg');
+            imgAnimation.addEventListener('animationend', () => {
+              document.querySelector('#scrollimg').classList.remove('history-img-animation');
             });
           
-    } else {      
-          document.querySelector('#scrollLogo').setAttribute('src', "../img/img-games/hero-section/El Juez.png");
+    } else if (scrollPosition >= 0.040 && scrollPosition <= 0.180){      
+          document.querySelector('#scrollimg').setAttribute('src', "../img/img-games/hero-section/El Juez.png");
           if(scrollPosition == 0.15){
-            document.querySelector('.history-paragraph-1').classList.add('history-animation');
-            document.querySelector('#scrollLogo').classList.add('history-animation');
+            document.querySelector('.history-paragraph-1').classList.add('history-paragraph-animation');
+            document.querySelector('#scrollimg').classList.add('history-img-animation');
+            document.querySelector(`.history-paragraph-1`).style = "opcity: 0";
           }
-            let animacion = document.querySelector('.history-paragraph-1');
-            animacion.addEventListener('animationend', () => {document.querySelector(`.history-paragraph-1`).classList.remove('history-animation');
-            document.querySelector('#scrollLogo').classList.remove('history-animation');
+          let paragrapAnimation = document.querySelector('.history-paragraph-1');
+          paragrapAnimation.addEventListener('animationend', () => {
+            document.querySelector(`.history-paragraph-1`).classList.remove('history-paragraph-animation');
+          });
+          let imgAnimation =  document.querySelector('#scrollimg');
+          imgAnimation.addEventListener('animationend', () => {
+            document.querySelector('#scrollimg').classList.remove('history-img-animation');
           });
     }
      
@@ -48,42 +64,32 @@ window.addEventListener(
     // Animacion cards de personajes
     let cards = document.querySelectorAll('.juego-character');
     let charactersChart = document.querySelector('.carrusel-characters');
-    if (scrollPosition >= 0.45  && scrollPosition < 0.60){
-      for(let i=1;i<5;i++){
-        if (i % 2 == 0)
-          cards[i].classList.add(`layer${i}`);
-        else
-          cards[i].classList.add(`layer${i}`);
-      }
-      charactersChart.style = 'transform: translateX(0px)';
-    } else {
-      for(let i=1;i<5;i++){
-        if (i % 2 == 0)
-          cards[i].classList.remove(`layer${i}`);
-        else
-          cards[i].classList.remove(`layer${i}`);
-      }
+  
+    if (scrollPosition <= 0.50 || scrollPosition >= 0.77){
+      cards.forEach(card => {card.style = 'opacity: 0';});
     }
-    if (scrollPosition >= 0.61  && scrollPosition < 0.80){
-      for(let i=4;i<8;i++){
-        if (i % 2 == 0)
+
+    if (scrollPosition >= 0.600  && scrollPosition < 0.650 ){
+      for(let i = 0; i < 4; i++){
+        if (i % 2 != 0)
           cards[i].classList.add(`layer${i+1}`);
         else
           cards[i].classList.add(`layer${i+1}`);
       }
-      charactersChart.style = 'transform: translateX(0px)';
-    } else {
-      for(let i=4;i<8;i++){
-        if (i % 2 == 0)
-          cards[i].classList.remove(`layer${i+1}`);
+    }    
+    if (scrollPosition >= 0.710 && scrollPosition < 0.750){
+      for(let i = 4; i < 8; i++){
+        
+        if (i % 2 != 0)
+          cards[i].classList.add(`layer${i+1}`);
         else
-          cards[i].classList.remove(`layer${i+1}`);
+          cards[i].classList.add(`layer${i+1}`);
       }
-    }
+    } 
+    cards.forEach(card => card.addEventListener('animationend', () =>{
+      card.classList = 'juego-character';
+      card.style = 'opacity: 1';
+    }));
   },
   false
 );
-
-function animationRemove(i){
-      setTimeout(() => {document.querySelector(`.history-paragraph-${i}`).classList.remove('history-logo-animation');},5000 );
-}

@@ -1436,31 +1436,47 @@ body.hero-page{
   color: white;
 }
 
-#logo{
+#scrollimg{
   padding: 15px 0px 15px 0px;
 }
 
-.history-animation{
-  animation: transition 2s linear;
+.history-img-animation{
+  animation: img-transition 2s linear;
 }
 
-@keyframes transition {
+@keyframes img-transition {
   0%{
-    transform: scale(1);
+    /* transform: scale(1); */
     opacity: 1;
   }
   50%{
-    transform: scale(.6);
+    /* transform: scale(.6); */
     opacity: .5;
   }
   100%{
-    transform: scale(.2);
+    /* transform: scale(.2); */
     opacity: 0;
   }
   
 }
 
 
+.history-paragraph-animation{
+  animation: parag-transition 1s linear;
+}
+
+@keyframes parag-transition {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: .5;
+  }
+  100%{
+    opacity: 0;
+  }
+  
+}
 
 .history-scroll div{
   display: flex;
@@ -1484,19 +1500,19 @@ body.hero-page{
 .history-scroll div:nth-child(1){
   background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
   background-size: auto;
-  opacity: .3;
+  /* opacity: .3; */
 }
 
 .history-scroll div:nth-child(2){
   background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
   background-size: auto;
-  opacity: .3;
+ /*  opacity: .3; */
 }
 
 .history-scroll div:nth-child(3){
   background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
   background-size: auto;
-  opacity: .3;
+  /* opacity: .3; */
 }
 
 
@@ -1547,6 +1563,9 @@ body.hero-page{
     margin: 60px auto;
   }
 
+/* .characters-chart .juego-character{
+  opacity: 0;
+} */
 
 .characters-chart .carrusel{
   display: flex;    
@@ -1561,6 +1580,14 @@ body.hero-page{
 
 .cards-movement-left{ 
   animation: cards-move-left 2s linear;
+}
+
+.char-left{
+  transform: translateX(-1500px);
+}
+
+.char-right{
+  transform: translateX(1500px);
 }
 
 @keyframes cards-move-left {
