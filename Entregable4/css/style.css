@@ -1535,7 +1535,7 @@ body.hero-page{
 
 
 .history-paragraph-animation{
-  animation: parag-transition 1s linear;
+  animation: parag-transition 3s ease;
 }
 
 @keyframes parag-transition {
@@ -1570,20 +1570,20 @@ body.hero-page{
   text-align: center;
 }
 
-.history-scroll div:nth-child(1){
-  background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+.history-scroll div:nth-child(1){/* 
+  background-image: url(../img/img-games/hero-section/ImgBackHistory.png); */
   background-size: auto;
   /* opacity: .3; */
 }
 
 .history-scroll div:nth-child(2){
-  background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+  /* background-image: url(../img/img-games/hero-section/ImgBackHistory.png); */
   background-size: auto;
  /*  opacity: .3; */
 }
 
 .history-scroll div:nth-child(3){
-  background-image: url(../img/img-games/hero-section/ImgBackHistory.png);
+  /* background-image: url(../img/img-games/hero-section/ImgBackHistory.png); */
   background-size: auto;
   /* opacity: .3; */
 }
