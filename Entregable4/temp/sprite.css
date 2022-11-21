@@ -1,0 +1,63 @@
+/* Eliminamos márgenes y ponemos fondo de página negro */
+html,body {
+    margin:0;
+    background:#000;
+  }
+  
+  /* Animación del personaje */
+  #sprite {
+    /* Tamaño de la viñeta individual */
+    width:165px;
+    height:165px;
+    /* Cómo hay establecido un tamaño, centramos con margin:auto */
+    margin:auto;  
+    /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
+    background:url(./sprite-cowboy-6.png) repeat-x;
+    /* Aplicamos la animación "fight": 3seg, 20 viñetas y repetimos infinitamente */
+    animation:fight 3s steps(20) infinite;
+    /* Posicionamos el personaje sobre el camino */
+    position:relative;
+    bottom:34px;
+  }
+  
+  /* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
+  @keyframes fight {
+    /* Partimos de la primera viñeta del sprite sheet */
+    0% { background-position:0 }
+    /* El tamaño total de ancho del sprite. Es negativo para que no se mueva hacia atrás */
+    100% { background-position:-3300px }
+  }
+  
+  /* Background estatico */
+  #sprite-back {
+    background:url(./FondoDesierto.jpg);
+     background-size: cover; 
+     height: 250px;
+  }
+  
+  /* Animación del fondo entre el camino y el background. Efecto "Parallax".*/
+  #sprite-subback {
+    background:url(./back-sprite-7.png);
+    animation: movebg 30s linear infinite; 
+    background-size: cover; 
+    height: 250px;
+  }
+
+  /* Animación del piso. */
+  #sprite-floor {
+    background:url(./desert-floor-2.png) repeat-x;
+    animation: movebg 20s linear infinite;
+    /* Posicionamos piso, para que no solape al cielo */
+    position:relative;   
+    top: 150px;
+    height: 200px;
+    
+  }
+  
+  /* Animación para mover el piso y montañas*/
+  @keyframes movebg {
+    0% { background-position:1000px } 
+    100% { background-position:0 }
+  }
+  
+  
