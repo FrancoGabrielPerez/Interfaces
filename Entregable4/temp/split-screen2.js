@@ -24,11 +24,11 @@ window.addEventListener(
 
 
     //Animacion de history section
-    if(scrollPosition < 0.010 || scrollPosition > 0.500){
+    /* if(scrollPosition < 0.010 || scrollPosition > 0.500){
       document.querySelector('.history-paragraph-1').style = "opacity: 1";
       document.querySelector('.history-paragraph-2').style = "opacity: 1";
       document.querySelector('.history-paragraph-3').style = "opacity: 1";
-    }
+    } */
 
     // Animacion transicion imagenes split screen.    
     if (scrollPosition >= 0.300  && scrollPosition < 0.400){
@@ -58,7 +58,21 @@ window.addEventListener(
     }
      
     // Animacion parrafos split screen.
-    if((scrollPos == 0.35 && scrollDirection == 'down') || (scrollPos == 0.35 && scrollDirection == 'up')) {         
+    let posParagraph1 = 0.16;
+    let posParagraph2 = 0.34;
+    let posParagraph3 = 0.52;
+    if (scrollPos>posParagraph1){
+      setOpacity(posParagraph1, 1);
+      setOpacity(posParagraph2, 2);
+      setOpacity(posParagraph3, 3);
+    }
+
+    function setOpacity(pos, paragraph){
+      let opacity =Math.pow(1-Math.abs(scrollPos-pos), 30);
+      document.querySelector(`.history-paragraph-${paragraph}`).style = `opacity: ${opacity}`;
+    }
+    // console.log(opacity);
+    /* if((scrollPos == 0.35 && scrollDirection == 'down') || (scrollPos == 0.35 && scrollDirection == 'up')) {         
       document.querySelector('.history-paragraph-2').classList.add('history-paragraph-animation');
       let paragrapAnimation = document.querySelector('.history-paragraph-2');
       paragrapAnimation.addEventListener('animationend', () => {
@@ -80,7 +94,7 @@ window.addEventListener(
         document.querySelector('.history-paragraph-1').style = "opacity: 0";
       });
     }
-
+ */
 
 
     // Animacion cards de personajes.
