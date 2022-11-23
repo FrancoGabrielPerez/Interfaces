@@ -71,6 +71,8 @@ window.addEventListener(
       let opacity =Math.pow(1-Math.abs(scrollPos-pos), 30);
       document.querySelector(`.history-paragraph-${paragraph}`).style = `opacity: ${opacity}`;
     }
+    let viewportHeight = window.innerHeight;
+    posParagraph1 = getBoundingClientRect().top;
     // console.log(opacity);
     /* if((scrollPos == 0.35 && scrollDirection == 'down') || (scrollPos == 0.35 && scrollDirection == 'up')) {         
       document.querySelector('.history-paragraph-2').classList.add('history-paragraph-animation');
