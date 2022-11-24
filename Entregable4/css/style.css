@@ -1481,7 +1481,7 @@ body.hero-page{
 }
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
-.history-wrapper h2, .history-wrapper h3,
+.history-chart h2, .history-wrapper h3,
 .features-chart .features-chart-title h1, .characters-chart .contenedor-characters-title h1{
   font-family: 'Slackey', cursive;
   color: var(--Color-PrimaryL2);  
@@ -1628,13 +1628,6 @@ body.hero-page{
   flex-direction: column;
   padding: 0px 10px 0px 10px;
  
-}
-
-.history-title > h2{
-  color: var(--Color-Primary);  
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-
 }
 
 .history-scroll{

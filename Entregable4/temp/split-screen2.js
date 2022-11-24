@@ -10,28 +10,50 @@ window.addEventListener(
     //console.log(scrollPosition);
    
   //Credits: https://stackoverflow.com/questions/31223341/detecting-scroll-direction
-   let scrollDirection;
-   let st = window.pageYOffset || document.documentElement.scrollTop; 
-   if (st > lastScrollTop){
+    let scrollDirection;
+    let st = window.pageYOffset || document.documentElement.scrollTop; 
+    if (st > lastScrollTop){
       scrollDirection = 'down';
-   } else {
+    } else {
       scrollDirection = 'up';
-   }
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-   
-   console.log(scrollDirection);
-   console.log(scrollPos);
+    }
+    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+
+    console.log(scrollDirection);
+    console.log(scrollPos);
 
 
     //Animacion de history section
-    if(scrollPosition < 0.010 || scrollPosition > 0.500){
+    /* if(scrollPosition < 0.010 || scrollPosition > 0.500){
       document.querySelector('.history-paragraph-1').style = "opacity: 1";
       document.querySelector('.history-paragraph-2').style = "opacity: 1";
       document.querySelector('.history-paragraph-3').style = "opacity: 1";
-    }
+    } */
 
+    // Animacion parrafos split screen.
+    /* let paragraph2 = document.querySelector(`.history-paragraph-2`);
+    let paragraph3 = document.querySelector(`.history-paragraph-3`);
+    let posParagraph = paragraph.getBoundingClientRect().top + paragraph.clientHeight/2; */
+    changeParagraph(1);
+    changeParagraph(2);
+    changeParagraph(3);
+    
+    function changeParagraph(p){
+      let paragraph = document.querySelector(`.history-paragraph-${p}`);
+      let posParagraph = paragraph.getBoundingClientRect().top + paragraph.clientHeight/2;
+      let relativepos = Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight;
+      //console.log("pos: ", posParagraph, " / ", window.innerHeight/2);
+      let opacity =Math.pow(1-Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight, 5);
+      // console.log("op: ", 1-Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight);
+      paragraph.style = `opacity: ${opacity}`;
+      console.log("relp: ", relativepos);
+      if (relativepos < 0.1){
+        document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${p}.png`);
+        //document.querySelector('#scrollimg').classList.add('history-img-animation');
+      }
+    }
     // Animacion transicion imagenes split screen.    
-    if (scrollPosition >= 0.300  && scrollPosition < 0.400){
+    /* if (scrollPosition >= 0.300  && scrollPosition < 0.400){
         document.querySelector('#scrollimg').setAttribute('src', "../img/img-games/hero-section/hero-history-2.png");
         document.querySelector('#scrollimg').classList.add('history-img-animation');
         let imgAnimation =  document.querySelector('#scrollimg');
@@ -55,10 +77,9 @@ window.addEventListener(
             //document.querySelector('#scrollimg').classList.remove('history-img-animation');
             //document.querySelector('#scrollimg').style = 'opacity: 0';
           });
-    }
+    } */
      
-    // Animacion parrafos split screen.
-    if((scrollPos == 0.35 && scrollDirection == 'down') || (scrollPos == 0.35 && scrollDirection == 'up')) {         
+    /* if((scrollPos == 0.35 && scrollDirection == 'down') || (scrollPos == 0.35 && scrollDirection == 'up')) {         
       document.querySelector('.history-paragraph-2').classList.add('history-paragraph-animation');
       let paragrapAnimation = document.querySelector('.history-paragraph-2');
       paragrapAnimation.addEventListener('animationend', () => {
@@ -80,7 +101,7 @@ window.addEventListener(
         document.querySelector('.history-paragraph-1').style = "opacity: 0";
       });
     }
-
+ */
 
 
     // Animacion cards de personajes.
