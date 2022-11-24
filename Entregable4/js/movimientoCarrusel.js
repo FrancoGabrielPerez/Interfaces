@@ -5,34 +5,51 @@ function movimientoCarrusel(e){
     const variable = e.currentTarget.parentNode.id;
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
-    if (lado === "flecha-der") {
+    console.log(variable);
+    if (lado === "flecha-der") {    
         if (variable == 'character'){
             fila.scrollLeft += fila.offsetWidth / 4;
         } else {  
             fila.scrollLeft += fila.offsetWidth;
-        }
-        if (fila.scrollLeft <= fila.offsetWidth ){
-            let rights = document.querySelectorAll('.juego-character');            
-            rights.forEach(right => right.classList.add('right-movement'));
-            setTimeout(() => {rights.forEach(right => right.classList.remove('right-movement'));},700);         
+        }    
+        if (fila.scrollLeft < fila.offsetWidth ){
+            let rights = document.querySelectorAll('.hero-gameplay');            
+            rights.forEach(right => right.classList.add('right-movement')); 
+            let rightAnimation =  document.querySelector('.hero-gameplay');
+            rightAnimation.addEventListener('animationend', () => {
+                rights.forEach(right => right.classList.remove('right-movement'));
+            });               
         }
         if(indicadorActivo.nextSibling != null){
             indicadorActivo.nextSibling.classList.add('activo');
             indicadorActivo.classList.remove('activo');
         }       
-    } else if (lado === "flecha-izq")   
-        {
+    } else if (lado === "flecha-izq") {
+            if (variable == 'character'){
+                fila.scrollLeft -= fila.offsetWidth / 4;
+            } else {  
+                fila.scrollLeft -= fila.offsetWidth;
+            }
+            if (fila.scrollLeft >= fila.offsetWidth ){
+                let lefts = document.querySelectorAll('.hero-gameplay');            
+                lefts.forEach(left => left.classList.add('left-movement'));
+                let leftAnimation =  document.querySelector('.hero-gameplay');
+                leftAnimation.addEventListener('animationend', () => {
+                    lefts.forEach(left => left.classList.remove('left-movement'));
+                });           
+            }
             fila.scrollLeft -= fila.offsetWidth;
             if(indicadorActivo.previousSibling != null){
                 indicadorActivo.previousSibling.classList.add('activo');
                 indicadorActivo.classList.remove('activo');
             }
-        }        
+    }        
 }
 
 /**PAGINACION */
 const variables = document.querySelectorAll('.contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
 variables.forEach(variable => paginacion(variable.id));
+console.log(variables);
 function paginacion(variable){  
     if (variable != "character"){  
         const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    

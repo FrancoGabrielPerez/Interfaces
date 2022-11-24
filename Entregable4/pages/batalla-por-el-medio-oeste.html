@@ -136,21 +136,31 @@
       </div>
     </section>
     <div class="main-hero-page">
-        <div class="hero-chart">
-            <div class="hero-title"><h1>Batalla por el medio oeste</h1></div>            
-            <div class="heroe-space">
-                <img src="../img/img-games/hero-section/Hero1.png" alt="hero 1" class="hero1">
-                <img src="../img/img-games/hero-section/Hero2.png" alt="hero 2" class="hero2">
-                <img src="../img/img-games/hero-section/CowboyCalavera.png" alt="cowboy calavera" class="cow-bones">
-                <img src="../img/img-games/hero-section/Hero3.png" alt="hero 3" class="hero3">
-                <img src="../img/img-games/hero-section/Hero4.png" alt="hero 4" class="hero4">
-                <img src="../img/img-games/hero-section/Reserve.png" alt="Reservar" class="reserva">
-            </div>            
-            <div class="time-counter">
-              <h2>dias  :  horas  :  mins  : seg</h2>
-              <h1> 120  :  23  :  12  :  23</h1>
-            </div>
+      <div class="hero-chart-parallax">         
+        <div id="hero-chart-back" class="layer"></div>        
+        <div class="hero-title layer"><h1>Batalla por el medio oeste</h1></div>    
+        <div id="hero-clouds-1" class="layer"></div>                                       
+        <div id="hero-chart-subback" class="layer"></div>        
+        <div id="hero-clouds-2" class="layer"></div>
+        <div id="hero-sand-storm-1" class="layer"></div>
+        <div id="hero-sand-storm-2" class="layer"></div>
+        <div id="hero-chart-floor" class="layer"></div>
+        <div class="hero-section-central-characters layer">
+          <img src="../img/img-games/hero-section/CowboyCalavera.png" alt="cowboy calavera" class="cow-bones"> 
+        </div>       
+        <div class="time-counter">
+          <h2>Cada vez falta menos</h2>
+          <h1 id="countdown"></h1>
         </div>
+        <div class="button-preview">
+          <button class="btn">Reservar</button>
+        </div>
+      </div>
+
+
+
+             
+            
         <div class="history-chart">
           <section class="history-wrapper">
               <div class="history-title" id="about">
@@ -184,6 +194,78 @@
               </div>
           </section>
         </div>
+        <section class="carruseles-categorias-jugado contenedor-categoria contenedor-small-cards-mobile contenedor-hero-gameplay" id="hero-gameplay">
+          <div class="carrusel-categorias carrusel-hero-gameplay">
+            <div class="contenedor-titulo-controles">
+              <div class="indicadores-jugado"></div>
+            </div>
+            <div class="contenedor-principal" id="jugado">
+              <button role="button" class="flecha-izq flecha-carrusel">❮</button>
+              <div class="contenedor-carrusel-jugado contendor-cards-hero-gameplay">
+                <ul class="carrusel">
+                  <li class="juego-jugado hero-gameplay ">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-1.png" alt="Hero gameplay 1"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-2.png" alt="Hero gameplay 2"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-3.png" alt="Hero gameplay 3"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-4.png" alt="Hero gameplay 4"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-5.png" alt="Hero gameplay 5"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-6.png" alt="Hero gameplay 6"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-7.png" alt="Hero gameplay 7"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="juego-jugado hero-gameplay">
+                    <div class="contenedor-card-small card-hero-gameplay">
+                      <div class="card-small card-small-hero-gameplay">
+                          <div class="img-juego-small"><img src="../img/img-games/hero-section/gameplay-8.png" alt="Hero gameplay 8"></div>
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+              </div>           
+              <button role="button" class="flecha-der flecha-carrusel">❯</button>
+            </div>
+          </div>
+        </section>
+        <div id="sprite"></div>
         <div class="characters-chart">          
             <div class="contenedor-characters-title">
               <h1 class="characters-title">Los Contendientes</h1>
@@ -364,15 +446,7 @@
               </div>
             </div>
         </div>
-        <div class="sprite-chart">     
-          <div id="sprite-back">
-            <div id="sprite-subback">
-                <div id="sprite-floor">
-                    <div id="sprite"></div>
-                </div>
-            </div>
-          </div>
-        </div>
+       
     </div>
     <footer class="footer">
         <div class="contenedor-ppal-footer">
@@ -425,6 +499,7 @@
     <script src="../js/loader.js"></script>
     <script src="../js/burgermenu.js"></script> 
     <script src="../js/movimientoCarrusel.js"></script>     
-    <script src="../temp/split-screen2.js"></script>
+    <script src="../js/split-screen2.js"></script>
+    <script src="../js/countDownTimer.js"></script>
 </body>
 </html>

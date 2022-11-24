@@ -988,7 +988,8 @@ form label{
   margin-bottom: 15px;
 }
 
-.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn{
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn,
+.main-hero-page .hero-chart-parallax .button-preview .btn{
   width:210px;
   height: 70px;
   border-radius: 10px;
@@ -1004,14 +1005,23 @@ form label{
   outline: 0;
 }
 
-.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn {
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn,
+.main-hero-page .hero-chart-parallax .button-preview .btn {
   border-color: #3498db;
   color: #fff;
   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
   transition: all 150ms ease-in-out;
 }
-.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover {
-  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+
+.main-hero-page .hero-chart-parallax .button-preview .btn{
+  position: absolute;
+  transform: translate(978px, 130px);
+  box-shadow: 0 0 40px 40px /* #3498db */ var(--Color-AccentS1) inset, 0 0 0 0 var(--Color-PrimaryL2);
+}
+
+.contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover,
+.main-hero-page .hero-chart-parallax .button-preview .btn:hover  {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px var(--Color-PrimaryL1);
 }
 
 .contenedor-novedades .contenedor-card-preview img{
@@ -1373,46 +1383,120 @@ body.hero-page{
   grid-area: main-hero-page;
   display: flex;
   flex-direction: column;
+  background-color: var(--Color-GreyS3);
 }
 
-.hero-chart{
-  display: flex;
-  /* width: 100%; */
-  /* height: 100%; */
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../img/img-games/hero-section/BackgroundHero.jpg);  
-  background-size: cover; 
-
-}
-
-.heroe-space{
-  display: flex;
- /*  width: 100%; */
+.layer {
+  width: 100%;
   height: 100%;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: repeat-x;
+  background-size: cover;
+}
+
+.hero-chart-parallax{
+  min-height: 600px;
+  position: relative;
+}
+
+#hero-chart-back {
+  background:url(../img/img-games/hero-section/Background-desert-5.png);
+  background-size: cover; 
+  height: 600px;
+}
+
+
+#hero-clouds-1 {
+  background:url(../img/img-games/hero-section/Background-clouds-5.png);
+  animation: movebg 15s linear infinite; 
+  background-size: 900px 200px;   
+  height: 250px;
+}
+
+#hero-clouds-2 {
+  background:url(../img/img-games/hero-section/Background-clouds-6.png);
+  animation: movebg 25s linear infinite; 
+  background-size:contain; 
+  height: 300px;
+}
+
+#hero-chart-subback {
+  background:url(../img/img-games/hero-section/BackgroundHero-mountains-5.png);
+  animation: movebg 50s linear infinite; 
+  background-size: cover; 
+  height: 600px;
+}
+
+#hero-sand-storm-1,#hero-sand-storm-2  {
+  background:url(../img/img-games/hero-section/fondo-prueba-1.png);
+  animation: movebg 10s linear infinite; 
+  background-size: cover; 
+  height: 600px;
+}
+
+#hero-sand-storm-2 {
+  background:url(../img/img-games/hero-section/03.png);
+  animation: movebg 5s linear infinite; 
+}
+
+
+#hero-chart-floor {
+  background:url(../img/img-games/hero-section/desert-floor-1.png) repeat-x;
+  animation: movebg 20s linear infinite;
+  position:relative;   
+  top: 420px;
+  height: 300px;
+  
+}
+
+@keyframes movebg {
+  0% { background-position:3600px } 
+  100% { background-position:0 }
 }
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
 .history-wrapper h2, .history-wrapper h3,
 .features-chart .features-chart-title h1, .characters-chart .contenedor-characters-title h1{
   font-family: 'Slackey', cursive;
-  color: var(--Color-Primary);  
+  color: var(--Color-PrimaryL2);  
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
+  animation: heroTitleAnimation 2s ease-in-out infinite;
 }
 
+
+.hero-title h1{
+  transform: scale(1.1);
+  letter-spacing: 2px;
+  word-spacing: 5px;  
+}
+/* @keyframes heroTitleAnimation{
+  0%{ opacity: 1; }
+  100%{ opacity: 0; }
+} */
+
 .hero-title h1, .characters-title{
-  transform: translateY(50%);
-  z-index: 100;
+  margin:40px 0px;
+}
+
+.hero-title h1{
+  position: relative;
+}
+
+.hero-title{
+   position: absolute;
+  transform: translateX(400px);
+}
+
+.hero-section-central-characters{
+    transform: scale(.5) translate(150px ,-200px);
 }
 
 .contenedor-characters-title{
   text-align: center;
 }
-
 
 .hero2, .hero3, .hero2 img, .hero3 img{
   height: 50%;
@@ -1436,14 +1520,16 @@ body.hero-page{
 }
 
 .cow-bones {
-  width: 35%;
-  height: 80%;
-  transform: translate(220px,10px);
+  width: 60%;
+  transform: translate(105px,100px);
 }
 
 .time-counter{
   padding:30px;
   text-align: center;
+  position: absolute;
+  line-height: 35px;
+  transform: translate(40px, 100px);
 }
 
 /*--------------------HISTORY SECTION-------------------------*/
@@ -1458,12 +1544,16 @@ body.hero-page{
   padding: 40px 10px 40px 10px;
 }
 
-.history-chart, .features-chart{
+.history-chart{
   --opacidad-negro: 0.8;
   background-image: linear-gradient(rgba(0, 0, 0,var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(../img/img-games/hero-section/hero-history-6.png);  
   background-size: cover;
   background-attachment: fixed;
   background-repeat: round;
+}
+
+.features-chart{
+  background-color: var(--Color-GreyS3);
 }
 
 .history-text
@@ -1579,52 +1669,78 @@ body.hero-page{
   background-size: auto;
  }
 
+/*-----------------CARRUSEL GAMEPLAY---------------------*/
+.contenedor-hero-gameplay .carrusel-hero-gameplay{
+  margin: 20px;
+  background-color: var(--Color-GreyS3);
+}
 
+.contenedor-hero-gameplay .contendor-cards-hero-gameplay .card-hero-gameplay{
+  background-image: url(../temp/35mm-old-movie-film-film-mockup-frame-background-free-photo.png);
+  background-size: cover;
+}
 
+.contenedor-hero-gameplay .contendor-cards-hero-gameplay .card-hero-gameplay .card-small-hero-gameplay{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+   /*  height: 100%; */
+    border: none;
+    border-radius: 0px;
+    border-width: 0px;
+    border-style: none;
+    background: var(--Color-SecondaryS3);
+    cursor: none;
+}
 
+.contenedor-hero-gameplay .contendor-cards-hero-gameplay .card-hero-gameplay .card-small-hero-gameplay img{
+    border-radius: 0px;
+    height: 213px;
+    width: 100%;
+    position: initial;
+    object-fit: fit;
+    background: #0C0228;
+}
 
+.contenedor-hero-gameplay .contendor-cards-hero-gameplay .carrusel .hero-gameplay{
+  min-width: 25%;
+}
 
-/*-----------------CHARACTERS SECTION---------------------*/
 .right-movement{
-  opacity: .1;
-  animation: right-movement 1s linear;
+  animation: right-movement .5s ease-in-out;
 } 
 
 @keyframes right-movement {
   0%{
-    opacity: 0;
-    transform: scale(.2) rotateZ(60deg);
-  }
-  20%{
-    opacity: .7;
-    transform: scale(.3) rotateZ(120deg);
-  }
-  40%{
-    opacity: .7;
-    transform: scale(.5) rotateZ(180deg);
-  }
-  60%{
-    opacity: .7;
-    transform: scale(.7) rotateZ(240deg);
-  }
-  80%{
-    opacity: .7;
-    transform: scale(.8) rotateZ(300deg);
-  }
+    transform: skew(-10deg);
+  } 
   100%{
-    opacity: 1;
-    transform: scale(.9) rotateZ(360deg);
+    transform: skew(-10deg);
   }
-  
 }
 
+.left-movement{
+  animation: left-movement .5s ease-in-out;
+} 
+
+@keyframes left-movement {
+  0%{   
+    transform: skew(10deg);
+  }
+  100%{
+    transform: skew(10deg);
+  }
+}
+
+/*-----------------CHARACTERS SECTION---------------------*/
 
 .characters-chart{  
-  background-image: url(../img/img-games/hero-section/ImgBackCharacters.png);
-  background-size: cover; 
+  /* background-image: url(../img/img-games/hero-section/ImgBackCharacters.png);
+  background-size: cover;  */
   /* height: 650px; */
    /* position: relative; */   
     margin: 60px auto;
+    background-color: var(--Color-GreyS3);
   }
 
 /* .characters-chart .juego-character{
@@ -1886,11 +2002,11 @@ body.hero-page{
   width:165px;
   height:165px;
   /* Cómo hay establecido un tamaño, centramos con margin:auto */
-  margin:auto;  
+  margin: 0px;
   /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
   background:url(../img/img-games/hero-section/cowboy-spritesheet/sprite-cowboy-6.png) repeat-x;
   /* Aplicamos la animación "fight": 3seg, 20 viñetas y repetimos infinitamente */
-  animation:fight 3s steps(20) infinite;
+  animation:fight 5s steps(20) infinite;
   /* Posicionamos el personaje sobre el camino */
   position:relative;
   bottom:34px;
@@ -1899,42 +2015,11 @@ body.hero-page{
 /* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
 @keyframes fight {
   /* Partimos de la primera viñeta del sprite sheet */
-  0% { background-position:0 }
+  0% { background-position:0; transform: translateX(0px); }
   /* El tamaño total de ancho del sprite. Es negativo para que no se mueva hacia atrás */
-  100% { background-position:-3300px }
+  100% { background-position:-3300px; transform: translateX(1366px); }
 }
 
-/* Background estatico */
-#sprite-back {
-  background:url(../img/img-games/hero-section/cowboy-spritesheet/FondoDesierto.jpg);
-   background-size: cover; 
-   height: 250px;
-}
-
-/* Animación del fondo entre el camino y el background. Efecto "Parallax".*/
-#sprite-subback {
-  background:url(../img/img-games/hero-section/cowboy-spritesheet/back-sprite-7.png);
-  animation: movebg 30s linear infinite; 
-  background-size: cover; 
-  height: 250px;
-}
-
-/* Animación del piso. */
-#sprite-floor {
-  background:url(../img/img-games/hero-section/cowboy-spritesheet/desert-floor-2.png) repeat-x;
-  animation: movebg 20s linear infinite;
-  /* Posicionamos piso, para que no solape al cielo */
-  position:relative;   
-  top: 150px;
-  height: 200px;
-  
-}
-
-/* Animación para mover el piso y montañas*/
-@keyframes movebg {
-  0% { background-position:1000px } 
-  100% { background-position:0 }
-}
 
 
 
@@ -1949,7 +2034,7 @@ footer{
   display: flex;
   justify-content: space-between;
   padding: 20px 80px 20px 80px;
-  background: #270977;
+  background: --var(--Color-PrimaryS1);
   margin-top: 35px;
 }
 
