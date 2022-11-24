@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", timer());
 
 function timer(){
-    // Se setea el tiempo inicial en 5 minutos
+    // Se setea el tiempo inicial en 9 horas y 5 minutos
     var date = new Date('2022-01-01 09:05');   
     // Función para rellenar con ceros
     var padLeft = n => "00".substring(0, "00".length - n.length) + n;	
