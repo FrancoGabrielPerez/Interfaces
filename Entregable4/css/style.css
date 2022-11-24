@@ -989,7 +989,7 @@ form label{
 }
 
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn,
-.main-hero-page .hero-chart-parallax .button-preview .btn{
+.main-hero-page  .hero-count-reserve .button-preview .btn{
   width:210px;
   height: 70px;
   border-radius: 10px;
@@ -999,6 +999,16 @@ form label{
   cursor: pointer;
 }
 
+.main-hero-page  .hero-count-reserve .button-preview .btn{
+  width:218px;
+  height: 66px;
+  font-family: 'Slackey', cursive;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  stroke: 1px;
+  font-size: 25px;
+}
+
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover, 
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:focus {
   color: #fff;
@@ -1006,22 +1016,21 @@ form label{
 }
 
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn,
-.main-hero-page .hero-chart-parallax .button-preview .btn {
+.main-hero-page  .hero-count-reserve  .button-preview .btn {
   border-color: #3498db;
   color: #fff;
   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
   transition: all 150ms ease-in-out;
 }
 
-.main-hero-page .hero-chart-parallax .button-preview .btn{
-  position: absolute;
-  transform: translate(978px, 130px);
-  box-shadow: 0 0 40px 40px /* #3498db */ var(--Color-AccentS1) inset, 0 0 0 0 var(--Color-PrimaryL2);
+.main-hero-page  .hero-count-reserve .button-preview .btn{
+  box-shadow: 0 0 40px 40px var(--Color-AccentS1) inset, 0 0 0 0 var(--Color-PrimaryL2);
 }
 
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover,
-.main-hero-page .hero-chart-parallax .button-preview .btn:hover  {
+.main-hero-page  .hero-count-reserve .button-preview .btn:hover  {
   box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px var(--Color-PrimaryL1);
+  color: red;
 }
 
 .contenedor-novedades .contenedor-card-preview img{
@@ -1399,7 +1408,14 @@ body.hero-page{
 .hero-chart-parallax{
   min-height: 600px;
   position: relative;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: flex-start; */
 }
+
 
 #hero-chart-back {
   background:url(../img/img-games/hero-section/Background-desert-5.png);
@@ -1410,42 +1426,42 @@ body.hero-page{
 
 #hero-clouds-1 {
   background:url(../img/img-games/hero-section/Background-clouds-5.png);
-  animation: movebg 15s linear infinite; 
+  animation: movebg 45s linear infinite; 
   background-size: 900px 200px;   
   height: 250px;
 }
 
 #hero-clouds-2 {
   background:url(../img/img-games/hero-section/Background-clouds-6.png);
-  animation: movebg 25s linear infinite; 
+  animation: movebg 65s linear infinite; 
   background-size:contain; 
   height: 300px;
 }
 
 #hero-chart-subback {
   background:url(../img/img-games/hero-section/BackgroundHero-mountains-5.png);
-  animation: movebg 50s linear infinite; 
+  animation: movebg 80s linear infinite; 
   background-size: cover; 
   height: 600px;
 }
 
 #hero-sand-storm-1,#hero-sand-storm-2  {
   background:url(../img/img-games/hero-section/fondo-prueba-1.png);
-  animation: movebg 10s linear infinite; 
+  animation: movebg 40s linear infinite; 
   background-size: cover; 
   height: 600px;
 }
 
 #hero-sand-storm-2 {
   background:url(../img/img-games/hero-section/03.png);
-  animation: movebg 5s linear infinite; 
+  animation: movebg 35s linear infinite; 
 }
 
 
 #hero-chart-floor {
   background:url(../img/img-games/hero-section/desert-floor-1.png) repeat-x;
-  animation: movebg 20s linear infinite;
-  position:relative;   
+  animation: movebg 50s linear infinite;
+  position: absolute;   
   top: 420px;
   height: 300px;
   
@@ -1454,6 +1470,14 @@ body.hero-page{
 @keyframes movebg {
   0% { background-position:3600px } 
   100% { background-position:0 }
+}
+
+.hero-count-reserve{
+  display: flex;
+  align-items: flex-end;  
+  padding: 0px 20px;
+  position:absolute;
+  top: 50px;
 }
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
@@ -1487,18 +1511,30 @@ body.hero-page{
 
 .hero-title{
    position: absolute;
-  transform: translateX(400px);
+   text-align: center;
+  /* transform: translateX(400px); */
+}
+
+.button-preview{
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  /* justify-content: space-around; */
+  align-items: center;
+  /* padding: 150px; */
 }
 
 .hero-section-central-characters{
-    transform: scale(.5) translate(150px ,-200px);
+    /* transform: scale(.5) translate(150px ,-200px); */
+    display: flex;
+    justify-content: center;
 }
 
 .contenedor-characters-title{
   text-align: center;
 }
 
-.hero2, .hero3, .hero2 img, .hero3 img{
+/* .hero2, .hero3, .hero2 img, .hero3 img{
   height: 50%;
 }
 
@@ -1517,19 +1553,21 @@ body.hero-page{
 .reserva{
   transform: translate(-1000px, -10px);
   height: 70%;
-}
+} */
 
 .cow-bones {
-  width: 60%;
-  transform: translate(105px,100px);
+  width: 50%;
+  /* transform: translate(105px,100px); */
 }
 
 .time-counter{
-  padding:30px;
+  /* padding:30px; */
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   line-height: 35px;
-  transform: translate(40px, 100px);
+ /*  padding: 150px; */
+ /*  transform: translate(40px, 100px); */
+ width: 100%;
 }
 
 /*--------------------HISTORY SECTION-------------------------*/
