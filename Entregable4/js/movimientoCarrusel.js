@@ -49,7 +49,6 @@ function movimientoCarrusel(e){
 /**PAGINACION */
 const variables = document.querySelectorAll('.contenedor-categoria'); /**SE SELECCIONAN TODOS LOS CONTENEDORES CON ID CONTENEDOR-CATEGORIA*/
 variables.forEach(variable => paginacion(variable.id));
-console.log(variables);
 function paginacion(variable){  
     if (variable != "character"){  
         const fila = document.querySelector(`.contenedor-carrusel-${variable}`);    

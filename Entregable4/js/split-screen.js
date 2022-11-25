@@ -1,6 +1,9 @@
 "use strict";
 
 var lastScrollTop = 0; 
+let titleScrollUp=0;
+let titleScrollDown=0;
+let scrollDirection = null;
 window.addEventListener(
   "scroll",
   () => {
@@ -9,9 +12,10 @@ window.addEventListener(
     scrollPosition = scrollPosition.toFixed(3);
    
   //Credits: https://stackoverflow.com/questions/31223341/detecting-scroll-direction
-    let scrollDirection;
+    
     let st = window.pageYOffset || document.documentElement.scrollTop; 
-    if (st > lastScrollTop){
+    console.log("st ",st);
+    if (st >= lastScrollTop){
       scrollDirection = 'down';
     } else {
       scrollDirection = 'up';
@@ -28,13 +32,40 @@ window.addEventListener(
       let relativepos = Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight;
       let opacity =Math.pow(1-Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight, 5);
       paragraph.style = `opacity: ${opacity}`;
-      console.log("relp: ", relativepos);
+      /* console.log("relp: ", relativepos); */
       if (relativepos < 0.1){
         document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${p}.png`);
       }
     }
+    
+   
+    function heroTitleAnimation(){
+      let title = document.querySelector(".hero-title");
+      let posTitle = title.getBoundingClientRect().top + title.clientHeight/2;
+      let initialPosTitle = posTitle;
+      let relativepos =(window.innerHeight/2-posTitle)/window.innerHeight;
+    
+      /* console.log("relp: ", relativepos); */
+      console.log("titlescrollup ",titleScrollUp); 
+      console.log("titlescrolldown ",titleScrollDown); 
+      console.log("relativapos ",relativepos);    
+      if (scrollDirection == 'down' && titleScrollDown < 400){
+        title.style = `transform: translateY(${titleScrollDown}px)`;
+        title.style = `opacity: ${titleScrollDown/400}`;
+        console.log(titleScrollDown/400);
+        titleScrollDown += 10;
+      } 
+      if (scrollDirection == 'up' && titleScrollDown > titleScrollUp){
+        title.style = `transform: translateY(${titleScrollDown+titleScrollUp}px)`;
+        titleScrollUp -= 10;
+        
+      } 
+    }
+
+    heroTitleAnimation();
 
     // Animacion cards de personajes.
+   
     let cards = document.querySelectorAll('.juego-character');
     let charactersChart = document.querySelector('.carrusel-characters');
   
@@ -63,6 +94,7 @@ window.addEventListener(
       card.classList = 'juego-character';
       card.style = 'opacity: 1';
     }));
+    
   },
   false
 );
