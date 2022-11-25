@@ -351,7 +351,7 @@ header {
   height: 70px;
   display: flex;
   justify-content: space-evenly;
-
+  transition: .25s ease-in-out;
 }
 
 .container-nav-bar-small{
@@ -383,6 +383,7 @@ header {
   transform: rotateZ(-30deg);
   height: 70px;
   scale: 200%;
+  transition: .25s ease-in-out;
 }
 
 .logo-small{
@@ -408,6 +409,7 @@ header {
   padding: 10px 20px;
   width: 100%;
   position: relative;
+  transition: .25s ease-in-out;
 }
 
 .input-buscar-small{
@@ -446,7 +448,7 @@ header {
   position: relative;
   margin: auto 30px;
   transform: rotate(0deg);
-  transition: .5s ease-in-out;
+  transition: .25s ease-in-out;
   cursor: pointer;
 }
 
