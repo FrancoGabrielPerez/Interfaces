@@ -32,12 +32,12 @@ window.addEventListener(
       let relativepos = Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight;
       let opacity =Math.pow(1-Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight, 5);
       paragraph.style = `opacity: ${opacity}`;
-      /* console.log("relp: ", relativepos); */
+      console.log("relp: ", relativepos);
       if (relativepos < 0.1){
         document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${p}.png`);
       }
     }
-    
+
    
     function heroTitleAnimation(){
       let title = document.querySelector(".hero-title");
