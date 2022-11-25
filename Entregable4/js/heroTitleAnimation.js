@@ -24,7 +24,7 @@ function heroTitleAnimation(){
       titleScroll += 15;     
     } 
     if (scrollDirection == 'up' && titleScroll > 0 && scrollST < 470){
-      title.style = `transform: translateY(${titleScroll+(titleScroll*0.1)}px); transition: all linear; opacity: ${1-(titleScroll/405)}; scroll-behavior:smooth;`;         
+      title.style = `transform: translateY(${titleScroll}px); transition: all linear; opacity: ${1-(titleScroll/405)}; scroll-behavior:smooth;`;         
       console.log("opacity "+titleScroll/405);
       titleScroll -= 15;
     } 

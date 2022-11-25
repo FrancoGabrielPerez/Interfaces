@@ -2,7 +2,7 @@
 
 console.log("header.js");
 let header = document.querySelector("header");
-let smallHeaderPos = 0.05;
+let smallHeaderPos = 0.01;
 
 window.addEventListener(
 	"scroll",
