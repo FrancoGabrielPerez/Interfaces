@@ -119,8 +119,9 @@ p.bold{
 }
 
 input[type=text] {
+  color: var(--Color-GreyS3);
   width: 100%;
-  padding: 12px 20px;
+  padding: inherit;
   box-sizing: border-box;
 }
 
@@ -342,14 +343,23 @@ header {
   z-index: 4000;
 }
 
+.smallheader{
+  background-color: var(--Color-PrimaryS1);
+}
+
 .container-nav-bar{
+  height: 70px;
   display: flex;
   justify-content: space-evenly;
 
 }
 
+.container-nav-bar-small{
+  height: 40px;
+}
+
 .bar-nav, .usr-nav, .header-search-bar {
-  height: 70px;
+  height: inherit;
   width: 100%;
   display: flex;
   align-items: center;
@@ -375,6 +385,11 @@ header {
   scale: 200%;
 }
 
+.logo-small{
+  width: 190px;
+  height: 40px;
+}
+
 .bar-btn, .usr-btn{
   cursor: pointer;
   position: absolute;
@@ -389,15 +404,22 @@ header {
   color: var(--Color-GreyS3);
 }
 
-
-.header-search-bar .input-buscar{
+.input-buscar{
+  padding: 10px 20px;
   width: 100%;
-  height: 40%;
   position: relative;
 }
 
+.input-buscar-small{
+  padding: 5px 10px;
+}
+
+.input-buscar-small input{
+  background-color: var(--Color-GreyL2);
+}
+
 .header-search-bar .input-box-buscar::placeholder{
-  color: #555555;
+  color: var(--Color-GreyS3);
   padding: 5px;
 }
 
@@ -409,13 +431,11 @@ header {
 }
 
 .header-search-bar .input-buscar .input-icon {
-  color: #191919;
   position: absolute;
-  width: 20px;
-  height: 20px;
-  right: 12px;
-  top: 100%;
-  transform: translateY(-130%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  padding: inherit;
 }
 
 /*------------------- HAMBURGER MENU -----------------------------------------*/
@@ -425,15 +445,15 @@ header {
   height: 40px;
   position: relative;
   margin: auto 30px;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
+}
+
+.nav-icon-small{
+  width: 30px;
+  height: 30px;
+  margin: auto 10px;
 }
 
 .nav-icon img{
@@ -450,44 +470,38 @@ header {
   border-radius: 9px;
   opacity: 1;
   left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
+}
+
+.nav-icon-small span {
+  height: 5px;
 }
 
 .nav-icon span:nth-child(1) {
   top: 0px;
-  -webkit-transform-origin: left center;
-  -moz-transform-origin: left center;
-  -o-transform-origin: left center;
   transform-origin: left center;
 }
 
 .nav-icon span:nth-child(2) {
   top: 14px;
-  -webkit-transform-origin: left center;
-  -moz-transform-origin: left center;
-  -o-transform-origin: left center;
   transform-origin: left center;
+}
+
+.nav-icon-small span:nth-child(2) {
+  top: 10px;
 }
 
 .nav-icon span:nth-child(3) {
   top: 29px;
-  -webkit-transform-origin: left center;
-  -moz-transform-origin: left center;
-  -o-transform-origin: left center;
   transform-origin: left center;
 }
 
+.nav-icon-small span:nth-child(3) {
+  top: 20px;
+}
+
 .nav-icon.open span:nth-child(1) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
   transform: rotate(45deg);
   top: 3px;
   left: 8px;
@@ -499,19 +513,20 @@ header {
 }
 
 .nav-icon.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
   top: 32px;
   left: 8px;
+}
+
+.nav-icon-small.open span:nth-child(3) {
+  top: 24px;
 }
 
 .nav-menu, .nav-menu-usr {
   position: absolute;
   width: 30%;
   height: 0vh;
-  top: 70px;
+  top: 100%;
   background: rgba(0,0,0,.95);
   text-align: left;
   transition: all;
@@ -562,23 +577,6 @@ ul.nav-menu-deployed{
   z-index: 5000;
 }
 
-/* 
-.nav-menu li, ul.nav-menu-deployed li, ul.nav-menu-deployed li a{
-  display: none;
-  line-height: 30px;
-  transition: all .5s;
-} */
-
-/* ul.nav-menu-deployed li{  
-  margin: 20px 0px 0px 20px;
-} */
-
-/* .nav-menu, .nav-menu-usr{
-  color: #FFFFFF;
-  font-size: 16px;
-  font-weight: 600;
-} */
-
 .nav-menu{
   position: absolute;
   height: 100vh;
@@ -594,12 +592,6 @@ ul.nav-menu-deployed{
   color: orange;
   transition: .3s;
 }
-
-/* .nav-menu li{
-  transform: translateX(0%);
-  transition: transform 1s ease 1s;
-} */
-
 
 .nav-menu.hiddenn li:nth-child(1){
   transform: translateX(-100%);
