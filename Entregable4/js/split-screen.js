@@ -38,9 +38,11 @@ window.addEventListener(
       if (relativepos < 0.1){
         document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${p}.png`);
       }
-      console.log(relativepos);
-      console.log(posParagraph);
+      // console.log(relativepos);
+      // console.log(posParagraph);
     }
+
+    document.querySelector()
 
     // featuresAnimation(1);
     // /* featuresAnimation(2);
@@ -59,6 +61,8 @@ window.addEventListener(
     //   } 
     //   console.log(div1);
     //   console.log(titleDiv1);
+
+    // }    
 
     // }
     
