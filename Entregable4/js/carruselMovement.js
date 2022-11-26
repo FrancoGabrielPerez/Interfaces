@@ -5,7 +5,7 @@ function movimientoCarrusel(e){
     const variable = e.currentTarget.parentNode.id;
     const fila = document.querySelector(`.contenedor-carrusel-${variable}`);   
     const indicadorActivo = document.querySelector(`.indicadores-${variable} .activo`);
-    console.log(variable);
+    
     if (lado === "flecha-der") {    
         if (variable == 'character'){
             fila.scrollLeft += fila.offsetWidth / 4;
