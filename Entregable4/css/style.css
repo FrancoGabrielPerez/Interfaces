@@ -1934,22 +1934,22 @@ body.hero-page{
   margin-bottom: 20px;
 
 }
-.features-chart .feature-container-b .feature-title{
+/* .features-chart .feature-container-b .feature-title{
   transform: translate(1000px, 100px);
   opacity:0;
-}
+} */
 
-.features-chart .feature-container-a .feature-title{
+/* .features-chart .feature-container-a .feature-title{
   transform: translate(-1000px, 100px);
   opacity:0;
-}
+} */
 
 .features-chart .feature-container-a .feature-p,
 .features-chart .feature-container-b .feature-p{
   line-height: normal;
 }
 
-.features-chart .feature-container-a .feature-p{
+/* .features-chart .feature-container-a .feature-p{
   transform: translate(-1000px, 100px);
   opacity:0;
 }
@@ -1957,7 +1957,7 @@ body.hero-page{
 .features-chart .feature-container-b .feature-p{
   transform: translate(1000px, 100px);
   opacity:0;
-}
+} */
 
 .container-features-1, .container-features-2,
 .container-features-3{
