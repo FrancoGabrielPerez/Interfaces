@@ -1,41 +1,35 @@
-const cardContainer = document.querySelector('.')
 
-function cardsAnimation(){
-  
-    let charactersChart = document.querySelector('.carrusel-characters');
-    let cards = document.querySelectorAll('.juego-character');
-    if (scrollPosition <= 0.50 || scrollPosition >= 0.77){
-      cards.forEach(card => {card.style = 'opacity: 0';});
-    }
+window.addEventListener("scroll", main);
 
-    if (scrollPos == 0.60 /*  && scrollPosition < 0.650  */){
-      for(let i = 0; i < 4; i++){
-        if (i % 2 != 0)
-          cards[i].classList.add(`layer${i+1}`);
-        else
-          cards[i].classList.add(`layer${i+1}`);
-      }
-    }    
-    if (scrollPosition == 0.70 /* && scrollPosition < 0.750 */){
-      for(let i = 4; i < 8; i++){
-        
-        if (i % 2 != 0)
-          cards[i].classList.add(`layer${i+1}`);
-        else
-          cards[i].classList.add(`layer${i+1}`);
-      }
-    } 
-    cards.forEach(card => card.addEventListener('animationend', () =>{
-      card.classList = 'juego-character';
-      card.style = 'opacity: 1';
-    }));
+const cardContainer = document.querySelectorAll('.juego-character');
+
+function cardsAnimation(cards, elementsIntersected){
+    cards.forEach((card) =>{
+      if (card.isIntersecting){       
+        let clase = card.target.classList[1];
+        card.target.classList.add(`layer${clase}`);
+        card.target.style = 'opacity: 1';
+      } 
+    });
   }
 
+function classRestore(){    
+  let cards = document.querySelectorAll('.juego-character');
+  if (scrollPosition <= 0.600 || scrollPosition >= 0.900){
+    for(let i = 0, j = 1; i < 8; i++, j++){
+      cards[i].classList = `juego-character ${j}`;
+      cards[i].style = 'opacity: 0';
+    }
+  }
+}
+
+function main(){
   const observador = new IntersectionObserver(cardsAnimation,{
     root: null,
-    rootMargin: '100px',
-    threshold: 1.0
+    rootMargin: '10px',
+    threshold: 0.7
   });
-
-  cards.forEach(card =>{observador.observe(car)})
-
+  cardContainer.forEach(card => {observador.observe(card)});
+  classRestore();
+}
+  

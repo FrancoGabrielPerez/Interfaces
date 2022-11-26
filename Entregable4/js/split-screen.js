@@ -1,23 +1,21 @@
 "use strict";
 
-/* 
-let titleScrollUp=0;
-let titleScrollDown=0;*/
 let scrollST = 0;
 let scrollDirection = null;
-var lastScrollTop = 0; 
+var lastScrollTop = 0;
+let scrollPosition = 0;
 window.addEventListener(
   "scroll",
   () => {
-    let scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
+    scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
     let scrollPos = scrollPosition.toFixed(2);
     scrollPosition = scrollPosition.toFixed(3);
-   
+    console.log(scrollPosition);
   //Credits: https://stackoverflow.com/questions/31223341/detecting-scroll-direction
     
     let st = window.pageYOffset || document.documentElement.scrollTop; 
     scrollST = st;
-    console.log("st ",st);
+    /* console.log("st ",st); */
     if (st >= lastScrollTop){
       scrollDirection = 'down';
     } else {
@@ -34,8 +32,7 @@ window.addEventListener(
       let posParagraph = paragraph.getBoundingClientRect().top + paragraph.clientHeight/2;
       let relativepos = Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight;
       let opacity =Math.pow(1-Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight, 5);
-      paragraph.style = `opacity: ${opacity}`;/* 
-      console.log("relp: ", relativepos); */
+      paragraph.style = `opacity: ${opacity}`;
       if (relativepos < 0.1){
         document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${p}.png`);
       }
@@ -69,34 +66,34 @@ window.addEventListener(
  */
     // Animacion cards de personajes.
    
-    let cards = document.querySelectorAll('.juego-character');
-    let charactersChart = document.querySelector('.carrusel-characters');
+    // let cards = document.querySelectorAll('.juego-character');
+    // let charactersChart = document.querySelector('.carrusel-characters');
   
-    if (scrollPosition <= 0.50 || scrollPosition >= 0.77){
-      cards.forEach(card => {card.style = 'opacity: 0';});
-    }
+    // if (scrollPosition <= 0.50 || scrollPosition >= 0.77){
+    //   cards.forEach(card => {card.style = 'opacity: 0';});
+    // }
 
-    if (scrollPos == 0.60 /*  && scrollPosition < 0.650  */){
-      for(let i = 0; i < 4; i++){
-        if (i % 2 != 0)
-          cards[i].classList.add(`layer${i+1}`);
-        else
-          cards[i].classList.add(`layer${i+1}`);
-      }
-    }    
-    if (scrollPosition == 0.70 /* && scrollPosition < 0.750 */){
-      for(let i = 4; i < 8; i++){
+    // if (scrollPos == 0.60 /*  && scrollPosition < 0.650  */){
+    //   for(let i = 0; i < 4; i++){
+    //     if (i % 2 != 0)
+    //       cards[i].classList.add(`layer${i+1}`);
+    //     else
+    //       cards[i].classList.add(`layer${i+1}`);
+    //   }
+    // }    
+    // if (scrollPosition == 0.70 /* && scrollPosition < 0.750 */){
+    //   for(let i = 4; i < 8; i++){
         
-        if (i % 2 != 0)
-          cards[i].classList.add(`layer${i+1}`);
-        else
-          cards[i].classList.add(`layer${i+1}`);
-      }
-    } 
-    cards.forEach(card => card.addEventListener('animationend', () =>{
-      card.classList = 'juego-character';
-      card.style = 'opacity: 1';
-    }));
+    //     if (i % 2 != 0)
+    //       cards[i].classList.add(`layer${i+1}`);
+    //     else
+    //       cards[i].classList.add(`layer${i+1}`);
+    //   }
+    // } 
+    // cards.forEach(card => card.addEventListener('animationend', () =>{
+    //   card.classList = 'juego-character';
+    //   card.style = 'opacity: 1';
+    // }));
     
   },
   false

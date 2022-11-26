@@ -1,13 +1,10 @@
 'use strict';
 
-
-
 let titleScroll=0;
 window.addEventListener(
   "scroll", heroTitleAnimation);
-  
-function heroTitleAnimation(){
 
+function heroTitleAnimation(){
     let title = document.querySelector(".hero-title");
     let posTitle = title.getBoundingClientRect().top + title.clientHeight/2;
     let initialPosTitle = posTitle;

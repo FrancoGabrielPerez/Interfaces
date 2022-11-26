@@ -15,7 +15,7 @@ window.addEventListener(
 	} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
 		toogleSmallHeader();
 	  }
-	  console.log("scrollpos ", scrollPos);
+	 /*  console.log("scrollpos ", scrollPos); */
 	}
 	
 );

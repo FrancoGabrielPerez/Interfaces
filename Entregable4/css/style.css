@@ -1390,7 +1390,7 @@ body.hero-page{
   height: 300px;
 }
 
-#hero-chart-subback {
+#hero-chart-subback, #sprite-back  {
   background:url(../img/img-games/hero-section/BackgroundHero-mountains-5.png);
   animation: movebg 80s linear infinite; 
   background-size: cover; 
@@ -1404,20 +1404,20 @@ body.hero-page{
   height: 600px;
 }
 
-#hero-sand-storm-2 {
+#hero-sand-storm-2{
   background:url(../img/img-games/hero-section/03.png);
   animation: movebg 35s linear infinite; 
 }
 
 
-#hero-chart-floor {
+#hero-chart-floor, #sprite-floor {
   background:url(../img/img-games/hero-section/desert-floor-1.png) repeat-x;
   animation: movebg 50s linear infinite;
   position: absolute;   
   top: 420px;
-  height: 300px;
-  
+  height: 300px;  
 }
+
 
 @keyframes movebg {
   0% { background-position:3600px } 
@@ -1663,9 +1663,11 @@ body.hero-page{
 @keyframes right-movement {
   0%{
     transform: skew(-10deg);
+    transform-origin: left bottom;
   } 
   100%{
     transform: skew(-10deg);
+    transform-origin: left bottom;
   }
 }
 
@@ -1676,9 +1678,11 @@ body.hero-page{
 @keyframes left-movement {
   0%{   
     transform: skew(10deg);
+    transform-origin: left bottom;
   }
   100%{
     transform: skew(10deg);
+    transform-origin: left bottom;
   }
 }
 
@@ -1952,27 +1956,34 @@ body.hero-page{
   width:165px;
   height:165px;
   /* Cómo hay establecido un tamaño, centramos con margin:auto */
-  margin: 0px;
+  margin: auto;
   /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
   background:url(../img/img-games/hero-section/cowboy-spritesheet/sprite-cowboy-6.png) repeat-x;
   /* Aplicamos la animación "fight": 3seg, 20 viñetas y repetimos infinitamente */
-  animation:fight 5s steps(20) infinite;
+  animation:fight 3s steps(20) infinite;
   /* Posicionamos el personaje sobre el camino */
   position:relative;
-  bottom:34px;
+  bottom: -10px;
 }
 
 /* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
 @keyframes fight {
   /* Partimos de la primera viñeta del sprite sheet */
-  0% { background-position:0; transform: translateX(0px); }
+  0% { background-position:0; /* transform: translateX(0px); */ }
   /* El tamaño total de ancho del sprite. Es negativo para que no se mueva hacia atrás */
-  100% { background-position:-3300px; transform: translateX(1366px); }
+  100% { background-position:-3300px;/*  transform: translateX(1366px); */ }
 }
 
 
+#sprite-back{
+  height: 200px;
+  position: relative;
+  background-image: url(../img/img-games/hero-section/Background-clouds-6.png);
+}
 
-
+#sprite-floor{
+  top: 100px;
+}
 
 /*----------------------FOOTER-------------------------------------*/
 
