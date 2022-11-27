@@ -1398,14 +1398,14 @@ body.hero-page{
 }
 
 #hero-sand-storm-1,#hero-sand-storm-2  {
-  background:url(../img/img-games/hero-section/fondo-prueba-1.png);
+  background:url(../img/img-games/hero-section/sand-storm-1.png);
   animation: movebg 40s linear infinite; 
   background-size: cover; 
   height: 600px;
 }
 
 #hero-sand-storm-2{
-  background:url(../img/img-games/hero-section/03.png);
+  background:url(../img/img-games/hero-section/sand-storm-2.png);
   animation: movebg 35s linear infinite; 
 }
 
@@ -1463,11 +1463,17 @@ body.hero-page{
 }
 
 .hero-title{
-   /* position: fixed; */
-   text-align: center;
-   display: flex;
-    align-items: center;
-    flex-direction: column;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;    
+  transition: 800ms ease-in-out transform,
+              900ms ease-in-out opacity;
+}
+
+.hide-title{
+  transform: translateY(500px);
+  opacity: 0;
 }
 
 .button-preview{
@@ -1487,9 +1493,14 @@ body.hero-page{
   padding-top: 40px;
 }
 
-
 .cow-bones {
   width: 50%;
+  transform: translateX(-30px);
+  transition: 1000ms ease-in-out width;
+}
+
+.fade{
+  width: 0%;
 }
 
 .time-counter{
@@ -1546,7 +1557,6 @@ body.hero-page{
   align-items: center;
   width: 50%;
   height: 100vh;
-  /* background: rgb(250, 249, 252); */
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -1570,15 +1580,12 @@ body.hero-page{
 
 @keyframes img-transition {
   0%{
-    /* transform: scale(1); */
     opacity: 1;
   }
   50%{
-    /* transform: scale(.6); */
     opacity: .5;
   }
   100%{
-    /* transform: scale(.2); */
     opacity: 0;
   }  
 }
@@ -1637,7 +1644,6 @@ body.hero-page{
     display: flex;
     flex-direction: column;
     width: 100%;
-   /*  height: 100%; */
     border: none;
     border-radius: 0px;
     border-width: 0px;
@@ -1687,18 +1693,11 @@ body.hero-page{
 
 /*-----------------CHARACTERS SECTION---------------------*/
 
-.characters-chart{  
-  /* background-image: url(../img/img-games/hero-section/ImgBackCharacters.png);
-  background-size: cover;  */
-  /* height: 650px; */
-   /* position: relative; */   
+.characters-chart{ 
     margin: 60px auto;
     background-color: var(--Color-GreyS3);
-  }
+}
 
-/* .characters-chart .juego-character{
-  opacity: 0;
-} */
 
 .characters-chart .carrusel{
   display: flex;    
@@ -1707,8 +1706,7 @@ body.hero-page{
   flex-wrap: wrap;
   justify-content: center;
   justify-content: space-evenly;
-  position: relative;
- 
+  position: relative; 
 }
 
 .cards-movement-left{ 
@@ -1735,8 +1733,7 @@ body.hero-page{
   100%{
     opacity: 1;
     transform: translateX(0px);
-  }
-  
+  }  
 }
 
 .cards-movement-right{ 
@@ -1790,10 +1787,6 @@ body.hero-page{
   animation: cards-move-right .5s linear;
 } 
 
-
-
-
-
 .carruseles-categorias-character .contenedor-principal{
   width: 90%;
 }
@@ -1806,8 +1799,7 @@ body.hero-page{
 .juego-character .contenedor-card-small-character .datos-juego-small p{
   text-align: center;
   line-height: 20px;
-  letter-spacing: 0.05em;
-    
+  letter-spacing: 0.05em;    
 }
 
 .juego-character .contenedor-card-small-character .datos-juegos-small h2{    
@@ -1838,7 +1830,6 @@ body.hero-page{
 }
 
 .juego-character .contenedor-card-small-character{
- /*  padding: 40px; */   
   justify-content: center;
   display: flex;
 }
@@ -1862,8 +1853,7 @@ body.hero-page{
   border-width: 3px;
   border-style: solid;
   background: var(--Color-Primary);
-  cursor: pointer;
-  
+  cursor: pointer;  
 }
 
 .juego-character .card-small-character .datos-juego-small{
@@ -1925,6 +1915,9 @@ body.hero-page{
 .feature-img{
   width: 100%;
   margin: 0px 20px;
+  opacity: 0;
+  transition: 500ms ease-in-out  transform,
+              500ms ease-in-out opacity;
 }
 
 .feature-img img{
@@ -1932,55 +1925,25 @@ body.hero-page{
   height: 240px;
 }
 
-
-/* .features-chart .feature-container-a .feature-text,
-.features-chart .feature-container-b .feature-text,
-.features-chart .feature-container-a .feature-text-a,
-.features-chart .feature-container-b .feature-text-a{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-} */
-/* 
-.features-chart .feature-container-a .feature-title,
-.features-chart .feature-container-b .feature-title{
-  margin-bottom: 20px;
-
-}
-/* .features-chart .feature-container-b .feature-title{
-  transform: translate(1000px, 100px);
-  opacity:0;
-} */
-
-/* .features-chart .feature-container-a .feature-title{
-  transform: translate(-1000px, 100px);
-  opacity:0;
+.feature-img.left img{
+  transform: translateX(-100%);
+  
 }
 
-.features-chart .feature-container-a .feature-p,
-.features-chart .feature-container-b .feature-p{
-  line-height: normal;
-} */
-
-/* .features-chart .feature-container-a .feature-p{
-  transform: translate(-1000px, 100px);
-  opacity:0;
+.feature-img.right img{
+  transform: translateX(100%);
+ 
 }
 
-.features-chart .feature-container-b .feature-p{
-  transform: translate(1000px, 100px);
-  opacity:0;
-} */
-
-/* .container-features-1, .container-features-2,
-.container-features-3{
-  display: flex; 
+.show-content-left{
+  transform: translateX(100%);
+  opacity: 1;
 }
 
-.container-features-2{
-  flex-wrap: nowrap;
-} */
+.show-content-right{
+  transform: translateX(-100%);
+  opacity: 1;
+}
 
 /*---------------------SPRITE SHEET--------------------------------*/
 
@@ -2007,7 +1970,6 @@ body.hero-page{
   /* El tamaño total de ancho del sprite. Es negativo para que no se mueva hacia atrás */
   100% { background-position:-3300px;/*  transform: translateX(1366px); */ }
 }
-
 
 #sprite-back{
   height: 200px;
@@ -2141,7 +2103,6 @@ footer{
   .carrusel-categorias .contenedor-carrusel-multijugador .carrusel .juego-multijugador,
   .carrusel-categorias .contenedor-carrusel-deportes .carrusel .juego-deportes{
     min-width: 25%;
-    /* transform: scale(0.4,0.4); */
     transition: .3s ease all;
     overflow: visible;
   }
@@ -2182,7 +2143,6 @@ footer{
   .carrusel-categorias .contenedor-carrusel-multijugador .carrusel, 
   .carrusel-categorias .contenedor-carrusel-deportes .carrusel,
   .contenedor-small-cards-mobile {
-    /* height: 200px; */
     align-items: center;
   }
 
@@ -2312,7 +2272,6 @@ footer{
   }
 
   .datos-juego-big {
-    /* padding: 10px; */
     display: flex;
     flex-direction: column;
     width: 100%;

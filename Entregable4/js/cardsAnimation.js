@@ -15,7 +15,7 @@ function cardsAnimation(cards, elementsIntersected){
 
 function classRestore(){    
   let cards = document.querySelectorAll('.juego-character');
-  if (scrollPosition <= 0.600 || scrollPosition >= 0.900){
+  if (scrollPosition <= 0.500 || scrollPosition >= 0.750){
     for(let i = 0, j = 1; i < 8; i++, j++){
       cards[i].classList = `juego-character ${j}`;
       cards[i].style = 'opacity: 0';
@@ -27,7 +27,7 @@ function main(){
   const observador = new IntersectionObserver(cardsAnimation,{
     root: null,
     rootMargin: '10px',
-    threshold: 0.7
+    threshold: 0.5,
   });
   cardContainer.forEach(card => {observador.observe(card)});
   classRestore();
