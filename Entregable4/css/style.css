@@ -1924,26 +1924,6 @@ body.hero-page{
   height: 240px;
 }
 
-.feature-img.left img{
-  transform: translateX(-100%);
-  
-}
-
-.feature-img.right img{
-  transform: translateX(100%);
- 
-}
-
-.show-content-left{
-  transform: translateX(100%);
-  opacity: 1;
-}
-
-.show-content-right{
-  transform: translateX(-100%);
-  opacity: 1;
-}
-
 /*---------------------SPRITE SHEET--------------------------------*/
 
 /* Animación del personaje */
