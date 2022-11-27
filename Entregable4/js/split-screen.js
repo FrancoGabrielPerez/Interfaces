@@ -10,6 +10,7 @@ window.addEventListener(
     scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
     let scrollPos = scrollPosition.toFixed(2);
     scrollPosition = scrollPosition.toFixed(3);
+  //Credits: https://stackoverflow.com/questions/31223341/detecting-scroll-direction
     
     let st = window.pageYOffset || document.documentElement.scrollTop; 
     scrollST = st;
