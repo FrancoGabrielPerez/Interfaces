@@ -8,8 +8,6 @@ window.addEventListener("scroll", heroTitleAnimation);
 function heroTitleAnimation(){
   const trigger = window.innerHeight/6*4;
   const top = title.getBoundingClientRect().bottom;
-  console.log('trigger ',trigger);
-  console.log('top ',top);
   if (trigger > top){
     title.classList.add('hide-title');
     //cowBones.classList.add('fade');
