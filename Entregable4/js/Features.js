@@ -10,19 +10,22 @@ window.addEventListener(
 		const feature = featuresList[i];
 		changeFeature(feature, !( i & 1 ));
 	}
-	// changeFeature(featuresList[0],true);
     
     function changeFeature(feature, even){
 		let posFeature = feature.getBoundingClientRect().top + feature.clientHeight/2;
+		console.log('posFeature ', posFeature);
 		let translate = Math.abs(window.innerHeight/2-posFeature)/window.innerHeight*100;
+		translate = translate.toFixed(0);
 		let snap = Boolean(parseInt(feature.dataset.snap));
-		if (snap && (translate <= snappingThreshold)) {
+		console.log('translate ',translate);
+		console.log('snap ',snap);
+		 if (snap && (translate <= snappingThreshold)) {
 			feature.scrollIntoView({behavior: "smooth", block: "center"});
 			snap = false;
 		}
 		if (!snap && (translate > snappingThreshold)){
 			snap = true;
-		}
+		} 
 		feature.dataset.snap = snap ? 1 : 0;
 		if (even){
 			feature.querySelector(".feature-img").style.transform = `translate(-${translate}vw, 0vh)`;

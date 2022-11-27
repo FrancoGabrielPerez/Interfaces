@@ -15,7 +15,7 @@ function cardsAnimation(cards, elementsIntersected){
 
 function classRestore(){    
   let cards = document.querySelectorAll('.juego-character');
-  if (scrollPosition <= 0.500 || scrollPosition >= 0.750){
+  if (scrollPosition <= 0.350 || scrollPosition >= 0.490){
     for(let i = 0, j = 1; i < 8; i++, j++){
       cards[i].classList = `juego-character ${j}`;
       cards[i].style = 'opacity: 0';
