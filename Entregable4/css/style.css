@@ -1898,24 +1898,32 @@ body.hero-page{
   padding: 40px;
 }
 
-.feature-text{
+.feature{
   display: flex;
-  width:550px;
+  align-items: center;
+  /* width:550px;
   height: 200px;
-  padding: 20px;
+  padding: 20px; */
 }
 
-.feature-text:nth-child(even){
+.feature:nth-child(even){
   flex-direction: row-reverse;
+}
+
+.feature p{
+  margin: 10px 0px;
+  line-height: normal;
+}
+
+.feature-img{
+  width: 100%;
+  margin: 0px 20px;
 }
 
 .feature-img img{
   height: 100%;
 }
 
-.feature-text p{
-  line-height: normal;
-}
 
 /* .features-chart .feature-container-a .feature-text,
 .features-chart .feature-container-b .feature-text,
