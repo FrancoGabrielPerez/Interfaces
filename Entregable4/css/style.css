@@ -154,7 +154,7 @@ body {
 /*GRID*/
 body{
   display: grid;
-  /* overflow: hidden; */
+  overflow: hidden;
   grid-template-columns: 10% 80% 10%;
   justify-content: center;
   grid-template-rows: repeat(4, auto);
