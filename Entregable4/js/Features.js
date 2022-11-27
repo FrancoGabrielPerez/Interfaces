@@ -14,6 +14,7 @@ window.addEventListener(
     
     function changeFeature(feature, even, n){
 		let posFeature = feature.getBoundingClientRect().top + feature.clientHeight/2;
+		console.log('posFeature ', posFeature);
 		let translate = Math.abs(window.innerHeight/2-posFeature)/window.innerHeight*100;
 		if (translate==undefined){
 			translate=0;
@@ -30,7 +31,7 @@ window.addEventListener(
 		}
 		if (!snap && (translate > snappingThreshold)){
 			snap = true;
-		}
+		} 
 		feature.dataset.snap = snap ? 1 : 0;
 		if (even){
 			if(!snap){
