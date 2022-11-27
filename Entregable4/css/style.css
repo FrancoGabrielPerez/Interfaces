@@ -1434,7 +1434,7 @@ body.hero-page{
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
 .history-chart h2, .history-wrapper h3,
-.features-chart .features-chart-title h1, .characters-chart .contenedor-characters-title h1,
+.features-chart h1, .characters-chart .contenedor-characters-title h1,
 .history-chart h1{
   font-family: 'Slackey', cursive;
   color: var(--Color-PrimaryL2);  
@@ -1898,16 +1898,23 @@ body.hero-page{
   padding: 40px;
 }
 
+.features-chart h1{
+  margin: 20px;
+}
+
 .feature{
   display: flex;
   align-items: center;
-  /* width:550px;
-  height: 200px;
-  padding: 20px; */
+  margin: 20px;
 }
 
 .feature:nth-child(even){
   flex-direction: row-reverse;
+}
+
+.feature .feature-text{
+  flex-shrink: 0;
+  width: 300px;
 }
 
 .feature p{
@@ -1921,7 +1928,8 @@ body.hero-page{
 }
 
 .feature-img img{
-  height: 100%;
+  width: 500px;
+  height: 240px;
 }
 
 
