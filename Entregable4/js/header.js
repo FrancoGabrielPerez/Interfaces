@@ -1,6 +1,5 @@
 "use strict"
 
-console.log("header.js");
 let header = document.querySelector("header");
 let smallHeaderPos = 0.0001;
 
@@ -15,7 +14,6 @@ window.addEventListener(
 	} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
 		toogleSmallHeader();
 	  }
-	 /*  console.log("scrollpos ", scrollPos); */
 	}
 	
 );
