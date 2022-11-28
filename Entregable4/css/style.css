@@ -130,12 +130,6 @@ body, input, textarea, button{
   font-family: var(--Font-Type, sans-serif);/* esto esta asi porque sino el boton no heredaba el font */
 }
 
-body {
-  margin:0;
-  background: var(--Color-SecondaryS3);
- 
-}
-
 .button-small-primary{
   width: 140px;
   height: 40px;
@@ -159,6 +153,8 @@ body::-webkit-scrollbar-thumb {
 
 /*GRID*/
 body{
+  margin:0;
+  background: var(--Color-SecondaryS3);
   display: grid;
   overflow: hidden;
   grid-template-columns: 10% 80% 10%;
@@ -576,8 +572,8 @@ header {
   transition: 700ms ease-in-out transform;
 }
 
-.hidden{
-  transform: translateX(300px);
+.nav-menu-usr.side-hidden{
+  transform: translateX(100%);
 }
 
 .nav-menu{
@@ -603,7 +599,7 @@ ul.nav-menu-deployed{
   transition: transform 1s;
 }
 
-.nav-menu.hiddenn{  
+.nav-menu.side-hidden{  
   transform: translateX(-100%);
 }
 
@@ -612,7 +608,7 @@ ul.nav-menu-deployed{
   transition: .3s;
 }
 
-.nav-menu.hiddenn li:nth-child(1){
+.nav-menu.side-hidden li:nth-child(1){
   transform: translateX(-100%);
 }
 
@@ -621,7 +617,7 @@ ul.nav-menu-deployed{
   transition: transform 1s ease .1s;
 }
 
-.nav-menu.hiddenn li:nth-child(2){
+.nav-menu.side-hidden li:nth-child(2){
   transform: translateX(-100%);
 }
 
@@ -630,7 +626,7 @@ ul.nav-menu-deployed{
   transition: transform 1s ease .2s;
 }
 
-.nav-menu.hiddenn li:nth-child(3){
+.nav-menu.side-hidden li:nth-child(3){
   transform: translateX(-100%);
 }
 
@@ -639,7 +635,7 @@ ul.nav-menu-deployed{
   transition: transform 1s ease .3s;
 }
 
-.nav-menu.hiddenn li:nth-child(4){
+.nav-menu.side-hidden li:nth-child(4){
   transform: translateX(-100%);
 }
 
@@ -648,7 +644,7 @@ ul.nav-menu-deployed{
   transition: transform 1s ease .4s;
 }
 
-.nav-menu.hiddenn li:nth-child(5){
+.nav-menu.side-hidden li:nth-child(5){
   transform: translateX(-100%);
 }
 
@@ -657,7 +653,7 @@ ul.nav-menu-deployed{
   transition: transform 1s ease .5s;
 }
 
-.nav-menu.hiddenn li:nth-child(6){
+.nav-menu.side-hidden li:nth-child(6){
   transform: translateX(-100%);
 }
 
@@ -666,7 +662,7 @@ ul.nav-menu-deployed{
   transition: transform 1s ease .6s;
 }
 
-.nav-menu.hiddenn li:nth-child(7){
+.nav-menu.side-hidden li:nth-child(7){
   transform: translateX(-100%);
 }
 
@@ -674,7 +670,7 @@ ul.nav-menu-deployed{
   transform: translateX(0%);
   transition: transform 1s ease .7s;
 }
-.nav-menu.hiddenn li:nth-child(8){
+.nav-menu.side-hidden li:nth-child(8){
   transform: translateX(-100%);
 }
 
@@ -682,8 +678,8 @@ ul.nav-menu-deployed{
   transform: translateX(0%);
   transition: transform 1s ease .8s;
 }
-/* 
-.hidden, */
+
+.hidden,
 .chk-icon-game-1, .chk-icon-game-2,
 .chk-icon-game{
   display: none;
@@ -1035,7 +1031,7 @@ form label{
 }
 
 .main-hero-page  .hero-count-reserve .button-preview .btn{
-  box-shadow: 0 0 40px 40px var(--Color-AccentS3) inset, 0 0 0 0 var(--Color-PrimaryL2);
+  box-shadow: 0 0 40px 40px var(--Color-AccentS1) inset, 0 0 0 0 var(--Color-PrimaryL2);
 }
 
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover,
@@ -2377,18 +2373,3 @@ footer{
     transform: translateY(-120%);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,12 +13,14 @@ function cardsAnimation(cards, elementsIntersected){
     });
   }
 
-function classRestore(){    
-  let cards = document.querySelectorAll('.juego-character');
-  if (scrollPosition <= 0.350 || scrollPosition >= 0.490){
-    for(let i = 0, j = 1; i < 8; i++, j++){
-      cards[i].classList = `juego-character ${j}`;
-      cards[i].style = 'opacity: 0';
+function classRestore(){
+  let posCards1 = cardContainer[0].getBoundingClientRect().top;
+  let posCards2 = cardContainer[cardContainer.length-1].getBoundingClientRect().bottom;
+  if ( posCards1 > window.innerHeight || posCards2 < 0){
+    console.log("entro");
+    for(let i = 0, j = 1; i < cardContainer.length; i++, j++){
+      cardContainer[i].classList.remove(`layer${j}`);
+      cardContainer[i].style = 'opacity: 0';
     }
   }
 }
