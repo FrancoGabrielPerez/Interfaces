@@ -187,8 +187,8 @@ body{
 }
 
 .loader-hero{
-  background-image: url(../img/img-games/hero-section/loader-back.png);
-  background-attachment: fixed;
+  background: url(../img/img-games/hero-section/loader-back.png) no-repeat center center, var(--Color-GreyS3);
+  background-size: 100%;
 }
 
 .wrapper{
