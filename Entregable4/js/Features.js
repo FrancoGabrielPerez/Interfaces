@@ -1,21 +1,23 @@
 "use strict";
 
 let featuresList = document.querySelectorAll(".feature");
-let snappingThreshold = 5;
+let snappingThreshold = 3;
+let featureHeight = 40;
 
 window.addEventListener(
   "scroll",
   () => {
 	for (let i = 0; i < featuresList.length; i++) {
 		const feature = featuresList[i];
-		changeFeature(feature, !( i & 1 ), i);
+		changeFeature(feature, !( i & 1 ));
 	}
 	// changeFeature(featuresList[3],false);
     
-    function changeFeature(feature, even, n){
+    function changeFeature(feature, even){
 		let posFeature = feature.getBoundingClientRect().top + feature.clientHeight/2;
-		console.log('posFeature ', posFeature);
-		let translate = Math.abs(window.innerHeight/2-posFeature)/window.innerHeight*100;
+		// console.log('posFeature ', posFeature);
+		let translate = Math.abs(window.innerHeight/2-posFeature)/window.innerHeight*featureHeight;
+		let opacity = Math.pow(1-Math.abs(window.innerHeight/2-posFeature)/window.innerHeight, 5);
 		if (translate==undefined){
 			translate=0;
 		}
@@ -26,13 +28,14 @@ window.addEventListener(
 		let snap = Boolean(parseInt(feature.dataset.snap));
 		if (snap && (translate <= snappingThreshold)) {
 			// feature.scrollIntoView({behavior: "smooth", block: "start"});
-			window.scrollTo( 0, feature.offsetTop);
+			window.scrollTo( 0, (feature.offsetTop-(window.innerHeight*(100-featureHeight)/2/100)));
 			snap = false;
 		}
 		if (!snap && (translate > snappingThreshold)){
 			snap = true;
 		} 
 		feature.dataset.snap = snap ? 1 : 0;
+		feature.style.opacity = opacity;
 		if (even){
 			if(!snap){
 				// console.log(`trans${n}: `, translate);

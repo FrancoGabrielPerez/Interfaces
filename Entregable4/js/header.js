@@ -5,23 +5,22 @@ let smallHeaderPos = 0.0001;
 
 window.addEventListener(
 	"scroll",
-	() => {
-		
-	  let scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
-	  let scrollPos = scrollPosition.toFixed(4);
-	  if (scrollPos > smallHeaderPos && !header.classList.contains("smallheader")){
-		toogleSmallHeader();
-	} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
-		toogleSmallHeader();
-	  }
-	}
-	
+	() => {		
+		let scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
+		let scrollPos = scrollPosition.toFixed(4);
+		if (scrollPos > smallHeaderPos && !header.classList.contains("smallheader")){
+			toogleSmallHeader();
+		} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
+			toogleSmallHeader();
+		}
+		//close hamburger menu and user menu
+		document.querySelector('#nav-icon-left').classList.remove('open');
+		document.querySelector("#nav-menu").classList.add("side-hidden");
+		document.querySelector('#nav-menu-usr').classList.add('side-hidden')
+	}	
 );
 
 function toogleSmallHeader(){
-	//close hamburger menu
-	document.querySelector('#nav-icon-left').classList.remove('open');
-	document.querySelector("#nav-menu").classList.add("hiddenn");
 	//rezise elements
 	document.querySelector(".usr-name").classList.toggle("hidden");
 	document.querySelector("header").classList.toggle("smallheader");
