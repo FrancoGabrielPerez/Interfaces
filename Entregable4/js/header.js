@@ -15,8 +15,8 @@ window.addEventListener(
 		}
 		//close hamburger menu and user menu
 		document.querySelector('#nav-icon-left').classList.remove('open');
-		document.querySelector("#nav-menu").classList.add("hiddenn");
-		document.querySelector('#nav-menu-usr').classList.add('hidden')
+		document.querySelector("#nav-menu").classList.add("side-hidden");
+		document.querySelector('#nav-menu-usr').classList.add('side-hidden')
 	}	
 );
 
