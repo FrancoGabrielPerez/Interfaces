@@ -12,17 +12,15 @@ window.addEventListener(
 			toogleSmallHeader();
 		} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
 			toogleSmallHeader();
-		} else if (scrollPos > smallHeaderPos && header.classList.contains("smallheader")){
-			document.querySelector('#nav-icon-left').classList.remove('open');
-			document.querySelector("#nav-menu").classList.add("hiddenn");
-		}	  
+		}
+		//close hamburger menu and user menu
+		document.querySelector('#nav-icon-left').classList.remove('open');
+		document.querySelector("#nav-menu").classList.add("hiddenn");
+		document.querySelector('#nav-menu-usr').classList.add('hidden')
 	}	
 );
 
 function toogleSmallHeader(){
-	//close hamburger menu
-	document.querySelector('#nav-icon-left').classList.remove('open');
-	document.querySelector("#nav-menu").classList.add("hiddenn");
 	//rezise elements
 	document.querySelector(".usr-name").classList.toggle("hidden");
 	document.querySelector("header").classList.toggle("smallheader");
