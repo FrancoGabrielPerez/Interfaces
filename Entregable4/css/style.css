@@ -188,7 +188,7 @@ body{
 
 .loader-hero{
   background-image: url(../img/img-games/hero-section/loader-back.png);
-  background-size:contain;
+  background-attachment: fixed;
 }
 
 .wrapper{
