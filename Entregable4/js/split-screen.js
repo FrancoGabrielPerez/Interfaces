@@ -1,6 +1,6 @@
 "use strict";
 
-let scrollST = 0;
+//let scrollST = 0;
 let scrollDirection = null;
 var lastScrollTop = 0;
 let scrollPosition = 0;
@@ -11,15 +11,15 @@ window.addEventListener(
     let scrollPos = scrollPosition.toFixed(2);
     scrollPosition = scrollPosition.toFixed(3);
    //Credits: https://stackoverflow.com/questions/31223341/detecting-scroll-direction
-    console.log('scrollposition ',scrollPosition);
-    let st = window.pageYOffset || document.documentElement.scrollTop; 
-    scrollST = st;
-    if (st >= lastScrollTop){
-      scrollDirection = 'down';
-    } else {
-      scrollDirection = 'up';
-    }
-    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    //console.log('scrollposition ',scrollPosition);
+    // let st = window.pageYOffset || document.documentElement.scrollTop; 
+    // scrollST = st;
+    // if (st >= lastScrollTop){
+    //   scrollDirection = 'down';
+    // } else {
+    //   scrollDirection = 'up';
+    // }
+    // lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 
     changeParagraph(1);
     changeParagraph(2);
