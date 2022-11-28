@@ -5,17 +5,18 @@ let smallHeaderPos = 0.0001;
 
 window.addEventListener(
 	"scroll",
-	() => {
-		
-	  let scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
-	  let scrollPos = scrollPosition.toFixed(4);
-	  if (scrollPos > smallHeaderPos && !header.classList.contains("smallheader")){
-		toogleSmallHeader();
-	} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
-		toogleSmallHeader();
-	  }
-	}
-	
+	() => {		
+		let scrollPosition = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
+		let scrollPos = scrollPosition.toFixed(4);
+		if (scrollPos > smallHeaderPos && !header.classList.contains("smallheader")){
+			toogleSmallHeader();
+		} else if (scrollPos <= smallHeaderPos && header.classList.contains("smallheader")){
+			toogleSmallHeader();
+		} else if (scrollPos > smallHeaderPos && header.classList.contains("smallheader")){
+			document.querySelector('#nav-icon-left').classList.remove('open');
+			document.querySelector("#nav-menu").classList.add("hiddenn");
+		}	  
+	}	
 );
 
 function toogleSmallHeader(){

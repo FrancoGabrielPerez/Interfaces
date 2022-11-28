@@ -151,6 +151,12 @@ body {
 
 /* ::-webkit-scrollbar {display: none;} */
 
+body::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+  border-radius: 100px;
+}
+
 /*GRID*/
 body{
   display: grid;
@@ -1379,41 +1385,41 @@ body.hero-page{
 
 #hero-clouds-1 {
   background:url(../img/img-games/hero-section/Background-clouds-5.png);
-  animation: movebg 45s linear infinite; 
+  animation: movebg 65s linear infinite; 
   background-size: 900px 200px;   
   height: 250px;
 }
 
 #hero-clouds-2 {
   background:url(../img/img-games/hero-section/Background-clouds-6.png);
-  animation: movebg 65s linear infinite; 
+  animation: movebg 85s linear infinite; 
   background-size:contain; 
   height: 300px;
 }
 
 #hero-chart-subback, #sprite-back  {
   background:url(../img/img-games/hero-section/BackgroundHero-mountains-5.png);
-  animation: movebg 80s linear infinite; 
+  animation: movebg 120s linear infinite; 
   background-size: cover; 
   height: 600px;
 }
 
 #hero-sand-storm-1,#hero-sand-storm-2  {
   background:url(../img/img-games/hero-section/sand-storm-1.png);
-  animation: movebg 40s linear infinite; 
+  animation: movebg 60s linear infinite; 
   background-size: cover; 
   height: 600px;
 }
 
 #hero-sand-storm-2{
   background:url(../img/img-games/hero-section/sand-storm-2.png);
-  animation: movebg 35s linear infinite; 
+  animation: movebg 50s linear infinite; 
 }
 
 
 #hero-chart-floor, #sprite-floor {
   background:url(../img/img-games/hero-section/desert-floor-1.png) repeat-x;
-  animation: movebg 50s linear infinite;
+  animation: movebg 70s linear infinite;
   position: absolute;   
   top: 420px;
   height: 300px;  
@@ -1441,13 +1447,8 @@ body.hero-page{
   color: var(--Color-PrimaryL2);  
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  animation: heroTitleAnimation 2s ease-in-out;
 }
 
-@keyframes heroTitleAnimation {
-  0%{}
-  100%{}
-}
 
 .hero-title h1{
   transform: scale(1.1);
@@ -1468,7 +1469,7 @@ body.hero-page{
   display: flex;
   align-items: center;
   flex-direction: column;    
-  transition: 800ms ease-in-out transform,
+  transition: 700ms ease-in-out transform,
               900ms ease-in-out opacity;
 }
 
