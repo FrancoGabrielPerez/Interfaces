@@ -8,11 +8,11 @@ window.addEventListener(
   () => {
 	for (let i = 0; i < featuresList.length; i++) {
 		const feature = featuresList[i];
-		changeFeature(feature, !( i & 1 ), i);
+		changeFeature(feature, !( i & 1 ));
 	}
 	// changeFeature(featuresList[3],false);
     
-    function changeFeature(feature, even, n){
+    function changeFeature(feature, even){
 		let posFeature = feature.getBoundingClientRect().top + feature.clientHeight/2;
 		// console.log('posFeature ', posFeature);
 		let translate = Math.abs(window.innerHeight/2-posFeature)/window.innerHeight*100;

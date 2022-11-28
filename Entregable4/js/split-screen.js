@@ -4,6 +4,8 @@
 let scrollDirection = null;
 var lastScrollTop = 0;
 let scrollPosition = 0;
+let historyList = document.querySelectorAll(".his-par");
+
 window.addEventListener(
   "scroll",
   () => {
@@ -20,19 +22,22 @@ window.addEventListener(
     //   scrollDirection = 'up';
     // }
     // lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-
-    changeParagraph(1);
-    changeParagraph(2);
-    changeParagraph(3);
+    for (let i = 0; i < historyList.length; i++) {
+      const paragraph = historyList[i];
+      changeParagraph(paragraph, i+1);
+    }
+    // changeParagraph(1);
+    // changeParagraph(2);
+    // changeParagraph(3);
     
-    function changeParagraph(p){
-      let paragraph = document.querySelector(`.history-paragraph-${p}`);
+    function changeParagraph(paragraph, n){
+      // let paragraph = document.querySelector(`.history-paragraph-${p}`);
       let posParagraph = paragraph.getBoundingClientRect().top + paragraph.clientHeight/2;
       let relativepos = Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight;
       let opacity =Math.pow(1-Math.abs(window.innerHeight/2-posParagraph)/window.innerHeight, 5);
       paragraph.style = `opacity: ${opacity}`;
       if (relativepos < 0.1){
-        document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${p}.png`);
+        document.querySelector('#scrollimg').setAttribute('src', `../img/img-games/hero-section/hero-history-${n}.png`);
       }
     }
    },
