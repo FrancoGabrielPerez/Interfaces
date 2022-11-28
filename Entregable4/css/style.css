@@ -1898,8 +1898,9 @@ body.hero-page{
   display: flex;
   align-items: center;
   margin: 20px;
-  height: 100vh;
+  height: 40vh;
 }
+
 
 .feature:nth-child(even){
   flex-direction: row-reverse;
@@ -1908,6 +1909,10 @@ body.hero-page{
 .feature .feature-text{
   flex-shrink: 0;
   width: 300px;
+}
+
+.feature-text h3{
+  margin: 20px 0px;
 }
 
 .feature-text p{
