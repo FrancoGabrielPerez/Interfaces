@@ -185,7 +185,7 @@ body{
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background: rgba(0, 0, 0, 0.90);/*var(--Color-SecondaryL2);*/
+  background:/*  rgba(0, 0, 0, 0.90); */var(--Color-GreyL2);
   display: flex;
   z-index: 500;
 }
@@ -568,6 +568,11 @@ header {
   width: auto;
   padding: 20px;
   border-bottom-left-radius: 25px;
+  transition: 700ms ease-in-out transform;
+}
+
+.hidden{
+  transform: translateX(300px);
 }
 
 .nav-menu{
@@ -672,8 +677,8 @@ ul.nav-menu-deployed{
   transform: translateX(0%);
   transition: transform 1s ease .8s;
 }
-
-.hidden,
+/* 
+.hidden, */
 .chk-icon-game-1, .chk-icon-game-2,
 .chk-icon-game{
   display: none;
@@ -1025,7 +1030,7 @@ form label{
 }
 
 .main-hero-page  .hero-count-reserve .button-preview .btn{
-  box-shadow: 0 0 40px 40px var(--Color-AccentS1) inset, 0 0 0 0 var(--Color-PrimaryL2);
+  box-shadow: 0 0 40px 40px var(--Color-AccentS3) inset, 0 0 0 0 var(--Color-PrimaryL2);
 }
 
 .contenedor-novedades .contenedor-card-preview .contenedor-texto-preview .btn:hover,
@@ -1898,7 +1903,7 @@ body.hero-page{
   display: flex;
   align-items: center;
   margin: 20px;
-  height: 100vh;
+  height: 80vh;
 }
 
 .feature:nth-child(even){
