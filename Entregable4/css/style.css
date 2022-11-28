@@ -1118,7 +1118,6 @@ form label{
     line-height: 40px;
     color: #FFFFFF;
     cursor: pointer;
-    z-index: 500;
     transition: .2s ease all;
  }
 
