@@ -183,7 +183,7 @@ body{
   position: absolute;
   background:/*  rgba(0, 0, 0, 0.90); */ var(--Color-GreyL2);
   display: flex;
-  z-index: 500;
+  z-index: 5000;
 }
 
 .loader-hero{
@@ -1440,8 +1440,7 @@ body.hero-page{
   display: flex;
   align-items: flex-end;  
   padding: 0px 20px;
-  position:absolute;
-  top: 50px;
+  height: 500px;
 }
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
@@ -1488,11 +1487,14 @@ body.hero-page{
   flex-wrap: nowrap;
   align-content: center;
   align-items: center;
+  justify-content: end;
+  z-index: 500;
 }
 
 .hero-section-central-characters{
     display: flex;
     justify-content: center;
+    flex-grow: 1;
 }
 
 .contenedor-characters-title{
@@ -1501,9 +1503,9 @@ body.hero-page{
 }
 
 .cow-bones {
-  width: 50%;
-  transform: translateX(-30px);
+  width: 500px;
   transition: 1000ms ease-in-out width;
+  z-index: 500;
 }
 
 .fade{
@@ -1513,9 +1515,11 @@ body.hero-page{
 .time-counter{
   text-align: center;
   line-height: 35px;
-  width: 100%;
+  z-index: 500;
 }
-
+.side-column{
+  width: 370px;
+}
 /*--------------------HISTORY SECTION-------------------------*/
 .history-chart{
   display: flex;
