@@ -145,12 +145,6 @@ body, input, textarea, button{
 
 /* ::-webkit-scrollbar {display: none;} */
 
-body::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
-  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
-  border-radius: 100px;
-}
-
 /*GRID*/
 body{
   margin:0;
@@ -181,7 +175,7 @@ body{
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background:/*  rgba(0, 0, 0, 0.90); */ var(--Color-GreyL2);
+  background: var(--Color-GreyL2);
   display: flex;
   z-index: 5000;
 }
@@ -1439,8 +1433,8 @@ body.hero-page{
 .hero-count-reserve{
   display: flex;
   align-items: flex-end;  
-  padding: 0px 20px;
-  height: 500px;
+  padding: 0px 20px 40px 20px;
+  height: 480px;
 }
 
 .hero-title h1, .time-counter h1, .time-counter h2, .history-title h1, 
@@ -1448,7 +1442,7 @@ body.hero-page{
 .features-chart h1, .characters-chart .contenedor-characters-title h1,
 .history-chart h1{
   font-family: 'Slackey', cursive;
-  color: var(--Color-PrimaryL2);  
+  color: var(--Color-PrimaryL1);  
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
@@ -1460,7 +1454,7 @@ body.hero-page{
   word-spacing: 5px;  
 }
 
-.hero-title h1, .characters-title{
+.hero-title, .characters-title{
   margin: 20px 0px;
 }
 
@@ -1520,6 +1514,71 @@ body.hero-page{
 .side-column{
   width: 370px;
 }
+
+#scroll-button span {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 30px;
+  height: 50px;
+  margin-left: -15px;
+  border: 3px solid var(--Color-GreyL3);
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+#scroll-button span::before {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--Color-GreyL3);
+  border-radius: 100%;
+  -webkit-animation: sbutton 2s infinite;
+  animation: sbutton 2s infinite;
+  box-sizing: border-box;
+}
+
+@-webkit-keyframes sbutton {
+  0% {
+    -webkit-transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sbutton {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+
 /*--------------------HISTORY SECTION-------------------------*/
 .history-chart{
   display: flex;
@@ -1530,11 +1589,11 @@ body.hero-page{
 }
 
 .history-chart{
-  --opacidad-negro: 0.8;
+  --opacidad-negro: 0.9;
   background-image: linear-gradient(rgba(0, 0, 0,var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(../img/img-games/hero-section/hero-history-6.png);  
-  background-size: cover;
   background-attachment: fixed;
-  background-repeat: round;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .history-text
@@ -1701,7 +1760,7 @@ body.hero-page{
 /*-----------------CHARACTERS SECTION---------------------*/
 
 .characters-chart{ 
-    margin: 60px auto;
+    margin: 60px 0px 0px 0px;
     background-color: var(--Color-GreyS3);
 }
 
@@ -1896,7 +1955,7 @@ body.hero-page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 0px 40px;
 }
 
 .features-chart h1{
@@ -1984,7 +2043,7 @@ footer{
 .contenedor-ppal-footer{
   display: flex;
   justify-content: space-between;
-  padding: 20px 80px 20px 80px;
+  padding: 20px 10vw;
   background: --var(--Color-PrimaryS1);
   margin-top: 35px;
 }
@@ -1999,6 +2058,9 @@ footer{
   width: 306px;
   height: 218px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contenedor-ppal-footer .cont-redes .icons-redes-footer{
