@@ -1246,7 +1246,7 @@ form label{
 .juego-accion .contenedor-card-small,
 .juego-multijugador .contenedor-card-small,
 .juego-deportes .contenedor-card-small{
-    padding: 40px;   
+    padding: 55px;   
     justify-content: center;
     display: flex;
 }
@@ -2025,13 +2025,13 @@ body.hero-page{
 }
 
 #sprite-back{
-  height: 200px;
+  height: 240px;
   position: relative;
   background-image: url(../img/img-games/hero-section/Background-clouds-6.png);
 }
 
 #sprite-floor{
-  top: 100px;
+  top: 140px;
 }
 
 /*----------------------FOOTER-------------------------------------*/
